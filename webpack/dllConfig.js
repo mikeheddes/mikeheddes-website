@@ -17,7 +17,6 @@ const exclude = [
   'minimist',
   'shelljs',
   'opn',
-  'axios'
 ];
 
 const include = [

@@ -14,9 +14,7 @@ router.get("/:resource", function(req, res, next) {
       });
       return;
     }
-    res.status(200).header({
-      'Access-Control-Allow-Origin': '*'
-    }).json(result);
+    res.status(200).json(result);
   })
 })
 

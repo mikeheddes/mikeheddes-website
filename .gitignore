@@ -9,3 +9,5 @@ dlls
 .DS_Store
 npm-debug.log
 .idea
+yarn-error.log
+yarn.lock
