@@ -1,9 +1,6 @@
 /**
  * Front-end middleware
  */
-
-console.log(process.env.NODE_ENV);
-
 module.exports = (app, options) => {
   const isProd = process.env.NODE_ENV == 'production';
 

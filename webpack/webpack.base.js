@@ -10,7 +10,7 @@ module.exports = options => ({
     publicPath: '/'
   }, options.output),
   module: {
-    rules: [
+    rules: options.rules.concat([
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
@@ -18,11 +18,10 @@ module.exports = options => ({
           loader: 'babel-loader'
         }
       }, {
-        test: /\.css$/,
-        exclude: /node_modules/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
+        test: /\.json$/,
+        use: 'json-loader'
       }
-    ]
+    ])
   },
   plugins: options.plugins.concat([
     new webpack.ProvidePlugin({fetch: 'exports-loader?self.fetch!whatwg-fetch'}),

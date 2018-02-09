@@ -29,8 +29,6 @@ const previousDepsPath = path.join(outputPath, 'previousDeps.json');
  */
 mkdir('-p', outputPath);
 
-console.log('Building the Webpack DLL...');
-
 /**
  * Create a manifest so npm install doesn't warn us
  */
@@ -56,10 +54,9 @@ if(exists(previousDepsPath)){
   updateDlls = JSON.stringify(previousDeps) != JSON.stringify({dependencies, devDependencies});
 }
 
-console.log(`should update Dlls: ${updateDlls}`);
-
 // the BUILDING_DLL env var is set to avoid confusing the development environment
 if (updateDlls) {
+  console.log('Building the Webpack dlls...');
   exec('cross-env BUILDING_DLL=true');
   exec('webpack --display-chunks --color --config webpack/webpack.dll.js --hide-modules');
   exec('cross-env BUILDING_DLL=false');
