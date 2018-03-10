@@ -22,33 +22,6 @@
   "browserslist": [
     "> 5%"
   ],
-  "babel": {
-    "plugins": [
-      "styled-components"
-    ],
-    "presets": [
-      [
-        "env",
-        {
-          "modules": false
-        }
-      ],
-      "react",
-      "stage-0"
-    ],
-    "env": {
-      "production": {
-        "only": [
-          "src"
-        ],
-        "plugins": [
-          "transform-react-remove-prop-types",
-          "transform-react-constant-elements",
-          "transform-react-inline-elements"
-        ]
-      }
-    }
-  },
   "dependencies": {
     "axios": "^0.17.1",
     "babel-polyfill": "^6.26.0",
@@ -67,8 +40,10 @@
     "polished": "^1.9.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-event-listener": "^0.5.3",
     "react-helmet": "^5.2.0",
     "react-loadable": "^5.3.1",
+    "react-motion": "^0.5.2",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "react-transition-group": "1.x",
@@ -98,13 +73,16 @@
     "eventsource-polyfill": "^0.9.6",
     "exports-loader": "^0.7.0",
     "extract-text-webpack-plugin": "^3.0.2",
+    "faker": "^4.1.0",
     "file-loader": "^1.1.6",
     "html-webpack-plugin": "^2.30.1",
     "image-webpack-loader": "^4.0.0",
     "imports-loader": "^0.7.1",
     "json-loader": "^0.5.7",
+    "nearest-color": "^0.4.2",
     "ngrok": "^2.2.25",
     "node-sass": "^4.7.2",
+    "node-vibrant": "^3.0.0",
     "postcss-loader": "^2.1.0",
     "prop-types": "^15.6.0",
     "sass-loader": "^6.0.6",

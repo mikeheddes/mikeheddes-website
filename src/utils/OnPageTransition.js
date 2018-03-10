@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { setMenuVisibility } from '../actions';
+import { setMenuVisibility } from 'actions';
 
 class OnPageTransition extends Component {
   componentDidUpdate(prevProps) {
@@ -17,4 +17,4 @@ class OnPageTransition extends Component {
   }
 }
 
-export default withRouter(connect()(ScrollRestore));
+export default withRouter(connect()(OnPageTransition));

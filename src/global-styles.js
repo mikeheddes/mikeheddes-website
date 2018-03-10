@@ -1,8 +1,7 @@
 import { injectGlobal } from 'styled-components';
-import { normalize } from 'polished';
+
 
 injectGlobal `
-  ${normalize()}
   * {
     -webkit-tap-highlight-color: transparent;
     margin                     : 0;
@@ -27,16 +26,12 @@ injectGlobal `
     -moz-font-feature-settings: 'liga', 'kern';
     font-family               : -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue','Helvetica','Arial', sans-serif;
     text-align                : left;
+    overflow-x: hidden;
   }
   #root {
     min-height: 100%;
-    min-width: 100%;
+    width: 100%;
     overflow-x: hidden;
     overflow-y: auto;
-  }
-  p,
-  label {
-    font-family: Georgia, Times, 'Times New Roman', serif;
-    line-height: 1.5em;
   }
 `;
