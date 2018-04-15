@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
 
 const logger = require('../server/logger');
 const webpackBaseConfig = require('./webpack.base');
@@ -14,6 +15,15 @@ module.exports = webpackBaseConfig({
   output: {
     filename: '[name].[chunkhash].js',
     chunkFilename: '[name].[chunkhash].chunk.js'
+  },
+
+  optimization: {
+    splitChunks: {
+      name: 'vendor',
+      children: true,
+      minChunks: 2,
+      async: true,
+    },
   },
 
   rules: [
@@ -39,30 +49,21 @@ module.exports = webpackBaseConfig({
         ]
       })
     }, {
-      test: /\.(jpe?g|png|gif)$/,
-      exclude: /node_modules/,
-      use: [
-        'file-loader', {
-          loader: 'image-webpack-loader',
-          options: {
-            progressive: true,
-            optimizationLevel: 7,
-            interlaced: false,
-            pngquant: {
-              quality: '65-90',
-              speed: 4
-            }
-          }
-        }
-      ]
-    }
-  ],
-  // Add development plugins
+    test: /\.(png|jpe?g|gif)$/,
+    use: {
+      loader: 'responsive-loader',
+      options: {
+        adapter: require('responsive-loader/sharp'),
+        sizes: [300, 600, 1200, 2000],
+        placeholder: true,
+        placeholderSize: 64,
+        name: 'img/[hash]-[width].[ext]',
+      },
+    },
+  }],
   plugins: [
+    new ImageminPlugin({test: /\.(png|jpe?g|gif)$/}),
     new webpack.optimize.ModuleConcatenationPlugin(),
-    new webpack.optimize.CommonsChunkPlugin(
-      {name: 'vendor', children: true, minChunks: 2, async: true}
-    ),
     new ExtractTextPlugin("styles.css"),
     new HtmlWebpackPlugin({
       template: 'src/index.html',

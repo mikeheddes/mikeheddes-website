@@ -5,19 +5,15 @@ import { TweenMax, CSSPlugin } from 'gsap';
 import { debounce } from 'lodash';
 import { spring, StaggeredMotion } from 'react-motion';
 
-import { setMenuHeight } from 'actions';
 import config from './config';
 import MenuListWrapper from './MenuListWrapper';
 import MenuItem from './MenuItem';
 
 class MenuList extends Component {
   componentDidMount(){
-    this.dispatchMenuHeight();
+    this.props.setHeight(this.menuList.offsetHeight)
   }
-  dispatchMenuHeight = debounce(() => {
-    const { dispatch } = this.props;
-    dispatch(setMenuHeight(this.menuList.clientHeight));
-  }, 17)
+  debouncedSetHeight = debounce(() => this.props.setHeight(this.menuList.offsetHeight), 17);
   componentWillReceiveProps(nextProps) {
     const { isVisible } = this.props;
     if (nextProps.isVisible && nextProps.isVisible != isVisible) this.animateIn();
@@ -36,10 +32,9 @@ class MenuList extends Component {
     );
   }
   render() {
-    const { dispatch } = this.props;
     return (
-      <MenuListWrapper id="menu-list" innerRef={node => {this.menuList = node}}>
-        <EventListener target="window" onResize={this.dispatchMenuHeight}/>
+      <MenuListWrapper id="menu-list" innerRef={node => this.menuList = node}>
+        <EventListener target="window" onResize={this.debouncedSetHeight}/>
         {config.links.map((link, i) =>
           <MenuItem key={i} {...link}/>
         )}
@@ -50,7 +45,7 @@ class MenuList extends Component {
 
 MenuList.propTypes = {
   isVisible: PropTypes.bool,
-  dispatch: PropTypes.func.isRequired,
+  setHeight: PropTypes.func.isRequired,
 }
 
 export default MenuList;

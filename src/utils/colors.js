@@ -61,7 +61,7 @@ export const DAY = {
   borderContent: fade(.90, grays['900']),
   nav: grays['000'],
   navBorder: fade(.92, grays['900']),
-  heading : grays['800'],
+  heading : grays['900'],
   heading1 : grays['750'],
   text: accents.blue['500'],
   text1: grays['800'],
@@ -69,7 +69,10 @@ export const DAY = {
   background: grays['000'],
   accent: accents.blue['200'],
   accent1: accents.blue['100'],
-  accentGray: grays['200'],
+  accentGray: grays['100'],
+  accentGray2: grays['200'],
+  accentGray3: grays['000'],
+  accentGray4: grays['300'],
 }
 
 export const NIGHT = {
@@ -86,7 +89,11 @@ export const NIGHT = {
   background: grays['800'],
   accent: grays['700'],
   accent1: grays['750'],
-  accentGray: grays['700'],
+  accentGray: grays['800'],
+  accentGray2: grays['750'],
+  accentGray3: grays['900'],
+  accentGray4: grays['700'],
+
 }
 
 // Gradients

@@ -24,7 +24,7 @@ injectGlobal `
     -webkit-font-smoothing    : antialiased;
     -moz-osx-font-smoothing   : grayscale;
     -moz-font-feature-settings: 'liga', 'kern';
-    font-family               : -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue','Helvetica','Arial', sans-serif;
+    font-family               : -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', 'Segoe UI', sans-serif;
     text-align                : left;
     overflow-x: hidden;
   }

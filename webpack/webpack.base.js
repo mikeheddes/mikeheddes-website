@@ -1,12 +1,15 @@
 const path = require('path');
 const webpack = require('webpack');
 
+const createBuildDate = require('./createBuildDate');
+
 const resolve = path.resolve;
 
 module.exports = options => ({
   entry: options.entry,
+  mode: process.env.NODE_ENV || 'development',
   output: Object.assign({
-    path: path.resolve(process.cwd(), 'build'),
+    path: path.resolve(process.cwd(), 'public', 'build'),
     publicPath: '/'
   }, options.output),
   module: {
@@ -26,9 +29,10 @@ module.exports = options => ({
   plugins: options.plugins.concat([
     new webpack.ProvidePlugin({fetch: 'exports-loader?self.fetch!whatwg-fetch'}),
     new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
-      }
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+      PRODUCTION: JSON.stringify(true),
+      VERSION: JSON.stringify('0.1'),
+      BUILD_DATE: JSON.stringify(createBuildDate())
     }),
     new webpack.NamedModulesPlugin()
   ]),

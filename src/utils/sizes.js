@@ -26,7 +26,8 @@ export const space = (type, top, right=null, bottom=null, left=null) => {
 export const radius = {
   xs: 2,
   s: 4,
-  r: 8,
+  r: 6,
+  xr: 8,
   m: 12,
   app: 26, //in procent
 }

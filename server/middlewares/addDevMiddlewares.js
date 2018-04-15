@@ -28,7 +28,7 @@ module.exports = (app, webpackConfig) => {
       if (err) {
         res.sendStatus(404);
       } else {
-        res.send(file.toString());
+        res.header({'Access-Control-Allow-Origin': '*'}).send(file.toString());
       }
     });
   });

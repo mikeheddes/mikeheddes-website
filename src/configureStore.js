@@ -19,7 +19,8 @@ export default function configureStore(initialState = {}) {
 
   if (module.hot) {
     module.hot.accept('./reducers', () => {
-      store.replaceReducer(createReducer(store.injectedReducers));
+      // store.replaceReducer(createReducer(store.injectedReducers));
+      store.replaceReducer();
     });
   }
 

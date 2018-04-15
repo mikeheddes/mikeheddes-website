@@ -34,3 +34,20 @@ export const center = css`
   margin-right: auto;
   margin-left: auto;
 `
+
+export const fluidText = (min, max) => fluidValue(min, max, 'font-size', 'px');
+
+export const fluidValue = (min, max, param, unit='') => (
+  css`
+    ${param}: ${min}${unit};
+
+    ${media.tabletPortrait(css`
+    ${'' /* 600 and 1200 are min and max media sizes */}
+      ${param}: calc(${max - min} * (100vw - 600px) / ${1200 - 600} + ${min}${unit});
+    `)}
+
+    ${media.desktop(css`
+      ${param}: ${max}${unit};
+    `)}
+  `
+)

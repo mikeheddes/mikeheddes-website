@@ -1,9 +1,9 @@
 # Don't check auto-generated stuff into git
 coverage
-build
 node_modules
 stats.json
 dlls
+public
 
 # Cruft
 .DS_Store

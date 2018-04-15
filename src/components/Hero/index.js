@@ -4,10 +4,12 @@ import styled, { css } from 'styled-components';
 
 import { space, spaces } from 'utils/sizes';
 import { grays, gradient } from 'utils/colors';
+import { media } from 'utils/mixins';
 
 const Wrapper = styled.section`
   width: 100%;
-  background-color: ${grays[100]};
+  background-color: ${props => props.theme.accentGray};
+  color: ${props => props.theme.heading};
   ${props => props.article ? css`
     background: ${gradient.article};
   ` : ''}
@@ -36,15 +38,44 @@ const Wrapper = styled.section`
     background-position: center;
   ` : ''}
   ${props => props.extended ? css`
-    ${space('padding', 'xl', 'M')}
+    ${space('padding', 'xl', 'm')}
+    ${media.desktop(css`
+      ${space('padding', 'xl', 'M')}
+    `)}
     min-height: 86vh;
     & h2 {
-      font-size: 42px;
+      font-size: 26px;
       padding-top: 30px;
+
+      ${media.tabletPortrait(css`
+        padding-top: 80px;
+        font-size: 38px;
+      `)}
+
+      ${media.tabletLandscape(css`
+        padding-top: 30px;
+        font-size: 40px;
+      `)}
+
+      ${media.desktop(css`
+        font-size: 42px;
+      `)}
     }
     & h1 {
-      font-size: 68px;
+      font-size: 38px;
       margin-top: 6px;
+
+      ${media.tabletPortrait(css`
+        font-size: 58px;
+      `)}
+
+      ${media.tabletLandscape(css`
+        font-size: 62px;
+      `)}
+
+      ${media.desktop(css`
+        font-size: 68px;
+      `)}
     }
   ` : ''}
 `

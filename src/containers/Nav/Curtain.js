@@ -12,7 +12,7 @@ const Curtain = styled.div.attrs({
   })`
   ${position('fixed', 0, 0, 0, 0)}
   z-index: 1;
-  background-color: rgba(0,0,0,.3);
+  background-color: rgba(0,0,0,.4);
 `
 
 Curtain.propTypes = {

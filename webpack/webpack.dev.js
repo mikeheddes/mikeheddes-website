@@ -73,11 +73,18 @@ module.exports = webpackBaseConfig({
         'sass-loader'
       ]
     }, {
-      test: /\.(jpe?g|png|gif)$/,
-      exclude: /node_modules/,
-      use: ['file-loader']
-    }
-  ],
+    test: /\.(png|jpe?g|gif)$/,
+    use: {
+      loader: 'responsive-loader',
+      options: {
+        sizes: [300, 600, 1200, 2000],
+        adapter: require('responsive-loader/sharp'),
+        placeholder: true,
+        placeholderSize: 64,
+        name: 'img/[name]-[width].[ext]',
+      },
+    },
+  }],
 
   // Don't use hashes in dev mode for better performance
   output: {
