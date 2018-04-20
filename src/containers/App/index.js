@@ -22,25 +22,22 @@ const LoadableHome = Loadable({
   }
 });
 
+// {this.props.notification.isVisible ? <Notification/> : null}
 
 class App extends Component {
   render() {
-    return(
-      <div>
-        <OnPageTransition>
-          {/* {this.props.notification.isVisible ? <Notification/> : null} */}
-          <Nav/>
-          <Switch>
-            <Route path="/" exact component={Home}/>
-            {!PRODUCTION && <Route path="/article" component={Article}/>}
-            {!PRODUCTION && <Route path="/music" component={Article}/>}
-            {!PRODUCTION && <Route path="/article" component={Article}/>}
-            <Route component={NoMatch}/>
-          </Switch>
-          <Footer/>
-        </OnPageTransition>
-      </div>
-    )
+    return [
+      <OnPageTransition key={1}/>,
+      <Nav key={2}/>,
+      <Switch key={3}>
+        <Route path="/" exact component={Home}/>
+        {!PRODUCTION && <Route path="/article" component={Article}/>}
+        {!PRODUCTION && <Route path="/music" component={Article}/>}
+        {!PRODUCTION && <Route path="/article" component={Article}/>}
+        <Route component={NoMatch}/>
+      </Switch>,
+      <Footer key={4}/>
+    ]
   }
 }
 

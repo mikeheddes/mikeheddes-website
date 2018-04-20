@@ -40,7 +40,7 @@ class Home extends Component {
 Home.propTypes = {
   article: PropTypes.object,
   music: PropTypes.object,
-  fetchHomeContentIfNeeded: PropTypes.func.isRequired,
+  fetchContentIfNeeded: PropTypes.func.isRequired,
   isFetching: PropTypes.bool.isRequired,
 }
 

@@ -21,4 +21,4 @@ TestSchema.pre('validate', function (next) {
   next();
 })
 
-module.exports = mongoose.model('TestSchema', TestSchema);
+module.exports = mongoose.model('test', TestSchema);

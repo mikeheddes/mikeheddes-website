@@ -4,26 +4,28 @@ const StorageEngine = require('./index').storage;
 
 const router = express.Router();
 
-router.get("/:id:format(-\\d+)?.:ext", (req, res, next) => {
+const badRequest = (res, err) => {
+  res.status(400).json({
+    status: 'Bad Request',
+    message: err
+  })
+}
+
+router.get("/:id", (req, res, next) => {
   const id = req.params.id;
-  const ext = req.params.ext;
-  const format = req.params.format && req.params.format.substr(1);
+  const width = req.query.width;
   // console.log(id, ext, format);
 
   if (StorageEngine.isValidId(id)) {
-    fileStream = StorageEngine.getFile(id, format, ext);
-    fileStream.on('error', err => {
-      res.status(400).json({
-        status: 'Bad Request',
-        message: err
+    StorageEngine.getFile(id, width)
+    .then(fileStream => {
+      fileStream.on('error', err => {
+        badRequest(res, err);
       })
-    })
-    fileStream.pipe(res);
+      fileStream.pipe(res);
+    }).catch(err => badRequest(res, err));
   } else {
-    res.status(400).json({
-      status: 'Bad Request',
-      message: `No file found with id: ${id}`,
-    })
+    badRequest(res, `No file found with id: ${id}`);
   }
 })
 

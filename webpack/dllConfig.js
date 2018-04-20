@@ -13,10 +13,14 @@ const exclude = [
   'compression',
   'cross-env',
   'express',
+  'multer',
+  'mongoose',
+  'mongoose-types',
   'ip',
   'minimist',
   'shelljs',
   'opn',
+  'body-parser',
 ];
 
 const include = [

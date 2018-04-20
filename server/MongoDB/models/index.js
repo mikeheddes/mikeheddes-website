@@ -1,4 +1,4 @@
 module.exports = {
-  image: require('./Image'),
-  test: require('./Test'),
+  article: require('./article'),
+  music: require('./music'),
 };

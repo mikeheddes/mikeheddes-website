@@ -1,6 +1,6 @@
 // No need to build the DLL in production
 if (process.env.NODE_ENV === 'production') {
-  process.exit(0);
+  process.exit();
 }
 
 const shelljs = require('shelljs');
@@ -58,7 +58,7 @@ if(exists(previousDepsPath)){
 if (updateDlls) {
   console.log('Building the Webpack dlls...');
   exec('cross-env BUILDING_DLL=true');
-  exec('webpack --display-chunks --color --config webpack/webpack.dll.js --hide-modules');
+  exec('webpack --display-chunks --color --config webpack/webpack.dll.js --hide-modules --mode development');
   exec('cross-env BUILDING_DLL=false');
 }
 

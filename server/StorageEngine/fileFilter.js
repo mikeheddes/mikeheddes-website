@@ -1,11 +1,10 @@
 const path = require('path');
 
 const fileFilter = (req, file, cb) => {
-  console.log("FIRED: file filter");
   const ext = path.extname(file.originalname).toLowerCase();
   // Allowed ext
-  const filetypes = /\.(png|jpe?g|gif)$/;
-  const mimetypes = /\/(png|jpe?g|gif)/;
+  const filetypes = /\.(png|jpe?g|webp|tiff)$/;
+  const mimetypes = /\/(png|jpe?g|webp|tiff)/;
   // Check ext
   const matchExt = filetypes.test(ext);
   // Check mime
@@ -14,7 +13,7 @@ const fileFilter = (req, file, cb) => {
   if(matchMIME && matchExt){
     cb(null, true);
   } else {
-    cb(`Error: ${ext.substr(1)} files are not supported.\nThe following formats are supported: png, jpg, jpeg and gif`);
+    cb(`Error: ${ext.substr(1)} files are not supported.\nThe following formats are supported: png, jpeg, webp and tiff`);
   }
 };
 

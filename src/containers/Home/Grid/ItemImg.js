@@ -16,6 +16,7 @@ class ItemImg extends Component {
   }
   render() {
     const { contentData, contentType, gridOrder } = this.props;
+    console.log(contentData);
     const onCoverClick = contentData ? this.goToItem : undefined;
     return(
       <ItemWrapper image {...{gridOrder}}>
@@ -33,7 +34,7 @@ class ItemImg extends Component {
 ItemImg.propTypes = {
   contentType: PropTypes.string.isRequired,
   contentData: PropTypes.shape({
-    heroImage: PropTypes.string.isRequired,
+    heroImageUrl: PropTypes.string.isRequired,
   }),
   gridOrder: PropTypes.number.isRequired,
 }
