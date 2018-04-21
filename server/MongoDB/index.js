@@ -10,7 +10,7 @@ class MongoDB {
     assert("database" in opts, "No database specified");
     this.database = opts.database;
     this.server = opts.server || '127.0.0.1:27017';
-    return mongoose.connect(`mongodb://${this.server}/${this.database}`, { autoIndex: false })
+    return mongoose.connect(`mongodb://${this.server}/${this.database}`)
     .then(() => console.log("Connected with MongoDB"))
     .catch(err => {throw(err.name + ': ' + err.message)});
   }

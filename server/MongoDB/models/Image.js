@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 
-const SEcnf = require('../../StorageEngine/config');
+const imageModification = require('./imageModification');
 const colorValidator = {
   type: String,
   validate: v => (v === null || validator.isHexColor(v)),
@@ -92,24 +92,35 @@ const ImageSchema = new mongoose.Schema({
 });
 
 ImageSchema.pre('validate', function (next) {
-  this._id = this.id;
-  delete this.id;
   this.name = this.name || this.upload.name;
   next();
 })
 
 ImageSchema.static('findByIdForItem', function (id) {
-  return this.findById(id).exec()
-  .then(data => {
-    data = data.toJSON();
-    return {
-      srcSet: data.demensions.map(dim => `${SEcnf.publicPath}/${data._id}?width=${dim.width} ${dim.width}w`).join(','),
-      images: data.demensions.map(dim => Object.assign({}, dim, {path: SEcnf.publicPath + '/' + data._id + '?width=' + dim.width})),
-      src: SEcnf.publicPath + '/' + data._id,
-      color: data.color,
-      placeholder: data.micro.URI,
-    }
-  })
+  return this.findById(id)
+  .lean()
+  .exec()
+  .then(imageModification)
 });
+
+// ImageSchema.post('find', function (docs) {
+//   // console.log(docs);
+//   // await docs.toObject();
+//
+// })
+
+// ImageSchema.method('clientItem', function () {
+//   let out = this.toJSON();
+//   if (out) {
+//     out.srcSet = out.demensions.map(dim => `${SEcnf.publicPath}/${out._id}?width=${dim.width} ${dim.width}w`).join(',');
+//     out.images = out.demensions.map(dim => Object.assign({}, dim, {path: SEcnf.publicPath + '/' + out._id + '?width=' + dim.width}));
+//     out.src = SEcnf.publicPath + '/' + data._id;
+//     out.placeholder = out.micro.URI;
+//     delete out.micro;
+//     delete out.upload;
+//     delete out.demensions;
+//   }
+//   return out
+// })
 
 module.exports = mongoose.model('image', ImageSchema);

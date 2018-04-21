@@ -16,14 +16,14 @@ let fillColor,
 export default css`
 
   ${props => {
-    if(props.color && props.color in props.theme) {
+    if(props.color || (props.colorName && props.colorName in props.theme)) {
       if(props.border) {
-        borderColor = props.theme[props.color];
+        borderColor = props.color || props.theme[props.colorName];
         fillColor = 'transparent';
-        textColor = props.theme[props.color];
+        textColor = props.color || props.theme[props.colorName];
         useBackdrop = false;
       } else {
-        fillColor = props.theme[props.color];
+        fillColor = props.color || props.theme[props.colorName];
         textColor = grays['000'];
         useBackdrop = false;
       }

@@ -40,7 +40,7 @@ class StorageEngine {
       this.location,
       fileId.slice(0,3),
       fileId
-    );
+    )
   }
 
   _makeFullPathFunc(location, fileId, ext) {
@@ -67,10 +67,11 @@ class StorageEngine {
   }
 
   _createTransform(width, fileType, opts) {
+    if (fileType == 'jpg') fileType = 'jpeg';
     return sharp()
-      .resize(width, Math.round(width * this.ratio))
+      .resize(width, Math.round(width * (opts.ratio || this.ratio)))
       .min()
-      .resize(width, Math.round(width * this.ratio))
+      .resize(width, Math.round(width * (opts.ratio || this.ratio)))
       .crop()
       .toFormat(sharp.format[fileType], opts || {})
   }
@@ -92,10 +93,11 @@ class StorageEngine {
     imageStream.pipe(writeStream);
   }
 
-  _storeMicroImage(width, imageStream, createPath, mime) {
+  _storeMicroImage(width, imageStream, createPath, mime, opts) {
     const finalPath = createPath(width);
     const fileType = path.extname(finalPath).substr(1);
-    const transform = this._createTransform(width, fileType, this.micro.opts);
+    opts = Object.assign(opts, this.micro.opts);
+    const transform = this._createTransform(width, fileType, opts);
     const writeStream = fs.createWriteStream(finalPath);
     let chunks = [];
     transform.on('data', chunk => {
@@ -120,9 +122,9 @@ class StorageEngine {
     const transformPipe = imageStream.pipe(transform).pipe(writeStream);
   }
 
-  _storeImageWidths(widths, imageStream, createPath) {
+  _storeImageWidths(widths, imageStream, createPath, opts) {
     widths.map(width => {
-      const opts = width > 1000 ? {quality: 100} : {quality: 70};
+      opts = Object.assign(opts, width > 1000 ? {quality: 100} : {quality: 70});
       this._storeImageWidth(width, imageStream, createPath, opts);
     })
   }
@@ -143,10 +145,10 @@ class StorageEngine {
         const imageStream = file.stream;
         const originalExt = path.extname(file.originalname).toLowerCase();
         const makePath = this._makeFullPathFunc(destination, id, originalExt);
-
+        let opts = {ratio: req.query.ratio || this.ratio};
         imageStream.on('error', callb);
 
-        this._storeMicroImage(this.micro.width, imageStream, makePath, file.mimetype)
+        this._storeMicroImage(this.micro.width, imageStream, makePath, file.mimetype, opts)
         .then(([colors, dataURI]) => {
           imageDB.create({
             upload: {
@@ -157,14 +159,14 @@ class StorageEngine {
             },
             _id: id,
             demensions: this.widths.map(width => ({
-              height: Math.round(width * this.ratio),
+              height: Math.round(width * opts.ratio),
               width,
             })),
             color: colors,
             micro: {
               URI: dataURI,
               width: this.micro.width,
-              height: Math.round(this.micro.width * this.ratio),
+              height: Math.round(this.micro.width * opts.ratio),
             }
           })
           .then(() => cb(null, {
@@ -173,7 +175,7 @@ class StorageEngine {
         }).catch(callb);
 
         this._storeOriginalImage(imageStream, makePath);
-        this._storeImageWidths(this.widths, imageStream, makePath);
+        this._storeImageWidths(this.widths, imageStream, makePath, opts);
       })
     })
   }

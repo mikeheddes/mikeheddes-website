@@ -9,6 +9,17 @@ const internalError = (err, res) => res.status(500).json({
   message: err,
 });
 
+const toClient = (docs) => {
+  const changeId = (doc) => {
+    doc.id = doc._id;
+    delete doc._id;
+    return doc
+  }
+  if (docs instanceof Array) {
+    return docs.map(changeId);
+  } return changeId(docs);
+}
+
 router.use("/image", image);
 
 router.use("/:resource", (req, res, next) => {
@@ -25,8 +36,16 @@ router.use("/:resource", (req, res, next) => {
 
 router.get("/:resource", (req, res, next) => {
   const resource = req.params.resource;
-  resources[resource].find(req.querry).exec()
-  .then(docs => res.json(docs))
+  const limit = req.query.limit;
+  delete req.query.limit;
+  const opts = {
+    sort: {
+      publishedAt: -1,
+    },
+    limit: limit ? Math.round(Number(limit)) : Number.MAX_SAFE_INTEGER,
+  };
+  resources[resource].findWithImage(req.query, opts)
+  .then(docs => res.json(toClient(docs)))
   .catch(err => internalError(err, res))
 })
 
@@ -34,6 +53,14 @@ router.get("/:resource/:id", (req, res, next) => {
   const resource = req.params.resource;
   const id = req.params.id;
   resources[resource].findById(id).exec()
+  .then(doc => res.json(toClient(doc)))
+  .catch(err => internalError(err, res))
+})
+
+router.put("/:resource/:id", (req, res, next) => {
+  const resource = req.params.resource;
+  const id = req.params.id;
+  resources[resource].findByIdAndUpdate(id, req.body, {new: true}).exec()
   .then(doc => res.json(doc))
   .catch(err => internalError(err, res))
 })

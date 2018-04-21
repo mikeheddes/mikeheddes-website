@@ -7,8 +7,6 @@ import ItemWrapper from './ItemWrapper'
 import ButtonWrapper from './ButtonWrapper'
 import CoverImage from './CoverImage'
 
-import IMAGE from 'img/grafity.jpeg'
-
 class ItemImg extends Component {
   goToItem = () => {
     const { contentData, contentType } = this.props;
@@ -16,14 +14,13 @@ class ItemImg extends Component {
   }
   render() {
     const { contentData, contentType, gridOrder } = this.props;
-    console.log(contentData);
     const onCoverClick = contentData ? this.goToItem : undefined;
     return(
       <ItemWrapper image {...{gridOrder}}>
         <div>
-          <CoverImage {...IMAGE} onClick={onCoverClick} />
+          {contentData && <CoverImage {...contentData.heroImage} onClick={onCoverClick} />}
           <ButtonWrapper>
-            {contentData && <Actions id={contentData.id} actions={contentData.actions} {...{contentType}}/>}
+            {contentData && <Actions id={contentData.id} actions={contentData.externalUrls} {...{contentType}}/>}
           </ButtonWrapper>
         </div>
       </ItemWrapper>
@@ -34,7 +31,7 @@ class ItemImg extends Component {
 ItemImg.propTypes = {
   contentType: PropTypes.string.isRequired,
   contentData: PropTypes.shape({
-    heroImageUrl: PropTypes.string.isRequired,
+    heroImage: PropTypes.object,
   }),
   gridOrder: PropTypes.number.isRequired,
 }

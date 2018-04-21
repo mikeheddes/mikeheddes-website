@@ -1,32 +1,92 @@
 const mongoose = require('mongoose');
+const imageModification = require('./imageModification');
 
-// USE https://github.com/Medium/medium-api-docs as example
+const AchievementSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  url: {
+    type: String,
+  },
+}, {_id: false});
+
+const AuthorSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  url: {
+    type: String,
+  },
+}, {_id: false});
 
 const ArticleSchema = new mongoose.Schema({
-  title: String,
+  title: {
+    type: String,
+    required: true,
+  },
   description: String,
-  authors: [{
-    // userId: String,
-    name: String,
-    link: String,
-  }],
+  authors: [AuthorSchema],
   tags: [String],
   url: String,
   content: String,
-  publishStatus: String,
-  publishedAt: Date,
-  _id: String,
-  theme: String, // ['DAY', 'NIGHT']
-  heroImageId: String,
-  containedImageIds: [String],
-  license: String,
-  achievement: [{
-    name: String,
-    url: String,
+  publishStatus: {
+    type: String,
+    enum: ['DRAFT', 'PUBLIC', 'PRIVATE'],
+    default: 'DRAFT',
+  },
+  publishedAt: {
+    type: Date,
+    default: Date.now(),
+  },
+  _id: {
+    type: String,
+    required: true,
+  },
+  theme: {
+    type: String,
+    enum: ['DAY', 'NIGHT'],
+  },
+  heroImage: {
+    type: String,
+    ref: 'image',
+  },
+  containedImages: [{
+    type: String,
+    ref: 'image',
   }],
-  categorie: String, // ['DESIGN', 'CODE', 'TRAVEL']
+  license: String,
+  achievement: [AchievementSchema],
+  categorie: {
+    type: String,
+    enum: ['DESIGN', 'CODE', 'TRAVEL'],
+  },
 }, {
   versionKey: 'v'
 });
+
+ArticleSchema.pre('validate', function (next) {
+  this._id = this.title.toLowerCase().replace(/\W+/g, " ").trim().replace(/\s+/g, "_");
+  this.url = '/article/' + this._id;
+  next();
+})
+
+ArticleSchema.static('findWithImage', function (query, opts) {
+  return this.find(query)
+  .setOptions(opts)
+  .populate('heroImage containedImages')
+  .lean()
+  .exec()
+  .then(docs => {
+    for (let i = 0; i < docs.length; i++) {
+      docs[i].heroImage = imageModification(docs[i].heroImage);
+      // docs[i].heroImage = imageModification(docs[i].heroImage);
+    }
+    return docs
+  })
+})
+
+
 
 module.exports = mongoose.model('article', ArticleSchema);

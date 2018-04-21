@@ -1,4 +1,4 @@
-export const baseURL = process.env.API_URL || '/api/v1/';
+export const baseURL = process.env.API_URL || '/api/v2/';
 
 export default {
   baseURL,

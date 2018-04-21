@@ -14,7 +14,7 @@ const TextWrapper = styled.div`
     ${fluidText(30, 48)}
     line-height: 1.1;
     font-weight: 700;
-    color: ${props => props.colorName ? props.theme[props.colorName] : props.theme.heading };
+    color: ${props => props.color || props.theme.heading };
     ${media.desktop(css`
     `)}
     &.loading {

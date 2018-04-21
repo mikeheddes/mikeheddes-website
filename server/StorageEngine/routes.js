@@ -2,7 +2,7 @@ const express = require('express');
 const multer = require('multer');
 
 const StorageEngine = require('../StorageEngine');
-const Image = require('../MongoDB/models/image');
+const image = require('../MongoDB/models/image');
 const upload = multer(StorageEngine);
 const router = express.Router();
 
@@ -12,20 +12,20 @@ const internalError = (err, res) => res.status(500).json({
 });
 
 router.get("/", (req, res, next) => {
-  Image.find(req.querry).exec()
+  image.find(req.querry).exec()
   .then(docs => res.json(docs))
   .catch(err => internalError(err, res))
 })
 
 router.get("/:id", (req, res, next) => {
   const id = req.params.id;
-  Image.findByIdForItem(id)
+  image.findByIdForItem(id)
   .then(doc => res.json(doc))
   .catch(err => internalError(err, res))
 })
 
 router.delete("/", (req, res, next) => {
-  Image.deleteMany(req.querry).exec()
+  image.deleteMany(req.querry).exec()
   .then(() => res.json({
     status: 'Succes',
     message: `Deleted image`
