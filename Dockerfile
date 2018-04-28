@@ -12,8 +12,8 @@ ENV NODE_ENV production
 ENV PORT 3000
 
 # Bundle app source
-COPY ./server ./server
-COPY ./public ./public
+COPY server/ server/
+COPY public/ public/
 
 RUN npm install --only=production
 # If you are building your code for production
