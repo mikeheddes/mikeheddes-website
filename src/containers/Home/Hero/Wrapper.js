@@ -44,7 +44,7 @@ const Wrapper = styled.header`
   ` : ''}
 
   & h2 {
-    font-size: ${fluidText(26, 42)};
+    ${fluidText(26, 42)};
     font-weight: 500;
     margin-bottom: ${spaces.s}px;
     padding-top: ${spaces.xm}px;
@@ -60,7 +60,7 @@ const Wrapper = styled.header`
   }
 
   & h1 {
-    font-size: ${fluidText(38, 68)};
+    ${fluidText(38, 68)};
     margin-top: ${spaces.s}px;
     font-weight: 700;
     padding-bottom: ${spaces.M}px;

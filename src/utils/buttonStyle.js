@@ -41,7 +41,7 @@ export default css`
   text-align: center;
   color: ${() => textColor};
   ${fluidText(13, 17)}
-  font-weight: 500;
+  font-weight: 600;
   ${space('padding', 'r', 'xr')};
   border-radius: ${radius.r}px;
   text-transform: uppercase;
@@ -67,7 +67,7 @@ export default css`
   `)}
 
   ${props => props.round ? css`
-    ${space('padding', 'r', 'm')};
+    ${space('padding', 8, 'xr')};
     border-radius: 1000px;
       ${media.desktop(css`
         ${space('padding', 'r', 'xm')};

@@ -2,9 +2,9 @@
  * Front-end middleware
  */
 module.exports = (app, options) => {
-  const isProd = process.env.NODE_ENV == 'production';
+  const isDev = process.env.NODE_ENV !== 'production';
 
-  if (isProd) {
+  if (!isDev) {
     const addProdMiddlewares = require('./addProdMiddlewares');
     addProdMiddlewares(app, options);
   } else {

@@ -10,12 +10,19 @@ const mediaWidthQuery = (size, type = 'min') => {
   `
 }
 
+export const mediaSize = {
+  giant: 1800,
+  desktop: 1200,
+  tabletLandscape: 900,
+  tabletPortrait: 600,
+}
+
 export const media = {
-  giant: mediaWidthQuery(1800),
-  desktop: mediaWidthQuery(1200),
-  tabletLandscape: mediaWidthQuery(900),
-  tabletPortrait: mediaWidthQuery(600),
-  phoneOnly: mediaWidthQuery(599, 'max'),
+  giant: mediaWidthQuery(mediaSize.giant),
+  desktop: mediaWidthQuery(mediaSize.desktop),
+  tabletLandscape: mediaWidthQuery(mediaSize.tabletLandscape),
+  tabletPortrait: mediaWidthQuery(mediaSize.tabletPortrait),
+  phoneOnly: mediaWidthQuery(mediaSize.tabletPortrait - 1, 'max'),
 }
 
 const cssQuery = query => {

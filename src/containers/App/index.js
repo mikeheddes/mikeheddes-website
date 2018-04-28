@@ -26,18 +26,20 @@ const LoadableHome = Loadable({
 
 class App extends Component {
   render() {
-    return [
-      <OnPageTransition key={1}/>,
-      <Nav key={2}/>,
-      <Switch key={3}>
-        <Route path="/" exact component={Home}/>
-        {!PRODUCTION && <Route path="/article" component={Article}/>}
-        {!PRODUCTION && <Route path="/music" component={Article}/>}
-        {!PRODUCTION && <Route path="/article" component={Article}/>}
-        <Route component={NoMatch}/>
-      </Switch>,
-      <Footer key={4}/>
-    ]
+    return(
+      <React.Fragment>
+        <OnPageTransition/>
+        <Nav/>
+        <Switch>
+          <Route path="/" exact component={Home}/>
+          {!PRODUCTION && <Route path="/article" component={Article}/>}
+          {!PRODUCTION && <Route path="/music" component={Article}/>}
+          {!PRODUCTION && <Route path="/article" component={Article}/>}
+          <Route component={NoMatch}/>
+        </Switch>
+        <Footer/>
+      </React.Fragment>
+    )
   }
 }
 

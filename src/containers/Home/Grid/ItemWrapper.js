@@ -14,7 +14,7 @@ const ItemWrapper = styled.div`
 
   ${props => props.text ? css`
     margin-bottom: ${spaces.xr}px;
-    ${space('padding', 'xm', 'm', 'l')};
+    ${space('padding', 'xr', 'm', 'l')};
   ` : ''}
 
   ${props => props.image ? css`

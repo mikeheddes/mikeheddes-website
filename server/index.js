@@ -19,7 +19,7 @@ const ngrok = process.env.ENABLE_TUNNEL || argv.tunnel
 var bs = (isDev && (process.env.ENABLE_SYNC || argv.sync))
   ? require("browser-sync").create()
   : false;
-const opn = !argv.noOpen && require('opn');
+const opn = isDev && (!argv.noOpen && require('opn'));
 
 const app = express();
 

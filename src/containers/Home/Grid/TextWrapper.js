@@ -10,6 +10,11 @@ const TextWrapper = styled.div`
   height: 100%;
   justify-content: center;
 
+  h1, h2, h3 {
+    user-select: none;
+    cursor: default;
+  }
+
   h1 {
     ${fluidText(30, 48)}
     line-height: 1.1;
@@ -26,7 +31,7 @@ const TextWrapper = styled.div`
   }
 
   h2 {
-    ${fluidText(18, 24)}
+    ${fluidText(18, 27)}
     font-weight: 600;
     margin-top: ${spaces.r}px;
     line-height: 1.4;
@@ -36,7 +41,7 @@ const TextWrapper = styled.div`
     `)}
 
     ${props => props.contentType == "music" ? css`
-      ${fluidText(21, 33)}
+      ${fluidText(21, 34)}
       font-weight: 500;
       margin-top: ${spaces.s}px;
       ${media.desktop(css`
@@ -52,7 +57,7 @@ const TextWrapper = styled.div`
   }
 
   h3 {
-    ${fluidText(16, 19)}
+    ${fluidText(16, 20)}
     font-weight: 500;
     margin-bottom: ${spaces.m}px;
     color: ${props => props.theme.heading};
