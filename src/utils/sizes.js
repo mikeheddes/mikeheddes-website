@@ -11,6 +11,8 @@ export const spaces = {
   xl: 80,
   M: 130,
   xM: 210,
+  G: 340,
+  xG: 550,
 }
 
 export const space = (type, top, right=null, bottom=null, left=null) => {

@@ -49,7 +49,7 @@ router.post("/", (req, res, next) => {
       } else {
         const file = req.file;
         res.json({
-          filePath: `uploads/${file.id}`,
+          filePath: `/uploads/${file.id}`,
           imageId: file.id,
         });
       }

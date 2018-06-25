@@ -84,6 +84,14 @@ module.exports = webpackBaseConfig({
         name: 'img/[name]-[width].[ext]',
       },
     },
+  }, {
+    test: /\.(mp4)$/,
+    use: {
+      loader: 'file-loader',
+      options: {
+        name: 'video/[name].[ext]',
+      },
+    },
   }],
 
   // Don't use hashes in dev mode for better performance

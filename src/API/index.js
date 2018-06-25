@@ -1,7 +1,7 @@
-import article from './article'
-import music from './music'
+import articles from './articles';
+import music from './music';
 
 export default {
-  article,
+  articles,
   music,
 }

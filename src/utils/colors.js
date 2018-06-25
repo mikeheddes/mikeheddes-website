@@ -19,7 +19,6 @@ const accentMixes = {
   orange: .96,
   yellow: .98,
   green: .98,
-  teal_blue: .98,
   blue: .98,
   purple: .98,
   pink: .97,
@@ -30,10 +29,19 @@ export const dayColors = {
   orange: '#FF9500',
   yellow: '#FFCC00',
   green: '#4CD964',
-  teal_blue: '#5AC8FA',
   blue: '#007AFF',
   purple: '#5856D6',
   pink: '#FF2D55',
+}
+
+export const pastelColors = {
+  red: '#FAF3F2',
+  orange: '#FAF6F0',
+  yellow: '#FAF7ED',
+  green: '#F0FAF2',
+  blue: '#EDF3FA',
+  purple: '#F0F0FA',
+  pink: '#FAF2F5',
 }
 
 export const nightColors = {
@@ -41,7 +49,6 @@ export const nightColors = {
   orange: '#F5A83D',
   yellow: '#F2C51F',
   green: '#4CC760',
-  teal_blue: '#6DC5ED',
   blue: '#54A6FF',
   purple: '#B176EF',
   pink: '#EB3657',
@@ -73,6 +80,7 @@ export const DAY = {
   accentGray2: grays['200'],
   accentGray3: grays['000'],
   accentGray4: grays['300'],
+  pastel: {...pastelColors},
 }
 
 export const NIGHT = {
@@ -98,8 +106,8 @@ export const NIGHT = {
 
 // Gradients
 export const gradient = {
-  article: 'linear-gradient(to bottom right,#FFEB6B, #FF9769)',
-  music: 'linear-gradient(to bottom right,#45ABFF, #FF6E8E)',
+  article: 'linear-gradient(to bottom right, #FFEB6B, #FF9769)',
+  music: 'linear-gradient(to bottom right, #45ABFF, #FF6E8E)',
   about: 'linear-gradient(to bottom right, #82ff91, #61a2ff)',
 };
 

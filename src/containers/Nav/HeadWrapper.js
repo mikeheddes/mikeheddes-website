@@ -25,10 +25,4 @@ const NavHeadWrapper = styled.div`
   `)}
 `
 
-NavHeadWrapper.propTypes = {
-  theme: PropTypes.shape({
-    heading: PropTypes.string.isRequired,
-  }),
-}
-
 export default NavHeadWrapper;

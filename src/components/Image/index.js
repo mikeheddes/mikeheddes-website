@@ -1,11 +1,12 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-import Wrapper from './Wrapper'
-import BlurInImage from './BlurInImage'
-import { radius } from 'utils/sizes'
+import Wrapper from './Wrapper';
+import BlurInImage from './BlurInImage';
+import { radius } from 'utils/sizes';
+import { zDepthPropType } from 'utils/PropTypes';
 
-class Image extends Component {
+export default class Image extends Component {
   static propTypes = {
     src: PropTypes.string,
     placeholder: PropTypes.string,
@@ -16,10 +17,13 @@ class Image extends Component {
     tall: PropTypes.bool,
     wide: PropTypes.bool,
     rounded: PropTypes.bool,
-    border: PropTypes.bool,
+    noBorder: PropTypes.bool,
+    zDepth: zDepthPropType.isRequired,
+    onClick: PropTypes.func
   }
   static defaultProps = {
-    ratio: 0.618
+    ratio: 0.618,
+    zDepth: 0,
   }
   determineRatio = () => {
     const { square, tall, wide } = this.props;
@@ -48,14 +52,20 @@ class Image extends Component {
     this.determineRadius();
   }
   render() {
-    const { placeholder, src, srcSet, color, border } = this.props;
+    const { placeholder, src, srcSet, color, noBorder, zDepth, onClick } = this.props;
     return(
-      <Wrapper ratio={this.ratio} micro={placeholder} color={color && color.vibrant} radius={this.radius} border={border}>
+      <Wrapper
+        zDepth={zDepth}
+        ratio={this.ratio}
+        micro={placeholder}
+        color={color && color.vibrant}
+        radius={this.radius}
+        border={!noBorder}
+        onClick={onClick}
+      >
         <BlurInImage src={src} srcSet={srcSet} radius={this.radius} />
         {this.props.children}
       </Wrapper>
     )
   }
 }
-
-export default Image

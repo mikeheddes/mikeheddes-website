@@ -27,23 +27,23 @@ const NavWrapper = styled.nav`
     border-width: .5px;
   }
   display      : block;
-  background-color: ${({theme}) => fade(.4, theme.nav)};
+  background-color: ${({theme}) => fade(.4, theme.backgroundNav)};
   backdrop-filter: blur(30px) saturate(1.1);
   ${media.tabletPortrait(css`
     backdrop-filter: blur(40px) saturate(1.1);
   `)}
   ${has.backdrop(css`
-    background-color: ${({theme}) => fade(.81, theme.nav)};
+    background-color: ${({theme}) => fade(.81, theme.backgroundNav)};
   `)}
 
   ${props => props.isVisible || props.solid ? css`
-    background-color: ${({theme}) => fade(.04, theme.nav)};
+    background-color: ${({theme}) => fade(.04, theme.backgroundNav)};
     backdrop-filter: blur(30px) saturate(1.7);
     ${media.tabletPortrait(css`
       backdrop-filter: blur(40px) saturate(1.7);
     `)}
     ${has.backdrop(css`
-      background-color: ${({theme}) => fade(.19, theme.nav)};
+      background-color: ${({theme}) => fade(.19, theme.backgroundNav)};
     `)}
   ` : ''}
 

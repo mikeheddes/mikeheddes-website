@@ -1,17 +1,20 @@
-import styled, { css } from 'styled-components'
-import PropTypes from 'prop-types'
-import { hiDPI } from 'polished'
+import styled, { css } from 'styled-components';
+import PropTypes from 'prop-types';
+import { hiDPI } from 'polished';
 
-import { radius } from 'utils/sizes'
+import { radius } from 'utils/sizes';
+import zDepth from 'style/zDepth';
 
 
 const Wrapper = styled.div`
-  width: 80%;
-  margin: 10%;
   display: block;
   overflow: hidden;
   padding-bottom: ${props => Math.round(props.ratio * 100)}%;
   border-radius: ${props => props.radius}px;
+
+  ${props => props.onClick && css`
+    cursor: pointer;
+  `}
 
   background-clip: border-box;
   background-origin: border-box;
@@ -19,7 +22,7 @@ const Wrapper = styled.div`
   background-size: cover;
   background-position: center;
   box-sizing: border-box;
-  background-color: ${props => props.color || props.theme.accentGray2};
+  background-color: ${props => props.color || props.theme.surface};
 
   &::before {
     content: "";
@@ -61,6 +64,10 @@ const Wrapper = styled.div`
       }
     }
   ` : ''}
+
+  ${props => props.zDepth && css`
+    box-shadow: ${zDepth[props.zDepth]};
+  `};
 `
 
 Wrapper.propTypes = {

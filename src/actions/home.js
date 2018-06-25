@@ -55,7 +55,7 @@ function validateStatus(articleStatus, musicStatus) {
 function fetchContent() {
   return dispatch => {
     dispatch(requestContent())
-    return axios.all([API.article.getLatest(), API.music.getLatest()])
+    return axios.all([API.article.latest(), API.music.latest()])
     // Handle API Response
     .then(axios.spread((article, music) => {
       if(validateStatus(article.status, music.status)) {

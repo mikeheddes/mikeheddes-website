@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   position: fixed;
   font-size: 13px;
   color: ${props => props.theme.heading};
-  background-color: ${props => props.theme.accentGray2};
+  background-color: ${props => props.theme.surfaceProminent};
   z-index: 1000;
   top: 0;
   left: 0;

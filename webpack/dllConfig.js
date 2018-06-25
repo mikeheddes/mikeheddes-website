@@ -17,10 +17,13 @@ const exclude = [
   'mongoose',
   'mongoose-types',
   'ip',
+  'mkdirp',
   'minimist',
   'shelljs',
   'opn',
   'body-parser',
+  'sharp',
+  'rimraf',
 ];
 
 const include = [
@@ -28,7 +31,7 @@ const include = [
   'core-js',
   'eventsource-polyfill',
   'babel-polyfill',
-  'lodash'
+  'lodash',
 ];
 
 module.exports = {

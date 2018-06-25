@@ -1,18 +1,19 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
-import Loadable from 'react-loadable'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import Loadable from 'react-loadable';
 
-import Wrapper from './indexWrapper'
-import Hero from './Hero'
-import Description from './Description'
-import Image from 'components/Image'
-import OnWindowSize from 'components/OnWindowSize'
+import Wrapper from './indexWrapper';
+import Hero from './Hero';
+import Description from './Description';
+import ContentHighlight from 'containers/ContentHighlight';
+import Box from 'components/Box';
+import Image from 'components/Image';
+import OnWindowSize from 'components/OnWindowSize';
 
 import config from './config'
 import homeBanner from 'img/homeBanner.jpg'
-import { NIGHT } from 'utils/colors'
 import { fetchContentIfNeeded, bannerLoaded, fetchArticleIfNeeded, fetchMusicIfNeeded } from 'actions/home'
 import { getArticle, getMusic } from './selectors'
 
@@ -31,15 +32,32 @@ class Home extends Component {
     isFetching: PropTypes.bool.isRequired,
   }
   componentDidMount() {
-    this.props.fetchContentIfNeeded();
+    // this.props.fetchContentIfNeeded();
   }
   render() {
     const { article, music, onLoadBanner, bannerLoaded } = this.props;
     return(
       <Wrapper>
-        <Hero {...config.hero} img={homeBanner} theme={NIGHT} onLoadBanner={onLoadBanner} bannerLoaded={bannerLoaded}/>
-        <Description>{config.description}</Description>
-        <Grid {...{article, music}}/>
+        <Hero {...config.hero} img={homeBanner} onLoadBanner={onLoadBanner} bannerLoaded={bannerLoaded}/>
+        <Box>
+          <Description>{config.description}</Description>
+        </Box>
+        <ContentHighlight
+          eyebrow="Latest article"
+          highlightType="latest"
+          contentType="articles"
+          actionTitle="Read more"
+          marginBottom
+        />
+        <ContentHighlight
+          eyebrow="Latest music"
+          highlightType="latest"
+          contentType="music"
+          actionTitle="More info"
+          externalActionTitle="Listen on "
+          marginBottom
+        />
+        {/* <Grid {...{article, music}}/> */}
         {/* <OnWindowSize
           phoneOnly={article && <Image rounded border {...article.heroImage} />}
           tabletPortrait={music && <Image rounded border {...music.heroImage} />}

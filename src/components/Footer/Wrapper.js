@@ -6,7 +6,7 @@ import { spaces } from 'utils/sizes';
 import { grays } from 'utils/colors';
 
 const Footer = styled.footer`
-  background-color: ${props => props.theme.accentGray};
+  background-color: ${props => props.theme.surface};
   padding-top    : ${spaces.l}px;
   width          : 100vw;
 `

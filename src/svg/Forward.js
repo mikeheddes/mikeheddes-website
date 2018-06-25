@@ -12,13 +12,16 @@ const Svg = styled.svg`
   margin-left: 0.13em;
 `
 
-export default class ForwardSVG extends Component {
+class ForwardSVG extends Component {
   render() {
     return (
       <Svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49.58 100">
         <title>forward</title>
-        <polyline className="cls-1" points="14.48 75 37.5 48.5 14.48 25"/>
+        <polyline points="14.48 75 37.5 48.5 14.48 25"/>
       </Svg>
     );
   }
 }
+
+
+export default ForwardSVG

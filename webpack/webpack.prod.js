@@ -60,6 +60,14 @@ module.exports = webpackBaseConfig({
         name: 'img/[hash]-[width].[ext]',
       },
     },
+  }, {
+    test: /\.(mp4)$/,
+    use: {
+      loader: 'file-loader',
+      options: {
+        name: 'video/[hash].[ext]',
+      },
+    },
   }],
   plugins: [
     new ImageminPlugin({test: /\.(png|jpe?g|gif)$/}),

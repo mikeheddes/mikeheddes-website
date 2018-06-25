@@ -24,10 +24,4 @@ const Copyright = styled.div`
   }
 `
 
-Copyright.propTypes = {
-  theme: PropTypes.shape({
-    heading: PropTypes.string.isRequired,
-  })
-}
-
 export default Copyright

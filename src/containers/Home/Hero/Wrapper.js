@@ -7,16 +7,12 @@ import { grays, gradient } from 'utils/colors'
 import { media, fluidText } from 'utils/mixins'
 
 const Wrapper = styled.header`
-  width: 100%;
-  background-color: ${props => props.theme.accentGray};
-  overflow: hidden;
-  color: ${props => props.theme.heading};
+  color: ${props => props.theme.title};
+  background-image: linear-gradient(${grays['200']}, ${grays['000']});
   text-align: center;
-  min-height: 86vh;
-  transition: min-height 999999s;
-  ${space('padding', 'xl', 'm')}
+  ${space('padding', 'xl', 'm', 'l')}
   ${media.desktop(css`
-    ${space('padding', 'xl', 'M')}
+    ${space('padding', 'xl', 'M', 'l')}
   `)}
 
   ${props => props.uImg ? css`
@@ -44,26 +40,49 @@ const Wrapper = styled.header`
   ` : ''}
 
   & h2 {
-    ${fluidText(26, 42)};
+    ${fluidText(28, 42)};
+    display: none;
     font-weight: 500;
+    opacity: .7;
     margin-bottom: ${spaces.s}px;
-    padding-top: ${spaces.xm}px;
+    margin-top: ${spaces.xm}px;
 
     ${media.tabletPortrait(css`
-      padding-top: ${spaces.xl}px;
+      display: block;
+      margin-top: ${spaces.xl}px;
     `)}
 
     ${media.tabletLandscape(css`
-      padding-top: ${spaces.xm}px;
+      margin-top: ${spaces.xm}px;
     `)}
-
   }
 
   & h1 {
-    ${fluidText(38, 68)};
-    margin-top: ${spaces.s}px;
+    ${fluidText(46, 68)};
     font-weight: 700;
-    padding-bottom: ${spaces.M}px;
+    margin-top: ${spaces.s}px;
+    margin-bottom: ${spaces.xM}px;
+
+    ${media.tabletPortrait(css`
+      margin-bottom: ${spaces.G}px;
+    `)}
+
+    ${media.tabletLandscape(css`
+      margin-bottom: ${spaces.xM}px;
+    `)}
+
+    ${media.desktop(css`
+      margin-bottom: 420px;
+    `)}
+  }
+
+  & h1, & h2 {
+    text-shadow: 0 0 2px rgba(0,0,0,.15);
+  }
+
+  & a {
+    font-size: 17px;
+    font-weight: 500;
   }
 `
 

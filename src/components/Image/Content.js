@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { animated } from 'react-spring'
-import { timingFunctions as tf } from 'polished'
+import { animated } from 'react-spring';
+import { timingFunctions as tf } from 'polished';
 
 const Content = styled.img`
   position: absolute;

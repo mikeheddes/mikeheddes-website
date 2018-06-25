@@ -1,26 +1,37 @@
+import { createBrowserHistory } from 'history'
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk'
+import { connectRouter, routerMiddleware } from 'connected-react-router'
 
 import createReducer from './reducers';
 // import { createLogger } from 'redux-logger'
 // const loggerMiddleware = createLogger()
 
+export const history = createBrowserHistory()
+
 export default function configureStore(initialState = {}) {
 
-  const middlewares = [
-    thunkMiddleware,
-  ];
+  // const store = createStore(
+  //   createReducer(),
+  //   initialState,
+  //   applyMiddleware(...middlewares),
+  // );
 
   const store = createStore(
-    createReducer(),
+    connectRouter(history)(createReducer()), // new root reducer with router state
     initialState,
-    applyMiddleware(...middlewares),
-  );
+    compose(
+      applyMiddleware(
+        routerMiddleware(history), // for dispatching history actions
+        thunkMiddleware
+      ),
+    ),
+  )
 
   if (module.hot) {
     module.hot.accept('./reducers', () => {
       // store.replaceReducer(createReducer(store.injectedReducers));
-      store.replaceReducer();
+      store.replaceReducer(connectRouter(history)(createReducer()));
     });
   }
 

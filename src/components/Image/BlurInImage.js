@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import Content from './Content'
 
-class Animation extends Component {
+export default class BlurInImage extends Component {
   static propTypes = {
     src: PropTypes.string,
     srcSet: PropTypes.string,
@@ -23,6 +23,3 @@ class Animation extends Component {
     )
   }
 }
-
-
-export default Animation
