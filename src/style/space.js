@@ -11,6 +11,10 @@ const space = {
   xM: 210,
   G: 340,
   xG: 550,
+  phone: 20,
+  tabletPortrait: 80,
+  tabletLandscape: 130,
+  desktop: 130,
 };
 
 export default space;

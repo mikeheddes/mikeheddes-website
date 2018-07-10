@@ -6,7 +6,7 @@ export default {
     },
     {
       title: 'Articles',
-      to: '/article',
+      to: '/articles',
     },
     {
       title: 'Music',

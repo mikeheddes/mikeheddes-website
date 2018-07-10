@@ -29,8 +29,7 @@ const ArticleSchema = new mongoose.Schema({
   description: String,
   authors: [AuthorSchema],
   tags: [String],
-  url: String,
-  content: String,
+  body: String,
   publishStatus: {
     type: String,
     enum: ['DRAFT', 'PUBLIC', 'PRIVATE'],
@@ -68,7 +67,6 @@ const ArticleSchema = new mongoose.Schema({
 
 ArticleSchema.pre('validate', function (next) {
   this._id = this.title.toLowerCase().replace(/\W+/g, " ").trim().replace(/\s+/g, "_");
-  this.url = '/article/' + this._id;
   next();
 })
 

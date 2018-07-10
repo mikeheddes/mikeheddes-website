@@ -3,7 +3,6 @@ import { injectGlobal } from 'styled-components';
 
 injectGlobal`
   * {
-    ${'' /* -webkit-tap-highlight-color: transparent; */}
     margin: 0;
     padding: 0;
     position: relative;

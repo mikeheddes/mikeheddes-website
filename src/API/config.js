@@ -4,4 +4,4 @@ export default {
   baseURL,
   responseType: 'json',
   withCredentials: true,
-}
+};

@@ -1,18 +1,18 @@
 import { createSelector } from 'reselect';
 
-const getContent = (state, props) => (
-  state.entities[props.contentType].byId
-)
+export const getContent = (state, { contentType }) => (
+  state.entities[contentType].byId
+);
 
-const getHighlightId = (state, props) => (
-  state.entities[props.contentType][props.highlightType]
-)
+export const getHighlightId = (state, { contentType, highlightType }) => (
+  state.entities[contentType][highlightType]
+);
 
-export const makeGetHighlightedContent = () => {
-  return createSelector(
+export const makeGetHighlightedContent = () => (
+  createSelector(
     [getContent, getHighlightId],
-    (content, highlightId) => {
-      return content[highlightId];
-    }
+    (content, highlightId) => (
+      content[highlightId]
+    ),
   )
-};
+);

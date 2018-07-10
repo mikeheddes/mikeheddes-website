@@ -6,38 +6,40 @@ export const RESET_MENU_ACTION = 'RESET_MENU_ACTION';
 
 export const menuActionStyles = {
   LINK: 'LINK',
-  BUTTON: 'BUTTON'
-}
+  BUTTON: 'BUTTON',
+};
 
-export function setMenuAction(name, url, style=menuActionStyles.LINK) {
+export function setMenuAction(name, url, style = menuActionStyles.LINK) {
   return {
     type: SET_MENU_ACTION,
     style,
     name,
-    url
-  }
+    url,
+  };
 }
 
 export function resetMenuAction() {
-    return {
-      type: RESET_MENU_ACTION
-    }
+  return {
+    type: RESET_MENU_ACTION,
+  };
 }
 
 export function toggleMenuVisibility() {
   return {
-    type: TOGGLE_MENU_VISIBILITY
-  }
+    type: TOGGLE_MENU_VISIBILITY,
+  };
 }
 
 export function setMenuVisibility(isVisible) {
   return {
-    type: SET_MENU_VISIBILITY, isVisible
-  }
+    type: SET_MENU_VISIBILITY,
+    isVisible,
+  };
 }
 
 export function setMenuHeight(menuHeight) {
   return {
-    type: SET_MENU_HEIGHT, menuHeight
-  }
+    type: SET_MENU_HEIGHT,
+    menuHeight,
+  };
 }

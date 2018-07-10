@@ -1,2 +1,0 @@
-export const ADD_ARTICLE = 'ADD_ARTICLE';
-export const SET_LATEST_ARTICLE = 'SET_LATEST_ARTICLE';

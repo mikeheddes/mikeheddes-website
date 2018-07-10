@@ -19,13 +19,13 @@ module.exports = {
   context: process.cwd(),
   resolve: {
     extensions: ['.js', '.jsx', '.json', '.less', '.css'],
-    modules: [process.cwd(), 'node_modules']
+    modules: [process.cwd(), 'node_modules'],
   },
   entry: dllConfig.entry(),
   output: {
     filename: '[name].dll.js',
     path: outputPath,
-    library: '[name]'
+    library: '[name]',
   },
   plugins: [
     new webpack.DllPlugin({
@@ -34,7 +34,7 @@ module.exports = {
     }),
   ],
   performance: {
-    hints: false
+    hints: false,
   },
-  devtool: 'eval'
+  devtool: 'eval',
 };

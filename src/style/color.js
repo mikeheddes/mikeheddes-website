@@ -1,10 +1,11 @@
-import { transparentize as fade, mix } from 'polished';
+import { transparentize as fade } from 'polished';
 
 export const grays = {
   '000': '#FFFFFF',
   '050': '#FAFAFA',
   '100': '#F2F2F2',
   '200': '#D8D8D8',
+  '250': '#A5A5A5',
   '300': '#8C8C8C',
   '400': '#666666',
   '500': '#4A4A4A',
@@ -13,7 +14,8 @@ export const grays = {
   '750': '#222222',
   '800': '#1A1A1A',
   '900': '#000000',
-}
+};
+
 
 export const dayColors = {
   red: '#FF3B30',
@@ -23,7 +25,9 @@ export const dayColors = {
   blue: '#007AFF',
   purple: '#5856D6',
   pink: '#FF2D55',
-}
+};
+
+export const colorNames = Object.keys(dayColors);
 
 export const pastelColors = {
   red: '#FAF3F2',
@@ -34,7 +38,7 @@ export const pastelColors = {
   purple: '#F0F0FA',
   pink: '#FAF2F5',
   gray: grays['100'],
-}
+};
 
 export const nightColors = {
   red: '#FF5E5E',
@@ -44,7 +48,7 @@ export const nightColors = {
   blue: '#66BBFF',
   purple: '#837BDB',
   pink: '#FF5577',
-}
+};
 
 export const neonColors = {
   red: grays['700'],
@@ -55,17 +59,19 @@ export const neonColors = {
   purple: grays['700'],
   pink: grays['700'],
   gray: grays['700'],
-}
+};
 
 export const DAY = {
   ...dayColors,
   background: grays['000'],
   backgroundNav: grays['000'],
-  borderContent: fade(.90, grays['900']),
-  borderSeparate: grays['300'],
+  borderContent: fade(0.90, grays['900']),
+  borderSeparate: grays['200'],
+  borderSeparateOpacity: fade(0.85, grays['900']),
   heading: grays['800'],
   headingSubtle: grays['600'],
   link: dayColors.blue,
+  primaries: dayColors,
   surfaceColors: pastelColors,
   surface: grays['050'],
   surfaceProminent: grays['100'],
@@ -74,16 +80,18 @@ export const DAY = {
   textBold: grays['900'],
   textSubtle: grays['400'],
   title: grays['900'],
-}
+};
 
 export const NIGHT = {
   ...nightColors,
   background: grays['800'],
   backgroundNav: grays['800'],
-  borderContent: fade(.90, grays['000']),
+  borderContent: fade(0.90, grays['000']),
   borderSeparate: grays['500'],
-  heading : grays['100'],
+  borderSeparateOpacity: fade(0.85, grays['000']),
+  heading: grays['100'],
   link: nightColors.blue,
+  primaries: nightColors,
   surfaceColors: neonColors,
   surface: grays['750'],
   surfaceProminent: grays['700'],
@@ -91,5 +99,5 @@ export const NIGHT = {
   text: grays['200'],
   textBold: grays['000'],
   textSubtle: grays['300'],
-  title : grays['000'],
-}
+  title: grays['000'],
+};

@@ -1,52 +1,89 @@
 import { combineReducers } from 'redux';
 
-import { ADD_MUSIC, UPDATE_MUSIC, SET_LATEST_MUSIC } from 'actions';
+import {
+  ADD_MUSIC,
+  // UPDATE_MUSIC,
+  SET_LATEST_MUSIC,
+  FETCHED_ALL_MUSIC,
+  ALL_MUSIC_VISIBLE,
+  SET_MUSIC_VISIBILITY,
+} from 'actions/music';
 
-
-function addMusicEntry(state, action) {
+function addEntry(state, action) {
   const { payload } = action;
-  const { id } = payload;
-  return {
-      ...state,
-      [id] : payload
-  };
-};
+  return payload.reduce(
+    (accumulator, currentValue) => ({
+      ...accumulator,
+      [currentValue.id]: currentValue,
+    }),
+    state,
+  );
+}
 
-function musicById(state = {}, action) {
-  switch(action.type) {
-    case ADD_MUSIC: return addMusicEntry(state, action);
-    default: return state;
-  };
-};
-
-function addMusicId(state, action) {
-  const { payload } = action;
-  const { id } = payload;
-  return [...state, id]
-};
-
-function allMusic (state = [], action) {
+function byId(state = {}, action) {
   switch (action.type) {
-    case ADD_MUSIC: return addMusicId(state, action);
-    default: return state;
-  };
-};
+    case ADD_MUSIC:
+      return addEntry(state, action);
+    default:
+      return state;
+  }
+}
 
-function setLatestMusic(state, action) {
+function addId(state, action) {
+  const { payload } = action;
+  const ids = payload.map(item => item.id);
+  return [...state, ...ids];
+}
+
+function allIds(state = [], action) {
+  switch (action.type) {
+    case ADD_MUSIC:
+      return addId(state, action);
+    default:
+      return state;
+  }
+}
+
+function setLatest(state, action) {
   const { payload } = action;
   const { id } = payload;
   return id;
 }
 
-function latestMusic(state = null, action) {
+function latest(state = null, action) {
   switch (action.type) {
-    case SET_LATEST_MUSIC: return setLatestMusic(state, action);
-    default: return state;
+    case SET_LATEST_MUSIC:
+      return setLatest(state, action);
+    default:
+      return state;
   }
 }
 
-export default combineReducers({
-  byId: musicById,
-  allIds: allMusic,
-  latest: latestMusic,
+function fetchedAll(state = false, action) {
+  switch (action.type) {
+    case FETCHED_ALL_MUSIC:
+      return true;
+    default:
+      return state;
+  }
+}
+
+export const musicEntitie = combineReducers({
+  byId,
+  allIds,
+  latest,
+  fetchedAll,
+});
+
+function visibilityFilter(state = ALL_MUSIC_VISIBLE, action) {
+  switch (action.type) {
+    case SET_MUSIC_VISIBILITY:
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
+export const musicUi = combineReducers({
+  visibilityFilter,
 });
