@@ -10,11 +10,15 @@ export const HeaderWrapper = styled.header`
 `;
 
 export const Title = styled.h1`
-  ${fluidText(34, 68)};
+  ${fluidText(32, 68)};
   color: ${({ theme }) => theme.link};
   line-height: 1.12;
   font-weight: 700;
-  margin-bottom: ${space.xm}px;
+  margin-bottom: ${space.m}px;
+
+  ${media.tabletLandscape(css`
+    margin-bottom: ${space.xm}px;
+  `)};
 
   ${({ children }) => !children
     && css`
@@ -32,15 +36,23 @@ export const Description = styled.p`
   ${fluidText(20, 28)};
   color: ${({ theme }) => fade(0.4, theme.title)};
   font-weight: 500;
-  margin-bottom: ${space.m}px;
+  margin-bottom: ${space.r}px;
   margin-top: -${space.r}px;
+
+  ${media.tabletLandscape(css`
+    margin-bottom: ${space.m}px;
+  `)};
 `;
 
 export const InfoLine = styled.div`
-  font-size: 17px;
+  ${fluidText(14, 17)};
   font-weight: 400;
   color: ${({ theme }) => theme.textSubtle};
-  margin-bottom: ${space.m}px;
+  margin-bottom: ${space.r}px;
+
+  ${media.tabletLandscape(css`
+    margin-bottom: ${space.m}px;
+  `)};
 `;
 
 export const Author = styled.span`

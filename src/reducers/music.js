@@ -4,7 +4,7 @@ import {
   ADD_MUSIC,
   // UPDATE_MUSIC,
   SET_LATEST_MUSIC,
-  FETCHED_ALL_MUSIC,
+  FETCH_ALL_MUSIC_SUCCES,
   ALL_MUSIC_VISIBLE,
   SET_MUSIC_VISIBILITY,
 } from 'actions/music';
@@ -61,7 +61,7 @@ function latest(state = null, action) {
 
 function fetchedAll(state = false, action) {
   switch (action.type) {
-    case FETCHED_ALL_MUSIC:
+    case FETCH_ALL_MUSIC_SUCCES:
       return true;
     default:
       return state;

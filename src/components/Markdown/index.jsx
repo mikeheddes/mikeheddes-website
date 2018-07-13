@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MarkdownJSX from 'markdown-to-jsx';
-import styled, { css } from 'styled-components';
+import { fluidText } from 'utils/mixins';
 // import Image from 'components/Image';
-import { fluidText, media, mediaSize } from 'utils/mixins';
-import { width, space } from 'style';
-import Image from 'components/Image';
+import Box from 'components/Box';
 
 import {
   Bold, Italic, Code, Anchor,
@@ -17,6 +15,7 @@ import Preformatted from './Preformatted';
 import List from './List';
 import Blockquote from './Blockquote';
 import Table from './Table';
+import Image from './Image';
 
 const defaultOverrides = {
   a: Anchor,
@@ -103,38 +102,6 @@ Markdown.defaultProps = {
   overrides: {},
 };
 
-export default styled(Markdown)`
+export default Box.withComponent(Markdown).extend`
   ${fluidText(18, 20)};
-  display: grid;
-  grid-template-rows: auto;
-  grid-template-columns: [full-start] ${
-  space.m
-}px [content-start text-start] 1fr [text-end content-end] ${space.m}px [full-end];
-
-  ${media.tabletPortrait(css`
-    grid-template-columns: [full-start] ${space.xl}px [content-start] 1fr [text-start] minmax(
-        auto,
-        ${width.text}px
-      ) [text-end] 1fr [content-end] ${space.xl}px [full-end];
-  `)}
-
-  ${media.tabletLandscape(css`
-    grid-template-columns: [full-start] minmax(${space.M}px, 1fr) [content-start] minmax(
-        auto,
-        ${(width.content - width.text) / 2}px
-      ) [text-start] minmax(${mediaSize.tabletLandscape - space.M * 2}px, ${width.text}px) [text-end] minmax(
-        auto,
-        ${(width.content - width.text) / 2}px
-      ) [content-end] minmax(${space.M}px, 1fr) [full-end];
-  `)}
-
-  ${media.desktop(css`
-    grid-template-columns: [full-start] minmax(${space.M}px, 1fr) [content-start] minmax(
-        auto,
-        ${(width.content - width.text) / 2}px
-      ) [text-start] ${width.text}px [text-end] minmax(
-        auto,
-        ${(width.content - width.text) / 2}px
-      ) [content-end] minmax(${space.M}px, 1fr) [full-end];
-  `)};
 `;

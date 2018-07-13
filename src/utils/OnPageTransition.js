@@ -1,10 +1,23 @@
-import React, { Component } from "react";
+/* eslint-env browser */
+import { Component } from 'react';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { setMenuVisibility } from 'actions';
 
 class OnPageTransition extends Component {
+  static propTypes = {
+    children: PropTypes.node,
+    dispatch: PropTypes.func.isRequired,
+    // eslint-disable-next-line react/forbid-prop-types
+    location: PropTypes.object.isRequired,
+  };
+
+  static defaultProps = {
+    children: null,
+  };
+
   componentDidUpdate(prevProps) {
     const { dispatch, location } = this.props;
     if (location !== prevProps.location) {
@@ -12,8 +25,10 @@ class OnPageTransition extends Component {
       dispatch(setMenuVisibility(false));
     }
   }
+
   render() {
-    return this.props.children || null
+    const { children } = this.props;
+    return children;
   }
 }
 

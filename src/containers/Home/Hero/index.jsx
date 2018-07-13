@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import blobVid from 'video/blobs.mp4';
 import blobThumb from 'img/blobs-thumbnail.png';
 import Link from 'components/Link';
+import Box from 'components/Box';
 
 import Video from './Video';
 import Wrapper from './Wrapper';
@@ -40,17 +41,25 @@ export default class Hero extends Component {
       <ThemeProvider theme={this.setThemeColors}>
         <Wrapper>
           <Video src={blobVid} poster={blobThumb} autoPlay loop muted />
-          <h2>
-            {eyebrow}
-          </h2>
-          <h1>
-            {title}
-          </h1>
-          {action && (
-            <Link to={action.url}>
-              {action.name}
-            </Link>)
-          }
+          <Box
+            width="text"
+            position="relative"
+            marginLeft="auto"
+            marginRight="auto"
+            textAlign="center"
+          >
+            <h2>
+              {eyebrow}
+            </h2>
+            <h1>
+              {title}
+            </h1>
+            {action && (
+              <Link to={action.url}>
+                {action.name}
+              </Link>)
+            }
+          </Box>
         </Wrapper>
       </ThemeProvider>
     );

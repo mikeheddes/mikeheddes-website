@@ -9,11 +9,11 @@ hljs.configure({
   classPrefix: '', // don't append class prefix
 });
 
-class Highlight extends Component {
+export default class HighlightCode extends Component {
   static propTypes = {
     className: PropTypes.string,
     children: PropTypes.node.isRequired,
-    element: PropTypes.element,
+    element: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
   };
 
   static defaultProps = {
@@ -50,5 +50,3 @@ class Highlight extends Component {
     );
   }
 }
-
-export default Highlight;

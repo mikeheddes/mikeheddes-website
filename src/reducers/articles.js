@@ -1,15 +1,15 @@
 import { combineReducers } from 'redux';
 
 import {
-  ADD_ARTICLE,
+  ADD_ARTICLES,
   // UPDATE_ARTICLE,
   SET_LATEST_ARTICLE,
-  FETCHED_ALL_ARTICLES,
+  FETCH_ALL_ARTICLES_SUCCES,
   ALL_ARTICLES_VISIBLE,
   SET_ARTICLES_VISIBILITY,
 } from 'actions/articles';
 
-function addEntry(state, action) {
+function addEntries(state, action) {
   const { payload } = action;
   return payload.reduce(
     (accumulator, currentValue) => ({
@@ -22,14 +22,14 @@ function addEntry(state, action) {
 
 function byId(state = {}, action) {
   switch (action.type) {
-    case ADD_ARTICLE:
-      return addEntry(state, action);
+    case ADD_ARTICLES:
+      return addEntries(state, action);
     default:
       return state;
   }
 }
 
-function addId(state, action) {
+function addIds(state, action) {
   const { payload } = action;
   const ids = payload.map(item => item.id);
   return [...state, ...ids];
@@ -37,8 +37,8 @@ function addId(state, action) {
 
 function allIds(state = [], action) {
   switch (action.type) {
-    case ADD_ARTICLE:
-      return addId(state, action);
+    case ADD_ARTICLES:
+      return addIds(state, action);
     default:
       return state;
   }
@@ -61,7 +61,7 @@ function latest(state = null, action) {
 
 function fetchedAll(state = false, action) {
   switch (action.type) {
-    case FETCHED_ALL_ARTICLES:
+    case FETCH_ALL_ARTICLES_SUCCES:
       return true;
     default:
       return state;

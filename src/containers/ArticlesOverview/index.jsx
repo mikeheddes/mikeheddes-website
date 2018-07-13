@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 import Banner from 'components/Banner';
 import ContentHighlight from 'containers/ContentHighlight/Loadable';
-import ContentGrid from 'containers/ContentGrid';
+import ContentGrid from 'containers/ContentGrid/Loadable';
 import Card from 'components/Card';
 import { colorNames } from 'style/color';
 import { visibilities } from 'actions/articles';
-import { contentTypes } from 'actions/utils';
+import { contentTypes } from 'actions/content';
 
 const filters = [
   {
@@ -88,6 +88,7 @@ export default class ArticlesOverview extends Component {
             </h1>
           </Banner>
           <ContentHighlight
+            noFetch
             eyebrow="Latest article"
             highlightType="latest"
             contentType={contentType}

@@ -6,11 +6,10 @@ import PropTypes from 'prop-types';
 // import { TimingAnimation, Easing } from 'react-spring/dist/addons.cjs';
 // import lodash from 'lodash';
 import Blur from 'components/Blur';
-import { highlightTypes } from 'actions/highlightContent';
-import { contentTypes } from 'actions/utils';
+import { highlightTypes, contentTypes } from 'actions/content';
+import Section from 'components/Section';
 
 import {
-  ComponentWrapper,
   ContentWrapper,
 } from './components';
 import ImageBox from './ImageBox';
@@ -25,10 +24,10 @@ class ContentHighlight extends Component {
       id: PropTypes.string.isRequired,
     }),
     contentType: PropTypes.oneOf(contentTypes).isRequired,
-    dontFetch: PropTypes.bool,
+    noFetch: PropTypes.bool,
     highlightType: PropTypes.oneOf(highlightTypes).isRequired,
     eyebrow: PropTypes.node,
-    getContentIfNeeded: PropTypes.func.isRequired,
+    getContent: PropTypes.func.isRequired,
     actionTitle: PropTypes.node.isRequired,
     externalActionTitle: PropTypes.node,
     marginTop: PropTypes.bool,
@@ -37,7 +36,7 @@ class ContentHighlight extends Component {
 
   static defaultProps = {
     content: undefined,
-    dontFetch: false,
+    noFetch: false,
     eyebrow: undefined,
     externalActionTitle: undefined,
     marginTop: undefined,
@@ -46,9 +45,9 @@ class ContentHighlight extends Component {
 
   componentDidMount() {
     const {
-      getContentIfNeeded, contentType, highlightType, dontFetch,
+      getContent, contentType, highlightType, noFetch,
     } = this.props;
-    if (!dontFetch) getContentIfNeeded(contentType, highlightType);
+    if (!noFetch) getContent(contentType, highlightType);
   }
 
   setTheme = theme => ({
@@ -68,30 +67,21 @@ class ContentHighlight extends Component {
     } = this.props;
     return (
       <ThemeProvider theme={this.setTheme}>
-        <ComponentWrapper
+        <Section
           marginTop={marginTop}
           marginBottom={marginBottom}
+          position="relative"
+          background
         >
           {content && content.heroImage && content.heroImage.placeholder
             && <Blur src={content.heroImage.placeholder} />
           }
-          {/* {content && content.heroImage.placeholder &&
-            <Spring
-              impl={TimingAnimation}
-              config={{ duration: 1000, easing: Easing.ease }}
-              to={{ radius: this.state.toggle ? 1 : 100 }}
-            >
-              {lodash.throttle(styles => <Blur
-              radius={styles.radius}
-              src={content.heroImage.src}
-            />, 5)}
-            </Spring>
-          } */}
           <ContentWrapper
             marginLeft="auto"
             marginRight="auto"
             width="content"
             display="flex"
+            position="relative"
           >
             <ImageBox
               contentType={contentType}
@@ -110,7 +100,7 @@ class ContentHighlight extends Component {
               url={content && `/${contentType}/${content.id}`}
             />
           </ContentWrapper>
-        </ComponentWrapper>
+        </Section>
       </ThemeProvider>
     );
   }

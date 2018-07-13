@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
-import { contentTypes } from 'actions/utils';
+import { contentTypes } from 'actions/content';
 
 
 export default class MusicItem extends Component {

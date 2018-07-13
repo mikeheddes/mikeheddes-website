@@ -50,16 +50,14 @@ router.get("/:resource", (req, res, next) => {
 })
 
 router.get("/:resource/:id", (req, res, next) => {
-  const resource = req.params.resource;
-  const id = req.params.id;
-  resources[resource].findById(id).exec()
+  const { id, resource } = req.params;
+  resources[resource].findByIdWithImage(id, {})
   .then(doc => res.json(toClient(doc)))
   .catch(err => internalError(err, res))
 })
 
 router.put("/:resource/:id", (req, res, next) => {
-  const resource = req.params.resource;
-  const id = req.params.id;
+  const { id, resource } = req.params;
   resources[resource].findByIdAndUpdate(id, req.body, {new: true}).exec()
   .then(doc => res.json(doc))
   .catch(err => internalError(err, res))

@@ -1,14 +1,18 @@
-import styled from 'styled-components';
-import { fluidText } from 'utils/mixins';
+import styled, { css } from 'styled-components';
+import { fluidText, media } from 'utils/mixins';
 import { space, radius } from 'style';
 import position, { widthProp } from 'utils/position';
 
 const Blockquote = styled.blockquote`
-  ${fluidText(20, 30)};
+  ${fluidText(22, 30)};
   background-color: ${({ theme }) => theme.surface};
   border-radius: ${radius.l}px;
-  padding: ${space.l}px;
+  padding: ${space.m}px;
   ${position};
+
+  ${media.tabletLandscape(css`
+    padding: ${space.l}px;
+  `)};
 
   p {
     color: ${({ theme }) => theme.link};

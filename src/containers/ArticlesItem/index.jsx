@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
-import { contentTypes } from 'actions/utils';
+import { contentTypes } from 'actions/content';
 import nearestColor from 'nearest-color';
 import Markdown from 'components/Markdown';
 import Box from 'components/Box';
 import Section from 'components/Section';
+import NoMatch from 'components/NoMatch';
 
 import Image from 'components/Image';
 import {
@@ -15,37 +16,35 @@ import mapProps from './mapProps';
 
 class ArticlesItem extends Component {
   static propTypes = {
-    authors: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        url: PropTypes.string,
-      }),
-    ),
+    getItem: PropTypes.func.isRequired,
+    item: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string,
+      body: PropTypes.string,
+      authors: PropTypes.arrayOf(
+        PropTypes.shape({
+          name: PropTypes.string.isRequired,
+          url: PropTypes.string,
+        }),
+      ),
+    }),
     match: PropTypes.shape({
       params: PropTypes.shape({
         contentType: PropTypes.oneOf(contentTypes).isRequired,
         id: PropTypes.string.isRequired,
       }).isRequired,
     }).isRequired,
-    item: PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      body: PropTypes.string.isRequired,
-      authors: PropTypes.arrayOf(
-        PropTypes.shape({
-          name: PropTypes.string.isRequired,
-          url: PropTypes.string,
-        }),
-      ).isRequired,
-    }),
   };
 
   static defaultProps = {
     item: undefined,
-    authors: [{ name: 'unknown' }],
   };
 
-  componentDidMount() {}
+  componentDidMount() {
+    const { match, getItem } = this.props;
+    const { id } = match.params;
+    getItem(id);
+  }
 
   setTheme = (theme) => {
     const { item } = this.props;
@@ -85,48 +84,51 @@ class ArticlesItem extends Component {
   };
 
   render() {
-    const { item, authors } = this.props;
+    const { item } = this.props;
+    if (item && item.hasError) {
+      return <NoMatch />;
+    }
     return (
-      <ThemeProvider theme={this.setTheme}>
+      <ThemeProvider theme={theme => this.setTheme(theme)}>
         <article>
           <HeaderWrapper>
-            <Section
-              noBackground
-              noPaddingY
-            >
+            <Section noBackground noPaddingY>
               <Box width="text" marginRight="auto" marginLeft="auto">
                 <Title>
                   {item && item.title}
                 </Title>
                 {item && item.description && (
-                  <Description>
-                    {item.description}
-                  </Description>
+                <Description>
+                  {item.description}
+                </Description>
                 )}
                 <InfoLine>
                   {'By '}
-                  {((item && item.authors) || authors).map(author => (
-                    <React.Fragment key={author.name}>
-                      <Author>
-                        {author.name}
-                      </Author>
-                      {' | '}
-                    </React.Fragment>
-                  ))}
-                  {this.formatDate((item && new Date(item.publishedAt)) || new Date())}
+                  {item
+                    && item.authors.map(author => (
+                      <React.Fragment key={author.name}>
+                        <Author>
+                          {author.name}
+                        </Author>
+                        {' | '}
+                      </React.Fragment>
+                    ))}
+                  {item && (
+                    <time dateTime={item.publishedAt}>
+                      {this.formatDate(item.publishedAt)}
+                    </time>
+                  )}
                 </InfoLine>
               </Box>
             </Section>
             <Image {...item && item.heroImage} wide zDepth={0} />
           </HeaderWrapper>
-          <Section
-            noBackground
-            noPaddingX
-          >
-            {item && item.body && (
-              <Markdown>
-                {item.body}
-              </Markdown>
+          <Section>
+            {item
+              && item.body && (
+                <Markdown width="text" marginLeft="auto" marginRight="auto">
+                  {item.body}
+                </Markdown>
             )}
           </Section>
         </article>

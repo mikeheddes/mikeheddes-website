@@ -4,6 +4,7 @@ import space from 'style/space';
 import { media, fluidText } from 'utils/mixins';
 
 export default styled.header`
+  position: relative;
   color: ${({ theme }) => theme.title};
   text-align: center;
   padding: ${space.xl}px ${space.m}px ${space.l}px;

@@ -11,6 +11,6 @@ export const getVisibilityFilter = (state, { contentType }) => (
 export const makeGetAllContentByType = () => createSelector(
   [getContent, getVisibilityFilter],
   (content, filter) => Object.values(content)
-    .filter(item => filter === 'ALL' || item.categorie === filter)
+    .filter(item => (filter === 'ALL' || item.categorie === filter) && !item.hasError)
     .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)),
 );

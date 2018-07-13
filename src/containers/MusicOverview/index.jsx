@@ -7,7 +7,7 @@ import ContentGrid from 'containers/ContentGrid';
 import { colorNames } from 'style/color';
 import Card from 'components/Card';
 import { visibilities } from 'actions/music';
-import { contentTypes } from 'actions/utils';
+import { contentTypes } from 'actions/content';
 
 
 const filters = [
@@ -93,6 +93,7 @@ export default class MusicOverview extends Component {
             </h1>
           </Banner>
           <ContentHighlight
+            noFetch
             actionTitle="More info"
             contentType={contentType}
             eyebrow="Latest music"

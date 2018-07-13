@@ -38,6 +38,7 @@
 - [Add react-router-redux](https://github.com/reactjs/react-router-redux)
 - [Add GraphQL to api]()
 - Chatroom page with websocket connection and ability to sync youtube video in a chat + more REAL SOCIAL activities.
+- [Atlaskit repository](https://bitbucket.org/atlassian/atlaskit-mk-2/overview)
 
 
 

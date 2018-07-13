@@ -1,62 +1,45 @@
-import API from 'API';
+import {
+  MUSIC_CONTENT_TYPE,
+  GET_ALL_MUSIC,
+  GET_LATEST_MUSIC,
+} from './music';
+import {
+  ARTICLES_CONTENT_TYPE,
+  GET_ALL_ARTICLES,
+  GET_LATEST_ARTICLE,
+} from './articles';
 
-import { ADD_MUSIC, FETCHED_ALL_MUSIC } from './music';
-import { ADD_ARTICLE, FETCHED_ALL_ARTICLES } from './articles';
-import { contentTypes } from './utils';
+export const contentTypes = [MUSIC_CONTENT_TYPE, ARTICLES_CONTENT_TYPE];
 
-
-const receiveTypes = {
-  articles: ADD_ARTICLE,
-  music: ADD_MUSIC,
+const getAllContentByType = {
+  [MUSIC_CONTENT_TYPE]: GET_ALL_MUSIC,
+  [ARTICLES_CONTENT_TYPE]: GET_ALL_ARTICLES,
 };
 
-const setFetchedAllContentOfTypeFlags = {
-  articles: FETCHED_ALL_ARTICLES,
-  music: FETCHED_ALL_MUSIC,
-};
-
-export const receiveContent = (data, contentType) => {
-  // const payload = cleanData[contentType](data);
-  const receivedAt = Date.now();
-  return {
-    type: receiveTypes[contentType],
-    payload: data.map(item => ({ ...item, receivedAt })),
-  };
-};
-
-const setFetchedAllContentOfTypeFlag = contentType => ({
-  type: setFetchedAllContentOfTypeFlags[contentType],
+export const getAllContent = contentType => ({
+  type: getAllContentByType[contentType],
 });
 
-function shouldFetchAllContentOfType(state, contentType) {
-  if (contentTypes.indexOf(contentType) === -1) {
-    return false;
-  }
-  if (state.entities[contentType].fetchedAll) {
-    return false;
-  }
-  return true;
-}
+const getLatestContentByType = {
+  [MUSIC_CONTENT_TYPE]: GET_LATEST_MUSIC,
+  [ARTICLES_CONTENT_TYPE]: GET_LATEST_ARTICLE,
+};
 
-function fetchAllContentOfType(contentType) {
-  return dispatch => (
-    API[contentType].all()
-      .then((json) => {
-        if (json.status >= 200 && json.status < 300) {
-          dispatch(receiveContent(json.data, contentType));
-          dispatch(setFetchedAllContentOfTypeFlag(contentType));
-        } else {
-          // ERROR
-        }
-      })
-  );
-}
+export const getLatestContent = contentType => ({
+  type: getLatestContentByType[contentType],
+});
 
-export const fetchAllContentOfTypeIfNeeded = contentType => (
-  (dispatch, getState) => {
-    if (shouldFetchAllContentOfType(getState(), contentType)) {
-      return dispatch(fetchAllContentOfType(contentType));
-    }
-    return null;
-  }
-);
+export const LATEST_HIGHTLIGHT_TYPE = 'latest';
+
+export const highlightTypes = [LATEST_HIGHTLIGHT_TYPE];
+
+const HighlightTypesByTypes = {
+  [LATEST_HIGHTLIGHT_TYPE]: {
+    [ARTICLES_CONTENT_TYPE]: GET_LATEST_ARTICLE,
+    [MUSIC_CONTENT_TYPE]: GET_LATEST_MUSIC,
+  },
+};
+
+export const getHighlightContent = (contentType, highlightType) => ({
+  type: HighlightTypesByTypes[highlightType][contentType],
+});

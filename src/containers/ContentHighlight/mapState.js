@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchHighlightContentIfNeeded } from 'actions/highlightContent';
+import { getHighlightContent } from 'actions/content';
 import { setTheme } from 'actions/ui';
 
 import { makeGetHighlightedContent } from './selectors';
@@ -15,8 +15,8 @@ function makeMapStateToProps() {
 
 function mapDispatchToProps(dispatch) {
   return {
-    getContentIfNeeded: (contentType, highlightType) => dispatch(
-      fetchHighlightContentIfNeeded(contentType, highlightType),
+    getContent: (contentType, highlightType) => dispatch(
+      getHighlightContent(contentType, highlightType),
     ),
     setTheme: theme => dispatch(
       setTheme(theme),

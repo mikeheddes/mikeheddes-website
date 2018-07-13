@@ -44,6 +44,7 @@ TabRow.defaultProps = {
 
 const Tab = styled.li`
   display: inline-block;
+  position: relative;
   padding: ${createPadding('r', 'xr')};
   margin-right: ${space.s}px;
   border-radius: ${radius.r}px;

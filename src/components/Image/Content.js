@@ -21,7 +21,6 @@ const Content = styled.img`
     `};
   object-fit: cover;
   object-position: center center;
-  will-change: filter;
   transition: filter 500ms ease-in-out, opacity 250ms ease-out 0s;
 `;
 
@@ -30,6 +29,12 @@ Content.propTypes = {
   srcSet: PropTypes.string,
   onLoad: PropTypes.func,
   radius: PropTypes.number.isRequired,
+};
+
+Content.defaultProps = {
+  src: '',
+  srcSet: '',
+  onLoad: null,
 };
 
 export default Content;

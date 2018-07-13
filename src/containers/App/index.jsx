@@ -6,13 +6,13 @@ import { ThemeProvider } from 'styled-components';
 import OnPageTransition from 'utils/OnPageTransition';
 import Home from 'containers/Home';
 import About from 'containers/About';
-import NoMatch from 'containers/NoMatch';
+import NoMatch from 'components/NoMatch';
 import Footer from 'components/Footer';
 import Nav from 'containers/Nav';
 import { DAY, NIGHT } from 'style/color';
 import { THEME_DAY, THEME_NIGHT } from 'actions/ui';
 import ContentRouter from 'containers/ContentRouter';
-import { contentTypes } from 'actions/utils';
+import { contentTypes } from 'actions/content';
 
 import mapState from './mapState';
 

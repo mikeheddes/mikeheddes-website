@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchHighlightContentIfNeeded } from 'actions/highlightContent';
+import { getArticleItem } from 'actions/articles';
 import { setTheme } from 'actions/ui';
 
 
@@ -13,9 +13,7 @@ function mapStateToProps(state, props) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    getContentIfNeeded: (contentType, highlightType) => dispatch(
-      fetchHighlightContentIfNeeded(contentType, highlightType),
-    ),
+    getItem: id => dispatch(getArticleItem(id)),
     setTheme: theme => dispatch(
       setTheme(theme),
     ),

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Box from 'components/Box';
 
 import {
   TabRow, Tab, HorizontalScroll, Title,
@@ -10,7 +11,7 @@ const TitleRow = (props) => {
     activeFilter, filters, title, setVisibility,
   } = props;
   return (
-    <div>
+    <Box position="relative">
       <Title>
         {title}
       </Title>
@@ -29,7 +30,7 @@ const TitleRow = (props) => {
           </TabRow>
         </HorizontalScroll>
       )}
-    </div>
+    </Box>
   );
 };
 

@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { hiDPI } from 'polished';
 import position from 'utils/position';
 
-// import { radius } from 'utils/sizes';
 import zD from 'style/zDepth';
 
 const Wrapper = styled.div`
   display: block;
+  position: relative;
   overflow: hidden;
   padding-bottom: ${({ ratio }) => Math.round(ratio * 100)}%;
   border-radius: ${({ radius }) => radius}px;
@@ -16,7 +16,8 @@ const Wrapper = styled.div`
   ${({ onClick }) => onClick
     && css`
       cursor: pointer;
-    `} background-clip: border-box;
+    `};
+  background-clip: border-box;
   background-origin: border-box;
   background-repeat: no-repeat;
   background-size: cover;
@@ -75,8 +76,16 @@ Wrapper.propTypes = {
   micro: PropTypes.string,
   ratio: PropTypes.number.isRequired,
   color: PropTypes.string,
-  radius: PropTypes.number.isRequired,
+  radius: PropTypes.number,
   border: PropTypes.bool,
 };
+
+Wrapper.defaultProps = {
+  micro: null,
+  color: null,
+  radius: 0,
+  border: true,
+};
+
 
 export default Wrapper;

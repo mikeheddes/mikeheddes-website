@@ -39,7 +39,7 @@ const Table = styled.table`
     }
   }
 
-  tr:nth-child(2n) {
+  tr:nth-child(2n), th {
     background-color: ${({ theme }) => fade(0.5, theme.surface)};
   }
 `;

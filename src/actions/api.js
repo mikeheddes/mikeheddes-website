@@ -1,39 +1,32 @@
-export const MUSIC_API_REQUEST = '[music] API Request';
-export const ARTICLES_API_REQUEST = '[articles] API Request';
-export const API_REQUEST = '[app] API Request';
+export const API_REQUEST = '[app] API request';
 
-const receiveTypes = {
-  articles: ADD_ARTICLES,
-  music: ADD_MUSIC,
-};
-
-const errorTypes = {
-  articles: ADD_ARTICLES,
-  music: ADD_MUSIC,
-}
-
-
-export const apiRequest = (method, contentType, body, onSuccess, onError, meta = {}) => ({
+export const apiRequest = (
+  contentType,
+  onSuccess,
+  onError,
+  meta = {},
+  method = 'GET',
+  body = undefined,
+) => ({
   type: API_REQUEST,
   payload: body,
   meta: {
-    ...meta, method, contentType, onSuccess, onError,
+    ...meta,
+    method,
+    contentType,
+    onSuccess,
+    onError,
   },
 });
 
-export const RequestById = (contentType, Id) => apiRequest(
-  'GET',
-  contentType,
-  undefined,
-  receiveTypes[contentType],
-  errorTypes[contentType],
-  { Id },
+export const requestById = (contentType, id, onSuccess, onError) => apiRequest(
+  contentType, onSuccess, onError, { id },
 );
 
-export const requestAll = contentType => apiRequest(
-  'GET',
-  contentType,
-  undefined,
-  receiveTypes[contentType],
-  errorTypes[contentType],
+export const requestAll = (contentType, onSuccess, onError) => apiRequest(
+  contentType, onSuccess, onError,
+);
+
+export const requestLatest = (contentType, onSuccess, onError) => apiRequest(
+  contentType, onSuccess, onError, { query: { limit: 1 } },
 );

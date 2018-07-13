@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Section from 'components/Section';
 import Box from 'components/Box';
-import { contentTypes } from 'actions/utils';
+import { contentTypes } from 'actions/content';
 import GridBox from 'components/GridBox';
 
 import TitleRow from './TitleRow';
@@ -17,6 +17,7 @@ class ContentGrid extends Component {
       }),
     ),
     children: PropTypes.func.isRequired,
+    // eslint-disable-next-line react/no-unused-prop-types
     contentType: PropTypes.oneOf(contentTypes).isRequired,
     setVisibility: PropTypes.func.isRequired,
     activeFilter: PropTypes.string.isRequired,

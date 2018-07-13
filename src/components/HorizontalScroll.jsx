@@ -5,6 +5,7 @@ import { media as md } from 'utils/mixins';
 
 const scrollStyle = css`
   overflow-x: scroll;
+  position: relative;
   width: 100vw;
   left: 50%;
   transform: translateX(-50vw);

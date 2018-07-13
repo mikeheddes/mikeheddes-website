@@ -7,6 +7,7 @@ import { createMargin, createPadding, createWidth } from 'utils/createSpace';
 const Box = styled.div`
   display: ${({ display }) => display};
   position: ${({ position }) => position};
+  text-align: ${({ textAlign }) => textAlign};
 
   margin: ${({
     margin, marginTop, marginRight, marginBottom, marginLeft,
@@ -114,27 +115,28 @@ const Box = styled.div`
 
 
 Box.propTypes = {
-  alignContent: PropTypes.oneOf(['start', 'end', 'center', 'between', 'around', 'stretch']).isRequired,
-  alignItems: PropTypes.oneOf(['start', 'end', 'center', 'baseline', 'stretch']).isRequired,
-  alignSelf: PropTypes.oneOf(['auto', 'start', 'end', 'center', 'baseline', 'stretch']).isRequired,
+  alignContent: PropTypes.oneOf(['start', 'end', 'center', 'between', 'around', 'stretch']),
+  alignItems: PropTypes.oneOf(['start', 'end', 'center', 'baseline', 'stretch']),
+  alignSelf: PropTypes.oneOf(['auto', 'start', 'end', 'center', 'baseline', 'stretch']),
   border: PropTypes.bool,
   children: PropTypes.node,
   column: PropTypes.oneOf([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
-  direction: PropTypes.oneOf(['row', 'column']).isRequired,
-  display: PropTypes.oneOf(['none', 'flex', 'block', 'inlineBlock']).isRequired,
-  flex: PropTypes.oneOf(['grow', 'shrink', 'none']).isRequired,
-  justifyContent: PropTypes.oneOf(['start', 'end', 'center', 'between', 'around']).isRequired,
-  margin: marginPropType.isRequired,
+  direction: PropTypes.oneOf(['row', 'column']),
+  display: PropTypes.oneOf(['none', 'flex', 'block', 'inlineBlock']),
+  flex: PropTypes.oneOf(['grow', 'shrink', 'none']),
+  justifyContent: PropTypes.oneOf(['start', 'end', 'center', 'between', 'around']),
+  margin: marginPropType,
   marginTop: marginPropType,
   marginRight: marginPropType,
   marginBottom: marginPropType,
   marginLeft: marginPropType,
-  overflow: PropTypes.oneOf(['visible', 'hidden', 'scroll', 'scrollX', 'scrollY', 'auto']).isRequired,
-  padding: paddingPropType.isRequired,
+  overflow: PropTypes.oneOf(['visible', 'hidden', 'scroll', 'scrollX', 'scrollY', 'auto']),
+  padding: paddingPropType,
   paddingX: paddingPropType,
   paddingY: paddingPropType,
-  position: PropTypes.oneOf(['static', 'absolute', 'relative', 'fixed']).isRequired,
-  shape: PropTypes.oneOf(['square', 'rounded', 'pill', 'circle']).isRequired,
+  position: PropTypes.oneOf(['static', 'absolute', 'relative', 'fixed']),
+  shape: PropTypes.oneOf(['square', 'rounded', 'pill', 'circle']),
+  textAlign: PropTypes.oneOf(['left', 'right', 'center']),
   width: PropTypes.oneOf(['content', 'text', 'full', PropTypes.number]),
   wrap: PropTypes.bool,
   zDepth: zDepthPropType,
@@ -154,6 +156,8 @@ Box.defaultProps = {
   padding: 0,
   position: 'static',
   shape: 'square',
+  textAlign: 'left',
+  width: null,
 };
 
 export default Box;

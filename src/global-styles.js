@@ -5,7 +5,6 @@ injectGlobal`
   * {
     margin: 0;
     padding: 0;
-    position: relative;
     box-sizing: border-box;
 
     &:focus {

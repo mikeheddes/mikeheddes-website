@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { contentTypes } from 'actions/utils';
+import { contentTypes } from 'actions/content';
 
 import {
   Artist,

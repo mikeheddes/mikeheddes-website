@@ -2,7 +2,7 @@ import { css } from 'styled-components';
 
 // use em in breakpoints to work properly cross-browser and support users
 // changing their browsers font-size: https://zellwk.com/blog/media-query-units/
-const mediaWidthQuery = (size, type = 'min') => styles => css`
+export const mediaWidthQuery = (size, type = 'min') => styles => css`
     @media only screen and (${type}-width: ${size / 16}em) {
       ${styles}
     }

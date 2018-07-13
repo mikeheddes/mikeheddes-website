@@ -13,7 +13,6 @@ export default () => (
   <React.Fragment>
     <Hero />
     <Section
-      noBackground
       borderTop
     >
       <Box

@@ -5,7 +5,7 @@ import ArticlesOverview from 'containers/ArticlesOverview/Loadable';
 import MusicOverview from 'containers/MusicOverview/Loadable';
 import MusicItem from 'containers/MusicItem/Loadable';
 import ArticlesItem from 'containers/ArticlesItem/Loadable';
-import { contentTypes } from 'actions/utils';
+import { contentTypes } from 'actions/content';
 
 const overviewPages = {
   music: MusicOverview,

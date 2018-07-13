@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { typography, space } from 'style';
+import { transparentize as fade } from 'polished';
 
 export default styled.code`
   font-size: 82%;
@@ -11,7 +12,7 @@ export default styled.code`
 
   .comment,
   .quote {
-    color: #006a00;
+    color: ${({ theme }) => fade(0.5, theme.text)};
   }
 
   .keyword,

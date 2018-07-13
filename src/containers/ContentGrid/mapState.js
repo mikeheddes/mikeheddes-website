@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchAllContentOfTypeIfNeeded } from 'actions/content';
+import { getAllContent } from 'actions/content';
 import { setMusicVisibility } from 'actions/music';
 import { setArticlesVisibility } from 'actions/articles';
 
@@ -23,7 +23,7 @@ function mapDispatchToProps(dispatch, props) {
   const { contentType } = props;
   return {
     getContentIfNeeded: () => {
-      dispatch(fetchAllContentOfTypeIfNeeded(contentType));
+      dispatch(getAllContent(contentType));
     },
     setVisibility: (filter) => {
       // console.log(filter);

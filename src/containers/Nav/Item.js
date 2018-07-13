@@ -10,6 +10,7 @@ import config from './config';
 
 const Item = styled(NavLink)`
   text-decoration: none;
+  position: relative;
   transition: color 0.12s ${easeF('easeOutQuad')};
   ${space('padding', 's', 'r')};
   color: ${({ theme }) => theme.heading};

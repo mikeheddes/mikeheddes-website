@@ -5,6 +5,7 @@ import { fluidText } from 'utils/mixins';
 import { space } from 'style';
 import position, { widthProp } from 'utils/position';
 
+
 const headingStyle = css`
   font-weight: 700;
   line-height: 1.13;
@@ -26,6 +27,23 @@ const headingStyle = css`
       ${fluidText(24, 36)};
       margin-top: ${space.xm}px;
       margin-bottom: ${space.r}px;
+    `};
+  ${({ tag }) => tag === 'h4'
+    && css`
+      ${fluidText(22, 32)};
+      margin-top: ${space.xm}px;
+      margin-bottom: ${space.s}px;
+    `};
+  ${({ tag }) => tag === 'h5'
+    && css`
+      ${fluidText(20, 28)};
+      margin-top: ${space.xm}px;
+    `};
+  ${({ tag }) => tag === 'h6'
+    && css`
+      ${fluidText(18, 24)};
+      margin-top: ${space.xm}px;
+      text-transform: uppercase;
     `};
   ${position};
 `;
