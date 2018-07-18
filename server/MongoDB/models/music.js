@@ -132,4 +132,17 @@ MusicSchema.static('findWithImage', function (query, opts) {
     });
 });
 
+MusicSchema.static('findByIdWithImage', function (id, opts) {
+  return this.findById(id)
+    .setOptions(opts)
+    .populate('coverImage heroImage')
+    .lean()
+    .exec()
+    .then((doc) => {
+      doc.coverImage = imageModification(doc.coverImage);
+      doc.heroImage = imageModification(doc.heroImage);
+      return doc;
+    });
+});
+
 module.exports = mongoose.model('music', MusicSchema);

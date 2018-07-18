@@ -3,7 +3,7 @@ import articles from './articles';
 import api from './api';
 
 const logger = () => next => (action) => {
-  console.log(action.type);
+  // console.log(action.type);
   next(action);
 };
 

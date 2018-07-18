@@ -24,6 +24,7 @@ const exclude = [
   'body-parser',
   'sharp',
   'rimraf',
+  'website-articles',
 ];
 
 const include = [

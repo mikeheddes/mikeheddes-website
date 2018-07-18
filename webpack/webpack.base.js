@@ -19,10 +19,22 @@ module.exports = options => ({
         use: {
           loader: 'babel-loader',
         },
-      }, {
+      },
+      {
         test: /\.json$/,
         use: 'json-loader',
       },
+      {
+        test: /\.mdx?$/,
+        use: ['babel-loader', '@mdx-js/loader']
+      },
+      // {
+      //   test: /\.md?$/,
+      //   exclude: /node_modules/,
+      //   use: {
+      //     loader: 'raw-loader',
+      //   },
+      // },
     ]),
   },
   plugins: options.plugins.concat([

@@ -60,6 +60,8 @@ class ContentGrid extends Component {
     } = this.props;
     // console.log(allContent);
     // console.log(activeFilter);
+    // const someContent = contentType === 'articles' ? Object.values(articles) : allContent;
+    // console.log(articles);
     return (
       <Section noBackground>
         <Box width="content" marginLeft="auto" marginRight="auto">

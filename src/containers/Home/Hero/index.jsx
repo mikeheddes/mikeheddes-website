@@ -7,7 +7,7 @@ import Link from 'components/Link';
 import Box from 'components/Box';
 
 import Video from './Video';
-import Wrapper from './Wrapper';
+import Wrapper, { TitleBox } from './Wrapper';
 
 export default class Hero extends Component {
   static propTypes = {
@@ -17,7 +17,7 @@ export default class Hero extends Component {
       url: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
     }),
-  }
+  };
 
   static defaultProps = {
     title: 'Curious. Creative.',
@@ -26,21 +26,36 @@ export default class Hero extends Component {
       url: '/about',
       name: 'More about me',
     },
-  }
+  };
+
+  state = {
+    videoLoaded: false,
+  };
 
   setThemeColors = theme => ({
     ...theme,
     link: theme.title,
-  })
+  });
+
+  loadedVideo = () => {
+    this.setState(prev => ({ ...prev, videoLoaded: true }));
+  };
 
   render() {
-    const {
-      eyebrow, title, action,
-    } = this.props;
+    const { eyebrow, title, action } = this.props;
+    const { videoLoaded } = this.state;
     return (
       <ThemeProvider theme={this.setThemeColors}>
         <Wrapper>
-          <Video src={blobVid} poster={blobThumb} autoPlay loop muted />
+          <Video
+            src={blobVid}
+            poster={blobThumb}
+            loaded={videoLoaded}
+            onLoadedData={this.loadedVideo}
+            autoPlay
+            loop
+            muted
+          />
           <Box
             width="text"
             position="relative"
@@ -48,17 +63,19 @@ export default class Hero extends Component {
             marginRight="auto"
             textAlign="center"
           >
-            <h2>
-              {eyebrow}
-            </h2>
-            <h1>
-              {title}
-            </h1>
+            <TitleBox>
+              <h2>
+                {eyebrow}
+              </h2>
+              <h1>
+                {title}
+              </h1>
+            </TitleBox>
             {action && (
-              <Link to={action.url}>
-                {action.name}
-              </Link>)
-            }
+            <Link to={action.url}>
+              {action.name}
+            </Link>
+            )}
           </Box>
         </Wrapper>
       </ThemeProvider>

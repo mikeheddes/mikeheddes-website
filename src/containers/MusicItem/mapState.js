@@ -1,20 +1,19 @@
 import { connect } from 'react-redux';
+import { getMusicItem } from 'actions/music';
+import { setTheme } from 'actions/ui';
 
-// import { makeGetHighlightedContent } from './selectors';
 
-
-function makeMapStateToProps() {
-  const mapStateToProps = (state, props) => ({
-    item: state.entities[props.contentType].byId[props.id],
-  });
-  return mapStateToProps;
+function mapStateToProps(state, props) {
+  const { match } = props;
+  const { contentType, id } = match.params;
+  return {
+    item: state.entities[contentType].byId[id],
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    getContentIfNeeded: (contentType, highlightType) => dispatch(
-      fetchHighlightContentIfNeeded(contentType, highlightType),
-    ),
+    getItem: id => dispatch(getMusicItem(id)),
     setTheme: theme => dispatch(
       setTheme(theme),
     ),
@@ -23,6 +22,6 @@ function mapDispatchToProps(dispatch) {
 
 
 export default Component => connect(
-  makeMapStateToProps,
+  mapStateToProps,
   mapDispatchToProps,
 )(Component);

@@ -1,6 +1,4 @@
 import styled, { css } from 'styled-components';
-import { hiDPI, transparentize as fade } from 'polished';
-
 import { createPadding } from 'utils/createSpace';
 import { media, fluidText, fluidValue } from 'utils/mixins';
 

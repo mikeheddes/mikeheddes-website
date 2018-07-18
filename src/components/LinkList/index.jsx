@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 // import Link from 'components/Link';
 import Wrapper, { Link } from './Wrapper';
 
-const Links = (props) => {
-  const { links } = props;
+const LinkList = (props) => {
+  const { links, onSurface } = props;
   return (
-    <Wrapper>
+    <Wrapper onSurface={onSurface}>
       {
         links && links.map(link => (
-          <Link key={link.name} to={link.href} noInner>
+          <Link key={link.name} to={link.url} noInner noFontSize onSurface={onSurface}>
             <li>
               {link.name}
             </li>
@@ -20,11 +20,16 @@ const Links = (props) => {
   );
 };
 
-Links.propTypes = {
+LinkList.propTypes = {
   links: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
-    href: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
   })).isRequired,
+  onSurface: PropTypes.bool,
 };
 
-export default Links;
+LinkList.defaultProps = {
+  onSurface: false,
+};
+
+export default LinkList;

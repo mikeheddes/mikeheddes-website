@@ -10,14 +10,16 @@ const listStyle = css`
   color: ${({ theme }) => theme.text};
   ${({ tag }) => tag === 'ol' && css``};
   ${({ tag }) => tag === 'ul' && css``};
+  margin-bottom: ${space.xr}px;
   ${position};
 
   ol, ul {
     padding-left: 1.25em;
+    margin-bottom: 0.5em;
   }
 
   li {
-    margin-bottom: ${space.s}px;
+    margin-bottom: 0.5em;
 
     &:last-of-type {
       margin-bottom: 0;

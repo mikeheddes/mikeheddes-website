@@ -6,7 +6,7 @@ import Highlight from 'components/HighlightCode';
 const Preformatted = (props) => {
   const { children, ...other } = props;
   return (
-    <Highlight className={children.props.className} {...other}>
+    <Highlight language={children.props.className} {...other}>
       {children.props.children}
     </Highlight>
   );

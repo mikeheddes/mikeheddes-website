@@ -16,12 +16,13 @@ const Wrapper = styled.ul`
 
   ${media.phoneOnly(css`
     padding: 0;
-    margin: 0 20px;
-    margin-bottom: ${space.r}px;
+    margin: 0;
+    padding-bottom: ${space.r}px;
     white-space: nowrap;
-    border-radius: ${radius.m}px;
-    background-color: ${({ theme }) => darken(0.03, theme.surface)};
-    display: inline-block;
+    display: block;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
   `)};
 
   & li {
@@ -29,7 +30,7 @@ const Wrapper = styled.ul`
     text-decoration: inherit;
 
     ${media.phoneOnly(css`
-      max-width: 100px;
+      max-width: calc(100% - 1em);
       overflow: hidden;
       text-overflow: ellipsis;
       word-wrap: normal;
@@ -46,11 +47,18 @@ export const Link = Anchor.extend`
 
   ${media.phoneOnly(css`
     padding: 10px 15px;
-    min-width: 150px;
+    width: calc(66.67vw - ${space.m + space.r / 2}px);
+    border-radius: ${radius.m}px;
     margin: 0;
-    border-right: 2px solid ${({ theme }) => theme.surface};
+    margin-right: ${space.r}px;
+    background-color: ${({ theme }) => darken(0.03, theme.surface)};
+
+    &:first-of-type {
+      margin-left: ${space.m}px;
+    }
+
     &:last-of-type {
-      border-right: none;
+      margin-right: ${space.m}px;
     }
   `)};
 `;

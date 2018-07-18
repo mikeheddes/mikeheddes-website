@@ -11,13 +11,13 @@ hljs.configure({
 
 export default class HighlightCode extends Component {
   static propTypes = {
-    className: PropTypes.string,
+    language: PropTypes.string,
     children: PropTypes.node.isRequired,
     element: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
   };
 
   static defaultProps = {
-    className: '',
+    language: '',
     element: Pre,
   };
 
@@ -39,11 +39,10 @@ export default class HighlightCode extends Component {
   };
 
   render() {
-    const { children, className, element: Element } = this.props;
-
+    const { children, language, element: Element } = this.props;
     return (
       <Element innerRef={this.setEl}>
-        <Code className={className}>
+        <Code className={language}>
           {children}
         </Code>
       </Element>
