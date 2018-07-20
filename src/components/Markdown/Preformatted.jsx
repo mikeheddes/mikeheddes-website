@@ -2,23 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Highlight from 'components/HighlightCode';
 
-
-const Preformatted = (props) => {
-  const { children, ...other } = props;
-  return (
-    <Highlight language={children.props.className} {...other}>
-      {children.props.children}
-    </Highlight>
-  );
-};
+const Preformatted = ({ children, className, ...other }) => (
+  <Highlight language={className} {...other}>
+    {children}
+  </Highlight>
+);
 
 Preformatted.propTypes = {
   children: PropTypes.node.isRequired,
-  // className: PropTypes.string,
+  className: PropTypes.string,
 };
 
 Preformatted.defaultProps = {
-  // className: '',
+  className: '',
 };
 
 export default Preformatted;

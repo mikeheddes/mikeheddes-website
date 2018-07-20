@@ -49,17 +49,16 @@ const Card = (props) => {
     image,
     children,
     badge,
-    square,
-    wide,
-    tall,
+    shape,
     size,
     maxTitleLines,
     maxDescriptionLines,
     to,
+    preload,
   } = props;
   const LinkWrapper = to ? Link : React.Fragment;
   return (
-    <div>
+    <div onMouseEnter={preload}>
       <LinkWrapper
         {...to && {
           noInner: true,
@@ -68,7 +67,7 @@ const Card = (props) => {
           noTheme: true,
         }}
       >
-        <Image {...image} rounded square={square} wide={wide} tall={tall} badge={badge} />
+        <Image {...image} rounded shape={shape} badge={badge} />
         <Title size={size} maxLines={maxTitleLines}>
           {title}
         </Title>
@@ -88,12 +87,11 @@ Card.propTypes = {
   image: PropTypes.shape({
     src: PropTypes.string.isRequired,
   }).isRequired,
-  square: PropTypes.bool,
   size: PropTypes.oneOf(['r', 'm']),
   children: PropTypes.node,
-  wide: PropTypes.bool,
-  tall: PropTypes.bool,
+  preload: PropTypes.func,
   to: PropTypes.string,
+  shape: PropTypes.string,
 };
 
 Card.defaultProps = {
@@ -101,11 +99,10 @@ Card.defaultProps = {
   badge: undefined,
   maxDescriptionLines: 3,
   children: null,
-  square: false,
+  preload: undefined,
   size: 'r',
-  wide: false,
-  tall: false,
   to: undefined,
+  shape: undefined,
 };
 
 export default Card;

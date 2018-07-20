@@ -7,6 +7,7 @@ const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 
 const logger = require('../server/logger');
+
 const pkg = require(path.resolve(process.cwd(), 'package.json'));
 const dllConfig = require('./dllConfig');
 const webpackBaseConfig = require('./webpack.base');
@@ -21,9 +22,7 @@ const plugins = [
 ];
 
 glob.sync(`${dllConfig.path}/*.dll.js`).forEach((dllPath) => {
-  plugins.push(
-    new AddAssetHtmlPlugin({ filepath: dllPath, includeSourcemap: false }),
-  );
+  plugins.push(new AddAssetHtmlPlugin({ filepath: dllPath, includeSourcemap: false }));
 });
 
 const dependencyHandlers = () => {
@@ -43,12 +42,10 @@ const dependencyHandlers = () => {
       process.exit(0);
     }
 
-    return new webpack.DllReferencePlugin(
-      {
-        context: process.cwd(),
-        manifest: require(manifestPath),
-      }
-    );
+    return new webpack.DllReferencePlugin({
+      context: process.cwd(),
+      manifest: require(manifestPath),
+    });
   });
 };
 
@@ -66,17 +63,19 @@ module.exports = webpackBaseConfig({
       exclude: /node_modules/,
       use: [
         'style-loader',
-        'css-loader', {
+        'css-loader',
+        {
           loader: 'postcss-loader',
           options: {
             ident: 'postcss',
-            plugins: (loader) => [require('autoprefixer')()]
+            plugins: loader => [require('autoprefixer')()],
           },
         },
         'sass-loader',
       ],
-    }, {
-      test: /\.(png|jpe?g|gif)$/,
+    },
+    {
+      test: /\.(png|jpe?g)$/,
       use: {
         loader: 'responsive-loader',
         options: {
@@ -87,12 +86,22 @@ module.exports = webpackBaseConfig({
           name: 'img/[name]-[width].[ext]',
         },
       },
-    }, {
+    },
+    {
       test: /\.(mp4)$/,
       use: {
         loader: 'file-loader',
         options: {
           name: 'video/[name].[ext]',
+        },
+      },
+    },
+    {
+      test: /\.(gif)$/,
+      use: {
+        loader: 'file-loader',
+        options: {
+          name: 'img/[name].[ext]',
         },
       },
     },

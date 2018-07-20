@@ -14,7 +14,7 @@ module.exports = webpackBaseConfig({
   // Don't use hashes in dev mode for better performance
   output: {
     filename: '[name].[chunkhash].js',
-    chunkFilename: '[name].[chunkhash].chunk.js'
+    chunkFilename: '[name].[chunkhash].chunk.js',
   },
 
   optimization: {
@@ -36,43 +36,56 @@ module.exports = webpackBaseConfig({
           {
             loader: 'css-loader',
             options: {
-              minimize: true
-            }
-          }, {
+              minimize: true,
+            },
+          },
+          {
             loader: 'postcss-loader',
             options: {
               ident: 'postcss',
-              plugins: (loader) => [require('autoprefixer')()]
-            }
+              plugins: loader => [require('autoprefixer')()],
+            },
           },
           'sass-loader',
-        ]
-      })
-    }, {
-    test: /\.(png|jpe?g|gif)$/,
-    use: {
-      loader: 'responsive-loader',
-      options: {
-        adapter: require('responsive-loader/sharp'),
-        sizes: [300, 600, 1200, 2000],
-        placeholder: true,
-        placeholderSize: 64,
-        name: 'img/[hash]-[width].[ext]',
+        ],
+      }),
+    },
+    {
+      test: /\.(png|jpe?g|gif)$/,
+      use: {
+        loader: 'responsive-loader',
+        options: {
+          adapter: require('responsive-loader/sharp'),
+          sizes: [300, 600, 1200, 2000],
+          placeholder: true,
+          placeholderSize: 64,
+          name: 'img/[hash]-[width].[ext]',
+        },
       },
     },
-  }, {
-    test: /\.(mp4)$/,
-    use: {
-      loader: 'file-loader',
-      options: {
-        name: 'video/[hash].[ext]',
+    {
+      test: /\.(mp4)$/,
+      use: {
+        loader: 'file-loader',
+        options: {
+          name: 'video/[hash].[ext]',
+        },
       },
     },
-  }],
+    {
+      test: /\.(gif)$/,
+      use: {
+        loader: 'file-loader',
+        options: {
+          name: 'img/[hash].[ext]',
+        },
+      },
+    },
+  ],
   plugins: [
-    new ImageminPlugin({test: /\.(png|jpe?g|gif)$/}),
+    new ImageminPlugin({ test: /\.(png|jpe?g|gif)$/ }),
     new webpack.optimize.ModuleConcatenationPlugin(),
-    new ExtractTextPlugin("styles.css"),
+    new ExtractTextPlugin('styles.css'),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       minify: {
@@ -85,10 +98,10 @@ module.exports = webpackBaseConfig({
         keepClosingSlash: true,
         minifyJS: true,
         minifyCSS: true,
-        minifyURLs: true
+        minifyURLs: true,
       },
-      inject: true
-    })
+      inject: true,
+    }),
   ],
 
   // Emit a source map for easier debugging See
@@ -96,6 +109,6 @@ module.exports = webpackBaseConfig({
   devtool: 'cheap-module-source-map',
 
   performance: {
-    hints: false
-  }
+    hints: false,
+  },
 });

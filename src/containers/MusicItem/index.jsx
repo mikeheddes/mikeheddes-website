@@ -7,6 +7,7 @@ import Section from 'components/Section';
 import Box from 'components/Box';
 import Image from 'components/Image';
 import LinkList from 'components/LinkList';
+import Link from 'components/Link';
 
 import mapState from './mapState';
 import {
@@ -31,6 +32,14 @@ const extraLinks = [
   {
     service: 'YouTube',
     url: 'https://youtube.com/mikeheddes',
+  },
+  {
+    service: 'Spotify',
+    url: 'https://spotify.com/mikeheddes',
+  },
+  {
+    service: 'Apple Music',
+    url: 'https://itunes.com/mikeheddes',
   },
 ];
 
@@ -99,7 +108,7 @@ class MusicItem extends Component {
         <Main>
           <Box display="flex" width="content" marginLeft="auto" marginRight="auto">
             <Box flex="grow" marginRight="l">
-              <Image {...item && item.coverImage} square rounded />
+              <Image {...item && item.coverImage} shape="square" rounded />
               {item && item.description && (
                 <Description>
                   {item.description}
@@ -118,12 +127,18 @@ class MusicItem extends Component {
                   <GenreDate>
                     {`${item.genre} - ${item.publishedAt.getFullYear()}`}
                   </GenreDate>
-                  <LinkList
-                    links={[...item.externalUrls, ...extraLinks].map(link => ({
-                      ...link,
-                      name: link.service,
-                    }))}
-                  />
+                  <LinkList width="fixed">
+                    {extraLinks.map(link => (
+                      <Link
+                        to={link.url}
+                        key={link.service}
+                        variation="button"
+                        display="block"
+                      >
+                        {link.service}
+                      </Link>
+                    ))}
+                  </LinkList>
                   <TrackTable tracks={item.tracks} artist={item.artist} />
                   <AlbumInfo>
                     {`${item.tracks.length} tracks, ${this.albumTotalMinutes(item.tracks)} minutes`}

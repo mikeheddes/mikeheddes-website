@@ -113,7 +113,7 @@ export default class MusicOverview extends Component {
             {items => items.map(item => (
               <Card
                 key={item.id}
-                square
+                shape="square"
                 maxTitleLines={1}
                 maxDescriptionLines={1}
                 to={`/${contentType}/${item.id}`}

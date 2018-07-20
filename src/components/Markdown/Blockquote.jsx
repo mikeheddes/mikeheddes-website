@@ -1,39 +1,32 @@
 import styled, { css } from 'styled-components';
+import { darken, transparentize as fade } from 'polished';
 import { media } from 'utils/mixins';
-import { space } from 'style';
-import position, { widthProp } from 'utils/position';
+import { space, radius } from 'style';
 
 const Blockquote = styled.blockquote`
   font-size: inherit;
   border-left: 5px solid;
-  border-color: ${({ theme }) => theme.borderSeparate};
-  padding-left: ${space.m}px;
+  border-color: ${({ theme }) => fade(0.5, theme.link)};
+  background-color: ${({ theme }) => theme.surface};
+  padding: ${space.m}px;
   margin-top: ${space.xm}px;
   margin-bottom: ${space.xm}px;
-  ${position};
+  border-radius: ${radius.s}px;
 
   ${media.tabletLandscape(css`
-    padding-left: ${space.xm}px;
+    padding: ${space.xm}px;
   `)};
-
-  a {
-    font-weight: 500;
-  }
 
   p {
     color: ${({ theme }) => theme.textSubtle};
     line-height: 1.25;
     margin: 0;
     margin-bottom: 10px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 `;
-
-Blockquote.propTypes = {
-  width: widthProp,
-};
-
-Blockquote.defaultProps = {
-  width: 'text',
-};
 
 export default Blockquote;

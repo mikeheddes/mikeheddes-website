@@ -1,19 +1,18 @@
 import { connect } from 'react-redux';
-import { getArticleItem } from 'actions/articles';
 import { setTheme } from 'actions/ui';
+import articles from 'components/articles';
 
 
 function mapStateToProps(state, props) {
   const { match } = props;
-  const { contentType, id } = match.params;
+  const { id } = match.params;
   return {
-    item: state.entities[contentType].byId[id],
+    item: articles[id],
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    getItem: id => dispatch(getArticleItem(id)),
     setTheme: theme => dispatch(
       setTheme(theme),
     ),

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 import OnPageTransition from 'utils/OnPageTransition';
 import Home from 'containers/Home';
-import About from 'containers/About';
+import About from 'containers/About/Loadable';
 import NoMatch from 'components/NoMatch';
 import Footer from 'components/Footer';
 import Nav from 'containers/Nav';

@@ -1,8 +1,6 @@
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { hiDPI } from 'polished';
-import position from 'utils/position';
-
 import zD from 'style/zDepth';
 
 const Wrapper = styled.div`
@@ -11,7 +9,6 @@ const Wrapper = styled.div`
   overflow: hidden;
   padding-bottom: ${({ ratio }) => Math.round(ratio * 100)}%;
   border-radius: ${({ radius }) => radius}px;
-  ${position};
 
   ${({ onClick }) => onClick
     && css`
@@ -86,6 +83,5 @@ Wrapper.defaultProps = {
   radius: 0,
   border: true,
 };
-
 
 export default Wrapper;

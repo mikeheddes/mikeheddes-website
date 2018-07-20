@@ -2,12 +2,14 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { marginPropType, paddingPropType, zDepthPropType } from 'utils/PropTypes';
 import { createMargin, createPadding, createWidth } from 'utils/createSpace';
+import { fluidText } from 'utils/mixins';
 
 
 const Box = styled.div`
   display: ${({ display }) => display};
   position: ${({ position }) => position};
   text-align: ${({ textAlign }) => textAlign};
+  ${({ markdown }) => markdown && fluidText(18, 20)}};
 
   margin: ${({
     margin, marginTop, marginRight, marginBottom, marginLeft,
@@ -130,6 +132,7 @@ Box.propTypes = {
   marginRight: marginPropType,
   marginBottom: marginPropType,
   marginLeft: marginPropType,
+  markdown: PropTypes.bool,
   overflow: PropTypes.oneOf(['visible', 'hidden', 'scroll', 'scrollX', 'scrollY', 'auto']),
   padding: paddingPropType,
   paddingX: paddingPropType,
@@ -152,6 +155,7 @@ Box.defaultProps = {
   flex: 'shrink',
   justifyContent: 'start',
   margin: 0,
+  markdown: false,
   overflow: 'visible',
   padding: 0,
   position: 'static',

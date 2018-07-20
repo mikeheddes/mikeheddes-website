@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { space } from 'style';
-import position, { widthProp } from 'utils/position';
 
 const listStyle = css`
   list-style-position: inside;
@@ -11,7 +10,6 @@ const listStyle = css`
   ${({ tag }) => tag === 'ol' && css``};
   ${({ tag }) => tag === 'ul' && css``};
   margin-bottom: ${space.xr}px;
-  ${position};
 
   ol, ul {
     padding-left: 1.25em;
@@ -39,12 +37,10 @@ List.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   tag: PropTypes.oneOf(['ol', 'ul']).isRequired,
-  width: widthProp,
 };
 
 List.defaultProps = {
   className: '',
-  width: 'text',
 };
 
 export default List;

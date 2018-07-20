@@ -44,12 +44,12 @@ const TextBox = (props) => {
           </Artist>
         )
       }
-      <Link to={url}>
+      <Link to={url} display="block" textAlign="left">
         {actionTitle}
       </Link>
       {
         externalActionTitle && externalUrls.length > 0 && (
-          <Link to={externalUrls[0].url}>
+          <Link to={externalUrls[0].url} display="block" textAlign="left">
             {`${externalActionTitle} ${externalUrls[0].service}`}
           </Link>
         )

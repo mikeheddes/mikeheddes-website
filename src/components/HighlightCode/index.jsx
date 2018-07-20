@@ -6,7 +6,7 @@ import Pre from './Pre';
 import Code from './Code';
 
 hljs.configure({
-  classPrefix: '', // don't append class prefix
+  classPrefix: '', // don't add a class prefix
 });
 
 export default class HighlightCode extends Component {

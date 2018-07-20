@@ -67,11 +67,6 @@ export default styled.header`
     font-weight: 700;
     margin-top: ${space.s}px;
   }
-
-  & a {
-    font-size: 17px;
-    font-weight: 500;
-  }
 `;
 
 export const TitleBox = styled.div`

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { fluidText } from 'utils/mixins';
 import { space, radius, typography } from 'style';
-import position, { widthProp } from 'utils/position';
 import { transparentize as fade } from 'polished';
 
 const Pre = styled.pre`
@@ -11,15 +10,6 @@ const Pre = styled.pre`
   font-family: ${typography.mono};
   line-height: 1.25;
   border-radius: ${radius.m}px;
-  ${position};
 `;
-
-Pre.propTypes = {
-  width: widthProp,
-};
-
-Pre.defaultProps = {
-  width: 'text',
-};
 
 export default Pre;

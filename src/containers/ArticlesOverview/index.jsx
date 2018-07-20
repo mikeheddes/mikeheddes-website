@@ -74,6 +74,7 @@ export default class ArticlesOverview extends Component {
   render() {
     const { bannerLinks, match } = this.props;
     const { contentType } = match.params;
+    // console.log(article);
     return (
       <ThemeProvider theme={this.setTheme}>
         <React.Fragment>
@@ -110,8 +111,9 @@ export default class ArticlesOverview extends Component {
                 title={item.title}
                 maxTitleLines={2}
                 maxDescriptionLines={3}
-                image={item.heroImage}
+                image={{ ...item.imageCover, width: undefined }}
                 size="m"
+                preload={item.loadablePost.preload}
                 to={`/${contentType}/${item.id}`}
               />
             ))

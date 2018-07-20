@@ -2,50 +2,74 @@ import React, { Component } from 'react';
 import { Link as Anchor } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
+import {
+  defaultStyle,
+  linkStyle,
+  primaryStyle,
+  subtleLinkStyle,
+  subtleStyle,
+  actionStyle,
+  basicStyle,
+} from 'components/Button';
 import ForwardSVG from 'svg/Forward';
 import ExitSVG from 'svg/Exit';
 
-const styleLink = Comp => styled(Comp)`
-  ${({ noTheme }) => (noTheme
-    ? css`
-          text-decoration: none;
-        `
-    : css`
-          color: ${({ theme }) => theme.link};
-          ${({ noFontSize }) => !noFontSize
-            && css`
-              font-size: 17px;
-            `};
-          text-decoration: none;
-          transition: opacity 150ms cubic-bezier(0.19, 1, 0.22, 1);
-          -webkit-tap-highlight-color: transparent;
+const overallLinkStyle = css`
+  ${({ noTheme }) => noTheme
+    && css`
+      text-decoration: none;
+    `};
+  ${({ noTheme }) => !noTheme
+    && css`
+      ${basicStyle};
 
-          &:hover {
-            text-decoration: underline;
-          }
+      ${({ noFontSize }) => noFontSize
+        && css`
+          font-size: inherit;
+        `};
 
-          &:active {
-            opacity: 0.6;
-          }
-        `)};
+      ${({ variation }) => {
+    switch (variation) {
+      case 'button':
+        return defaultStyle;
+      case 'buttonPrimary':
+        return primaryStyle;
+      case 'subtle':
+        return subtleLinkStyle;
+      case 'subtleButton':
+        return subtleStyle;
+      case 'action':
+        return actionStyle;
+      default:
+        return linkStyle;
+    }
+  }};
+    `};
   cursor: pointer;
 `;
 
-const ToPropToHref = (props) => {
+const ToToHref = styled.a`
+  ${overallLinkStyle};
+`;
+
+const LinkWithTarget = (props) => {
   const { to, children, ...other } = props;
   return (
-    <a href={to} {...other}>
+    <ToToHref href={to} {...other}>
       {children}
-    </a>
+    </ToToHref>
   );
 };
 
-ToPropToHref.propTypes = {
+LinkWithTarget.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string.isRequired,
   to: PropTypes.string.isRequired,
   target: PropTypes.string.isRequired,
 };
+
+
+const LinkWithoutTarget = ToToHref.withComponent(Anchor);
 
 class Link extends Component {
   static propTypes = {
@@ -54,20 +78,36 @@ class Link extends Component {
     download: PropTypes.bool,
     to: PropTypes.string.isRequired,
     // eslint-disable-next-line react/no-unused-prop-types
+    display: PropTypes.oneOf(['block', 'inline-block']),
+    // eslint-disable-next-line react/no-unused-prop-types
     noFontSize: PropTypes.bool,
     noIcon: PropTypes.bool,
     noInner: PropTypes.bool,
     // eslint-disable-next-line react/no-unused-prop-types
     noTheme: PropTypes.bool,
+    // eslint-disable-next-line react/no-unused-prop-types
+    variation: PropTypes.oneOf([
+      'default',
+      'button',
+      'buttonPrimary',
+      'action',
+      'subtleButton',
+      'subtle',
+    ]),
+    // eslint-disable-next-line react/no-unused-prop-types
+    textAlign: PropTypes.oneOf(['center', 'left', 'right']),
   };
 
   static defaultProps = {
     className: '',
     download: false,
+    display: null,
     noFontSize: false,
     noIcon: false,
     noInner: false,
     noTheme: false,
+    variation: 'default',
+    textAlign: 'center',
   };
 
   getLinkType = () => {
@@ -117,15 +157,15 @@ class Link extends Component {
 
   render() {
     const {
-      children, className, noIcon, noInner, to,
+      children, className, noIcon, noInner, to, ...styleProps
     } = this.props;
     const linkType = this.getLinkType();
     const target = this.getTarget(linkType);
     const href = linkType === 'DOWNLOAD' ? '#' : to;
     const Icon = this.getIcon(linkType);
-    const Wrapper = target ? ToPropToHref : Anchor;
+    const Wrapper = target ? LinkWithTarget : LinkWithoutTarget;
     return (
-      <Wrapper className={className} target={target} to={href}>
+      <Wrapper className={className} target={target} to={href} {...styleProps}>
         {!noInner ? (
           <span>
             {children}
@@ -137,4 +177,6 @@ class Link extends Component {
   }
 }
 
-export default styleLink(Link);
+export default styled(Link)`
+
+`;

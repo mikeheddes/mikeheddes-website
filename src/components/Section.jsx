@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { media, mediaSize } from 'utils/mixins';
+import { media } from 'utils/mixins';
 import { createPadding } from 'utils/createSpace';
-import { width, space } from 'style';
+import { space } from 'style';
 import { hiDPI } from 'polished';
 
 const Section = styled.section`
   position: ${({ position }) => position};
+  display: ${({ display }) => display};
 
   ${({ background }) => background
     && css`
@@ -55,51 +56,13 @@ const Section = styled.section`
           `)};
         `
     : '')};
-
-  ${({ grid }) => grid
-    && css`
-  display: grid;
-  grid-template-rows: auto;
-  grid-template-columns: [full-start] ${
-  space.m
-}px [content-start text-start] 1fr [text-end content-end] ${space.m}px [full-end];
-
-  ${media.tabletPortrait(css`
-    grid-template-columns:
-      [full-start] ${space.xl}px [content-start] 1fr [text-start] minmax(auto, ${width.text}px)
-      [text-end] 1fr [content-end] ${space.xl}px [full-end];
-  `)}
-
-  ${media.tabletLandscape(css`
-    grid-template-columns:
-      [full-start] minmax(${space.M}px, 1fr) [content-start] minmax(
-        auto,
-        ${(width.content - width.text) / 2}px
-      )
-      [text-start] minmax(
-        ${mediaSize.tabletLandscape - space.M * 2}px,
-        ${width.text}px
-      ) [text-end] minmax(auto, ${(width.content - width.text) / 2}px)
-      [content-end] minmax(${space.M}px, 1fr) [full-end];
-  `)}
-
-  ${media.desktop(css`
-    grid-template-columns:
-      [full-start] minmax(${space.M}px, 1fr) [content-start] minmax(
-        auto,
-        ${(width.content - width.text) / 2}px
-      )
-      [text-start] ${width.text}px [text-end] minmax(auto, ${(width.content - width.text) / 2}px)
-      [content-end] minmax(${space.M}px, 1fr) [full-end];
-  `)};
-    `}
 `;
 
 Section.propTypes = {
   background: PropTypes.bool,
   borderBottom: PropTypes.bool,
   borderTop: PropTypes.bool,
-  grid: PropTypes.bool,
+  display: PropTypes.oneOf(['block', 'flex']),
   marginBottom: PropTypes.bool,
   marginTop: PropTypes.bool,
   noPaddingX: PropTypes.bool,
@@ -111,7 +74,7 @@ Section.defaultProps = {
   background: false,
   borderBottom: false,
   borderTop: false,
-  grid: false,
+  display: 'block',
   marginBottom: false,
   marginTop: false,
   noPaddingX: false,

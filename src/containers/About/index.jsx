@@ -5,14 +5,9 @@ import Section from 'components/Section';
 import Banner from 'components/Banner';
 import { colorNames } from 'style/color';
 import Box from 'components/Box';
-import Paragraph from 'components/Markdown/Paragraph';
-import { fluidText } from 'utils/mixins';
+import components from 'components/Markdown';
 
 import Txt from './text.md';
-
-const MDBox = Box.extend`
-  ${fluidText(18, 20)};
-`;
 
 export default class About extends Component {
   static propTypes = {
@@ -55,9 +50,9 @@ export default class About extends Component {
             </h1>
           </Banner>
           <Section>
-            <MDBox width="text" marginLeft="auto" marginRight="auto">
-              <Txt components={{ p: Paragraph }} />
-            </MDBox>
+            <Box width="text" marginLeft="auto" marginRight="auto" markdown>
+              <Txt components={components} />
+            </Box>
           </Section>
         </React.Fragment>
       </ThemeProvider>

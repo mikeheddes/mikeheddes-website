@@ -74,7 +74,6 @@ export const Artist = styled.h2`
 export const Link = Anchor.extend`
   ${fluidText(17, 20)};
   font-weight: 500;
-  display: block;
   margin-right: auto;
   margin-bottom: ${space.xr}px;
   ${media.desktop(css`

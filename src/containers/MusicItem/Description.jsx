@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Heading from 'components/Markdown/Heading';
-import Paragraph from 'components/Markdown/Paragraph';
+import Heading from 'components/Heading';
+import Paragraph from 'components/Paragraph';
 import Button from 'components/Button';
 import Box from 'components/Box';
 
@@ -33,7 +33,7 @@ export default class Description extends PureComponent {
         </Heading>
         <Paragraph
           innerRef={this.setDescriptionRef}
-          lineClamp={needToToggle && !extended ? 3 : undefined}
+          lineClamp={needToToggle && !extended ? 3 : null}
           color="subtle"
           size="r"
           marginBottom="s"

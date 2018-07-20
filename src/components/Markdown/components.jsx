@@ -33,8 +33,3 @@ Anchor.propTypes = {
 };
 
 export { Anchor };
-
-export const Image = (props) => {
-  console.log(props);
-  return <img {...props} />;
-};

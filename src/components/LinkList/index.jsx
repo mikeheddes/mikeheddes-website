@@ -1,35 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 // import Link from 'components/Link';
-import Wrapper, { Link } from './Wrapper';
+import List, { Item } from './components';
 
 const LinkList = (props) => {
-  const { links, onSurface } = props;
+  const { width, children, textAlign } = props;
   return (
-    <Wrapper onSurface={onSurface}>
+    <List textAlign={textAlign}>
       {
-        links && links.map(link => (
-          <Link key={link.name} to={link.url} noInner noFontSize onSurface={onSurface}>
-            <li>
-              {link.name}
-            </li>
-          </Link>
+        children.map(component => (
+          <Item key={component.key} width={width}>
+            {component}
+          </Item>
         ))
       }
-    </Wrapper>
+    </List>
   );
 };
 
 LinkList.propTypes = {
-  links: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    url: PropTypes.string.isRequired,
+  children: PropTypes.arrayOf(PropTypes.shape({
+    key: PropTypes.string.isRequired,
   })).isRequired,
-  onSurface: PropTypes.bool,
+  textAlign: PropTypes.oneOf(['right', 'left', 'center']),
+  width: PropTypes.oneOf(['dynamic', 'fixed']),
 };
 
 LinkList.defaultProps = {
-  onSurface: false,
+  textAlign: 'left',
+  width: 'dynamic',
 };
 
 export default LinkList;
