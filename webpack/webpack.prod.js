@@ -51,7 +51,7 @@ module.exports = webpackBaseConfig({
       }),
     },
     {
-      test: /\.(png|jpe?g|gif)$/,
+      test: /\.(png|jpe?g)$/,
       use: {
         loader: 'responsive-loader',
         options: {

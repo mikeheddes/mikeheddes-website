@@ -9,13 +9,10 @@ import Blur from 'components/Blur';
 import { highlightTypes, contentTypes } from 'actions/content';
 import Section from 'components/Section';
 
-import {
-  ContentWrapper,
-} from './components';
+import { ContentWrapper } from './components';
 import ImageBox from './ImageBox';
 import TextBox from './TextBox';
 import mapState from './mapState';
-
 
 class ContentHighlight extends Component {
   static propTypes = {
@@ -32,7 +29,7 @@ class ContentHighlight extends Component {
     externalActionTitle: PropTypes.node,
     marginTop: PropTypes.bool,
     marginBottom: PropTypes.bool,
-  }
+  };
 
   static defaultProps = {
     content: undefined,
@@ -41,7 +38,7 @@ class ContentHighlight extends Component {
     externalActionTitle: undefined,
     marginTop: undefined,
     marginBottom: undefined,
-  }
+  };
 
   componentDidMount() {
     const {
@@ -65,17 +62,13 @@ class ContentHighlight extends Component {
       contentType,
       actionTitle,
     } = this.props;
+    const placeholder = content
+      && ((content.imageCover && content.imageCover.placeholder)
+        || (content.heroImage && content.heroImage.placeholder));
     return (
       <ThemeProvider theme={this.setTheme}>
-        <Section
-          marginTop={marginTop}
-          marginBottom={marginBottom}
-          position="relative"
-          background
-        >
-          {content && content.heroImage && content.heroImage.placeholder
-            && <Blur src={content.heroImage.placeholder} />
-          }
+        <Section marginTop={marginTop} marginBottom={marginBottom} position="relative" background>
+          {placeholder && <Blur src={placeholder} opacity={0.6} />}
           <ContentWrapper
             marginLeft="auto"
             marginRight="auto"
@@ -86,7 +79,9 @@ class ContentHighlight extends Component {
             <ImageBox
               contentType={contentType}
               eyebrow={eyebrow}
-              image={content && { ...content.heroImage, alt: content.title }}
+              image={
+                content && { ...(content.imageCover || content.heroImage), alt: content.title }
+              }
               to={content && `/${contentType}/${content.id}`}
             />
             <TextBox

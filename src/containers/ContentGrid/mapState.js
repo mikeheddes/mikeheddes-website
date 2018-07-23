@@ -13,7 +13,7 @@ const setVisibilityFilters = {
 function makeMapStateToProps() {
   const getAllContentByType = makeGetAllContentByType();
   const mapStateToProps = (state, props) => ({
-    allContent: getAllContentByType(state, props),
+    visibleContent: getAllContentByType(state, props),
     activeFilter: getVisibilityFilter(state, props),
   });
   return mapStateToProps;

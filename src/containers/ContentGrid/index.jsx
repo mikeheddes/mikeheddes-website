@@ -4,14 +4,13 @@ import Section from 'components/Section';
 import Box from 'components/Box';
 import { contentTypes } from 'actions/content';
 import GridBox from 'components/GridBox';
-import article from 'components/articles';
 
 import TitleRow from './TitleRow';
 import mapState from './mapState';
 
 class ContentGrid extends Component {
   static propTypes = {
-    allContent: PropTypes.arrayOf(
+    visibleContent: PropTypes.arrayOf(
       PropTypes.shape({
         title: PropTypes.string.isRequired,
         id: PropTypes.string.isRequired,
@@ -36,7 +35,7 @@ class ContentGrid extends Component {
   };
 
   static defaultProps = {
-    allContent: [],
+    visibleContent: [],
     filters: [],
     title: 'All',
   };
@@ -48,7 +47,7 @@ class ContentGrid extends Component {
 
   render() {
     const {
-      allContent,
+      visibleContent,
       children,
       title,
       filters,
@@ -58,12 +57,7 @@ class ContentGrid extends Component {
       tabletPortraitColumns,
       tabletLandscapeColumns,
       desktopColumns,
-      contentType,
     } = this.props;
-    // console.log(allContent);
-    // console.log(activeFilter);
-    const someContent = contentType === 'articles' ? Object.values(article) : allContent;
-    // console.log(someContent);
     return (
       <Section noBackground>
         <Box width="content" marginLeft="auto" marginRight="auto">
@@ -79,7 +73,7 @@ class ContentGrid extends Component {
             tabletLandscapeColumns={tabletLandscapeColumns}
             desktopColumns={desktopColumns}
           >
-            {children(someContent)}
+            {children(visibleContent)}
           </GridBox>
         </Box>
       </Section>

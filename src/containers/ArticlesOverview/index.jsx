@@ -111,7 +111,7 @@ export default class ArticlesOverview extends Component {
                 title={item.title}
                 maxTitleLines={2}
                 maxDescriptionLines={3}
-                image={{ ...item.imageCover, width: undefined }}
+                image={item.imageCover}
                 size="m"
                 preload={item.loadablePost.preload}
                 to={`/${contentType}/${item.id}`}

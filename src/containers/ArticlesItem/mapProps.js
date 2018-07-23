@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import { setTheme } from 'actions/ui';
 import articles from 'components/articles';
 
-
 function mapStateToProps(state, props) {
   const { match } = props;
   const { id } = match.params;

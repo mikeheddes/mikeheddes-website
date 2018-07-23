@@ -3,6 +3,7 @@ import google from './google';
 import jupiter from './jupiter';
 import fanta from './fanta';
 import appleMl from './appleML';
+import verge from './vergeGiftGuide';
 
 export default {
   [appleOled.id]: appleOled,
@@ -10,4 +11,5 @@ export default {
   [jupiter.id]: jupiter,
   [fanta.id]: fanta,
   [appleMl.id]: appleMl,
+  [verge.id]: verge,
 };

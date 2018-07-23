@@ -1,39 +1,59 @@
 /* eslint-env browser */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { withTheme } from 'styled-components';
 import StackBlur from 'stackblur-canvas';
 import lodash from 'lodash';
 
-
-const styleCanvas = Comp => (
-  styled(Comp)`
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    opacity: .6;
-    background-color: ${({ theme }) => theme.surfaceProminent};
-  `
-);
+const Canvas = styled.canvas`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 1.25s cubic-bezier(0, 0, 0.25, 1);
+  opacity: ${({ opacity, loaded }) => (loaded ? opacity : 0)};
+  background-color: ${({ theme, background }) => theme[background]};
+`;
 
 class Blur extends Component {
   handleResize = lodash.debounce(() => {
     this.drawImageFromScratch();
   }, 200);
 
+  scaleLookup = {
+    cover: 'max',
+    contain: 'min',
+  }
+
   static propTypes = {
     className: PropTypes.string,
     src: PropTypes.string.isRequired,
     radius: PropTypes.number,
+    opacity: PropTypes.number,
+    onLoad: PropTypes.func,
+    fit: PropTypes.oneOf(['cover', 'contain']),
+    background: PropTypes.oneOf(['surfaceProminent', 'background', 'surface']),
+    theme: PropTypes.shape({
+      background: PropTypes.string.isRequired,
+      surfaceProminent: PropTypes.string.isRequired,
+      surface: PropTypes.string.isRequired,
+    }).isRequired,
   }
 
   static defaultProps = {
     className: '',
     radius: 100,
+    opacity: 1,
+    onLoad: () => {},
+    fit: 'cover',
+    background: 'surfaceProminent',
+  }
+
+  state = {
+    loaded: false,
   }
 
   componentDidMount() {
@@ -58,21 +78,27 @@ class Blur extends Component {
     window.removeEventListener('resize', this.handleResize);
   }
 
+  setCanvasRef = (node) => { this.canvas = node; };
+
   loadImage = (src) => {
+    const { onLoad } = this.props;
     const sourceImage = new Image();
     sourceImage.onload = () => {
       this.drawImageFromScratch();
+      onLoad();
+      this.setState(prev => ({ ...prev, loaded: true }));
     };
     sourceImage.src = src;
     this.sourceImage = sourceImage;
   }
 
   calcImageSize = () => {
+    const { fit } = this.props;
     const { offsetWidth, offsetHeight } = this.canvas;
     const { naturalWidth, naturalHeight } = this.sourceImage;
     this.canvas.width = offsetWidth;
     this.canvas.height = offsetHeight;
-    const scaleFactor = Math.max(
+    const scaleFactor = Math[this.scaleLookup[fit]](
       offsetWidth / naturalWidth,
       offsetHeight / naturalHeight,
     );
@@ -92,8 +118,17 @@ class Blur extends Component {
     this.blurImage(radius);
   }
 
+  blurImage = (radius) => {
+    this.drawImage();
+    const { offsetWidth, offsetHeight } = this.canvas;
+    StackBlur.canvasRGB(this.canvas, 0, 0, offsetWidth, offsetHeight, Math.round(radius));
+  }
+
   drawImage = () => {
+    const { theme, background } = this.props;
     const context = this.canvas.getContext('2d');
+    context.fillStyle = theme[background];
+    context.fillRect(0, 0, this.canvas.width, this.canvas.height);
     context.drawImage(
       this.sourceImage,
       this.widthOffset,
@@ -103,21 +138,20 @@ class Blur extends Component {
     );
   }
 
-  blurImage = (radius) => {
-    this.drawImage();
-    const { offsetWidth, offsetHeight } = this.canvas;
-    StackBlur.canvasRGB(this.canvas, 0, 0, offsetWidth, offsetHeight, Math.round(radius));
-  }
-
   render() {
-    const { className } = this.props;
+    const { className, opacity, background } = this.props;
+    const { loaded } = this.state;
     return (
-      <canvas
+      <Canvas
         className={className}
-        ref={(x) => { this.canvas = x; }}
+        loaded={loaded}
+        opacity={opacity}
+        background={background}
+        back
+        innerRef={this.setCanvasRef}
       />
     );
   }
 }
 
-export default styleCanvas(Blur);
+export default styled(withTheme(Blur))``;

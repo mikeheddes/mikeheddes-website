@@ -17,7 +17,7 @@ export default {
   imageCover,
   imageCredits: 'Illustration by Alex Castro / The Verge',
   loadablePost,
-  publishedAt: new Date('2018-07-19'),
+  publishedAt: new Date('2018-07-20'),
   tags: ['Apple', 'machine learning'],
   theme: 'DAY',
   themeColor: 'purple',

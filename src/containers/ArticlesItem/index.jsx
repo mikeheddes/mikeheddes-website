@@ -2,7 +2,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
-import { contentTypes } from 'actions/content';
+import { categories } from 'actions/articles';
+import { themes } from 'actions/ui';
 import components from 'components/Markdown';
 import Box from 'components/Box';
 import Section from 'components/Section';
@@ -21,26 +22,39 @@ import mapProps from './mapProps';
 class ArticlesItem extends Component {
   static propTypes = {
     item: PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      title: PropTypes.string,
-      body: PropTypes.string,
       authors: PropTypes.arrayOf(
         PropTypes.shape({
           name: PropTypes.string.isRequired,
           url: PropTypes.string,
-        }),
-      ),
+        }).isRequired,
+      ).isRequired,
+      categorie: PropTypes.oneOf(categories).isRequired,
+      description: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+      imageCover: PropTypes.shape({
+        src: PropTypes.string.isRequired,
+      }).isRequired,
+      imageCredits: PropTypes.string.isRequired,
+      loadablePost: PropTypes.oneOfType([
+        PropTypes.element,
+        PropTypes.func,
+      ]).isRequired,
+      publishedAt: PropTypes.instanceOf(Date).isRequired,
+      tags: PropTypes.arrayOf(PropTypes.string),
+      theme: PropTypes.oneOf(Object.keys(themes)).isRequired,
+      themeColor: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      updatedAt: PropTypes.instanceOf(Date),
     }),
     match: PropTypes.shape({
       params: PropTypes.shape({
-        contentType: PropTypes.oneOf(contentTypes).isRequired,
         id: PropTypes.string.isRequired,
       }).isRequired,
     }).isRequired,
   };
 
   static defaultProps = {
-    item: undefined,
+    item: null,
   };
 
   state = {

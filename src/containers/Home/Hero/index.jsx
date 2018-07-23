@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
-import blobVid from 'video/blobs.mp4';
 import blobThumb from 'img/blobs-thumbnail.png';
 import Link from 'components/Link';
 import Box from 'components/Box';
+import Blur from 'components/Blur';
 
-import Video from './Video';
 import Wrapper, { TitleBox } from './Wrapper';
 
 export default class Hero extends Component {
@@ -28,34 +27,17 @@ export default class Hero extends Component {
     },
   };
 
-  state = {
-    videoLoaded: false,
-  };
-
   setThemeColors = theme => ({
     ...theme,
     link: theme.title,
   });
 
-  loadedVideo = () => {
-    this.setState(prev => ({ ...prev, videoLoaded: true }));
-  };
-
   render() {
     const { eyebrow, title, action } = this.props;
-    const { videoLoaded } = this.state;
     return (
       <ThemeProvider theme={this.setThemeColors}>
         <Wrapper>
-          <Video
-            src={blobVid}
-            poster={blobThumb}
-            loaded={videoLoaded}
-            onLoadedData={this.loadedVideo}
-            autoPlay
-            loop
-            muted
-          />
+          <Blur src={blobThumb.src} fit="contain" background="background" />
           <Box
             width="text"
             position="relative"
