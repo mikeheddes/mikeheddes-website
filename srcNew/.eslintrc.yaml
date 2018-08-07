@@ -1,0 +1,35 @@
+extends:
+  - airbnb
+  - plugin:prettier/recommended
+  - prettier/react
+parser: babel-eslint
+parserOptions:
+  ecmaVersion: 8
+  sourceType: module
+  ecmaFeatures:
+    jsx: true
+settings:
+  import/resolver:
+    webpack:
+      config:
+        resolve:
+          modules:
+            - src
+          extensions:
+            - .js
+            - .jsx
+            - .json
+            - .react.js
+rules:
+  quote-props:
+    - error
+    - as-needed
+    - unnecessary: true
+      numbers: true
+      keywords: true
+overrides:
+  - files:
+    - webpack/*.js
+    rules:
+      import/no-extraneous-dependencies: off
+      global-require: off
