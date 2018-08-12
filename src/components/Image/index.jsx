@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Spring } from 'react-spring';
-import { TimingAnimation, Easing } from 'react-spring/dist/addons';
 import { radius as rad } from 'style';
 import { zDepthPropType, radiusPropType } from 'utils/PropTypes';
 import styled from 'styled-components';
@@ -11,8 +9,7 @@ import Blur from 'components/Blur';
 import Wrapper from './Wrapper';
 import Badge from './Badge';
 import Content from './Content';
-// import Preload from './Preload';
-// import delay from 'delay';
+import Preload from './Preload';
 
 const ratioLookup = {
   screen: 0.618,
@@ -21,18 +18,6 @@ const ratioLookup = {
   wide: 0.533,
 };
 
-// const ImageAnimation = Keyframes.Spring({
-//   // Slots can take arrays/chains,
-//   loading: { from: { opacity: 0 }, to: { opacity: 0 } },
-//   // single items,
-//   loaded: {
-//     delay: 1000,
-//     to: { opacity: 1 },
-//     duration: 1000,
-//     easing: Easing.linear,
-//   },
-// });
-//
 class Image extends Component {
   static propTypes = {
     src: PropTypes.string,
@@ -53,19 +38,19 @@ class Image extends Component {
   };
 
   static defaultProps = {
-    src: undefined,
-    badge: undefined,
-    children: undefined,
+    src: null,
+    badge: null,
+    children: null,
     className: '',
-    placeholder: undefined,
+    placeholder: null,
     zDepth: 0,
     shape: 'screen',
-    alt: undefined,
-    srcSet: undefined,
+    alt: null,
+    srcSet: null,
     rounded: false,
     radius: 'r',
     noBorder: false,
-    onClick: undefined,
+    onClick: null,
     width: null,
     height: null,
   };
@@ -73,16 +58,37 @@ class Image extends Component {
   constructor(props) {
     super(props);
     this.setLoaded = this.setLoaded.bind(this);
+    this.loadImage = this.loadImage.bind(this);
   }
 
   state = {
     loaded: false,
+    showPreload: false,
   };
+
+  componentDidMount() {
+    const { placeholder } = this.props;
+    this.loadImage(placeholder);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { showPreload } = this.state;
+    if (!showPreload) {
+      const { placeholder } = nextProps;
+      this.loadImage(placeholder);
+    }
+  }
 
   setLoaded() {
     this.setState({
       loaded: true,
     });
+  }
+
+  loadImage(placeholder) {
+    if (placeholder) {
+      this.setState({ showPreload: true });
+    }
   }
 
   render() {
@@ -103,7 +109,7 @@ class Image extends Component {
       rounded,
       radius,
     } = this.props;
-    const { loaded } = this.state;
+    const { loaded, showPreload } = this.state;
     const radiusInPx = rounded ? rad[radius] : 0;
     const ratio =
       shape === 'original'
@@ -119,7 +125,12 @@ class Image extends Component {
         onClick={onClick}
         loaded={loaded}
       >
-        {placeholder && (
+        <Preload
+          src={placeholder}
+          radius={radiusInPx}
+          isVisible={!showPreload}
+        />
+        {showPreload && (
           <Blur
             background={null}
             src={placeholder}
@@ -127,25 +138,16 @@ class Image extends Component {
             radius={radiusInPx}
           />
         )}
-        <Spring
-          native
-          impl={TimingAnimation}
-          config={{ duration: 250, easing: Easing.easeIn }}
-          from={{ opacity: 1 }}
-          to={{ opacity: Number(loaded) }}
-        >
-          {style => (
-            <Content
-              style={style}
-              src={src}
-              srcSet={srcSet}
-              alt={alt}
-              radius={radiusInPx}
-              onLoad={this.setLoaded}
-              // loaded={loaded}
-            />
-          )}
-        </Spring>
+        {showPreload && (
+          <Content
+            src={src}
+            srcSet={srcSet}
+            alt={alt}
+            radius={radiusInPx}
+            onLoad={this.setLoaded}
+            loaded={loaded}
+          />
+        )}
         <ContentBorder radius={radiusInPx} />
         {badge && <Badge>{badge}</Badge>}
         {children}

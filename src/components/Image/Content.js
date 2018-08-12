@@ -11,6 +11,8 @@ const Content = styled(animated.img)`
   width: 100%;
   height: 100%;
   border-radius: ${({ radius }) => radius}px;
+  opacity: ${({ loaded }) => Number(loaded)};
+  transition: opacity 0.5s ease-in;
   overflow: hidden;
   object-fit: cover;
   object-position: center center;
