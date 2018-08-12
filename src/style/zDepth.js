@@ -6,6 +6,6 @@ const zDepth = [
   '0 14px 22px -6px rgba(0, 0, 0, .22)',
   '0 24px 32px -8px rgba(0, 0, 0, .25)',
   '0 42px 50px -30px rgba(0, 0, 0, .3)',
-]
+];
 
 export default zDepth;

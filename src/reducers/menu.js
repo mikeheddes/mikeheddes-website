@@ -1,38 +1,56 @@
+import { combineReducers } from 'redux';
 import {
   TOGGLE_MENU_VISIBILITY,
   SET_MENU_VISIBILITY,
   SET_MENU_HEIGHT,
   SET_MENU_ACTION,
   RESET_MENU_ACTION,
-  menuActionStyles
-} from '../actions';
+  SET_MENU_TITLE,
+} from 'actions/menu';
 
-const initMenuActionState = {
-  style: menuActionStyles.LINK,
-  name: null,
-  url: null
-}
-
-const initMenuState = {
-  isVisible: false,
-  menuHeight: 0,
-  action: initMenuActionState
-};
-
-export default function (state = initMenuState, action) {
+function isVisible(state = false, action) {
   switch (action.type) {
     case TOGGLE_MENU_VISIBILITY:
-      return {...state, isVisible: !state.isVisible}
+      return !state;
     case SET_MENU_VISIBILITY:
-      return {...state, isVisible: action.isVisible}
-    case SET_MENU_HEIGHT:
-      return {...state, menuHeight: action.menuHeight}
-    case SET_MENU_ACTION:
-      const { style, name, url } = action;
-      return {...state, action: {style, name, url}}
-    case RESET_MENU_ACTION:
-      return {...state, action: initMenuActionState}
+      return action.payload;
     default:
-      return state
+      return state;
   }
 }
+
+function menuHeight(state = 0, action) {
+  switch (action.type) {
+    case SET_MENU_HEIGHT:
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
+function actionReducer(state = null, action) {
+  switch (action.type) {
+    case SET_MENU_ACTION:
+      return { ...state, ...action.payload };
+    case RESET_MENU_ACTION:
+      return null;
+    default:
+      return state;
+  }
+}
+
+function title(state = 'Mike Heddes', action) {
+  switch (action.type) {
+    case SET_MENU_TITLE:
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
+export default combineReducers({
+  isVisible,
+  menuHeight,
+  action: actionReducer,
+  title,
+});

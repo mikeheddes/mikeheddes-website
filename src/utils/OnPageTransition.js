@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { setMenuVisibility } from 'actions';
+import { setMenuVisibility } from 'actions/menu';
+import { setCurtainVisibility } from 'actions/curtain';
 
 class OnPageTransition extends Component {
   static propTypes = {
@@ -23,6 +24,7 @@ class OnPageTransition extends Component {
     if (location !== prevProps.location) {
       window.scrollTo(0, 0);
       dispatch(setMenuVisibility(false));
+      dispatch(setCurtainVisibility(false));
     }
   }
 

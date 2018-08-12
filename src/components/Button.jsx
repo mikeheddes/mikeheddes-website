@@ -17,8 +17,9 @@ export const defaultStyle = css`
     background-color: ${({ theme }) => darken(0.03, theme.surface)};
   }
 
-  ${({ onSurface }) => onSurface
-    && css`
+  ${({ onSurface }) =>
+    onSurface &&
+    css`
       background-color: ${({ theme }) => darken(0.03, theme.surface)};
 
       &:hover {
@@ -110,8 +111,9 @@ const disableStyle = css`
 export const basicStyle = css`
   font-size: 17px;
   text-align: ${({ textAlign }) => textAlign};
-  ${({ display }) => display
-    && css`
+  ${({ display }) =>
+    display &&
+    css`
       display: ${display};
     `};
   font-weight: 500;

@@ -1,26 +1,30 @@
-export const TOGGLE_MENU_VISIBILITY = 'TOGGLE_MENU_VISIBILITY';
-export const SET_MENU_VISIBILITY = 'SET_MENU_VISIBILITY';
-export const SET_MENU_HEIGHT = 'SET_MENU_HEIGHT';
-export const SET_MENU_ACTION = 'SET_MENU_ACTION';
-export const RESET_MENU_ACTION = 'RESET_MENU_ACTION';
+export const TOGGLE_MENU_VISIBILITY = '[menu] Toggle visibility';
+export const SET_MENU_VISIBILITY = '[menu] Set visibility';
+export const SET_MENU_HEIGHT = '[menu] Set height';
+export const SET_MENU_ACTION = '[menu] Set action';
+export const RESET_MENU_ACTION = '[menu] Reset action';
+export const SET_MENU_TITLE = '[menu] Set title';
 
-export const menuActionStyles = {
-  LINK: 'LINK',
-  BUTTON: 'BUTTON',
-};
-
-export function setMenuAction(name, url, style = menuActionStyles.LINK) {
+export function setMenuAction(name, onClick) {
   return {
     type: SET_MENU_ACTION,
-    style,
-    name,
-    url,
+    payload: {
+      name,
+      onClick,
+    },
   };
 }
 
 export function resetMenuAction() {
   return {
     type: RESET_MENU_ACTION,
+  };
+}
+
+export function setMenuTitle(title) {
+  return {
+    type: SET_MENU_TITLE,
+    payload: title,
   };
 }
 
@@ -33,13 +37,13 @@ export function toggleMenuVisibility() {
 export function setMenuVisibility(isVisible) {
   return {
     type: SET_MENU_VISIBILITY,
-    isVisible,
+    payload: isVisible,
   };
 }
 
 export function setMenuHeight(menuHeight) {
   return {
     type: SET_MENU_HEIGHT,
-    menuHeight,
+    payload: menuHeight,
   };
 }

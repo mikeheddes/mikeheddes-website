@@ -24,10 +24,10 @@ export const media = {
 };
 
 const cssQuery = query => styles => css`
-    ${query} {
-      ${styles};
-    }
-  `;
+  ${query} {
+    ${styles};
+  }
+`;
 
 export const has = {
   backdrop: cssQuery('@supports (backdrop-filter: blur(2px))'),
@@ -38,16 +38,16 @@ export const center = css`
   margin-left: auto;
 `;
 
-
 export const fluidValue = (min, max, param, unit = '') => css`
-    ${param}: ${min}${unit};
+  ${param}: ${`${min}${unit}`};
 
-    ${media.tabletPortrait(css`
+  ${media.tabletPortrait(css`
     ${''}
-      ${param}: calc(${max - min} * (100vw - 600px) / ${1200 - 600} + ${min}${unit});
+      ${param}: calc(${max - min} * (100vw - 600px) / ${mediaSize.desktop -
+    mediaSize.tabletPortrait} + ${min}${unit});
     `)} ${media.desktop(css`
-      ${param}: ${max}${unit};
-    `)};
-  `;
+    ${param}: ${`${max}${unit}`};
+  `)};
+`;
 
 export const fluidText = (min, max) => fluidValue(min, max, 'font-size', 'px');

@@ -59,15 +59,17 @@ const holdingMiddleware = compiler => {
   });
 
   compiler.watch({ ignored: /node_modules/ }, () => {
-    isFirstCompile = false;
-    // First do cache set stuff
-    require(loadableStatsPath);
-    require(clientManifestPath);
-    const serverBundle = require(serverOutputPath);
-    serverBundle.loadablePreload().then(() => {
-      resolveCompiling();
-      isCompiling = false;
-    });
+    setTimeout(() => {
+      isFirstCompile = false;
+      // First do cache set stuff
+      require(loadableStatsPath);
+      require(clientManifestPath);
+      const serverBundle = require(serverOutputPath);
+      serverBundle.loadablePreload().then(() => {
+        resolveCompiling();
+        isCompiling = false;
+      });
+    }, 10000);
   });
 
   return (req, res, next) => {

@@ -1,29 +1,22 @@
 import React from 'react';
 import Heading from 'components/Heading';
 
-import {
-  Bold, Italic, Code, Anchor,
-} from './components';
+import { Bold, Italic, Anchor } from './components';
 import Paragraph from './Paragraph';
 import HorizontalRule from './HorizontalRule';
+import Code from './Code';
 import Preformatted from './Preformatted';
 import List from './List';
 import Blockquote from './Blockquote';
 import Table from './Table';
 import Image from './Image';
 
-export {
-  Heading,
-  Bold,
-  Italic,
-  Code,
-  Anchor,
-};
+export { Heading, Bold, Italic, Code, Anchor };
 
 export default {
   a: Anchor,
   blockquote: Blockquote,
-  inlineCode: Code,
+  inlineCode: props => <Code {...props} type="inline" />,
   em: Italic,
   h1: props => <Heading {...props} tag="h1" />,
   h2: props => <Heading {...props} tag="h2" />,
@@ -35,7 +28,8 @@ export default {
   img: Image,
   ol: props => <List {...props} tag="ol" />,
   p: Paragraph,
-  code: Preformatted,
+  pre: Preformatted,
+  code: props => <Code {...props} type="block" />,
   strong: Bold,
   table: Table,
   ul: props => <List {...props} tag="ul" />,

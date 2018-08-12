@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import { radius as rad } from 'style';
 import { zDepthPropType, radiusPropType } from 'utils/PropTypes';
 import styled from 'styled-components';
+import ContentBorder from 'components/ContentBorder';
 import Wrapper from './Wrapper';
 import Badge from './Badge';
 import Content from './Content';
+import Preload from './Preload';
 
 const ratioLookup = {
-  'default': 0.618,
+  screen: 0.618,
   square: 1,
   tall: 0.75,
   wide: 0.533,
@@ -24,7 +26,7 @@ class Image extends Component {
     color: PropTypes.string,
     alt: PropTypes.string,
     srcSet: PropTypes.string,
-    shape: PropTypes.oneOf(['tall', 'default', 'original', 'wide', 'square']),
+    shape: PropTypes.oneOf(['tall', 'screen', 'original', 'wide', 'square']),
     rounded: PropTypes.bool,
     radius: radiusPropType,
     noBorder: PropTypes.bool,
@@ -42,7 +44,7 @@ class Image extends Component {
     color: undefined,
     placeholder: undefined,
     zDepth: 0,
-    shape: 'default',
+    shape: 'screen',
     alt: undefined,
     srcSet: undefined,
     rounded: false,
@@ -53,16 +55,32 @@ class Image extends Component {
     height: null,
   };
 
+  constructor(props) {
+    super(props);
+    this.setLoaded = this.setLoaded.bind(this);
+  }
+
   state = {
     loaded: false,
   };
 
-  setLoaded = () => {
-    this.setState(prev => ({
-      ...prev,
+  // componentDidMount() {
+  //   const sourceImage = new Image();
+  //   sourceImage.onload = () => {
+  //     this.drawImageFromScratch();
+  //     onLoad();
+  //     this.setState({ loaded: true });
+  //   };
+  //   sourceImage.src = src;
+  //   this.sourceImage = sourceImage;
+  //
+  // }
+
+  setLoaded() {
+    this.setState({
       loaded: true,
-    }));
-  };
+    });
+  }
 
   render() {
     const {
@@ -83,10 +101,12 @@ class Image extends Component {
       rounded,
       radius,
     } = this.props;
-    // console.log(this.props);
     const { loaded } = this.state;
     const radiusInPx = rounded ? rad[radius] : 0;
-    const ratio = shape === 'original' ? height / width || ratioLookup.default : ratioLookup[shape];
+    const ratio =
+      shape === 'original'
+        ? height / width || ratioLookup.screen
+        : ratioLookup[shape];
     return (
       <Wrapper
         className={className}
@@ -99,19 +119,16 @@ class Image extends Component {
         onClick={onClick}
         loaded={loaded}
       >
+        <Preload image={placeholder} loaded={loaded} />
         <Content
           src={src}
           srcSet={srcSet}
-          radius={radiusInPx}
           alt={alt}
           onLoad={this.setLoaded}
           loaded={loaded}
         />
-        {badge && (
-        <Badge>
-          {badge}
-        </Badge>
-        )}
+        <ContentBorder />
+        {badge && <Badge>{badge}</Badge>}
         {children}
       </Wrapper>
     );

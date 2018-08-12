@@ -1,20 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Highlight from 'components/HighlightCode';
+import styled from 'styled-components';
+import { fluidText } from 'utils/mixins';
+import { space, radius, typography } from 'style';
+import { transparentize as fade } from 'polished';
 
-const Preformatted = ({ children, className, ...other }) => (
-  <Highlight language={className} {...other}>
-    {children}
-  </Highlight>
-);
-
-Preformatted.propTypes = {
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-};
-
-Preformatted.defaultProps = {
-  className: '',
-};
+const Preformatted = styled.pre`
+  ${fluidText(18, 20)};
+  background-color: ${({ theme }) => fade(0.5, theme.surface)};
+  margin-bottom: ${space.xm}px;
+  font-family: ${typography.mono};
+  line-height: 1.25;
+  border-radius: ${radius.m}px;
+`;
 
 export default Preformatted;

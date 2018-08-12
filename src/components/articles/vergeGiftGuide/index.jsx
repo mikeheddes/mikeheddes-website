@@ -1,7 +1,7 @@
 import React from 'react';
 import Loadable from 'react-loadable';
 
-import imageCover from 'img/gift-guide.jpg';
+import imageCover from 'assets/gift-guide.jpg';
 
 const loadablePost = Loadable({
   loader: () => import('./article.mdx'),

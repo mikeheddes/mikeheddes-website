@@ -11,39 +11,42 @@ import {
   actionStyle,
   basicStyle,
 } from 'components/Button';
-import ForwardSVG from 'svg/Forward';
-import ExitSVG from 'svg/Exit';
+import ForwardSVG from 'components/svg/Forward';
+import ExitSVG from 'components/svg/Exit';
 
 const overallLinkStyle = css`
-  ${({ noTheme }) => noTheme
-    && css`
+  ${({ noTheme }) =>
+    noTheme &&
+    css`
       text-decoration: none;
     `};
-  ${({ noTheme }) => !noTheme
-    && css`
+  ${({ noTheme }) =>
+    !noTheme &&
+    css`
       ${basicStyle};
 
-      ${({ noFontSize }) => noFontSize
-        && css`
+      ${({ noFontSize }) =>
+        noFontSize &&
+        css`
           font-size: inherit;
         `};
 
       ${({ variation }) => {
-    switch (variation) {
-      case 'button':
-        return defaultStyle;
-      case 'buttonPrimary':
-        return primaryStyle;
-      case 'subtle':
-        return subtleLinkStyle;
-      case 'subtleButton':
-        return subtleStyle;
-      case 'action':
-        return actionStyle;
-      default:
-        return linkStyle;
-    }
-  }};
+        switch (variation) {
+          case 'button':
+            return defaultStyle;
+          case 'buttonPrimary':
+            return primaryStyle;
+          case 'subtle':
+            return subtleLinkStyle;
+          case 'subtleButton':
+            return subtleStyle;
+          case 'action':
+            return actionStyle;
+          default:
+            return linkStyle;
+        }
+      }};
     `};
   cursor: pointer;
 `;
@@ -52,7 +55,7 @@ const ToToHref = styled.a`
   ${overallLinkStyle};
 `;
 
-const LinkWithTarget = (props) => {
+const LinkWithTarget = props => {
   const { to, children, ...other } = props;
   return (
     <ToToHref href={to} {...other}>
@@ -67,7 +70,6 @@ LinkWithTarget.propTypes = {
   to: PropTypes.string.isRequired,
   target: PropTypes.string.isRequired,
 };
-
 
 const LinkWithoutTarget = ToToHref.withComponent(Anchor);
 
@@ -127,7 +129,7 @@ class Link extends Component {
     return 'NONE';
   };
 
-  getIcon = (linkType) => {
+  getIcon = linkType => {
     switch (linkType) {
       case 'DOWNLOAD':
         return null;
@@ -140,7 +142,7 @@ class Link extends Component {
     }
   };
 
-  getTarget = (linkType) => {
+  getTarget = linkType => {
     switch (linkType) {
       case 'DOWNLOAD':
         return '_self';
@@ -157,7 +159,12 @@ class Link extends Component {
 
   render() {
     const {
-      children, className, noIcon, noInner, to, ...styleProps
+      children,
+      className,
+      noIcon,
+      noInner,
+      to,
+      ...styleProps
     } = this.props;
     const linkType = this.getLinkType();
     const target = this.getTarget(linkType);
@@ -166,17 +173,11 @@ class Link extends Component {
     const Wrapper = target ? LinkWithTarget : LinkWithoutTarget;
     return (
       <Wrapper className={className} target={target} to={href} {...styleProps}>
-        {!noInner ? (
-          <span>
-            {children}
-          </span>
-        ) : children}
+        {!noInner ? <span>{children}</span> : children}
         {!noIcon && Icon && <Icon />}
       </Wrapper>
     );
   }
 }
 
-export default styled(Link)`
-
-`;
+export default styled(Link)``;

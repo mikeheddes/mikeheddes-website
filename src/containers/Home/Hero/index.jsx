@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
-import blobThumb from 'img/blobs-thumbnail.png';
+import blobThumb from 'assets/blobs-thumbnail.png';
 import Link from 'components/Link';
 import Box from 'components/Box';
 import Blur from 'components/Blur';
@@ -46,18 +46,10 @@ export default class Hero extends Component {
             textAlign="center"
           >
             <TitleBox>
-              <h2>
-                {eyebrow}
-              </h2>
-              <h1>
-                {title}
-              </h1>
+              <h2>{eyebrow}</h2>
+              <h1>{title}</h1>
             </TitleBox>
-            {action && (
-            <Link to={action.url}>
-              {action.name}
-            </Link>
-            )}
+            {action && <Link to={action.url}>{action.name}</Link>}
           </Box>
         </Wrapper>
       </ThemeProvider>

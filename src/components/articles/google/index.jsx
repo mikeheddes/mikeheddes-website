@@ -1,7 +1,7 @@
 import React from 'react';
 import Loadable from 'react-loadable';
 
-import imageCover from 'img/googleDroid.jpg';
+import imageCover from 'assets/googleDroid.jpg';
 
 const loadablePost = Loadable({
   loader: () => import('./article.mdx'),
@@ -21,6 +21,7 @@ export default {
   tags: ['Google', 'Antitrust'],
   theme: 'DAY',
   themeColor: 'yellow',
-  title: 'Six questions you were afraid to ask about Google’s EU antitrust case',
+  title:
+    'Six questions you were afraid to ask about Google’s EU antitrust case',
   updatedAt: null,
 };

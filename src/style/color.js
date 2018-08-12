@@ -16,7 +16,6 @@ export const grays = {
   '900': '#000000',
 };
 
-
 export const dayColors = {
   red: '#FF3B30',
   orange: '#FF9500',
@@ -65,7 +64,7 @@ export const DAY = {
   ...dayColors,
   background: grays['000'],
   backgroundNav: grays['000'],
-  borderContent: fade(0.90, grays['900']),
+  borderContent: fade(0.9, grays['900']),
   borderSeparate: grays['200'],
   borderSeparateOpacity: fade(0.85, grays['900']),
   heading: grays['800'],
@@ -86,7 +85,7 @@ export const NIGHT = {
   ...nightColors,
   background: grays['800'],
   backgroundNav: grays['800'],
-  borderContent: fade(0.90, grays['000']),
+  borderContent: fade(0.9, grays['000']),
   borderSeparate: grays['500'],
   borderSeparateOpacity: fade(0.85, grays['000']),
   heading: grays['100'],

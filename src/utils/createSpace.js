@@ -37,7 +37,7 @@ export const createPadding = (y, x) => {
   return `${y}px ${x}px`;
 };
 
-export const createWidth = (w) => {
+export const createWidth = w => {
   if (typeof w === 'string') {
     return `${width[w]}${widthUnits[w]}`;
   }

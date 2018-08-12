@@ -6,6 +6,8 @@ import {
 } from 'actions/ui';
 import { musicUi } from './music';
 import { articlesUi } from './articles';
+import curtain from './curtain';
+import menu from './menu';
 
 function themeName(state = THEME_DAY, action) {
   switch (action.type) {
@@ -18,6 +20,8 @@ function themeName(state = THEME_DAY, action) {
 
 export default combineReducers({
   themeName,
+  menu,
   music: musicUi,
   articles: articlesUi,
+  curtain,
 });

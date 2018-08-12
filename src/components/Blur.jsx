@@ -1,9 +1,9 @@
-/* eslint-env browser */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled, { withTheme } from 'styled-components';
 import StackBlur from 'stackblur-canvas';
 import lodash from 'lodash';
+import EventListener from 'react-event-listener';
 
 const Canvas = styled.canvas`
   position: absolute;
@@ -26,7 +26,7 @@ class Blur extends Component {
   scaleLookup = {
     cover: 'max',
     contain: 'min',
-  }
+  };
 
   static propTypes = {
     className: PropTypes.string,
@@ -41,7 +41,7 @@ class Blur extends Component {
       surfaceProminent: PropTypes.string.isRequired,
       surface: PropTypes.string.isRequired,
     }).isRequired,
-  }
+  };
 
   static defaultProps = {
     className: '',
@@ -50,15 +50,24 @@ class Blur extends Component {
     onLoad: () => {},
     fit: 'cover',
     background: 'surfaceProminent',
+  };
+
+  constructor(props) {
+    super(props);
+    this.setCanvasRef = this.setCanvasRef.bind(this);
+    this.loadImage = this.loadImage.bind(this);
+    this.calcImageSize = this.calcImageSize.bind(this);
+    this.drawImageFromScratch = this.drawImageFromScratch.bind(this);
+    this.blurImage = this.blurImage.bind(this);
+    this.drawImage = this.drawImage.bind(this);
   }
 
   state = {
     loaded: false,
-  }
+  };
 
   componentDidMount() {
     const { src } = this.props;
-    window.addEventListener('resize', this.handleResize);
     this.loadImage(src);
   }
 
@@ -74,25 +83,24 @@ class Blur extends Component {
     this.blurImage(radius);
   }
 
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.handleResize);
+  setCanvasRef(node) {
+    this.canvas = node;
   }
 
-  setCanvasRef = (node) => { this.canvas = node; };
-
-  loadImage = (src) => {
+  loadImage(src) {
     const { onLoad } = this.props;
+    // eslint-disable-next-line no-undef
     const sourceImage = new Image();
     sourceImage.onload = () => {
       this.drawImageFromScratch();
       onLoad();
-      this.setState(prev => ({ ...prev, loaded: true }));
+      this.setState({ loaded: true });
     };
     sourceImage.src = src;
     this.sourceImage = sourceImage;
   }
 
-  calcImageSize = () => {
+  calcImageSize() {
     const { fit } = this.props;
     const { offsetWidth, offsetHeight } = this.canvas;
     const { naturalWidth, naturalHeight } = this.sourceImage;
@@ -100,7 +108,7 @@ class Blur extends Component {
     this.canvas.height = offsetHeight;
     const scaleFactor = Math[this.scaleLookup[fit]](
       offsetWidth / naturalWidth,
-      offsetHeight / naturalHeight,
+      offsetHeight / naturalHeight
     );
     this.newWidth = naturalWidth * scaleFactor;
     this.newHeight = naturalHeight * scaleFactor;
@@ -112,19 +120,26 @@ class Blur extends Component {
     this.heightOffset = (offsetHeight - this.newHeight) >> 1;
   }
 
-  drawImageFromScratch = () => {
+  drawImageFromScratch() {
     const { radius } = this.props;
     this.calcImageSize();
     this.blurImage(radius);
   }
 
-  blurImage = (radius) => {
+  blurImage(radius) {
     this.drawImage();
     const { offsetWidth, offsetHeight } = this.canvas;
-    StackBlur.canvasRGB(this.canvas, 0, 0, offsetWidth, offsetHeight, Math.round(radius));
+    StackBlur.canvasRGB(
+      this.canvas,
+      0,
+      0,
+      offsetWidth,
+      offsetHeight,
+      Math.round(radius)
+    );
   }
 
-  drawImage = () => {
+  drawImage() {
     const { theme, background } = this.props;
     const context = this.canvas.getContext('2d');
     context.fillStyle = theme[background];
@@ -134,22 +149,25 @@ class Blur extends Component {
       this.widthOffset,
       this.heightOffset,
       this.newWidth,
-      this.newHeight,
+      this.newHeight
     );
   }
 
   render() {
-    const { className, opacity, background } = this.props;
+    const { className, opacity, background, ...otherProps } = this.props;
     const { loaded } = this.state;
     return (
-      <Canvas
-        className={className}
-        loaded={loaded}
-        opacity={opacity}
-        background={background}
-        back
-        innerRef={this.setCanvasRef}
-      />
+      <React.Fragment>
+        <Canvas
+          className={className}
+          loaded={loaded}
+          opacity={opacity}
+          background={background}
+          innerRef={this.setCanvasRef}
+          {...otherProps}
+        />
+        <EventListener target="window" onResize={this.handleResize} />
+      </React.Fragment>
     );
   }
 }

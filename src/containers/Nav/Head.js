@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { NavLink, withRouter, Link } from 'react-router-dom';
-import EventListener from 'react-event-listener';
 import PropTypes from 'prop-types';
 
-import MenuSVG from 'svg/Menu';
-import { toggleMenuVisibility, menuActionStyles } from 'actions';
+import MenuSVG from 'components/svg/Menu';
 import HeadWrapper from './HeadWrapper';
 import Accessory from './Accessory';
 import Title from './Title';
@@ -16,13 +13,17 @@ class Head extends Component {
     return (
       <HeadWrapper id="mobile-nav">
         <Accessory left clickable onClick={toggleMenu}>
-          <span><MenuSVG checked={isVisible}/></span>
+          <span>
+            <MenuSVG checked={isVisible} />
+          </span>
         </Accessory>
         <Title>{title}</Title>
         <Accessory right>
-          {action.name ? <AccessoryLink type={action.style} to={action.url}>
-            {action.name}
-          </AccessoryLink> : null}
+          {action.name ? (
+            <AccessoryLink type={action.style} to={action.url}>
+              {action.name}
+            </AccessoryLink>
+          ) : null}
         </Accessory>
       </HeadWrapper>
     );
@@ -30,17 +31,17 @@ class Head extends Component {
 }
 
 Head.propTypes = {
-  isVisible: PropTypes.bool.isRequired,
-  action: PropTypes.object.isRequired,
+  isVisible: PropTypes.bool,
+  action: PropTypes.object,
   toggleMenu: PropTypes.func.isRequired,
-}
+};
 
 Head.defaultProps = {
   isVisible: false,
   action: {
-    name: null
+    name: null,
   },
   title: 'Mike Heddes',
-}
+};
 
 export default Head;

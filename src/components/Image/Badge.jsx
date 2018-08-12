@@ -25,8 +25,7 @@ const Badge = styled.div`
   ${has.backdrop(css`
     background-color: ${({ theme }) => fade(0.3, theme.title)};
     backdrop-filter: blur(10px) saturate(2);
-  `)}
-
+  `)};
 `;
 
 Badge.propTypes = {

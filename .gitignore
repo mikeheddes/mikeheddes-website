@@ -4,6 +4,8 @@ node_modules
 stats.json
 dlls
 public
+functions/build
+functions/buildDev
 
 # Cruft
 .DS_Store
