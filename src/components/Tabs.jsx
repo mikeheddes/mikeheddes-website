@@ -15,8 +15,9 @@ const TabRow = styled.ul`
   white-space: nowrap;
   font-size: 17px;
   user-select: none;
-  ${({ withScroll }) => withScroll
-    && css`
+  ${({ withScroll }) =>
+    withScroll &&
+    css`
       ${media.phoneOnly(css`
         display: inline-block;
         min-width: calc(100vw - 2 * ${space.phone}px);
@@ -54,8 +55,9 @@ const Tab = styled.li`
   user-select: none;
   -webkit-tap-highlight-color: transparent;
 
-  ${({ active }) => active
-    && css`
+  ${({ active }) =>
+    active &&
+    css`
       background-color: ${({ theme }) => darken(0.06, theme.surface)};
       cursor: default;
 
@@ -68,9 +70,10 @@ const Tab = styled.li`
       }
     `};
 
-  ${({ onClick, active }) => onClick
-    && !active
-    && css`
+  ${({ onClick, active }) =>
+    onClick &&
+    !active &&
+    css`
       cursor: pointer;
 
       &:hover {

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { animated } from 'react-spring';
 
-export default styled.div`
+export default styled(animated.div)`
   position: absolute;
   top: 0;
   left: 0;
@@ -12,9 +13,10 @@ export default styled.div`
   background-size: cover;
   background-position: center;
   box-sizing: border-box;
-  border-radius: inherit;
+  border-radius: ${({ radius }) => radius}px;
+  overflow: hidden;
   background-image: url(${({ image }) => image});
-  transition: opacity 150ms ease-out 150s;
-  opacity: ${({ loaded }) => Number(!loaded)};
-  filter: blur(20px);
+  ${'' /* transition: opacity 150ms ease-out 150s; */}
+  ${'' /* opacity: ${({ loaded }) => Number(!loaded)}; */}
+  ${'' /* filter: blur(20px); */}
 `;

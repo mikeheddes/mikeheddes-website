@@ -25,14 +25,15 @@ function mapDispatchToProps(dispatch, props) {
     getContentIfNeeded: () => {
       dispatch(getAllContent(contentType));
     },
-    setVisibility: (filter) => {
+    setVisibility: filter => {
       // console.log(filter);
       dispatch(setVisibilityFilters[contentType](filter));
     },
   };
 }
 
-export default Component => connect(
-  makeMapStateToProps,
-  mapDispatchToProps,
-)(Component);
+export default Component =>
+  connect(
+    makeMapStateToProps,
+    mapDispatchToProps
+  )(Component);

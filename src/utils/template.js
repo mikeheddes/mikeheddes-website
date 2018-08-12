@@ -1,8 +1,16 @@
 // Template file that the server will use to inject the React markup and
 // initial state before sending it to the client
 
-const addScriptTag = src =>
-  `<script type="text/javascript" src="${src}"></script>`;
+function addScriptTag(src) {
+  return `<script type="text/javascript" src="${src}"></script>`;
+}
+
+function unique(accum, current) {
+  if (accum.indexOf(current) < 0) {
+    accum.push(current);
+  }
+  return accum;
+}
 
 const addChunks = chunkBundles =>
   chunkBundles
@@ -10,6 +18,7 @@ const addChunks = chunkBundles =>
       bundle =>
         !bundle.file.endsWith('.map') && !bundle.file.endsWith('hot-update.js')
     )
+    .reduce(unique, [])
     .map(bundle => addScriptTag(bundle.publicPath))
     .join('\n');
 

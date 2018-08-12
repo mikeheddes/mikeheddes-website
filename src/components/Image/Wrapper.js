@@ -7,14 +7,6 @@ const Wrapper = styled.div`
   position: relative;
   overflow: hidden;
   padding-bottom: ${({ ratio }) => Math.round(ratio * 100)}%;
-  border-radius: ${({ radius }) => radius}px;
-  background-clip: border-box;
-  background-origin: border-box;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  box-sizing: border-box;
-  background-color: ${({ color, theme }) => color || theme.surface};
 
   ${({ onClick }) =>
     onClick &&

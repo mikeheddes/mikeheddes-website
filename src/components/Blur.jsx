@@ -15,7 +15,9 @@ const Canvas = styled.canvas`
   height: 100%;
   transition: opacity 1.25s cubic-bezier(0, 0, 0.25, 1);
   opacity: ${({ opacity, loaded }) => (loaded ? opacity : 0)};
-  background-color: ${({ theme, background }) => theme[background]};
+  background-color: ${({ theme, background }) =>
+    background && theme[background]};
+  border-radius: ${({ radius }) => radius}px;
 `;
 
 class Blur extends Component {
@@ -31,6 +33,7 @@ class Blur extends Component {
   static propTypes = {
     className: PropTypes.string,
     src: PropTypes.string.isRequired,
+    blur: PropTypes.number,
     radius: PropTypes.number,
     opacity: PropTypes.number,
     onLoad: PropTypes.func,
@@ -45,7 +48,8 @@ class Blur extends Component {
 
   static defaultProps = {
     className: '',
-    radius: 100,
+    blur: 100,
+    radius: null,
     opacity: 1,
     onLoad: () => {},
     fit: 'cover',
@@ -79,8 +83,8 @@ class Blur extends Component {
   }
 
   componentDidUpdate() {
-    const { radius } = this.props;
-    this.blurImage(radius);
+    const { blur } = this.props;
+    this.blurImage(blur);
   }
 
   setCanvasRef(node) {
@@ -121,9 +125,9 @@ class Blur extends Component {
   }
 
   drawImageFromScratch() {
-    const { radius } = this.props;
+    const { blur } = this.props;
     this.calcImageSize();
-    this.blurImage(radius);
+    this.blurImage(blur);
   }
 
   blurImage(radius) {
@@ -154,7 +158,7 @@ class Blur extends Component {
   }
 
   render() {
-    const { className, opacity, background, ...otherProps } = this.props;
+    const { className, opacity, background, blur, ...otherProps } = this.props;
     const { loaded } = this.state;
     return (
       <React.Fragment>

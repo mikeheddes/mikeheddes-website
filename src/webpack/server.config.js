@@ -24,6 +24,7 @@ module.exports = createConfig({
     chunkFilename: '[name].chunk.js',
     path: isDev ? outputPathDev : outputPath,
     libraryTarget: 'commonjs2',
+    publicPath: '/',
   },
   plugins: isDev
     ? [new ManifestPlugin({ fileName: manifestPathDev })]

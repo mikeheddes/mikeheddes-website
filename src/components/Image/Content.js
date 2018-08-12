@@ -1,8 +1,8 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { media } from 'utils/mixins';
+import { animated } from 'react-spring';
 
-const Content = styled.img`
+const Content = styled(animated.img)`
   position: absolute;
   top: 0;
   left: 0;
@@ -10,19 +10,10 @@ const Content = styled.img`
   right: 0;
   width: 100%;
   height: 100%;
-  border-radius: inherit;
-  opacity: ${({ loaded }) => Number(loaded)};
+  border-radius: ${({ radius }) => radius}px;
+  overflow: hidden;
   object-fit: cover;
   object-position: center center;
-  transition: filter 500ms ease-in-out, opacity 250ms ease-out 0s;
-  ${({ loaded }) =>
-    !loaded &&
-    css`
-      filter: blur(20px);
-      ${media.phoneOnly(css`
-        filter: blur(10px);
-      `)};
-    `};
 `;
 
 Content.propTypes = {

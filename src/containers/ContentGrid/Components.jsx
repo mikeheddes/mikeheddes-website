@@ -34,7 +34,6 @@ const bottomLine = css`
 export const Tab = T.extend`
   font-weight: 500;
   ${media.tabletLandscape(css`
-    font-weight: 400;
     background-color: transparent;
     &:hover {
       background-color: transparent;
@@ -54,8 +53,9 @@ export const Tab = T.extend`
         transform 300ms cubic-bezier(0.19, 1, 0.22, 1);
     }
 
-    ${({ active }) => active
-      && css`
+    ${({ active }) =>
+      active &&
+      css`
         background-color: transparent;
 
         &:hover {
@@ -69,9 +69,10 @@ export const Tab = T.extend`
         }
       `};
 
-    ${({ onClick, active }) => onClick
-      && !active
-      && css`
+    ${({ onClick, active }) =>
+      onClick &&
+      !active &&
+      css`
         &:hover {
           &::after {
             ${bottomLine};
@@ -91,11 +92,8 @@ export const Title = styled.h1`
 
   ${media.phoneOnly(css`
     margin-top: ${space.xm}px;
-  `)}
-
-  ${media.tabletLandscape(css`
+  `)} ${media.tabletLandscape(css`
     padding-bottom: ${space.xr}px;
     margin-bottom: ${space.xm}px;
-  `)}
-
+  `)};
 `;

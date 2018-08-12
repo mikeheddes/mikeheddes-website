@@ -13,6 +13,7 @@ const ContentBorder = styled.div`
   background-origin: border-box;
   box-sizing: border-box;
   border-radius: inherit;
+  border-radius: ${({ radius }) => radius || 0}px;
   border: 1px solid ${({ theme }) => theme.borderContent};
   ${hiDPI(2)} {
     border-width: 0.5px;

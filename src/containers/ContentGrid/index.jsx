@@ -14,7 +14,7 @@ class ContentGrid extends Component {
       PropTypes.shape({
         title: PropTypes.string.isRequired,
         id: PropTypes.string.isRequired,
-      }),
+      })
     ),
     children: PropTypes.func.isRequired,
     // eslint-disable-next-line react/no-unused-prop-types
@@ -24,7 +24,7 @@ class ContentGrid extends Component {
     filters: PropTypes.arrayOf(
       PropTypes.shape({
         name: PropTypes.string.isRequired,
-      }),
+      })
     ),
     getContentIfNeeded: PropTypes.func.isRequired,
     title: PropTypes.string,
