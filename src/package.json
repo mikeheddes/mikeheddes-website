@@ -15,14 +15,15 @@
     "build:dll": "webpack --config ./webpack/dll.config.js"
   },
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "connected-react-router": "^4.4.1",
     "delay": "^3.0.0",
     "history": "^4.7.2",
     "lodash": "^4.17.10",
     "polished": "^1.9.3",
     "prop-types": "^15.6.2",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
     "react-event-listener": "^0.6.1",
     "react-helmet-async": "^0.1.0-alpha",
     "react-loadable": "^5.4.0",

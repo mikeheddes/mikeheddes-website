@@ -1,3 +1,4 @@
+// eslint
 const path = require('path');
 const webpack = require('webpack');
 const express = require('express');
@@ -19,6 +20,22 @@ const serverOutputPath = path.resolve(baseOutput, 'server.bundle.js');
 
 // Client middleware
 const clientCompiler = webpack(clientConfig);
+let clientCompiling;
+let resolveClientCompiling;
+let rejectClientCompiling;
+clientCompiler.hooks.beforeCompile.tap('before', () => {
+  clientCompiling = new Promise((resolve, reject) => {
+    resolveClientCompiling = resolve;
+    rejectClientCompiling = reject;
+  });
+});
+clientCompiler.hooks.done.tap('after', stats => {
+  resolveClientCompiling(stats);
+});
+clientCompiler.hooks.failed.tap('error', error => {
+  rejectClientCompiling(error);
+});
+
 const middleware = webpackDevMiddleware(clientCompiler, {
   noInfo: true,
   publicPath: clientConfig.output.publicPath,
@@ -58,23 +75,30 @@ const holdingMiddleware = compiler => {
     }
   });
 
-  compiler.watch({ ignored: /node_modules/ }, () => {
-    setTimeout(() => {
-      isFirstCompile = false;
-      // First do cache set stuff
-      require(loadableStatsPath);
-      require(clientManifestPath);
-      const serverBundle = require(serverOutputPath);
-      serverBundle.loadablePreload().then(() => {
+  compiler.watch({ ignored: /node_modules/ }, async () => {
+    await clientCompiling;
+    isFirstCompile = false;
+    // First do cache set stuff
+    require(loadableStatsPath);
+    require(clientManifestPath);
+    const serverBundle = require(serverOutputPath);
+    serverBundle
+      .loadablePreload()
+      .then(() => {
         resolveCompiling();
         isCompiling = false;
+        return isCompiling;
+      })
+      .catch(err => {
+        throw err;
       });
-    }, 10000);
   });
 
   return (req, res, next) => {
     if (isCompiling) {
-      compiling.then(next);
+      compiling.then(next).catch(err => {
+        throw err;
+      });
     } else {
       next();
     }
@@ -94,4 +118,6 @@ app.get('*', (req, res) => {
   });
 });
 
-app.listen(3000, () => console.log('Example app online http://localhost:3000'));
+app.listen(3000, () =>
+  console.log('dev-server running: http://localhost:3000')
+);
