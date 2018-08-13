@@ -1,2 +1,2 @@
-# File that redirects to https://mikheddes.nl
+# File that redirects to https://mikeheddes.nl
 Check the master branch for website code.
