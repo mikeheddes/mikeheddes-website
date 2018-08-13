@@ -1,7 +1,0 @@
-node_modules
-.DS_Store
-dlls
-npm-debug.log
-.idea
-yarn-error.log
-yarn.lock

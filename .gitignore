@@ -1,15 +1,9 @@
-# Don't check auto-generated stuff into git
-coverage
+.DS_Store
 node_modules
-stats.json
 dlls
 public
 functions/build
 functions/buildDev
-
-# Cruft
-.DS_Store
 npm-debug.log
-.idea
 yarn-error.log
-yarn.lock
+stats.json

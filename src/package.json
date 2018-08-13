@@ -1,6 +1,7 @@
 {
   "name": "mike_heddes-website",
   "author": "Mike Heddes",
+  "license": "MIT",
   "scripts": {
     "lint": "npm run lint:css && npm run lint:js",
     "lint:css": "stylelint './**/*.js?(x)'",
@@ -14,7 +15,7 @@
     "build:dll": "webpack --config ./webpack/dll.config.js"
   },
   "dependencies": {
-    "connected-react-router": "^4.3.0",
+    "connected-react-router": "^4.4.1",
     "delay": "^3.0.0",
     "history": "^4.7.2",
     "lodash": "^4.17.10",
@@ -26,6 +27,7 @@
     "react-helmet-async": "^0.1.0-alpha",
     "react-loadable": "^5.4.0",
     "react-redux": "^5.0.7",
+    "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-spring": "^5.6.1",
     "redux": "^4.0.0",

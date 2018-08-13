@@ -2,17 +2,21 @@
   "name": "mike_heddes-website",
   "version": "1.0.0",
   "author": "Mike Heddes",
-  "description": "My personal portfolio",
+  "description": "My portfolio website",
   "license": "MIT",
   "repository": "https://github.com/mikeheddes/mike_heddes-website.git",
   "scripts": {
-    "lint:css": "stylelint './**/*.js?(x)'",
-    "lint:js": "eslint --fix './**/*.js?(x)'",
-    "lint:jsx": "prettier --write './**/*.js?(x)'",
     "lint": "cd ./functions && npm run lint && cd ./src && npm run lint",
     "build": "cd ./src && npm run build",
     "build:prod": "cd ./src && npm run build:prod",
-    "install": "cd ./functions && npm i && cd ../src && npm i",
-    "clean:modules": "rm -rf ./functions/node_modules && rm -rf ./src/node_modules"
+    "install": "npm run install:yarn",
+    "install:npm": "cd ./functions && npm i && cd ../src && npm i",
+    "install:yarn": "cd ./functions && yarn install && cd ../src && yarn install",
+    "clean:modules": "rm -rf ./functions/node_modules && rm -rf ./src/node_modules",
+    "serve": "firebase serve",
+    "deploy": "firebase deploy"
+  },
+  "devDependencies": {
+    "firebase-tools": "^4.0.3"
   }
 }
