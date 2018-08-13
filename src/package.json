@@ -1,13 +1,10 @@
 {
-  "name": "mike-heddes-portfolio",
-  "version": "0.0.1",
+  "name": "mike_heddes-website",
   "author": "Mike Heddes",
-  "license": "MIT",
-  "repository": "https://github.com/mikeheddes/portfolio.git",
   "scripts": {
+    "lint": "npm run lint:css && npm run lint:js",
     "lint:css": "stylelint './**/*.js?(x)'",
     "lint:js": "eslint --fix './**/*.js?(x)'",
-    "lint:jsx": "prettier --write './**/*.js?(x)'",
     "build:client": "NODE_ENV=development webpack --config ./webpack/client.config.js",
     "build:server": "NODE_ENV=development webpack --config ./webpack/server.config.js",
     "build:client:prod": "NODE_ENV=production webpack --config ./webpack/client.config.js",

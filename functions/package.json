@@ -1,13 +1,11 @@
 {
-  "name": "mike-heddes-portfolio",
-  "version": "0.0.1",
+  "name": "mike_heddes-website",
   "author": "Mike Heddes",
-  "license": "MIT",
-  "repository": "https://github.com/mikeheddes/portfolio.git",
   "scripts": {
     "start": "NODE_ENV=development && node server/server.dev",
     "start:dev": "npm start",
     "start:prod": "NODE_ENV=production && node server/server.prod",
+    "lint": "npm run lint:js",
     "lint:js": "eslint './**.js'"
   },
   "dependencies": {
