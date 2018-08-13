@@ -1,11 +1,8 @@
-// const path = require('path');
 const express = require('express');
 
 const clientConfig = require('../../src/webpack/client.config');
 const clientManifest = require('../build/client-manifest.json');
 const loadableStats = require('../build/react-loadable.json');
-// const serverConfig = require('../../src/webpack/server.config');
-
 const serverBundle = require('../build/server.bundle.js');
 
 const app = express();
@@ -24,7 +21,13 @@ app.get('*', (req, res) => {
   });
 });
 
-serverBundle.loadablePreload().then(() => {
-  // eslint-disable-next-line no-console
-  app.listen(3000, () => console.log('Example app listening on port 3000!'));
-});
+serverBundle
+  .loadablePreload()
+  .then(() =>
+    app.listen(3000, () =>
+      console.log('prod-server running: http://localhost:3000')
+    )
+  )
+  .catch(err => {
+    throw err;
+  });

@@ -3,15 +3,13 @@
   "author": "Mike Heddes",
   "license": "MIT",
   "scripts": {
-    "start": "NODE_ENV=development && node server/server.dev",
-    "start:dev": "npm start",
+    "start": "npm run start:dev",
+    "start:dev": "NODE_ENV=development && node server/server.dev",
     "start:prod": "NODE_ENV=production && node server/server.prod",
     "lint": "npm run lint:js",
     "lint:js": "eslint './**.js'"
   },
   "dependencies": {
-    "compression": "^1.7.3",
-    "express": "^4.16.3",
     "firebase-admin": "^6.0.0",
     "firebase-functions": "^2.0.4"
   },
@@ -21,6 +19,7 @@
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-promise": "^3.8.0",
+    "express": "^4.16.3",
     "prettier": "^1.13.7",
     "require-from-string": "^2.0.2",
     "webpack": "^4.16.3",

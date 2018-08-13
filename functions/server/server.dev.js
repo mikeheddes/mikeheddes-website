@@ -51,12 +51,14 @@ const serverCompiler = webpack(serverConfig);
 const holdingMiddleware = compiler => {
   let isCompiling = false;
   let isFirstCompile = true;
-  let compiling;
-  let resolveCompiling;
+  let serverCompiling;
+  let resolveServerCompiling;
+  let rejectServerCompiling;
 
   compiler.hooks.beforeCompile.tap('before', () => {
-    compiling = new Promise(resolve => {
-      resolveCompiling = resolve;
+    serverCompiling = new Promise((resolve, reject) => {
+      resolveServerCompiling = resolve;
+      rejectServerCompiling = reject;
     });
     isCompiling = true;
     // Do cache delete stuff
@@ -75,28 +77,35 @@ const holdingMiddleware = compiler => {
     }
   });
 
-  compiler.watch({ ignored: /node_modules/ }, async () => {
-    await clientCompiling;
-    isFirstCompile = false;
-    // First do cache set stuff
-    require(loadableStatsPath);
-    require(clientManifestPath);
-    const serverBundle = require(serverOutputPath);
-    serverBundle
-      .loadablePreload()
+  compiler.hooks.done.tap('after', stats => {
+    clientCompiling
       .then(() => {
-        resolveCompiling();
+        isFirstCompile = false;
+        // First do cache set stuff
+        require(loadableStatsPath);
+        require(clientManifestPath);
+        return require(serverOutputPath);
+      })
+      .then(serverBundle => serverBundle.loadablePreload())
+      .then(() => {
+        resolveServerCompiling(stats);
         isCompiling = false;
-        return isCompiling;
+        return stats;
       })
       .catch(err => {
         throw err;
       });
   });
 
+  compiler.hooks.failed.tap('error', error => {
+    rejectServerCompiling(error);
+  });
+
+  compiler.watch({ ignored: /node_modules/ }, () => {});
+
   return (req, res, next) => {
     if (isCompiling) {
-      compiling.then(next).catch(err => {
+      serverCompiling.then(next).catch(err => {
         throw err;
       });
     } else {
