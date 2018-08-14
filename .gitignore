@@ -6,4 +6,6 @@ functions/build
 functions/buildDev
 npm-debug.log
 yarn-error.log
+firebase-debug.log
 stats.json
+.firebaserc
