@@ -1,5 +1,5 @@
 {
-  "name": "mike_heddes-website",
+  "name": "mikeheddes-website",
   "author": "Mike Heddes",
   "license": "MIT",
   "scripts": {
@@ -15,7 +15,6 @@
     "build:dll": "webpack --config ./webpack/dll.config.js"
   },
   "dependencies": {
-    "babel-polyfill": "^6.26.0",
     "connected-react-router": "^4.4.1",
     "delay": "^3.0.0",
     "history": "^4.7.2",

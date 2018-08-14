@@ -1,10 +1,10 @@
 {
-  "name": "mike_heddes-website",
+  "name": "mikeheddes-website",
   "version": "1.0.0",
   "author": "Mike Heddes",
   "description": "My portfolio website",
   "license": "MIT",
-  "repository": "https://github.com/mikeheddes/mike_heddes-website.git",
+  "repository": "https://github.com/mikeheddes/mikeheddes-website.git",
   "scripts": {
     "start": "cd ./functions && npm run start:dev",
     "lint": "cd ./functions && npm run lint && cd ../src && npm run lint",
