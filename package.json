@@ -7,6 +7,7 @@
   "repository": "https://github.com/mikeheddes/mikeheddes-website.git",
   "scripts": {
     "start": "cd ./functions && npm run start:dev",
+    "start:prod": "cd ./functions && npm run start:prod",
     "lint": "cd ./functions && npm run lint && cd ../src && npm run lint",
     "build": "npm run build:prod",
     "build:prod": "cd ./src && npm run build:prod",

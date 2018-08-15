@@ -14,6 +14,9 @@
     "build:prod": "npm run build:server:prod && npm run build:client:prod",
     "build:dll": "webpack --config ./webpack/dll.config.js"
   },
+  "sideEffects": [
+    "./style/global-styles.js"
+  ],
   "dependencies": {
     "connected-react-router": "^4.4.1",
     "delay": "^3.0.0",
