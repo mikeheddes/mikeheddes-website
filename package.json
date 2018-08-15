@@ -15,11 +15,6 @@
     "modules": "npm run modules:yarn",
     "modules:npm": "npm i && cd ./functions && npm i && cd ../src && npm i",
     "modules:yarn": "yarn install && cd ./functions && yarn install && cd ../src && yarn install",
-    "clean:modules": "rm -rf ./functions/node_modules && rm -rf ./src/node_modules",
-    "serve": "firebase serve",
-    "deploy": "firebase deploy"
-  },
-  "devDependencies": {
-    "firebase-tools": "^4.0.3"
+    "clean:modules": "rm -rf ./functions/node_modules && rm -rf ./src/node_modules"
   }
 }
