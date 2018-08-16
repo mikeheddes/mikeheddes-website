@@ -25,15 +25,14 @@ const addChunks = chunkBundles =>
 export default opts => {
   const {
     helmet,
-    body,
     clientBundle,
-    sheet,
     chunkBundles,
     dllBundle,
     vendorBundle,
     runtimeBundle,
   } = opts;
-  return `
+  return [
+    `
   <!DOCTYPE html>
   <html ${helmet.htmlAttributes.toString()}>
     <head>
@@ -43,14 +42,15 @@ export default opts => {
       ${helmet.link.toString()}
       ${helmet.script.toString()}
       ${helmet.style.toString()}
-      ${sheet.getStyleTags()}
       <script>
         window.INITIAL_STATE = ${JSON.stringify(opts.initialState)};
       </script>
     </head>
     <body ${helmet.bodyAttributes.toString()}>
       ${helmet.noscript.toString() || ''}
-      <div id="root">${body}</div>
+      <div id="root">
+`,
+    `</div>
     </body>
     ${chunkBundles ? addChunks(chunkBundles) : ''}
     ${dllBundle ? addScriptTag(dllBundle) : ''}
@@ -58,5 +58,6 @@ export default opts => {
     ${runtimeBundle ? addScriptTag(runtimeBundle) : ''}
     ${addScriptTag(clientBundle)}
   </html>
-  `;
+  `,
+  ];
 };

@@ -22,18 +22,16 @@ const serverOutputPath = path.resolve(baseOutput, 'server.bundle.js');
 const clientCompiler = webpack(clientConfig);
 let clientCompiling;
 let resolveClientCompiling;
-let rejectClientCompiling;
 clientCompiler.hooks.beforeCompile.tap('before', () => {
-  clientCompiling = new Promise((resolve, reject) => {
+  clientCompiling = new Promise(resolve => {
     resolveClientCompiling = resolve;
-    rejectClientCompiling = reject;
   });
 });
 clientCompiler.hooks.done.tap('after', stats => {
   resolveClientCompiling(stats);
 });
 clientCompiler.hooks.failed.tap('error', error => {
-  rejectClientCompiling(error);
+  new Error(error);
 });
 
 const middleware = webpackDevMiddleware(clientCompiler, {
@@ -53,12 +51,10 @@ const holdingMiddleware = compiler => {
   let isFirstCompile = true;
   let serverCompiling;
   let resolveServerCompiling;
-  let rejectServerCompiling;
 
   compiler.hooks.beforeCompile.tap('before', () => {
-    serverCompiling = new Promise((resolve, reject) => {
+    serverCompiling = new Promise(resolve => {
       resolveServerCompiling = resolve;
-      rejectServerCompiling = reject;
     });
     isCompiling = true;
     // Do cache delete stuff
@@ -98,16 +94,21 @@ const holdingMiddleware = compiler => {
   });
 
   compiler.hooks.failed.tap('error', error => {
-    rejectServerCompiling(error);
+    new Error(error);
   });
 
   compiler.watch({ ignored: /node_modules/ }, () => {});
 
   return (req, res, next) => {
     if (isCompiling) {
-      serverCompiling.then(next).catch(err => {
-        throw err;
-      });
+      serverCompiling
+        .then(stats => {
+          next();
+          return stats;
+        })
+        .catch(err => {
+          throw err;
+        });
     } else {
       next();
     }
