@@ -1,12 +1,8 @@
-// import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { transparentize as fade, darken } from 'polished';
-import styled, { css } from 'styled-components';
-import Paragraph from 'components/Markdown/Paragraph';
+import { transparentize as fade } from 'polished';
+import styled from 'styled-components';
 
 import space from 'style/space';
-import radius from 'style/radius';
-import { media, fluidText } from 'utils/mixins';
+import { fluidText } from 'utils/mixins';
 
 export const Title = styled.h1`
   ${fluidText(18, 46)};

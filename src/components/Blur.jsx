@@ -176,4 +176,4 @@ class Blur extends Component {
   }
 }
 
-export default styled(withTheme(Blur))``;
+export default withTheme(Blur);

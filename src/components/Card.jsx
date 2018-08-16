@@ -6,6 +6,7 @@ import space from 'style/space';
 import { media, fluidText } from 'utils/mixins';
 import Link from 'components/Link';
 
+// stylelint-disable property-no-vendor-prefix, value-no-vendor-prefix, declaration-block-no-duplicate-properties
 const Title = styled.h2`
   ${({ size }) => size === 'r' && fluidText(16, 18)};
   ${({ size }) => size === 'm' && fluidText(20, 22)};
@@ -25,8 +26,9 @@ const Title = styled.h2`
 `;
 
 const Description = styled.p`
-  ${({ size }) => size === 'r'
-    && css`
+  ${({ size }) =>
+    size === 'r' &&
+    css`
       font-size: 15px;
     `};
   ${({ size }) => size === 'm' && fluidText(16, 17)};
@@ -43,7 +45,7 @@ const Description = styled.p`
   `)};
 `;
 
-const Card = (props) => {
+const Card = props => {
   const {
     title,
     image,

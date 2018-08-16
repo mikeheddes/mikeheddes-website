@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { radius as rad } from 'style';
 import { zDepthPropType, radiusPropType } from 'utils/PropTypes';
-import styled from 'styled-components';
 import ContentBorder from 'components/ContentBorder';
 import Blur from 'components/Blur';
 
@@ -156,4 +155,4 @@ class Image extends Component {
   }
 }
 
-export default styled(Image)``;
+export default Image;

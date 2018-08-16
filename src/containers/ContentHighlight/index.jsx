@@ -2,14 +2,11 @@ import React, { Component } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { transparentize as fade } from 'polished';
 import PropTypes from 'prop-types';
-// import { Spring } from 'react-spring';
-// import { TimingAnimation, Easing } from 'react-spring/dist/addons.cjs';
-// import lodash from 'lodash';
 import Blur from 'components/Blur';
 import { highlightTypes, contentTypes } from 'actions/content';
 import Section from 'components/Section';
 
-import { ContentWrapper } from './components';
+import ContentWrapper from './components';
 import ImageBox from './ImageBox';
 import TextBox from './TextBox';
 import mapState from './mapState';
@@ -41,9 +38,7 @@ class ContentHighlight extends Component {
   };
 
   componentDidMount() {
-    const {
-      getContent, contentType, highlightType, noFetch,
-    } = this.props;
+    const { getContent, contentType, highlightType, noFetch } = this.props;
     if (!noFetch) getContent(contentType, highlightType);
   }
 
@@ -62,12 +57,18 @@ class ContentHighlight extends Component {
       contentType,
       actionTitle,
     } = this.props;
-    const placeholder = content
-      && ((content.imageCover && content.imageCover.placeholder)
-        || (content.heroImage && content.heroImage.placeholder));
+    const placeholder =
+      content &&
+      ((content.imageCover && content.imageCover.placeholder) ||
+        (content.heroImage && content.heroImage.placeholder));
     return (
       <ThemeProvider theme={this.setTheme}>
-        <Section marginTop={marginTop} marginBottom={marginBottom} position="relative" background>
+        <Section
+          marginTop={marginTop}
+          marginBottom={marginBottom}
+          position="relative"
+          background
+        >
           {placeholder && <Blur src={placeholder} opacity={0.6} />}
           <ContentWrapper
             marginLeft="auto"
@@ -80,7 +81,10 @@ class ContentHighlight extends Component {
               contentType={contentType}
               eyebrow={eyebrow}
               image={
-                content && { ...(content.imageCover || content.heroImage), alt: content.title }
+                content && {
+                  ...(content.imageCover || content.heroImage),
+                  alt: content.title,
+                }
               }
               to={content && `/${contentType}/${content.id}`}
             />

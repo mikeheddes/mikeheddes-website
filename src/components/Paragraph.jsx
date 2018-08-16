@@ -18,8 +18,9 @@ const Paragraph = styled.p.attrs({
   }};
   line-height: ${({ lineheight }) => lineheight};
 
-  ${({ lineClamp }) => lineClamp
-    && css`
+  ${({ lineClamp }) =>
+    lineClamp &&
+    css`
       display: block;
       display: -webkit-box;
       -webkit-line-clamp: ${lineClamp};
@@ -43,14 +44,13 @@ const Paragraph = styled.p.attrs({
     }
   }};
 
-  margin: ${({
-    margin, marginTop, marginRight, marginBottom, marginLeft,
-  }) => createMargin(
-    marginTop || margin,
-    marginRight || margin,
-    marginBottom || margin,
-    marginLeft || margin,
-  )};
+  margin: ${({ margin, marginTop, marginRight, marginBottom, marginLeft }) =>
+    createMargin(
+      marginTop || margin,
+      marginRight || margin,
+      marginBottom || margin,
+      marginLeft || margin
+    )};
 `;
 
 Paragraph.propTypes = {

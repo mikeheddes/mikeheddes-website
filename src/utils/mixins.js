@@ -42,10 +42,13 @@ export const fluidValue = (min, max, param, unit = '') => css`
   ${param}: ${`${min}${unit}`};
 
   ${media.tabletPortrait(css`
-    ${''}
-      ${param}: calc(${max - min} * (100vw - 600px) / ${mediaSize.desktop -
-    mediaSize.tabletPortrait} + ${min}${unit});
-    `)} ${media.desktop(css`
+    ${param}: calc(
+      ${max - min} * (100vw - 600px) /
+        ${mediaSize.desktop - mediaSize.tabletPortrait} + ${min} ${unit}
+    );
+  `)};
+
+  ${media.desktop(css`
     ${param}: ${`${max}${unit}`};
   `)};
 `;

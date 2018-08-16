@@ -180,4 +180,4 @@ class Link extends Component {
   }
 }
 
-export default styled(Link)``;
+export default Link;
