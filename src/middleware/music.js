@@ -89,7 +89,6 @@ export const gotItemFlow = ({ dispatch }) => next => action => {
   next(action);
 
   if (action.type === FETCH_MUSIC_ITEM_SUCCES) {
-    console.log(action.payload);
     const newItems = [enrichNewItem(action.payload)];
     dispatch(addMusic(newItems));
   }
@@ -98,11 +97,9 @@ export const gotItemFlow = ({ dispatch }) => next => action => {
     action.type === FETCH_ALL_MUSIC_SUCCES ||
     action.type === FETCH_LATEST_MUSIC_SUCCES
   ) {
-    console.log(action.payload);
     const newItems = Object.values(action.payload).map(enrichNewItem);
     dispatch(addMusic(newItems));
     dispatch(setLatestMusic(newItems[0]));
-    console.log(newItems);
   }
 };
 

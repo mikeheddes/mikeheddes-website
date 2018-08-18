@@ -89,11 +89,15 @@ module.exports = options => ({
     modules: [
       path.resolve(__dirname, '../../src'),
       path.resolve(__dirname, '../node_modules'),
+      path.resolve(__dirname, '../../node_modules'),
     ],
     extensions: ['.js', '.jsx', '.json'],
   },
   resolveLoader: {
-    modules: [path.resolve(__dirname, '../node_modules')],
+    modules: [
+      path.resolve(__dirname, '../node_modules'),
+      path.resolve(__dirname, '../../node_modules'),
+    ],
   },
   optimization: Object.assign({ noEmitOnErrors: true }, options.optimization),
   performance: { hints: false },

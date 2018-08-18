@@ -5,26 +5,14 @@ import Badge from 'components/Badge';
 import Image from 'components/Image';
 import Link from 'components/Link';
 
-import {
-  EyebrowRow,
-  Wrapper,
-} from './imageBoxComponents';
+import { EyebrowRow, Wrapper } from './imageBoxComponents';
 
-const ImageBox = (props) => {
-  const {
-    contentType,
-    eyebrow,
-    image,
-    to,
-  } = props;
+const ImageBox = props => {
+  const { contentType, eyebrow, image, to } = props;
   return (
     <Wrapper>
       <EyebrowRow>
-        <Badge
-          fillType="fade"
-          size="l"
-          marginRight="auto"
-        >
+        <Badge fillType="fade" size="l" marginRight="auto">
           {eyebrow}
         </Badge>
         <Link noIcon to={`/${contentType}`}>
@@ -32,11 +20,7 @@ const ImageBox = (props) => {
         </Link>
       </EyebrowRow>
       <Link to={to} noIcon noTheme noInner>
-        <Image
-          {...image}
-          rounded
-          zDepth={6}
-        />
+        <Image {...image} rounded zDepth={6} />
       </Link>
     </Wrapper>
   );

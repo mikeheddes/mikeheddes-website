@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 import { contentTypes } from 'actions/content';
-// import nearestColor from 'nearest-color';
 import Section from 'components/Section';
 import Box from 'components/Box';
 import Image from 'components/Image';
@@ -61,16 +60,6 @@ class MusicItem extends Component {
     item: undefined,
   };
 
-  componentDidMount() {
-    const {
-      getItem,
-      match: {
-        params: { id },
-      },
-    } = this.props;
-    getItem(id);
-  }
-
   setTheme = theme => {
     const { item } = this.props;
     const itemColorName = (item && item.themeColor) || 'pink';
@@ -92,7 +81,6 @@ class MusicItem extends Component {
 
   render() {
     const { item } = this.props;
-    // console.log(item);
     return (
       <ThemeProvider theme={theme => this.setTheme(theme)}>
         <Main>
@@ -103,7 +91,7 @@ class MusicItem extends Component {
             marginRight="auto"
           >
             <Box flex="grow" marginRight="l">
-              <Image {...item && item.coverImage} shape="square" rounded />
+              <Image {...item && item.imageCover} shape="square" rounded />
               {item &&
                 item.description && (
                   <Description>{item.description}</Description>
