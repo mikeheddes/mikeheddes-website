@@ -10,15 +10,15 @@ const MetaTags = ({ backgroundColor }) => (
   <Helmet defaultTitle="Mike Heddes" titleTemplate="Mike Heddes | %s">
     <html lang="en-US" />
     <meta charSet="utf-8" />
-    <link rel="canonical" href="https://mikeheddes.nl" />
-    <link rel="shortcut icon" href={favicon.toString()} />
+    <link rel="canonical" href={WEBSITE_BASE} />
+    <link rel="shortcut icon" href={WEBSITE_BASE + favicon.toString()} />
     {favicon.images.map(({ width, height, path }) => (
       <link
         key={width}
         rel="icon"
         type="image/png"
         sizes={`${width}x${height}`}
-        href={path}
+        href={WEBSITE_BASE + path}
       />
     ))}
     {touchicon.images.map(({ width, height, path }) => (
@@ -27,7 +27,7 @@ const MetaTags = ({ backgroundColor }) => (
         rel="apple-touch-icon"
         type="image/png"
         sizes={`${width}x${height}`}
-        href={path}
+        href={WEBSITE_BASE + path}
       />
     ))}
     <meta
@@ -57,15 +57,21 @@ const MetaTags = ({ backgroundColor }) => (
       property="og:description"
       content="Mike Heddes is a creative engineer and artist who does software engineering makes dance - pop music and is curious in the world around him. Better know as a nerd."
     />
-    <meta property="og:url" content="https://mikeheddes.nl" />
+    <meta property="og:url" content={WEBSITE_BASE} />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:image" content={openGraphLogo.toString()} />
+    <meta
+      property="og:image"
+      content={WEBSITE_BASE + openGraphLogo.toString()}
+    />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Mike Heddes" />
     <meta name="twitter:site" content="@mikeheddes" />
     <meta name="twitter:creator" content="@mikeheddes" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content={openGraphLogo.toString()} />
+    <meta
+      name="twitter:image"
+      content={WEBSITE_BASE + openGraphLogo.toString()}
+    />
     <meta name="twitter:domain" content="mikeheddes.nl" />
     <meta name="theme-color" content={backgroundColor} />
     <body onTouchStart="" style={`background-color: ${backgroundColor};`} />

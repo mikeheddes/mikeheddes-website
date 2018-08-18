@@ -8,6 +8,8 @@ parserOptions:
   sourceType: module
   ecmaFeatures:
     jsx: true
+globals:
+  WEBSITE_BASE: ''
 settings:
   import/resolver:
     webpack:

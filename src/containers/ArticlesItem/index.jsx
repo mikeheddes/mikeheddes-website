@@ -120,8 +120,14 @@ class ArticlesItem extends Component {
               <meta name="description" content={item.description} />
               <meta property="og:title" content={item.title} />
               <meta property="og:description" content={item.description} />
-              <meta property="og:image" content={item.imageCover.toString()} />
-              <meta name="twitter:image" content={item.imageCover.toString()} />
+              <meta
+                property="og:image"
+                content={WEBSITE_BASE + item.imageCover.toString()}
+              />
+              <meta
+                name="twitter:image"
+                content={WEBSITE_BASE + item.imageCover.toString()}
+              />
             </Helmet>
           )}
           <HeaderWrapper>

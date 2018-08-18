@@ -1,6 +1,7 @@
 const path = require('path');
 // const ExtractTextPlugin = require('extract-text-webpack-plugin');
 // const autoprefixer = require('autoprefixer');
+const webpack = require('webpack');
 const highlight = require('remark-highlight.js');
 
 const isDev = process.env.NODE_ENV !== 'production';
@@ -83,7 +84,17 @@ module.exports = options => ({
       },
     ],
   },
-  plugins: isDev ? options.plugins : options.plugins.concat(),
+  plugins: isDev
+    ? options.plugins.concat([
+        new webpack.DefinePlugin({
+          WEBSITE_BASE: JSON.stringify('http://localhost'),
+        }),
+      ])
+    : options.plugins.concat([
+        new webpack.DefinePlugin({
+          WEBSITE_BASE: JSON.stringify('https://mikeheddes.nl'),
+        }),
+      ]),
   // : options.plugins.concat([new ExtractTextPlugin('styles.css')]),
   resolve: {
     modules: [
