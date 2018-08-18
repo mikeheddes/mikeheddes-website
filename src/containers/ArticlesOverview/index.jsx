@@ -34,7 +34,7 @@ export default class ArticlesOverview extends Component {
       PropTypes.shape({
         name: PropTypes.string.isRequired,
         href: PropTypes.string.isRequired,
-      }),
+      })
     ),
     color: PropTypes.oneOf(colorNames),
     match: PropTypes.shape({
@@ -62,7 +62,7 @@ export default class ArticlesOverview extends Component {
     ],
   };
 
-  setTheme = (theme) => {
+  setTheme = theme => {
     const { color } = this.props;
     return {
       ...theme,
@@ -79,9 +79,7 @@ export default class ArticlesOverview extends Component {
       <ThemeProvider theme={this.setTheme}>
         <React.Fragment>
           <Banner links={bannerLinks}>
-            <h2>
-              Articles
-            </h2>
+            <h2>Articles</h2>
             <h1>
               Interesting Ideas
               <br />
@@ -105,18 +103,19 @@ export default class ArticlesOverview extends Component {
             tabletLandscapeColumns={2}
             desktopColumns={3}
           >
-            {items => items.map(item => (
-              <Card
-                key={item.id}
-                title={item.title}
-                maxTitleLines={2}
-                maxDescriptionLines={3}
-                image={item.imageCover}
-                size="m"
-                preload={item.loadablePost.preload}
-                to={`/${contentType}/${item.id}`}
-              />
-            ))
+            {items =>
+              items.map(item => (
+                <Card
+                  key={item.id}
+                  title={item.title}
+                  maxTitleLines={2}
+                  maxDescriptionLines={3}
+                  image={item.imageCover}
+                  size="m"
+                  preload={item.loadablePost.preload}
+                  to={`/${contentType}/${item.id}`}
+                />
+              ))
             }
           </ContentGrid>
         </React.Fragment>

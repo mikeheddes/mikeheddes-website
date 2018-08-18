@@ -67,16 +67,7 @@ class Image extends Component {
   };
 
   componentDidMount() {
-    const { placeholder } = this.props;
-    this.loadImage(placeholder);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { showPreload } = this.state;
-    if (!showPreload) {
-      const { placeholder } = nextProps;
-      this.loadImage(placeholder);
-    }
+    this.loadImage();
   }
 
   setLoaded() {
@@ -85,10 +76,8 @@ class Image extends Component {
     });
   }
 
-  loadImage(placeholder) {
-    if (placeholder) {
-      this.setState({ showPreload: true });
-    }
+  loadImage() {
+    this.setState({ showPreload: true });
   }
 
   render() {
@@ -131,22 +120,22 @@ class Image extends Component {
           isVisible={!showPreload}
         />
         {showPreload && (
-          <Blur
-            background={null}
-            src={placeholder}
-            blur={40}
-            radius={radiusInPx}
-          />
-        )}
-        {showPreload && (
-          <Content
-            src={src}
-            srcSet={srcSet}
-            alt={alt}
-            radius={radiusInPx}
-            onLoad={this.setLoaded}
-            loaded={loaded}
-          />
+          <React.Fragment>
+            <Blur
+              background={null}
+              src={placeholder}
+              blur={40}
+              radius={radiusInPx}
+            />
+            <Content
+              src={src}
+              srcSet={srcSet}
+              alt={alt}
+              radius={radiusInPx}
+              onLoad={this.setLoaded}
+              loaded={loaded}
+            />
+          </React.Fragment>
         )}
         <ContentBorder radius={radiusInPx} />
         {badge && <Badge>{badge}</Badge>}
