@@ -73,17 +73,7 @@ class MusicItem extends Component {
 
   setTheme = theme => {
     const { item } = this.props;
-    let itemColorName = 'pink';
-    // if (
-    //   item &&
-    //   item.heroImage &&
-    //   (item.heroImage.color.vibrant || item.heroImage.color.darkMuted)
-    // ) {
-    //   const { vibrant, muted } = item.heroImage.color;
-    //   const nearestColorFinder = nearestColor.from(theme.primaries);
-    //   const nearestColorResult = nearestColorFinder(vibrant || muted);
-    //   itemColorName = nearestColorResult.name;
-    // }
+    const itemColorName = (item && item.themeColor) || 'pink';
     return {
       ...theme,
       link: theme[itemColorName],

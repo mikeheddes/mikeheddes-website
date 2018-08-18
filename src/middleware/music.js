@@ -24,13 +24,18 @@ import {
   enrichDate,
 } from './content';
 
-export const getItemFlow = ({ dispatch, getState }) => next => (action) => {
+export const getItemFlow = ({ dispatch, getState }) => next => action => {
   if (action.type === GET_MUSIC_ITEM) {
     const { id } = action.meta;
     if (shouldFetchContentItem(getState(), MUSIC_CONTENT_TYPE, id)) {
       next(action);
       dispatch(
-        requestById(MUSIC_CONTENT_TYPE, id, FETCH_MUSIC_ITEM_SUCCES, FETCH_MUSIC_ITEM_ERROR),
+        requestById(
+          MUSIC_CONTENT_TYPE,
+          id,
+          FETCH_MUSIC_ITEM_SUCCES,
+          FETCH_MUSIC_ITEM_ERROR
+        )
       );
       dispatch(fetchMusicItem(id));
     }
@@ -39,12 +44,16 @@ export const getItemFlow = ({ dispatch, getState }) => next => (action) => {
   }
 };
 
-export const getLatestFlow = ({ dispatch, getState }) => next => (action) => {
+export const getLatestFlow = ({ dispatch, getState }) => next => action => {
   if (action.type === GET_LATEST_MUSIC) {
     if (shouldFetchLatestContent(getState(), MUSIC_CONTENT_TYPE)) {
       next(action);
       dispatch(
-        requestLatest(MUSIC_CONTENT_TYPE, FETCH_LATEST_MUSIC_SUCCES, FETCH_LATEST_MUSIC_ERROR),
+        requestLatest(
+          MUSIC_CONTENT_TYPE,
+          FETCH_LATEST_MUSIC_SUCCES,
+          FETCH_LATEST_MUSIC_ERROR
+        )
       );
       dispatch(fetchLatestMusic());
     }
@@ -53,11 +62,17 @@ export const getLatestFlow = ({ dispatch, getState }) => next => (action) => {
   }
 };
 
-export const getAllFlow = ({ dispatch, getState }) => next => (action) => {
+export const getAllFlow = ({ dispatch, getState }) => next => action => {
   if (action.type === GET_ALL_MUSIC) {
     if (shouldFetchAllContent(getState(), MUSIC_CONTENT_TYPE)) {
       next(action);
-      dispatch(requestAll(MUSIC_CONTENT_TYPE, FETCH_ALL_MUSIC_SUCCES, FETCH_ALL_MUSIC_ERROR));
+      dispatch(
+        requestAll(
+          MUSIC_CONTENT_TYPE,
+          FETCH_ALL_MUSIC_SUCCES,
+          FETCH_ALL_MUSIC_ERROR
+        )
+      );
       dispatch(fetchAllMusic());
     }
   } else {
@@ -70,18 +85,24 @@ const enrichNewItem = item => ({
   ...enrichDate(item),
 });
 
-export const gotItemFlow = ({ dispatch }) => next => (action) => {
+export const gotItemFlow = ({ dispatch }) => next => action => {
   next(action);
 
   if (action.type === FETCH_MUSIC_ITEM_SUCCES) {
+    console.log(action.payload);
     const newItems = [enrichNewItem(action.payload)];
     dispatch(addMusic(newItems));
   }
 
-  if (action.type === FETCH_ALL_MUSIC_SUCCES || action.type === FETCH_LATEST_MUSIC_SUCCES) {
-    const newItems = action.payload.map(enrichNewItem);
+  if (
+    action.type === FETCH_ALL_MUSIC_SUCCES ||
+    action.type === FETCH_LATEST_MUSIC_SUCCES
+  ) {
+    console.log(action.payload);
+    const newItems = Object.values(action.payload).map(enrichNewItem);
     dispatch(addMusic(newItems));
     dispatch(setLatestMusic(newItems[0]));
+    console.log(newItems);
   }
 };
 

@@ -15,11 +15,13 @@
     "build:dll": "webpack --config ./webpack/dll.config.js"
   },
   "sideEffects": [
-    "./style/global-styles.js"
+    "./style/global-styles.js",
+    "firebase/database"
   ],
   "dependencies": {
     "connected-react-router": "^4.4.1",
     "delay": "^3.0.0",
+    "firebase": "^5.4.0",
     "history": "^4.7.2",
     "lodash": "^4.17.10",
     "polished": "^1.9.3",
