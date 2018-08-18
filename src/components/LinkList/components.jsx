@@ -30,8 +30,9 @@ const Item = styled.li`
   display: inline-block;
   margin-right: ${space.r}px;
 
-  ${({ width }) => width === 'fixed'
-    && css`
+  ${({ width }) =>
+    width === 'fixed' &&
+    css`
       width: calc(2 * 14.2857142% - 10px);
     `};
   &:last-of-type {

@@ -1,6 +1,6 @@
-/* eslint-env browser */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Helmet from 'react-helmet-async';
 import { ThemeProvider } from 'styled-components';
 import { categories } from 'actions/articles';
 import { themes } from 'actions/ui';
@@ -75,6 +75,7 @@ class ArticlesItem extends Component {
   };
 
   copyPageUrl = () => {
+    // eslint-disable-next-line no-undef
     clipboard(window.location.href);
     this.setState(prev => ({ ...prev, copiedUrl: true }));
   };
@@ -113,6 +114,16 @@ class ArticlesItem extends Component {
     return (
       <ThemeProvider theme={this.setTheme}>
         <article>
+          {item && (
+            <Helmet>
+              <title>{item.title}</title>
+              <meta name="description" content={item.description} />
+              <meta property="og:title" content={item.title} />
+              <meta property="og:description" content={item.description} />
+              <meta property="og:image" content={item.imageCover.toString()} />
+              <meta name="twitter:image" content={item.imageCover.toString()} />
+            </Helmet>
+          )}
           <HeaderWrapper>
             <Section noBackground noPaddingY>
               <Box width="text" marginRight="auto" marginLeft="auto">
@@ -150,7 +161,7 @@ class ArticlesItem extends Component {
           <Section>
             <Box width="text" marginLeft="auto" marginRight="auto" markdown>
               <Body components={components} />
-              <LinkList textAlign="center">
+              <LinkList textAlign="center" aria-hidden="true">
                 <Button
                   variation="primary"
                   onClick={this.copyPageUrl}

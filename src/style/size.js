@@ -11,6 +11,7 @@ const size = {
   xM: 256,
   G: 384,
   xG: 512,
+  footerHeight: 100,
 };
 
 export default size;

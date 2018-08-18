@@ -1,27 +1,25 @@
 import styled, { css } from 'styled-components';
-import PropTypes from 'prop-types';
-import { position, transparentize as fade, timingFunctions as easeF } from 'polished';
+import { transparentize as fade } from 'polished';
 
-import { footerHeight, spaces } from 'utils/sizes';
-import { grays } from 'utils/colors';
+import { size } from 'style';
 import { media } from 'utils/mixins';
 
 const Copyright = styled.div`
-  height         : ${footerHeight}px;
-  width          : 100%;
-  display        : flex;
-  align-items    : center;
+  height: ${size.footerHeight}px;
+  width: 100%;
+  display: flex;
+  align-items: center;
   justify-content: center;
 
   p {
-    color: ${props => fade(0.25, props.theme.heading)};
-    font-size  : 7px;
+    color: ${({ theme }) => fade(0.25, theme.heading)};
+    font-size: 7px;
     font-weight: 400;
     ${media.tabletPortrait(css`
-    font-size  : 9px;
-    font-weight: 500;
-    `)}
+      font-size: 9px;
+      font-weight: 500;
+    `)};
   }
-`
+`;
 
-export default Copyright
+export default Copyright;

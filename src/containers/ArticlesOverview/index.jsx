@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Helmet from 'react-helmet-async';
 import { ThemeProvider } from 'styled-components';
 import Banner from 'components/Banner';
 import ContentHighlight from 'containers/ContentHighlight/Loadable';
@@ -78,6 +79,9 @@ export default class ArticlesOverview extends Component {
     return (
       <ThemeProvider theme={this.setTheme}>
         <React.Fragment>
+          <Helmet>
+            <title>Articles</title>
+          </Helmet>
           <Banner links={bannerLinks}>
             <h2>Articles</h2>
             <h1>

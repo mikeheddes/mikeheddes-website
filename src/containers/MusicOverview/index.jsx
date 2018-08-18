@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
+import Helmet from 'react-helmet-async';
 import Banner from 'components/Banner';
 import ContentHighlight from 'containers/ContentHighlight/Loadable';
-import ContentGrid from 'containers/ContentGrid';
+import ContentGrid from 'containers/ContentGrid/Loadable';
 import { colorNames } from 'style/color';
 import Card from 'components/Card';
 import { visibilities } from 'actions/music';
@@ -81,6 +82,9 @@ export default class MusicOverview extends Component {
     return (
       <ThemeProvider theme={this.setTheme}>
         <React.Fragment>
+          <Helmet>
+            <title>Music</title>
+          </Helmet>
           <Banner links={bannerLinks}>
             <h2>Music</h2>
             <h1>

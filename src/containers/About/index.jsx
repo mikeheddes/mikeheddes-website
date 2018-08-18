@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Helmet from 'react-helmet-async';
 import { ThemeProvider } from 'styled-components';
 import Section from 'components/Section';
 import Banner from 'components/Banner';
@@ -16,7 +17,7 @@ export default class About extends Component {
       PropTypes.shape({
         name: PropTypes.string.isRequired,
         href: PropTypes.string.isRequired,
-      }),
+      })
     ),
   };
 
@@ -25,7 +26,7 @@ export default class About extends Component {
     links: [],
   };
 
-  setTheme = (theme) => {
+  setTheme = theme => {
     const { color } = this.props;
     return {
       ...theme,
@@ -39,10 +40,11 @@ export default class About extends Component {
     return (
       <ThemeProvider theme={this.setTheme}>
         <React.Fragment>
+          <Helmet>
+            <title>About</title>
+          </Helmet>
           <Banner links={links}>
-            <h2>
-              About
-            </h2>
+            <h2>About</h2>
             <h1>
               Artist. Designer.
               <br />

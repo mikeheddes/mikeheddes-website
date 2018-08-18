@@ -9,53 +9,62 @@ const Section = styled.section`
   position: ${({ position }) => position};
   display: ${({ display }) => display};
 
-  ${({ background }) => background
-    && css`
+  ${({ background }) =>
+    background &&
+    css`
       background-color: ${({ theme }) => theme.surface};
     `}
   color: ${({ theme }) => theme.title};
   overflow: hidden;
-  ${({ borderBottom }) => borderBottom
-    && css`
+  ${({ borderBottom }) =>
+    borderBottom &&
+    css`
       border-bottom: 1px solid ${({ theme }) => theme.borderSeparate};
     `}
-  ${({ borderTop }) => borderTop
-    && css`
+  ${({ borderTop }) =>
+    borderTop &&
+    css`
       border-top: 1px solid ${({ theme }) => theme.borderSeparate};
     `}
 
   ${hiDPI(2)} {
     border-width: 0.5px;
   }
-  padding: ${({ noPaddingX, noPaddingY }) => createPadding(noPaddingY ? 0 : 'xm', noPaddingX ? 0 : 'm')};
+  padding: ${({ noPaddingX, noPaddingY }) =>
+    createPadding(noPaddingY ? 0 : 'xm', noPaddingX ? 0 : 'm')};
 
   ${media.tabletPortrait(css`
-    padding: ${({ noPaddingX, noPaddingY }) => createPadding(noPaddingY ? 0 : 'xl', noPaddingX ? 0 : 'xl')};
+    padding: ${({ noPaddingX, noPaddingY }) =>
+      createPadding(noPaddingY ? 0 : 'xl', noPaddingX ? 0 : 'xl')};
   `)}
 
   ${media.tabletLandscape(css`
-    padding: ${({ noPaddingX, noPaddingY }) => createPadding(noPaddingY ? 0 : 'xl', noPaddingX ? 0 : 'M')};
+    padding: ${({ noPaddingX, noPaddingY }) =>
+      createPadding(noPaddingY ? 0 : 'xl', noPaddingX ? 0 : 'M')};
   `)}
 
   ${media.desktop(css`
-    padding: ${({ noPaddingX, noPaddingY }) => createPadding(noPaddingY ? 0 : 'xl', noPaddingX ? 0 : 'M')};
+    padding: ${({ noPaddingX, noPaddingY }) =>
+      createPadding(noPaddingY ? 0 : 'xl', noPaddingX ? 0 : 'M')};
   `)};
 
-  ${({ marginTop }) => (marginTop
-    ? css`
+  ${({ marginTop }) =>
+    marginTop
+      ? css`
           margin-top: ${space.xr}px;
         `
-    : '')};
+      : ''};
 
-  ${({ marginBottom }) => (marginBottom
-    ? css`
+  ${({ marginBottom }) =>
+    marginBottom
+      ? css`
           margin-bottom: ${space.xr}px;
 
           ${media.desktop(css`
             margin-bottom: ${space.l}px;
           `)};
         `
-    : '')};
+      : ''};
 `;
 
 Section.propTypes = {
