@@ -7,10 +7,14 @@ const outputPath = path.resolve(__dirname, '../../dlls');
 
 const pkg = require('../package.json');
 
+const exclude = ['apollo-client', 'graphql', 'react-apollo', 'through'];
+
 module.exports = createConfig({
   context: __dirname,
   entry: {
-    library: Object.keys(pkg.dependencies),
+    library: Object.keys(pkg.dependencies).filter(
+      module => exclude.indexOf(module) === -1
+    ),
   },
   output: {
     filename: '[name].dll.js',
