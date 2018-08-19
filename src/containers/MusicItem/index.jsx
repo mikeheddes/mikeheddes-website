@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Helmet from 'react-helmet-async';
 import { ThemeProvider } from 'styled-components';
 import { contentTypes } from 'actions/content';
-// import nearestColor from 'nearest-color';
 import Section from 'components/Section';
 import Box from 'components/Box';
 import Image from 'components/Image';
 import LinkList from 'components/LinkList';
 import Link from 'components/Link';
+import { size } from 'style';
 
 import mapState from './mapState';
 import { Title, Artist, GenreDate, AlbumInfo, Pline } from './components';
@@ -15,7 +16,7 @@ import Description from './Description';
 import TrackTable from './TrackTable';
 
 const Main = Section.withComponent('main').extend`
-  min-height: calc(100vh - 100px);
+  min-height: calc(100vh - ${size.footerHeight}px);
 `;
 
 const extraLinks = [
@@ -43,7 +44,6 @@ const extraLinks = [
 
 class MusicItem extends Component {
   static propTypes = {
-    getItem: PropTypes.func.isRequired,
     match: PropTypes.shape({
       params: PropTypes.shape({
         contentType: PropTypes.oneOf(contentTypes).isRequired,
@@ -61,29 +61,9 @@ class MusicItem extends Component {
     item: undefined,
   };
 
-  componentDidMount() {
-    const {
-      getItem,
-      match: {
-        params: { id },
-      },
-    } = this.props;
-    getItem(id);
-  }
-
   setTheme = theme => {
     const { item } = this.props;
-    let itemColorName = 'pink';
-    // if (
-    //   item &&
-    //   item.heroImage &&
-    //   (item.heroImage.color.vibrant || item.heroImage.color.darkMuted)
-    // ) {
-    //   const { vibrant, muted } = item.heroImage.color;
-    //   const nearestColorFinder = nearestColor.from(theme.primaries);
-    //   const nearestColorResult = nearestColorFinder(vibrant || muted);
-    //   itemColorName = nearestColorResult.name;
-    // }
+    const itemColorName = (item && item.themeColor) || 'pink';
     return {
       ...theme,
       link: theme[itemColorName],
@@ -102,10 +82,25 @@ class MusicItem extends Component {
 
   render() {
     const { item } = this.props;
-    // console.log(item);
     return (
       <ThemeProvider theme={theme => this.setTheme(theme)}>
         <Main>
+          {item && (
+            <Helmet>
+              <title>{item.title}</title>
+              <meta name="description" content={item.description} />
+              <meta property="og:title" content={item.title} />
+              <meta property="og:description" content={item.description} />
+              <meta
+                property="og:image"
+                content={WEBSITE_BASE + item.imageCover.toString()}
+              />
+              <meta
+                name="twitter:image"
+                content={WEBSITE_BASE + item.imageCover.toString()}
+              />
+            </Helmet>
+          )}
           <Box
             display="flex"
             width="content"
@@ -113,7 +108,7 @@ class MusicItem extends Component {
             marginRight="auto"
           >
             <Box flex="grow" marginRight="l">
-              <Image {...item && item.coverImage} shape="square" rounded />
+              <Image {...item && item.imageCover} shape="square" rounded />
               {item &&
                 item.description && (
                   <Description>{item.description}</Description>

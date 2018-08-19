@@ -51,10 +51,11 @@ class PageList extends React.Component {
           keys={config.links.map(item => item.title)}
           state={isVisible ? 'open' : 'close'}
         >
-          {config.links.map(link => ({ opacity, y }) => (
+          {config.links.map(({ preload, ...link }) => ({ opacity, y }) => (
             <Item
               navigateToLink={navigateToLink}
               current={activePath === link.to}
+              onMouseEnter={preload}
               style={{
                 opacity,
                 transform: y.interpolate(yInt => `translateY(${yInt}px)`),

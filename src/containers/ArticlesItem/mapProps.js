@@ -12,14 +12,12 @@ function mapStateToProps(state, props) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    setTheme: theme => dispatch(
-      setTheme(theme),
-    ),
+    setTheme: theme => dispatch(setTheme(theme)),
   };
 }
 
-
-export default Component => connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Component);
+export default Component =>
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Component);
