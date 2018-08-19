@@ -1,9 +1,7 @@
 import React from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import through from 'through';
 import { renderToNodeStream } from 'react-dom/server';
 import { HelmetProvider } from 'react-helmet-async';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { getDataFromTree } from 'react-apollo';
 import { StaticRouter } from 'react-router-dom';
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
