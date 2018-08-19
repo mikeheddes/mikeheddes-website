@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { darken, transparentize as fade } from 'polished';
+import { transparentize as fade } from 'polished';
 import { media } from 'utils/mixins';
 import { space, radius } from 'style';
 

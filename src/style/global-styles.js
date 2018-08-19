@@ -1,4 +1,5 @@
 import { injectGlobal } from 'styled-components';
+import fontFamilies from 'style/typography';
 
 // eslint-disable-next-line no-unused-expressions
 injectGlobal`
@@ -23,8 +24,8 @@ injectGlobal`
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    -moz-font-feature-settings: 'liga', 'kern';
-    font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Arial', 'Helvetica Neue', 'Helvetica', 'Segoe UI', sans-serif;
+    font-feature-settings: 'liga', 'kern';
+    font-family: ${fontFamilies.sansSerif};
     text-align: left;
     overflow-x: hidden;
   }

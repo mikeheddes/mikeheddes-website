@@ -38,11 +38,9 @@ export default function copyTextToClipboard(text) {
     fallbackCopyTextToClipboard(text);
     return;
   }
-  navigator.clipboard
-    .writeText(text)
-    .then(
-      () => {},
-      // eslint-disable-next-line no-console
-      err => console.error('Could not copy text: ', err),
-    );
+  navigator.clipboard.writeText(text).then(
+    () => {},
+    // eslint-disable-next-line no-console
+    err => console.error('Could not copy text: ', err)
+  );
 }

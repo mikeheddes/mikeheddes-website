@@ -6,35 +6,37 @@ export const createMargin = (top, right, bottom, left) => {
   let rightPx = true;
   let bottomPx = true;
   let leftPx = true;
+  let t = top;
+  let r = right;
+  let b = bottom;
+  let l = left;
   if (typeof top === 'string') {
     if (top === 'auto') topPx = false;
-    else top = space[top];
+    else t = space[top];
   }
   if (typeof right === 'string') {
     if (right === 'auto') rightPx = false;
-    else right = space[right];
+    else r = space[right];
   }
   if (typeof bottom === 'string') {
     if (bottom === 'auto') bottomPx = false;
-    else bottom = space[bottom];
+    else b = space[bottom];
   }
   if (typeof left === 'string') {
     if (left === 'auto') leftPx = false;
-    else left = space[left];
+    else l = space[left];
   }
-  return `${top}${topPx ? 'px' : ''} ${right}${rightPx ? 'px' : ''} ${bottom}${
+  return `${t}${topPx ? 'px' : ''} ${r}${rightPx ? 'px' : ''} ${b}${
     bottomPx ? 'px' : ''
-  } ${left}${leftPx ? 'px' : ''}`;
+  } ${l}${leftPx ? 'px' : ''}`;
 };
 
 export const createPadding = (y, x) => {
-  if (typeof y === 'string') {
-    y = space[y];
-  }
-  if (typeof x === 'string') {
-    x = space[x];
-  }
-  return `${y}px ${x}px`;
+  let yi = y;
+  let xi = x;
+  if (typeof y === 'string') yi = space[y];
+  if (typeof x === 'string') xi = space[x];
+  return `${yi}px ${xi}px`;
 };
 
 export const createWidth = w => {

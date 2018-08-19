@@ -23,7 +23,11 @@ export const ALL_ARTICLES_VISIBLE = 'ALL';
 export const DESIGN_ARTICLES_VISIBLE = 'DESIGN';
 export const CODE_ARTICLES_VISIBLE = 'CODE';
 export const TRAVEL_ARTICLES_VISIBLE = 'TRAVEL';
-export const categories = [DESIGN_ARTICLES_VISIBLE, CODE_ARTICLES_VISIBLE, TRAVEL_ARTICLES_VISIBLE];
+export const categories = [
+  DESIGN_ARTICLES_VISIBLE,
+  CODE_ARTICLES_VISIBLE,
+  TRAVEL_ARTICLES_VISIBLE,
+];
 export const SET_ARTICLES_VISIBILITY = '[articles] Set visibility filter';
 
 export const getArticleItem = id => ({

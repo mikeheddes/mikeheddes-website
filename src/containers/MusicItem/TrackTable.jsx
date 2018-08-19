@@ -3,17 +3,18 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { space } from 'style';
 
-const toTimeStamp = (milliseconds) => {
+const toTimeStamp = milliseconds => {
   const totalSeconds = milliseconds / 1000;
   const minutes = Math.floor(totalSeconds / 60);
   const seconds = totalSeconds - minutes * 60;
   return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 };
 
-const checkSameArtists = (tracks, artist) => tracks.reduce((accumulator, currentValue) => {
-  if (currentValue.artist === artist) return accumulator;
-  return false;
-}, true);
+const checkSameArtists = (tracks, artist) =>
+  tracks.reduce((accumulator, currentValue) => {
+    if (currentValue.artist === artist) return accumulator;
+    return false;
+  }, true);
 
 const Wrapper = styled.table`
   border-top: 2px solid;
@@ -26,27 +27,36 @@ const Wrapper = styled.table`
 const Cell = styled.td`
   border-bottom: 2px solid;
   text-align: left;
-  border-color: ${({ variation, theme }) => (variation === 'number' ? 'transparent' : theme.surface)};
+  border-color: ${({ variation, theme }) =>
+    variation === 'number' ? 'transparent' : theme.surface};
   padding: ${space.xr}px;
   font-size: 17px;
   color: ${({ theme }) => theme.textSubtle};
-  ${({ variation }) => variation === 'number'
-    && css`
+
+  ${({ variation }) =>
+    variation === 'number' &&
+    css`
       padding-right: ${space.xm}px;
     `};
-  ${({ variation }) => variation === 'title'
-    && css`
+
+  ${({ variation }) =>
+    variation === 'title' &&
+    css`
       width: 100%;
       padding-left: 0;
       padding-right: 0;
-      ${({ height }) => height === 'dubble'
-        && css`
+
+      ${({ height }) =>
+        height === 'dubble' &&
+        css`
           padding-top: ${space.r}px;
           padding-bottom: ${space.r}px;
         `};
     `};
-  ${({ variation }) => variation === 'time'
-    && css`
+
+  ${({ variation }) =>
+    variation === 'time' &&
+    css`
       text-align: right;
     `};
 `;
@@ -62,7 +72,7 @@ const Artist = styled.span`
   margin-top: ${space.xs}px;
 `;
 
-const TrackTable = (props) => {
+const TrackTable = props => {
   const { tracks, artist } = props;
   const hasSameArtists = checkSameArtists(tracks, artist);
   return (
@@ -70,25 +80,20 @@ const TrackTable = (props) => {
       <tbody>
         {tracks.map((track, i) => (
           <tr key={track.title}>
-            <Cell variation="number">
-              {i + 1}
-            </Cell>
-            <Cell variation="title" height={hasSameArtists ? undefined : 'dubble'}>
-              <Title>
-                {track.title}
-              </Title>
+            <Cell variation="number">{i + 1}</Cell>
+            <Cell
+              variation="title"
+              height={hasSameArtists ? undefined : 'dubble'}
+            >
+              <Title>{track.title}</Title>
               {!hasSameArtists && (
                 <React.Fragment>
                   <br />
-                  <Artist>
-                    {track.artist}
-                  </Artist>
+                  <Artist>{track.artist}</Artist>
                 </React.Fragment>
               )}
             </Cell>
-            <Cell variation="time">
-              {toTimeStamp(track.duration)}
-            </Cell>
+            <Cell variation="time">{toTimeStamp(track.duration)}</Cell>
           </tr>
         ))}
       </tbody>
@@ -102,7 +107,7 @@ TrackTable.propTypes = {
       title: PropTypes.string.isRequired,
       artist: PropTypes.string.isRequired,
       duration: PropTypes.number.isRequired,
-    }),
+    })
   ).isRequired,
   artist: PropTypes.string.isRequired,
 };

@@ -16,7 +16,7 @@ function addEntry(state, action) {
       ...accumulator,
       [currentValue.id]: currentValue,
     }),
-    state,
+    state
   );
 }
 

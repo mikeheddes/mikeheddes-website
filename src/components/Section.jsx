@@ -29,7 +29,7 @@ const Section = styled.section`
 
   ${hiDPI(2)} {
     border-width: 0.5px;
-  };
+  }
 
   padding: ${({ noPaddingX, noPaddingY }) =>
     createPadding(noPaddingY ? 0 : 'xm', noPaddingX ? 0 : 'm')};

@@ -1,6 +1,5 @@
 import { transparentize as fade } from 'polished';
 import styled from 'styled-components';
-
 import space from 'style/space';
 import { fluidText } from 'utils/mixins';
 

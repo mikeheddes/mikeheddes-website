@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import Link from 'components/Link';
 import List, { Item } from './components';
 
 const LinkList = props => {
