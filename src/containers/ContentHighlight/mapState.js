@@ -4,7 +4,6 @@ import { setTheme } from 'actions/ui';
 
 import { makeGetHighlightedContent } from './selectors';
 
-
 function makeMapStateToProps() {
   const getHighlightedContent = makeGetHighlightedContent();
   const mapStateToProps = (state, props) => ({
@@ -15,17 +14,14 @@ function makeMapStateToProps() {
 
 function mapDispatchToProps(dispatch) {
   return {
-    getContent: (contentType, highlightType) => dispatch(
-      getHighlightContent(contentType, highlightType),
-    ),
-    setTheme: theme => dispatch(
-      setTheme(theme),
-    ),
+    getContent: (contentType, highlightType) =>
+      dispatch(getHighlightContent(contentType, highlightType)),
+    setTheme: theme => dispatch(setTheme(theme)),
   };
 }
 
-
-export default Component => connect(
-  makeMapStateToProps,
-  mapDispatchToProps,
-)(Component);
+export default Component =>
+  connect(
+    makeMapStateToProps,
+    mapDispatchToProps
+  )(Component);

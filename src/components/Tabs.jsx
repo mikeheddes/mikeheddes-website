@@ -15,6 +15,7 @@ const TabRow = styled.ul`
   white-space: nowrap;
   font-size: 17px;
   user-select: none;
+
   ${({ withScroll }) =>
     withScroll &&
     css`
@@ -24,15 +25,11 @@ const TabRow = styled.ul`
         margin-left: ${space.phone}px;
         margin-right: ${space.phone}px;
       `)};
-    `}
+    `};
 
   ${media.tabletPortrait(css`
     padding: ${createPadding(0, 'xr')};
-  `)}
-
-  ${media.tabletLandscape(css``)}
-
-  ${media.desktop(css``)};
+  `)};
 `;
 
 TabRow.propTypes = {

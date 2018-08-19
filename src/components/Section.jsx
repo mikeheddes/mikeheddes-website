@@ -13,14 +13,14 @@ const Section = styled.section`
     background &&
     css`
       background-color: ${({ theme }) => theme.surface};
-    `}
+    `};
   color: ${({ theme }) => theme.title};
   overflow: hidden;
   ${({ borderBottom }) =>
     borderBottom &&
     css`
       border-bottom: 1px solid ${({ theme }) => theme.borderSeparate};
-    `}
+    `};
   ${({ borderTop }) =>
     borderTop &&
     css`
@@ -30,6 +30,7 @@ const Section = styled.section`
   ${hiDPI(2)} {
     border-width: 0.5px;
   }
+
   padding: ${({ noPaddingX, noPaddingY }) =>
     createPadding(noPaddingY ? 0 : 'xm', noPaddingX ? 0 : 'm')};
 

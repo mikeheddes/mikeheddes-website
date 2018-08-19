@@ -38,16 +38,35 @@ export const center = css`
   margin-left: auto;
 `;
 
+export const maxLines = css`
+  display: block;
+  /* stylelint-disable value-no-vendor-prefix, property-no-vendor-prefix */
+  display: -webkit-box;
+  -webkit-line-clamp: ${({ lineClamp }) => lineClamp};
+  -webkit-box-orient: vertical;
+  /* stylelint-enable value-no-vendor-prefix, property-no-vendor-prefix */
+  max-height: calc(
+    1em * ${({ lineHeight, lineClamp }) => (lineHeight || 1.2) * lineClamp}
+  );
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+// stylelint-disable property-no-unknown
 export const fluidValue = (min, max, param, unit = '') => css`
   ${param}: ${`${min}${unit}`};
 
   ${media.tabletPortrait(css`
-    ${''}
-      ${param}: calc(${max - min} * (100vw - 600px) / ${mediaSize.desktop -
-    mediaSize.tabletPortrait} + ${min}${unit});
-    `)} ${media.desktop(css`
+    ${param}: calc(
+      ${max - min} * (100vw - 600px) /
+        ${mediaSize.desktop - mediaSize.tabletPortrait} + ${min} ${unit}
+    );
+  `)};
+
+  ${media.desktop(css`
     ${param}: ${`${max}${unit}`};
   `)};
 `;
+// stylelint-enable property-no-unknown
 
 export const fluidText = (min, max) => fluidValue(min, max, 'font-size', 'px');

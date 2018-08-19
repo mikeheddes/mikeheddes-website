@@ -12,9 +12,11 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   color: ${({ theme }) => theme.heading};
+
   ${media.phoneOnly(css`
     height: ${config.size.phone}px;
   `)};
+
   ${media.tabletPortrait(css`
     top: -100%;
     position: absolute;

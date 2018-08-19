@@ -14,7 +14,7 @@ export default class Description extends PureComponent {
     extended: false,
   };
 
-  setDescriptionRef = (node) => {
+  setDescriptionRef = node => {
     this.description = node;
   };
 
@@ -28,9 +28,7 @@ export default class Description extends PureComponent {
     const needToToggle = children.length > 200;
     return (
       <React.Fragment>
-        <Heading tag="h6">
-          Description
-        </Heading>
+        <Heading tag="h6">Description</Heading>
         <Paragraph
           innerRef={this.setDescriptionRef}
           lineClamp={needToToggle && !extended ? 3 : null}

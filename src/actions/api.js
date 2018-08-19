@@ -6,7 +6,7 @@ export const apiRequest = (
   onError,
   meta = {},
   method = 'GET',
-  body = undefined,
+  body = undefined
 ) => ({
   type: API_REQUEST,
   payload: body,
@@ -19,14 +19,11 @@ export const apiRequest = (
   },
 });
 
-export const requestById = (contentType, id, onSuccess, onError) => apiRequest(
-  contentType, onSuccess, onError, { id },
-);
+export const requestById = (contentType, id, onSuccess, onError) =>
+  apiRequest(contentType, onSuccess, onError, { id });
 
-export const requestAll = (contentType, onSuccess, onError) => apiRequest(
-  contentType, onSuccess, onError,
-);
+export const requestAll = (contentType, onSuccess, onError) =>
+  apiRequest(contentType, onSuccess, onError);
 
-export const requestLatest = (contentType, onSuccess, onError) => apiRequest(
-  contentType, onSuccess, onError, { query: { limit: 1 } },
-);
+export const requestLatest = (contentType, onSuccess, onError) =>
+  apiRequest(contentType, onSuccess, onError, { query: { limit: 1 } });

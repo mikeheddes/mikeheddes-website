@@ -23,7 +23,7 @@ export const Code = styled.code`
   border-radius: ${radius.r}px;
 `;
 
-const Anchor = (props) => {
+const Anchor = props => {
   const { href } = props;
   return <Link {...props} to={href} noIcon noFontSize />;
 };

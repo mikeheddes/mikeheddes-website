@@ -20,8 +20,9 @@ export const Title = styled.h1`
     margin-bottom: ${space.xm}px;
   `)};
 
-  ${({ children }) => !children
-    && css`
+  ${({ children }) =>
+    !children &&
+    css`
       height: 1.12em;
       width: 75%;
       border-radius: ${radius.r}px;

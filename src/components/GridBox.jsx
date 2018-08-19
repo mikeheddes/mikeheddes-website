@@ -1,7 +1,5 @@
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { marginPropType, paddingPropType, zDepthPropType } from 'utils/PropTypes';
-import { createMargin, createPadding, createWidth } from 'utils/createSpace';
 import { media } from 'utils/mixins';
 import space from 'style/space';
 
@@ -12,16 +10,25 @@ const GridBox = styled.div`
 
   ${media.tabletPortrait(css`
     grid-gap: ${space.xm}px;
-    grid-template-columns: repeat(${({ tabletPortraitColumns }) => tabletPortraitColumns}, 1fr);
-  `)}
+    grid-template-columns: repeat(
+      ${({ tabletPortraitColumns }) => tabletPortraitColumns},
+      1fr
+    );
+  `)};
 
   ${media.tabletLandscape(css`
-    grid-template-columns: repeat(${({ tabletLandscapeColumns }) => tabletLandscapeColumns}, 1fr);
-  `)}
+    grid-template-columns: repeat(
+      ${({ tabletLandscapeColumns }) => tabletLandscapeColumns},
+      1fr
+    );
+  `)};
 
   ${media.desktop(css`
-    grid-template-columns: repeat(${({ desktopColumns }) => desktopColumns}, 1fr);
-  `)}
+    grid-template-columns: repeat(
+      ${({ desktopColumns }) => desktopColumns},
+      1fr
+    );
+  `)};
 `;
 
 GridBox.propTypes = {

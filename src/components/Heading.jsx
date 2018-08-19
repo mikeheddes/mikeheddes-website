@@ -11,8 +11,9 @@ const headingStyle = css`
   line-height: 1.13;
   color: ${({ theme }) => theme.heading};
 
-  ${({ tag }) => tag === 'h1'
-    && css`
+  ${({ tag }) =>
+    tag === 'h1' &&
+    css`
       ${fluidText(34, 57)};
       line-height: 1.0625;
       margin-top: ${space.xl}px;
@@ -23,23 +24,26 @@ const headingStyle = css`
       }
     `};
 
-  ${({ tag }) => tag === 'h2'
-    && css`
+  ${({ tag }) =>
+    tag === 'h2' &&
+    css`
       ${fluidText(28, 42)};
       margin-top: ${space.l}px;
       margin-bottom: ${space.xr}px;
     `};
 
-  ${({ tag }) => tag === 'h3'
-    && css`
+  ${({ tag }) =>
+    tag === 'h3' &&
+    css`
       ${fluidText(22, 34)};
       font-weight: 600;
       margin-top: ${space.xm}px;
       margin-bottom: ${space.r}px;
     `};
 
-  ${({ tag }) => tag === 'h4'
-    && css`
+  ${({ tag }) =>
+    tag === 'h4' &&
+    css`
       ${fluidText(22, 34)};
       opacity: 0.7;
       line-height: 1;
@@ -48,14 +52,16 @@ const headingStyle = css`
       margin-bottom: 0.25em;
     `};
 
-  ${({ tag }) => tag === 'h5'
-    && css`
+  ${({ tag }) =>
+    tag === 'h5' &&
+    css`
       ${fluidText(20, 28)};
       margin-top: ${space.xm}px;
     `};
 
-  ${({ tag }) => tag === 'h6'
-    && css`
+  ${({ tag }) =>
+    tag === 'h6' &&
+    css`
       ${fluidText(18, 20)};
       margin-top: ${space.xm}px;
       margin-bottom: ${space.s}px;
@@ -70,10 +76,10 @@ const styledElements = availableTags.reduce(
       ${headingStyle};
     `,
   }),
-  {},
+  {}
 );
 
-const Heading = (props) => {
+const Heading = props => {
   const { tag } = props;
   const HeadingElement = styledElements[tag];
   return <HeadingElement {...props} />;

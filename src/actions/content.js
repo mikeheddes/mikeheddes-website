@@ -1,8 +1,4 @@
-import {
-  MUSIC_CONTENT_TYPE,
-  GET_ALL_MUSIC,
-  GET_LATEST_MUSIC,
-} from './music';
+import { MUSIC_CONTENT_TYPE, GET_ALL_MUSIC, GET_LATEST_MUSIC } from './music';
 import {
   ARTICLES_CONTENT_TYPE,
   GET_ALL_ARTICLES,

@@ -6,7 +6,7 @@ import Blur from 'components/Blur';
 import { highlightTypes, contentTypes } from 'actions/content';
 import Section from 'components/Section';
 
-import { ContentWrapper } from './components';
+import ContentWrapper from './components';
 import ImageBox from './ImageBox';
 import TextBox from './TextBox';
 import mapState from './mapState';

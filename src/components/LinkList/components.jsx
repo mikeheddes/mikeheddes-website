@@ -1,11 +1,5 @@
-// import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
-// import { darken } from 'polished';
 import styled, { css } from 'styled-components';
-// import Anchor from 'components/Link';
-
 import space from 'style/space';
-// import radius from 'style/radius';
 
 const Wrapper = styled.ul`
   color: ${({ theme }) => theme.link};

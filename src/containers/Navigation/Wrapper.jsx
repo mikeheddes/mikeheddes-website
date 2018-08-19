@@ -24,19 +24,24 @@ const Wrapper = styled.nav`
   z-index: 9999;
   display: block;
   max-height: ${config.size.tablet}px;
+
   ${media.phoneOnly(css`
     max-height: ${config.size.phone}px;
   `)};
+
   transition: background-color ${config.time.standard}s ${easeInSine},
     backdrop-filter ${config.time.standard}s ${easeInSine},
     -webkit-backdrop-filter ${config.time.standard}s ${easeInSine},
     box-shadow ${config.time.outgoing}s ${easeInOutQubic},
     max-height ${config.time.outgoing}s ${easeInOutQubic};
   background-color: ${({ theme }) => fade(0.4, theme.backgroundNav)};
+
   ${has.backdrop(css`
     background-color: ${({ theme }) => fade(0.81, theme.backgroundNav)};
   `)};
+
   backdrop-filter: blur(30px) saturate(1.1);
+
   ${media.tabletPortrait(css`
     backdrop-filter: blur(40px) saturate(1.1);
   `)};
@@ -68,6 +73,7 @@ const Wrapper = styled.nav`
         box-shadow ${config.time.incomming}s ${easeInOutQubic},
         max-height ${config.time.incomming}s ${easeInOutQubic};
       max-height: ${({ menuHeight }) => config.size.tablet + menuHeight}px;
+
       ${media.phoneOnly(css`
         max-height: ${({ menuHeight }) => config.size.phone + menuHeight}px;
       `)};

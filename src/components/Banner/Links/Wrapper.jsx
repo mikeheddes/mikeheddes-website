@@ -1,5 +1,3 @@
-// import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
 import { darken } from 'polished';
 import styled, { css } from 'styled-components';
 import Anchor from 'components/Link';
@@ -41,7 +39,8 @@ const Wrapper = styled.ul`
 export default Wrapper;
 
 export const Link = Anchor.extend`
-  ${fluidText(17, 20)} font-weight: 500;
+  ${fluidText(17, 20)};
+  font-weight: 500;
   margin: 0 ${space.xr}px;
   display: inline-block;
 

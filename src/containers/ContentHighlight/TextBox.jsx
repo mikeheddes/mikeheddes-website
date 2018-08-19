@@ -10,7 +10,7 @@ import {
   Wrapper,
 } from './textBoxComponents';
 
-const TextBox = (props) => {
+const TextBox = props => {
   const {
     actionTitle,
     artist,
@@ -37,23 +37,16 @@ const TextBox = (props) => {
       >
         {title}
       </Title>
-      {
-        contentType === 'music' && (
-          <Artist>
-            {artist}
-          </Artist>
-        )
-      }
+      {contentType === 'music' && <Artist>{artist}</Artist>}
       <Link to={url} display="block" textAlign="left">
         {actionTitle}
       </Link>
-      {
-        externalActionTitle && externalUrls.length > 0 && (
+      {externalActionTitle &&
+        externalUrls.length > 0 && (
           <Link to={externalUrls[0].url} display="block" textAlign="left">
             {`${externalActionTitle} ${externalUrls[0].service}`}
           </Link>
-        )
-      }
+        )}
     </Wrapper>
   );
 };
@@ -64,10 +57,12 @@ TextBox.propTypes = {
   contentType: PropTypes.oneOf(contentTypes).isRequired,
   eyebrow: PropTypes.string.isRequired,
   externalActionTitle: PropTypes.string,
-  externalUrls: PropTypes.arrayOf(PropTypes.shape({
-    service: PropTypes.string.isRequired,
-    url: PropTypes.string.isRequired,
-  })),
+  externalUrls: PropTypes.arrayOf(
+    PropTypes.shape({
+      service: PropTypes.string.isRequired,
+      url: PropTypes.string.isRequired,
+    })
+  ),
   title: PropTypes.string,
   url: PropTypes.string,
 };

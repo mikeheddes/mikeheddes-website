@@ -1,12 +1,10 @@
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { fluidText } from 'utils/mixins';
+import { fluidText, maxLines } from 'utils/mixins';
 import { marginPropType } from 'utils/PropTypes';
 import { createMargin } from 'utils/createSpace';
 
-const Paragraph = styled.p.attrs({
-  lineheight: 1.48,
-})`
+const Paragraph = styled.p`
   font-weight: 400;
   color: ${({ theme, color }) => {
     switch (color) {
@@ -16,17 +14,12 @@ const Paragraph = styled.p.attrs({
         return theme.text;
     }
   }};
-  line-height: ${({ lineheight }) => lineheight};
+  line-height: ${({ lineHeight }) => lineHeight};
 
-  ${({ lineClamp }) => lineClamp
-    && css`
-      display: block;
-      display: -webkit-box;
-      -webkit-line-clamp: ${lineClamp};
-      -webkit-box-orient: vertical;
-      max-height: calc(1em * ${({ lineheight }) => lineheight * lineClamp});
-      overflow: hidden;
-      text-overflow: ellipsis;
+  ${({ lineClamp }) =>
+    lineClamp &&
+    css`
+      ${maxLines};
       margin-bottom: 20px;
     `};
 
@@ -43,14 +36,13 @@ const Paragraph = styled.p.attrs({
     }
   }};
 
-  margin: ${({
-    margin, marginTop, marginRight, marginBottom, marginLeft,
-  }) => createMargin(
-    marginTop || margin,
-    marginRight || margin,
-    marginBottom || margin,
-    marginLeft || margin,
-  )};
+  margin: ${({ margin, marginTop, marginRight, marginBottom, marginLeft }) =>
+    createMargin(
+      marginTop || margin,
+      marginRight || margin,
+      marginBottom || margin,
+      marginLeft || margin
+    )};
 `;
 
 Paragraph.propTypes = {
@@ -64,6 +56,7 @@ Paragraph.propTypes = {
   marginBottom: marginPropType,
   marginLeft: marginPropType,
   lineClamp: PropTypes.number,
+  lineHeight: PropTypes.number,
 };
 
 Paragraph.defaultProps = {
@@ -72,6 +65,7 @@ Paragraph.defaultProps = {
   color: 'normal',
   margin: 0,
   lineClamp: null,
+  lineHeight: 1.48,
 };
 
 export default Paragraph;

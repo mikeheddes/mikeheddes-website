@@ -10,7 +10,10 @@ export const spacePropType = PropTypes.oneOfType([
   PropTypes.oneOf(Object.keys(spaceObj)),
 ]);
 
-export const marginPropType = PropTypes.oneOfType([spacePropType, PropTypes.oneOf(['auto'])]);
+export const marginPropType = PropTypes.oneOfType([
+  spacePropType,
+  PropTypes.oneOf(['auto']),
+]);
 
 export const paddingPropType = spacePropType;
 

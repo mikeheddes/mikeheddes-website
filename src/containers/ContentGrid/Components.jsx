@@ -92,7 +92,9 @@ export const Title = styled.h1`
 
   ${media.phoneOnly(css`
     margin-top: ${space.xm}px;
-  `)} ${media.tabletLandscape(css`
+  `)};
+
+  ${media.tabletLandscape(css`
     padding-bottom: ${space.xr}px;
     margin-bottom: ${space.xm}px;
   `)};

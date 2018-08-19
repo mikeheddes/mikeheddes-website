@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import Image from 'components/Image';
 import space from 'style/space';
-import { media, fluidText } from 'utils/mixins';
+import { media, fluidText, maxLines } from 'utils/mixins';
 import Link from 'components/Link';
 
 const Title = styled.h2`
@@ -12,12 +12,7 @@ const Title = styled.h2`
   font-weight: 700;
   color: ${({ theme }) => theme.heading};
   margin-top: ${space.r}px;
-  display: block;
-  display: -webkit-box;
-  -webkit-line-clamp: ${({ maxLines }) => maxLines};
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  ${maxLines};
   ${media.phoneOnly(css`
     margin-top: ${space.s}px;
     font-weight: 600;
@@ -25,25 +20,21 @@ const Title = styled.h2`
 `;
 
 const Description = styled.p`
-  ${({ size }) => size === 'r'
-    && css`
+  ${({ size }) =>
+    size === 'r' &&
+    css`
       font-size: 15px;
     `};
   ${({ size }) => size === 'm' && fluidText(16, 17)};
   margin-top: ${space.s}px;
   color: ${({ theme }) => theme.textSubtle};
-  display: block;
-  display: -webkit-box;
-  -webkit-line-clamp: ${({ maxLines }) => maxLines};
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  ${maxLines};
   ${media.phoneOnly(css`
     margin-top: ${space.xs}px;
   `)};
 `;
 
-const Card = (props) => {
+const Card = props => {
   const {
     title,
     image,
@@ -68,11 +59,11 @@ const Card = (props) => {
         }}
       >
         <Image {...image} rounded shape={shape} badge={badge} />
-        <Title size={size} maxLines={maxTitleLines}>
+        <Title size={size} lineClamp={maxTitleLines}>
           {title}
         </Title>
       </LinkWrapper>
-      <Description size={size} maxLines={maxDescriptionLines}>
+      <Description size={size} lineClamp={maxDescriptionLines}>
         {children}
       </Description>
     </div>

@@ -14,8 +14,9 @@ const scrollStyle = css`
 const HorizontalScrol = styled.div`
   -webkit-overflow-scrolling: touch;
   ${({ media }) => (media ? md[media](scrollStyle) : scrollStyle)};
-  ${({ bar }) => !bar
-    && css`
+  ${({ bar }) =>
+    !bar &&
+    css`
       &::-webkit-scrollbar {
         opacity: 0;
         display: none;

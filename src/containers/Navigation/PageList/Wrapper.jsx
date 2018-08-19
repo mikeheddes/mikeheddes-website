@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
-
 import { media, center } from 'utils/mixins';
-import { space } from 'utils/sizes';
+import { space } from 'style';
 import config from '../config';
 
 const Wrapper = styled.ul`
@@ -17,10 +16,11 @@ const Wrapper = styled.ul`
   font-size: 17px;
   font-weight: 500;
   ${center};
+
   ${media.phoneOnly(css`
     flex-direction: column;
     align-content: stretch;
-    ${space('padding', 'l', 0, 'M')};
+    padding: ${space.l}px 0 ${space.M}px;
     transition: transform 1s ease-out;
   `)};
 `;

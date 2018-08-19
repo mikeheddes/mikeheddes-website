@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { darken, transparentize as fade } from 'polished';
 import { radius, space } from 'style';
-// import { media, fluidText } from 'utils/mixins';
 
 const buttonPadding = css`
   padding: ${space.r}px ${space.m}px;

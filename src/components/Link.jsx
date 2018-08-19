@@ -180,4 +180,6 @@ class Link extends Component {
   }
 }
 
+// stylelint-disable block-no-empty
 export default styled(Link)``;
+// stylelint-enable block-no-empty

@@ -23,6 +23,11 @@ const Table = styled.table`
     vertical-align: baseline;
   }
 
+  tr:nth-child(2n),
+  th {
+    background-color: ${({ theme }) => fade(0.5, theme.surface)};
+  }
+
   th,
   td {
     padding: 10px 15px;
@@ -37,10 +42,6 @@ const Table = styled.table`
       border-top-right-radius: ${radius.r}px;
       border-bottom-right-radius: ${radius.r}px;
     }
-  }
-
-  tr:nth-child(2n), th {
-    background-color: ${({ theme }) => fade(0.5, theme.surface)};
   }
 `;
 

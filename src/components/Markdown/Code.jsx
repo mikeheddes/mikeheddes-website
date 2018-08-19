@@ -6,6 +6,7 @@ import { transparentize as fade } from 'polished';
 const Code = styled.code`
   font-size: 82%;
   font-family: ${typography.mono};
+
   ${({ type }) =>
     type === 'inline' &&
     css`
@@ -13,6 +14,7 @@ const Code = styled.code`
       border-radius: ${radius.r}px;
       padding: ${space.xs}px ${space.s}px;
     `};
+
   ${({ type }) =>
     type === 'block' &&
     css`

@@ -7,11 +7,10 @@ const listStyle = css`
   list-style-position: inside;
   line-height: 1.2;
   color: ${({ theme }) => theme.text};
-  ${({ tag }) => tag === 'ol' && css``};
-  ${({ tag }) => tag === 'ul' && css``};
   margin-bottom: ${space.xr}px;
 
-  ol, ul {
+  ol,
+  ul {
     padding-left: 1.25em;
     margin-bottom: 0.5em;
   }
@@ -25,7 +24,7 @@ const listStyle = css`
   }
 `;
 
-const List = (props) => {
+const List = props => {
   const { tag } = props;
   const L = styled(tag)`
     ${listStyle};
