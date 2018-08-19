@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import { space } from 'style';
+import { size } from 'style';
 
 const Footer = styled.footer`
   background-color: ${({ theme }) => theme.surface};
-  padding-top: ${space.l}px;
+  padding-top: ${size.footerHeight / 2}px;
   width: 100vw;
 `;
 

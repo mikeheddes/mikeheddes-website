@@ -5,7 +5,7 @@ import { size } from 'style';
 import { media } from 'utils/mixins';
 
 const Copyright = styled.div`
-  height: ${size.footerHeight}px;
+  height: ${size.footerHeight / 2}px;
   width: 100%;
   display: flex;
   align-items: center;
