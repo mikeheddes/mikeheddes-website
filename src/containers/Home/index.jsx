@@ -6,23 +6,15 @@ import Section from 'components/Section';
 import Hero from './Hero';
 import Description from './Description';
 
-
-const description = 'This site is the place where I showcase and host my projects. I try to make the content fun and educational so it becomes less of a boring portfolio. The projects are mostly coding, design and music related but not limited to them.';
+const description =
+  'This site is the place where I showcase and host my projects. I try to make the content fun and educational so it is less of a boring portfolio. The projects are mostly coding, design and music related but not limited to them.';
 
 export default () => (
   <React.Fragment>
     <Hero />
-    <Section
-      borderTop
-    >
-      <Box
-        marginLeft="auto"
-        marginRight="auto"
-        width="content"
-      >
-        <Description>
-          {description}
-        </Description>
+    <Section borderTop>
+      <Box marginLeft="auto" marginRight="auto" width="content">
+        <Description>{description}</Description>
       </Box>
     </Section>
     <ContentHighlight

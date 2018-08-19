@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
+import Helmet from 'react-helmet-async';
 import Banner from 'components/Banner';
 import ContentHighlight from 'containers/ContentHighlight/Loadable';
-import ContentGrid from 'containers/ContentGrid';
+import ContentGrid from 'containers/ContentGrid/Loadable';
 import { colorNames } from 'style/color';
 import Card from 'components/Card';
 import { visibilities } from 'actions/music';
 import { contentTypes } from 'actions/content';
-
 
 const filters = [
   {
@@ -35,7 +35,7 @@ export default class MusicOverview extends Component {
       PropTypes.shape({
         name: PropTypes.string.isRequired,
         href: PropTypes.string.isRequired,
-      }),
+      })
     ),
     color: PropTypes.oneOf(colorNames),
     match: PropTypes.shape({
@@ -67,7 +67,7 @@ export default class MusicOverview extends Component {
     color: 'pink',
   };
 
-  setTheme = (theme) => {
+  setTheme = theme => {
     const { color } = this.props;
     return {
       ...theme,
@@ -82,10 +82,11 @@ export default class MusicOverview extends Component {
     return (
       <ThemeProvider theme={this.setTheme}>
         <React.Fragment>
+          <Helmet>
+            <title>Music</title>
+          </Helmet>
           <Banner links={bannerLinks}>
-            <h2>
-              Music
-            </h2>
+            <h2>Music</h2>
             <h1>
               Like You Have
               <br />
@@ -110,19 +111,20 @@ export default class MusicOverview extends Component {
             tabletLandscapeColumns={4}
             desktopColumns={5}
           >
-            {items => items.map(item => (
-              <Card
-                key={item.id}
-                shape="square"
-                maxTitleLines={1}
-                maxDescriptionLines={1}
-                to={`/${contentType}/${item.id}`}
-                title={item.title}
-                image={item.coverImage || item.heroImage}
-              >
-                {item.artist}
-              </Card>
-            ))
+            {items =>
+              items.map(item => (
+                <Card
+                  key={item.id}
+                  shape="square"
+                  maxTitleLines={1}
+                  maxDescriptionLines={1}
+                  to={`/${contentType}/${item.id}`}
+                  title={item.title}
+                  image={item.imageCover || item.imageHero}
+                >
+                  {item.artist}
+                </Card>
+              ))
             }
           </ContentGrid>
         </React.Fragment>

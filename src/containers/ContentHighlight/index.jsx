@@ -59,8 +59,8 @@ class ContentHighlight extends Component {
     } = this.props;
     const placeholder =
       content &&
-      ((content.imageCover && content.imageCover.placeholder) ||
-        (content.heroImage && content.heroImage.placeholder));
+      ((content.heroImage && content.heroImage.placeholder) ||
+        (content.imageCover && content.imageCover.placeholder));
     return (
       <ThemeProvider theme={this.setTheme}>
         <Section
@@ -82,7 +82,7 @@ class ContentHighlight extends Component {
               eyebrow={eyebrow}
               image={
                 content && {
-                  ...(content.imageCover || content.heroImage),
+                  ...(content.imageHero || content.imageCover),
                   alt: content.title,
                 }
               }

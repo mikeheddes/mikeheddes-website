@@ -1,6 +1,6 @@
-/* eslint-env browser */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Helmet from 'react-helmet-async';
 import { ThemeProvider } from 'styled-components';
 import { categories } from 'actions/articles';
 import { themes } from 'actions/ui';
@@ -15,7 +15,12 @@ import clipboard from 'utils/clipboard';
 
 import Image from 'components/Image';
 import {
-  HeaderWrapper, Title, Description, InfoLine, Author, PhotoCredit,
+  HeaderWrapper,
+  Title,
+  Description,
+  InfoLine,
+  Author,
+  PhotoCredit,
 } from './components';
 import mapProps from './mapProps';
 
@@ -26,7 +31,7 @@ class ArticlesItem extends Component {
         PropTypes.shape({
           name: PropTypes.string.isRequired,
           url: PropTypes.string,
-        }).isRequired,
+        }).isRequired
       ).isRequired,
       categorie: PropTypes.oneOf(categories).isRequired,
       description: PropTypes.string.isRequired,
@@ -35,10 +40,8 @@ class ArticlesItem extends Component {
         src: PropTypes.string.isRequired,
       }).isRequired,
       imageCredits: PropTypes.string.isRequired,
-      loadablePost: PropTypes.oneOfType([
-        PropTypes.element,
-        PropTypes.func,
-      ]).isRequired,
+      loadablePost: PropTypes.oneOfType([PropTypes.element, PropTypes.func])
+        .isRequired,
       publishedAt: PropTypes.instanceOf(Date).isRequired,
       tags: PropTypes.arrayOf(PropTypes.string),
       theme: PropTypes.oneOf(Object.keys(themes)).isRequired,
@@ -61,7 +64,7 @@ class ArticlesItem extends Component {
     copiedUrl: false,
   };
 
-  setTheme = (theme) => {
+  setTheme = theme => {
     const { item } = this.props;
     const itemColorName = item.themeColor || 'orange';
     return {
@@ -72,11 +75,12 @@ class ArticlesItem extends Component {
   };
 
   copyPageUrl = () => {
+    // eslint-disable-next-line no-undef
     clipboard(window.location.href);
     this.setState(prev => ({ ...prev, copiedUrl: true }));
   };
 
-  formatDate = (date) => {
+  formatDate = date => {
     const monthNames = [
       'Jan',
       'Feb',
@@ -110,25 +114,36 @@ class ArticlesItem extends Component {
     return (
       <ThemeProvider theme={this.setTheme}>
         <article>
+          {item && (
+            <Helmet>
+              <title>{item.title}</title>
+              <meta name="description" content={item.description} />
+              <meta property="og:title" content={item.title} />
+              <meta property="og:description" content={item.description} />
+              <meta
+                property="og:image"
+                content={WEBSITE_BASE + item.imageCover.toString()}
+              />
+              <meta
+                name="twitter:image"
+                content={WEBSITE_BASE + item.imageCover.toString()}
+              />
+            </Helmet>
+          )}
           <HeaderWrapper>
             <Section noBackground noPaddingY>
               <Box width="text" marginRight="auto" marginLeft="auto">
-                <Title>
-                  {item && item.title}
-                </Title>
-                {item && item.description && (
-                <Description>
-                  {item.description}
-                </Description>
-                )}
+                <Title>{item && item.title}</Title>
+                {item &&
+                  item.description && (
+                    <Description>{item.description}</Description>
+                  )}
                 <InfoLine>
                   {'By '}
-                  {item
-                    && item.authors.map(author => (
+                  {item &&
+                    item.authors.map(author => (
                       <React.Fragment key={author.name}>
-                        <Author>
-                          {author.name}
-                        </Author>
+                        <Author>{author.name}</Author>
                         {' | '}
                       </React.Fragment>
                     ))}
@@ -144,9 +159,7 @@ class ArticlesItem extends Component {
             {item.imageCredits && (
               <Section noPaddingY>
                 <Box width="text" marginLeft="auto" marginRight="auto">
-                  <PhotoCredit>
-                    {item.imageCredits}
-                  </PhotoCredit>
+                  <PhotoCredit>{item.imageCredits}</PhotoCredit>
                 </Box>
               </Section>
             )}
@@ -154,8 +167,12 @@ class ArticlesItem extends Component {
           <Section>
             <Box width="text" marginLeft="auto" marginRight="auto" markdown>
               <Body components={components} />
-              <LinkList textAlign="center">
-                <Button variation="primary" onClick={this.copyPageUrl} key="copy">
+              <LinkList textAlign="center" aria-hidden="true">
+                <Button
+                  variation="primary"
+                  onClick={this.copyPageUrl}
+                  key="copy"
+                >
                   {`${copiedUrl ? 'Copied' : 'Copy'} article URL`}
                 </Button>
                 <Link

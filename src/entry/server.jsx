@@ -1,6 +1,8 @@
 import React from 'react';
-import { renderToString } from 'react-dom/server';
+import through from 'through';
+import { renderToNodeStream } from 'react-dom/server';
 import { HelmetProvider } from 'react-helmet-async';
+import { getDataFromTree } from 'react-apollo';
 import { StaticRouter } from 'react-router-dom';
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
 import { Provider } from 'react-redux';
@@ -36,26 +38,43 @@ export default (req, res, { loadableStats, ...props }) => {
     </Loadable.Capture>
   );
 
-  const body = renderToString(<ServerApp />);
-  if (routerContext.url) {
-    // console.log('REDIRECT: ', routerContext.url);
-    res.redirect(routerContext.status || 301, routerContext.url);
-    return;
-  }
-  const { helmet } = helmetContext;
-  const chunkBundles = getBundles(loadableStats, modules);
+  getDataFromTree(ServerApp()).then(() => {
+    const stream = sheet.interleaveWithNodeStream(
+      renderToNodeStream(<ServerApp />)
+    );
 
-  const content = {
-    ...props,
-    body,
-    helmet,
-    sheet,
-    initialState,
-    chunkBundles,
-  };
-  const html = template(content);
+    if (routerContext.url) {
+      // console.log('REDIRECT: ', routerContext.url);
+      res.redirect(routerContext.status || 301, routerContext.url);
+      return;
+    }
+    const chunkBundles = getBundles(loadableStats, modules);
 
-  res.send(html);
+    const content = {
+      ...props,
+      helmet: helmetContext.helmet,
+      initialState,
+      chunkBundles,
+    };
+
+    const [header, footer] = template(content);
+
+    res.status(200);
+    res.write(header);
+    stream
+      .pipe(
+        through(
+          function write(data) {
+            this.queue(data);
+          },
+          function end() {
+            this.queue(footer);
+            this.queue(null);
+          }
+        )
+      )
+      .pipe(res);
+  });
 };
 
 export const loadablePreload = Loadable.preloadAll;

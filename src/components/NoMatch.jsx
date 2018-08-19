@@ -4,9 +4,10 @@ import Section from 'components/Section';
 import Link from 'components/Link';
 import B from 'components/Box';
 import { media } from 'utils/mixins';
+import { size } from 'style';
 
 const Wrapper = Section.extend`
-  min-height: calc(100vh - 100px);
+  min-height: calc(100vh - ${size.footerHeight}px);
 `;
 
 const Box = B.extend`
@@ -49,15 +50,10 @@ export default () => (
       marginRight="auto"
       display="flex"
     >
-      <Status>
-        404
-      </Status>
+      <Status>404</Status>
       <Message>
-        The requested path could not be found,
-        {' '}
-        <Link to="/">
-          go to the home page
-        </Link>
+        The requested path could not be found,{' '}
+        <Link to="/">go to the home page</Link>
       </Message>
     </Box>
   </Wrapper>

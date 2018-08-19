@@ -17,7 +17,7 @@ const itemPages = {
   articles: ArticlesItem,
 };
 
-const ContentRouter = (props) => {
+const ContentRouter = props => {
   const { match } = props;
   const { contentType } = match.params;
   const OverviewPage = overviewPages[contentType];
