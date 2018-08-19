@@ -87,7 +87,7 @@ module.exports = options => ({
   plugins: isDev
     ? options.plugins.concat([
         new webpack.DefinePlugin({
-          WEBSITE_BASE: JSON.stringify('http://localhost'),
+          WEBSITE_BASE: JSON.stringify('http://localhost:3000'),
         }),
       ])
     : options.plugins.concat([
