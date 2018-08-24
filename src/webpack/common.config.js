@@ -79,6 +79,7 @@ module.exports = options => ({
           loader: 'file-loader',
           options: {
             name: isDev ? 'assets/[name].[ext]' : 'assets/[hash].[ext]',
+            emitFile: options.target !== 'node',
           },
         },
       },

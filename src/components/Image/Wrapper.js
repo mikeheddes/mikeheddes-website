@@ -6,7 +6,7 @@ const Wrapper = styled.div`
   display: block;
   position: relative;
   overflow: hidden;
-  padding-bottom: ${({ ratio }) => Math.round(ratio * 100)}%;
+  padding-bottom: ${({ ratio }) => ratio * 100}%;
 
   ${({ onClick }) =>
     onClick &&
