@@ -16,8 +16,7 @@
     "build:dll": "webpack --config ./webpack/dll.config.js"
   },
   "sideEffects": [
-    "./style/global-styles.js",
-    "firebase/database"
+    "./style/global-styles.js"
   ],
   "dependencies": {
     "connected-react-router": "^4.4.1",

@@ -49,16 +49,16 @@ export default class ArticlesOverview extends Component {
     color: 'orange',
     bannerLinks: [
       {
-        name: 'Medium',
-        href: 'https://medium.com',
-      },
-      {
         name: 'GitHub',
         href: 'https://github.com/mikeheddes',
       },
       {
+        name: 'Medium',
+        href: 'https://medium.com/@mikeheddes',
+      },
+      {
         name: 'Behance',
-        href: 'https://behance.net',
+        href: 'https://www.behance.net/mikeheddesb203',
       },
     ],
   };

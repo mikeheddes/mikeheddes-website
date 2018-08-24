@@ -49,19 +49,19 @@ export default class MusicOverview extends Component {
     bannerLinks: [
       {
         name: 'Spotify',
-        href: 'https://spotify.com',
+        href: 'https://open.spotify.com/artist/4kQdT4uFc2e0zHL755qJ0U',
       },
       {
         name: 'Apple Music',
-        href: 'https://www.apple.com/apple-music/',
+        href: 'https://itunes.apple.com/nl/artist/mike-heddes/1185471953',
       },
       {
         name: 'YouTube',
-        href: 'https://youtube.com',
+        href: 'https://youtube.com/mikeheddes',
       },
       {
         name: 'SoundCloud',
-        href: 'https://soundcloud.com',
+        href: 'https://soundcloud.com/mikeheddes',
       },
     ],
     color: 'pink',
