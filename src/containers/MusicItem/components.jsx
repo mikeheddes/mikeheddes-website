@@ -37,3 +37,7 @@ export const Pline = styled.div`
   font-weight: 500;
   margin-top: ${space.s}px;
 `;
+
+export const LinkListWrapper = styled.div`
+  margin: ${space.xm}px 0;
+`;

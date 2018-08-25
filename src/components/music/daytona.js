@@ -1,10 +1,10 @@
+import { themes } from 'actions/ui';
 import imageCover from 'assets/daytona.jpg';
 
 // Metadata
 export default {
-  id: 'daytona',
   themeColor: 'pink',
-  theme: 'NIGHT',
+  theme: themes.NIGHT,
   publishedAt: new Date('2018-07-01'),
   imageCover,
   artist: 'Pusha T',

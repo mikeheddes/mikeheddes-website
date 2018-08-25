@@ -1,13 +1,13 @@
+import { themes } from 'actions/ui';
 import imageCover from 'assets/sick_boy.jpg';
 
 export default {
-  id: 'sick_boy',
   genre: 'Pop',
   themeColor: 'purple',
   publishedAt: new Date('2018-01-26'),
   imageCover,
   artist: 'The Chainsmokers',
-  theme: 'NIGHT',
+  theme: themes.NIGHT,
   license: 'The Chainsmokers 2017',
   tracks: [
     {

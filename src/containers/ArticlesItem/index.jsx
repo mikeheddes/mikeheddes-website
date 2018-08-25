@@ -21,6 +21,7 @@ import {
   InfoLine,
   Author,
   PhotoCredit,
+  LinkListWrapper,
 } from './components';
 import mapProps from './mapProps';
 
@@ -44,7 +45,7 @@ class ArticlesItem extends Component {
         .isRequired,
       publishedAt: PropTypes.instanceOf(Date).isRequired,
       tags: PropTypes.arrayOf(PropTypes.string),
-      theme: PropTypes.oneOf(Object.keys(themes)).isRequired,
+      theme: PropTypes.oneOf(Object.values(themes)).isRequired,
       themeColor: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
       updatedAt: PropTypes.instanceOf(Date),
@@ -64,21 +65,16 @@ class ArticlesItem extends Component {
     copiedUrl: false,
   };
 
-  setTheme = theme => {
-    const { item } = this.props;
-    const itemColorName = item.themeColor || 'orange';
-    return {
-      ...theme,
-      link: theme[itemColorName],
-      surface: theme.surfaceColors[itemColorName],
-    };
-  };
+  componentDidMount() {
+    const { setTheme, item, themeName } = this.props;
+    this.prevTheme = themeName;
+    setTheme(item.theme);
+  }
 
-  copyPageUrl = () => {
-    // eslint-disable-next-line no-undef
-    clipboard(window.location.href);
-    this.setState(prev => ({ ...prev, copiedUrl: true }));
-  };
+  componentWillUnmount() {
+    const { setTheme } = this.props;
+    setTheme(this.prevTheme);
+  }
 
   formatDate = date => {
     const monthNames = [
@@ -99,6 +95,22 @@ class ArticlesItem extends Component {
     const monthIndex = date.getMonth();
     const year = date.getFullYear();
     return `${day} ${monthNames[monthIndex]} ${year}`;
+  };
+
+  copyPageUrl = () => {
+    // eslint-disable-next-line no-undef
+    clipboard(window.location.href);
+    this.setState(prev => ({ ...prev, copiedUrl: true }));
+  };
+
+  setTheme = theme => {
+    const { item } = this.props;
+    const itemColorName = item.themeColor || 'orange';
+    return {
+      ...theme,
+      link: theme[itemColorName],
+      surface: theme.surfaceColors[itemColorName],
+    };
   };
 
   render() {
@@ -143,7 +155,13 @@ class ArticlesItem extends Component {
                   {item &&
                     item.authors.map(author => (
                       <React.Fragment key={author.name}>
-                        <Author>{author.name}</Author>
+                        {author.url ? (
+                          <Link noIcon to={author.url}>
+                            {author.name}
+                          </Link>
+                        ) : (
+                          <Author>{author.name}</Author>
+                        )}
                         {' | '}
                       </React.Fragment>
                     ))}
@@ -167,23 +185,27 @@ class ArticlesItem extends Component {
           <Section>
             <Box width="text" marginLeft="auto" marginRight="auto" markdown>
               <Body components={components} />
-              <LinkList textAlign="center" aria-hidden="true">
-                <Button
-                  variation="primary"
-                  onClick={this.copyPageUrl}
-                  key="copy"
-                >
-                  {`${copiedUrl ? 'Copied' : 'Copy'} article URL`}
-                </Button>
-                <Link
-                  to="https://github.com/mikeheddes"
-                  variation="button"
-                  key="edit"
-                  display="inline-block"
-                >
-                  Edit on GitHub
-                </Link>
-              </LinkList>
+              <LinkListWrapper>
+                <LinkList textAlign="center" aria-hidden="true">
+                  <Button
+                    variation="primary"
+                    onClick={this.copyPageUrl}
+                    key="copy"
+                  >
+                    {`${copiedUrl ? 'Copied' : 'Copy'} article URL`}
+                  </Button>
+                  <Link
+                    to={`https://github.com/mikeheddes/mikeheddes-website/blob/master/src/components/articles/${
+                      item.id
+                    }/article.mdx`}
+                    variation="button"
+                    key="edit"
+                    display="inline-block"
+                  >
+                    Edit on GitHub
+                  </Link>
+                </LinkList>
+              </LinkListWrapper>
             </Box>
           </Section>
         </article>

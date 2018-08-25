@@ -11,7 +11,14 @@ import Link from 'components/Link';
 import { size } from 'style';
 
 import mapState from './mapState';
-import { Title, Artist, GenreDate, AlbumInfo, Pline } from './components';
+import {
+  Title,
+  Artist,
+  GenreDate,
+  AlbumInfo,
+  Pline,
+  LinkListWrapper,
+} from './components';
 import Description from './Description';
 import TrackTable from './TrackTable';
 
@@ -60,6 +67,17 @@ class MusicItem extends Component {
   static defaultProps = {
     item: undefined,
   };
+
+  componentDidMount() {
+    const { setTheme, item, themeName } = this.props;
+    this.prevTheme = themeName;
+    setTheme(item.theme);
+  }
+
+  componentWillUnmount() {
+    const { setTheme } = this.props;
+    setTheme(this.prevTheme);
+  }
 
   setTheme = theme => {
     const { item } = this.props;
@@ -122,18 +140,20 @@ class MusicItem extends Component {
                   <GenreDate>
                     {`${item.genre} - ${item.publishedAt.getFullYear()}`}
                   </GenreDate>
-                  <LinkList width="fixed">
-                    {extraLinks.map(link => (
-                      <Link
-                        to={link.url}
-                        key={link.service}
-                        variation="button"
-                        display="block"
-                      >
-                        {link.service}
-                      </Link>
-                    ))}
-                  </LinkList>
+                  <LinkListWrapper>
+                    <LinkList width="fixed">
+                      {extraLinks.map(link => (
+                        <Link
+                          to={link.url}
+                          key={link.service}
+                          variation="button"
+                          display="block"
+                        >
+                          {link.service}
+                        </Link>
+                      ))}
+                    </LinkList>
+                  </LinkListWrapper>
                   <TrackTable tracks={item.tracks} artist={item.artist} />
                   <AlbumInfo>
                     {`${item.tracks.length} tracks, ${this.albumTotalMinutes(

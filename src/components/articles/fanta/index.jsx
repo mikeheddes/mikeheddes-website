@@ -1,5 +1,6 @@
 import React from 'react';
 import Loadable from 'react-loadable';
+import { themes } from 'actions/ui';
 
 import imageCover from 'assets/91bd3965372789.5b35307b5609e.png';
 
@@ -22,7 +23,7 @@ export default {
   loadablePost,
   publishedAt: new Date('2018-07-19'),
   tags: ['Artdirection', 'Reclame', 'Fotografie'],
-  theme: 'NIGHT',
+  theme: themes.NIGHT,
   themeColor: 'pink',
   title: 'Stay FANTA',
   updatedAt: null,

@@ -1,9 +1,9 @@
+import { themes } from 'actions/ui';
 import imageCover from 'assets/ye.jpg';
 
 // Metadata
 export default {
-  id: 'ye',
-  theme: 'NIGHT',
+  theme: themes.NIGHT,
   themeColor: 'purple',
   publishedAt: new Date('2018-06-30'),
   imageCover,

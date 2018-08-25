@@ -6,7 +6,6 @@ const Wrapper = styled.ul`
   font-size: 17px;
   min-width: 100%;
   font-weight: 500;
-  margin: ${space.xm}px 0;
   white-space: nowrap;
   display: block;
   overflow-x: scroll;
@@ -27,7 +26,7 @@ const Item = styled.li`
   ${({ width }) =>
     width === 'fixed' &&
     css`
-      width: calc(2 * 14.2857142% - 10px);
+      width: calc(${2 * 14.2857142}% - 10px);
     `};
   &:last-of-type {
     margin-right: 0;

@@ -1,9 +1,9 @@
+import { themes } from 'actions/ui';
 import imageCover from 'assets/i_fell_in_love_in_a_two_seater.jpg';
 
 export default {
-  id: 'i_fell_in_love_in_a_two_seater',
   publishedAt: new Date('2018-05-20'),
-  theme: 'NIGHT',
+  theme: themes.NIGHT,
   themeColor: 'orange',
   imageCover,
   artist: 'Deezie Brown',

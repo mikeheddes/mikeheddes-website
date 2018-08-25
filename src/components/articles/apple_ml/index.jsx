@@ -1,5 +1,6 @@
 import React from 'react';
 import Loadable from 'react-loadable';
+import { themes } from 'actions/ui';
 
 import imageCover from 'assets/acastro_180510_1777_siri_0002.0.jpg';
 
@@ -20,7 +21,7 @@ export default {
   loadablePost,
   publishedAt: new Date('2018-07-20'),
   tags: ['Apple', 'machine learning'],
-  theme: 'DAY',
+  theme: themes.DAY,
   themeColor: 'purple',
   title:
     'Apple’s new AI chief now oversees Siri, Core ML, and machine learning teams',

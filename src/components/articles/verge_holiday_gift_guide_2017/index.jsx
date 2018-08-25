@@ -1,5 +1,6 @@
 import React from 'react';
 import Loadable from 'react-loadable';
+import { themes } from 'actions/ui';
 
 import imageCover from 'assets/gift-guide.jpg';
 
@@ -19,7 +20,7 @@ export default {
   loadablePost,
   publishedAt: new Date('2018-07-14'),
   tags: ['holiday', 'gifts'],
-  theme: 'DAY',
+  theme: themes.DAY,
   themeColor: 'purple',
   title: 'The Verge holiday gift guide 2017',
   updatedAt: null,

@@ -1,9 +1,9 @@
+import { themes } from 'actions/ui';
 import imageCover from 'assets/podcast_021.jpg';
 
 // Metadata
 export default {
-  id: 'podcast_021',
-  theme: 'DAY',
+  theme: themes.DAY,
   themeColor: 'pink',
   publishedAt: new Date('2018-02-01'),
   publishStatus: 'DRAFT',

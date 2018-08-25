@@ -1,15 +1,14 @@
-import ye from './ye';
-import daytona from './daytona';
-import sickBoy from './sick_boy';
-import oneKiss from './one_kiss';
-import podcast021 from './podcast_021';
-import iFellInLoveInATwoSeater from './i_fell_in_love_in_a_two_seater';
+import importAll from 'utils/importAll';
 
-export default {
-  [podcast021.id]: podcast021,
-  [sickBoy.id]: sickBoy,
-  [oneKiss.id]: oneKiss,
-  [iFellInLoveInATwoSeater.id]: iFellInLoveInATwoSeater,
-  [ye.id]: ye,
-  [daytona.id]: daytona,
-};
+const music = importAll(require.context('./', true, /.jsx?$/));
+
+delete music['./index.js'];
+
+function getId(str) {
+  return str.split('/')[1].split('.')[0];
+}
+
+export default Object.entries(music).reduce((acc, cur) => {
+  const id = getId(cur[0]);
+  return { ...acc, [id]: { ...cur[1].default, id } };
+}, {});

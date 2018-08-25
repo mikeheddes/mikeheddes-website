@@ -83,3 +83,11 @@ export const SlotImage = styled.div`
   margin: 0 auto;
   margin-bottom: ${space.xr}px;
 `;
+
+export const LinkListWrapper = styled.div`
+  margin-top: ${space.l}px;
+
+  ${media.phoneOnly(css`
+    margin-top: ${space.xm}px;
+  `)};
+`;

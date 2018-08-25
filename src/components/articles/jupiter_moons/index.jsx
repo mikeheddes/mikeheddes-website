@@ -1,5 +1,6 @@
 import React from 'react';
 import Loadable from 'react-loadable';
+import { themes } from 'actions/ui';
 
 import imageCover from 'assets/14_jupiter_carousel_1.0.jpg';
 
@@ -20,7 +21,7 @@ export default {
   loadablePost,
   publishedAt: new Date('2018-07-17'),
   tags: ['NASA', 'Jupiter', 'moons'],
-  theme: 'NIGHT',
+  theme: themes.NIGHT,
   themeColor: 'orange',
   title:
     'Astronomers have found a new crop of moons around Jupiter, and one of them is a weirdo',

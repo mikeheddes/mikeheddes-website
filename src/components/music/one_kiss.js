@@ -1,12 +1,13 @@
+import { themes } from 'actions/ui';
 import imageCover from 'assets/one_kiss.jpg';
 
 export default {
   id: 'one_kiss',
-  theme: 'DAY',
+  theme: themes.DAY,
   themeColor: 'blue',
   imageCover,
   genre: 'Pop',
-  publishedAt: new Date('2018-01-10'),
+  publishedAt: new Date('2018-07-10'),
   artist: 'Calvin Harris, Dua Lipa',
   description: '',
   license: '2018 Calvin Harris, Dua Lipa',

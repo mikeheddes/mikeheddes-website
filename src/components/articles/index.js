@@ -1,15 +1,14 @@
-import appleOled from './appleOled';
-import google from './google';
-import jupiter from './jupiter';
-import fanta from './fanta';
-import appleMl from './appleML';
-import verge from './vergeGiftGuide';
+import importAll from 'utils/importAll';
 
-export default {
-  [appleOled.id]: appleOled,
-  [google.id]: google,
-  [jupiter.id]: jupiter,
-  [fanta.id]: fanta,
-  [appleMl.id]: appleMl,
-  [verge.id]: verge,
-};
+const articles = importAll(require.context('./', true, /index.jsx?$/));
+
+delete articles['./index.js'];
+
+function getId(str) {
+  return str.split('/')[1].split('.')[0];
+}
+
+export default Object.entries(articles).reduce((acc, cur) => {
+  const id = getId(cur[0]);
+  return { ...acc, [id]: { ...cur[1].default, id } };
+}, {});
