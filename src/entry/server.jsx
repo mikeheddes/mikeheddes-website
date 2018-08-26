@@ -11,8 +11,18 @@ import { getBundles } from 'react-loadable/webpack';
 import createHistory from 'history/createMemoryHistory';
 
 import configureStore from 'reducers/configureStore';
+import { ARTICLES_CONTENT_TYPE } from 'actions/articles';
+import { MUSIC_CONTENT_TYPE } from 'actions/music';
+import { themes } from 'actions/ui';
+import articles from 'components/articles';
+import music from 'components/music';
 import App from 'containers/App';
 import template from 'utils/template';
+
+const themeLookUp = {
+  [ARTICLES_CONTENT_TYPE]: articles,
+  [MUSIC_CONTENT_TYPE]: music,
+};
 
 export default (req, res, { loadableStats, ...props }) => {
   const routerContext = {};
@@ -20,7 +30,15 @@ export default (req, res, { loadableStats, ...props }) => {
   const sheet = new ServerStyleSheet();
   const modules = [];
 
-  const initialState = {};
+  const regInfo = req.url.split('/').slice(1);
+  let themeName = themes.DAY;
+  if (regInfo[0] in themeLookUp) {
+    if (regInfo[1] in themeLookUp[regInfo[0]]) {
+      themeName = themeLookUp[regInfo[0]][regInfo[1]].theme;
+    }
+  }
+
+  const initialState = { ui: { themeName } };
   const history = createHistory();
   const store = configureStore(history, initialState);
 
