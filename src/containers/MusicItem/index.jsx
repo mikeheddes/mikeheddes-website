@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet-async';
 import { ThemeProvider } from 'styled-components';
 import { contentTypes } from 'actions/content';
+import { themes } from 'actions/ui';
 import Section from 'components/Section';
 import Box from 'components/Box';
 import Image from 'components/Image';
@@ -18,6 +19,7 @@ import {
   AlbumInfo,
   Pline,
   LinkListWrapper,
+  ContentWrapper,
 } from './components';
 import Description from './Description';
 import TrackTable from './TrackTable';
@@ -69,14 +71,13 @@ class MusicItem extends Component {
   };
 
   componentDidMount() {
-    const { setTheme, item, themeName } = this.props;
-    this.prevTheme = themeName;
+    const { setTheme, item } = this.props;
     setTheme(item.theme);
   }
 
   componentWillUnmount() {
     const { setTheme } = this.props;
-    setTheme(this.prevTheme);
+    setTheme(themes.DEFAULT);
   }
 
   setTheme = theme => {
@@ -119,7 +120,7 @@ class MusicItem extends Component {
               />
             </Helmet>
           )}
-          <Box
+          <ContentWrapper
             display="flex"
             width="content"
             marginLeft="auto"
@@ -164,7 +165,7 @@ class MusicItem extends Component {
                 </React.Fragment>
               )}
             </Box>
-          </Box>
+          </ContentWrapper>
         </Main>
       </ThemeProvider>
     );

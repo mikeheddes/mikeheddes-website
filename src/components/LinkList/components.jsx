@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import space from 'style/space';
+import { media } from 'utils/mixins';
 
 const Wrapper = styled.ul`
   color: ${({ theme }) => theme.link};
@@ -26,7 +27,13 @@ const Item = styled.li`
   ${({ width }) =>
     width === 'fixed' &&
     css`
-      width: calc(${2 * 14.2857142}% - 10px);
+      width: calc(${2 * 33.33333334}% - 10px);
+      ${media.tabletPortrait(css`
+        width: calc(${2 * 20}% - 10px);
+      `)};
+      ${media.desktop(css`
+        width: calc(${2 * 14.2857142}% - 10px);
+      `)};
     `};
   &:last-of-type {
     margin-right: 0;

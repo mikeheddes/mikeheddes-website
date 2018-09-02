@@ -66,14 +66,13 @@ class ArticlesItem extends Component {
   };
 
   componentDidMount() {
-    const { setTheme, item, themeName } = this.props;
-    this.prevTheme = themeName;
+    const { setTheme, item } = this.props;
     setTheme(item.theme);
   }
 
   componentWillUnmount() {
     const { setTheme } = this.props;
-    setTheme(this.prevTheme);
+    setTheme(themes.DEFAULT);
   }
 
   formatDate = date => {

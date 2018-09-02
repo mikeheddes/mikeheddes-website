@@ -5,10 +5,8 @@ import music from 'components/music';
 function mapStateToProps(state, props) {
   const { match } = props;
   const { id } = match.params;
-  const { themeName } = state.ui;
   return {
     item: music[id],
-    themeName,
   };
 }
 

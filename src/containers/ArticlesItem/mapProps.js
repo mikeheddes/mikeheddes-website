@@ -5,10 +5,8 @@ import articles from 'components/articles';
 function mapStateToProps(state, props) {
   const { match } = props;
   const { id } = match.params;
-  const { themeName } = state.ui;
   return {
     item: articles[id],
-    themeName,
   };
 }
 

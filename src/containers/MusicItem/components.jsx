@@ -1,7 +1,8 @@
 import { transparentize as fade } from 'polished';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import space from 'style/space';
-import { fluidText } from 'utils/mixins';
+import { fluidText, media } from 'utils/mixins';
+import { createWidth } from 'utils/createSpace';
 
 export const Title = styled.h1`
   ${fluidText(18, 46)};
@@ -40,4 +41,15 @@ export const Pline = styled.div`
 
 export const LinkListWrapper = styled.div`
   margin: ${space.xm}px 0;
+`;
+
+export const ContentWrapper = styled.div`
+  ${media.desktop(css`
+    flex-direction: row;
+    display: flex;
+  `)};
+  max-width: ${createWidth('content')};
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 `;
