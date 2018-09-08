@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Section from 'components/Section';
-import Box from 'components/Box';
-import { contentTypes } from 'actions/content';
-import GridBox from 'components/GridBox';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import Section from 'components/Section'
+import Box from 'components/Box'
+import { contentTypes } from 'actions/content'
+import GridBox from 'components/GridBox'
 
-import TitleRow from './TitleRow';
-import mapState from './mapState';
+import TitleRow from './TitleRow'
+import mapState from './mapState'
 
 class ContentGrid extends Component {
   static propTypes = {
@@ -32,17 +32,17 @@ class ContentGrid extends Component {
     tabletPortraitColumns: PropTypes.number.isRequired,
     tabletLandscapeColumns: PropTypes.number.isRequired,
     desktopColumns: PropTypes.number.isRequired,
-  };
+  }
 
   static defaultProps = {
     visibleContent: [],
     filters: [],
     title: 'All',
-  };
+  }
 
   componentDidMount() {
-    const { getContentIfNeeded } = this.props;
-    getContentIfNeeded();
+    const { getContentIfNeeded } = this.props
+    getContentIfNeeded()
   }
 
   render() {
@@ -57,7 +57,7 @@ class ContentGrid extends Component {
       tabletPortraitColumns,
       tabletLandscapeColumns,
       desktopColumns,
-    } = this.props;
+    } = this.props
     return (
       <Section noBackground>
         <Box width="content" marginLeft="auto" marginRight="auto">
@@ -77,8 +77,8 @@ class ContentGrid extends Component {
           </GridBox>
         </Box>
       </Section>
-    );
+    )
   }
 }
 
-export default mapState(ContentGrid);
+export default mapState(ContentGrid)

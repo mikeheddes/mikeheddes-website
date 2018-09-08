@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Helmet from 'react-helmet-async';
-import { ThemeProvider } from 'styled-components';
-import Section from 'components/Section';
-import Banner from 'components/Banner';
-import { colorNames } from 'style/color';
-import Box from 'components/Box';
-import components from 'components/Markdown';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import Helmet from 'react-helmet-async'
+import { ThemeProvider } from 'styled-components'
+import Section from 'components/Section'
+import Banner from 'components/Banner'
+import { colorNames } from 'style/color'
+import Box from 'components/Box'
+import components from 'components/Markdown'
 
-import Txt from './text.md';
+import Txt from './text.md'
 
 export default class About extends Component {
   static propTypes = {
@@ -19,24 +19,24 @@ export default class About extends Component {
         href: PropTypes.string.isRequired,
       })
     ),
-  };
+  }
 
   static defaultProps = {
     color: 'purple',
     links: [],
-  };
+  }
 
   setTheme = theme => {
-    const { color } = this.props;
+    const { color } = this.props
     return {
       ...theme,
       link: theme[color],
       surface: theme.surfaceColors[color],
-    };
-  };
+    }
+  }
 
   render() {
-    const { links } = this.props;
+    const { links } = this.props
     return (
       <ThemeProvider theme={this.setTheme}>
         <React.Fragment>
@@ -58,6 +58,6 @@ export default class About extends Component {
           </Section>
         </React.Fragment>
       </ThemeProvider>
-    );
+    )
   }
 }

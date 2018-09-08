@@ -1,10 +1,10 @@
-const path = require('path');
+const path = require('path')
 // const ExtractTextPlugin = require('extract-text-webpack-plugin');
 // const autoprefixer = require('autoprefixer');
-const webpack = require('webpack');
-const highlight = require('remark-highlight.js');
+const webpack = require('webpack')
+const highlight = require('remark-highlight.js')
 
-const isDev = process.env.NODE_ENV !== 'production';
+const isDev = process.env.NODE_ENV !== 'production'
 
 // const cssUseArray = [
 //   {
@@ -115,4 +115,4 @@ module.exports = options => ({
   performance: { hints: false },
   target: options.target || 'web',
   devtool: isDev ? 'eval' : 'cheap-module-source-map',
-});
+})

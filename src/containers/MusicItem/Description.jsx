@@ -1,31 +1,31 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import Heading from 'components/Heading';
-import Paragraph from 'components/Paragraph';
-import Button from 'components/Button';
-import Box from 'components/Box';
+import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
+import Heading from 'components/Heading'
+import Paragraph from 'components/Paragraph'
+import Button from 'components/Button'
+import Box from 'components/Box'
 
 export default class Description extends PureComponent {
   static propTypes = {
     children: PropTypes.string.isRequired,
-  };
+  }
 
   state = {
     extended: false,
-  };
+  }
 
   setDescriptionRef = node => {
-    this.description = node;
-  };
+    this.description = node
+  }
 
   toggleDescription = () => {
-    this.setState(prev => ({ ...prev, extended: !prev.extended }));
-  };
+    this.setState(prev => ({ ...prev, extended: !prev.extended }))
+  }
 
   render() {
-    const { extended } = this.state;
-    const { children } = this.props;
-    const needToToggle = children.length > 200;
+    const { extended } = this.state
+    const { children } = this.props
+    const needToToggle = children.length > 200
     return (
       <React.Fragment>
         <Heading tag="h6">Description</Heading>
@@ -46,6 +46,6 @@ export default class Description extends PureComponent {
           </Box>
         )}
       </React.Fragment>
-    );
+    )
   }
 }

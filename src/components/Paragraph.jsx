@@ -1,17 +1,17 @@
-import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
-import { fluidText, maxLines } from 'utils/mixins';
-import { marginPropType } from 'utils/PropTypes';
-import { createMargin } from 'utils/createSpace';
+import PropTypes from 'prop-types'
+import styled, { css } from 'styled-components'
+import { fluidText, maxLines } from 'utils/mixins'
+import { marginPropType } from 'utils/PropTypes'
+import { createMargin } from 'utils/createSpace'
 
 const Paragraph = styled.p`
   font-weight: 400;
   color: ${({ theme, color }) => {
     switch (color) {
       case 'subtle':
-        return theme.textSubtle;
+        return theme.textSubtle
       default:
-        return theme.text;
+        return theme.text
     }
   }};
   line-height: ${({ lineHeight }) => lineHeight};
@@ -26,13 +26,13 @@ const Paragraph = styled.p`
   ${({ size }) => {
     switch (size) {
       case 's':
-        return fluidText(13, 15);
+        return fluidText(13, 15)
       case 'r':
-        return fluidText(15, 17);
+        return fluidText(15, 17)
       case 'l':
-        return fluidText(18, 20);
+        return fluidText(18, 20)
       default:
-        return 'font-size: inherit';
+        return 'font-size: inherit'
     }
   }};
 
@@ -43,7 +43,7 @@ const Paragraph = styled.p`
       marginBottom || margin,
       marginLeft || margin
     )};
-`;
+`
 
 Paragraph.propTypes = {
   children: PropTypes.node.isRequired,
@@ -57,7 +57,7 @@ Paragraph.propTypes = {
   marginLeft: marginPropType,
   lineClamp: PropTypes.number,
   lineHeight: PropTypes.number,
-};
+}
 
 Paragraph.defaultProps = {
   className: '',
@@ -66,6 +66,6 @@ Paragraph.defaultProps = {
   margin: 0,
   lineClamp: null,
   lineHeight: 1.48,
-};
+}
 
-export default Paragraph;
+export default Paragraph

@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components'
 
-import { media } from 'utils/mixins';
-import config from '../config';
+import { media } from 'utils/mixins'
+import config from '../config'
 
 const Wrapper = styled.div`
   font-size: 17px;
@@ -24,6 +24,6 @@ const Wrapper = styled.div`
     left: 0;
     right: 0;
   `)};
-`;
+`
 
-export default Wrapper;
+export default Wrapper

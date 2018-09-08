@@ -1,17 +1,17 @@
-import React from 'react';
-import Heading from 'components/Heading';
+import React from 'react'
+import Heading from 'components/Heading'
 
-import { Bold, Italic, Anchor } from './components';
-import Paragraph from './Paragraph';
-import HorizontalRule from './HorizontalRule';
-import Code from './Code';
-import Preformatted from './Preformatted';
-import List from './List';
-import Blockquote from './Blockquote';
-import Table from './Table';
-import Image from './Image';
+import { Bold, Italic, Anchor } from './components'
+import Paragraph from './Paragraph'
+import HorizontalRule from './HorizontalRule'
+import Code from './Code'
+import Preformatted from './Preformatted'
+import List from './List'
+import Blockquote from './Blockquote'
+import Table from './Table'
+import Image from './Image'
 
-export { Heading, Bold, Italic, Code, Anchor };
+export { Heading, Bold, Italic, Code, Anchor }
 
 export default {
   a: Anchor,
@@ -33,4 +33,4 @@ export default {
   strong: Bold,
   table: Table,
   ul: props => <List {...props} tag="ul" />,
-};
+}

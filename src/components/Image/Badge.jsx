@@ -1,11 +1,11 @@
-import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
-import { transparentize as fade } from 'polished';
+import PropTypes from 'prop-types'
+import styled, { css } from 'styled-components'
+import { transparentize as fade } from 'polished'
 
-import { createPadding } from 'utils/createSpace';
-import { has } from 'utils/mixins';
-import space from 'style/space';
-import radius from 'style/radius';
+import { createPadding } from 'utils/createSpace'
+import { has } from 'utils/mixins'
+import space from 'style/space'
+import radius from 'style/radius'
 
 const Badge = styled.div`
   display: inline-block;
@@ -26,14 +26,14 @@ const Badge = styled.div`
     background-color: ${({ theme }) => fade(0.3, theme.title)};
     backdrop-filter: blur(10px) saturate(2);
   `)};
-`;
+`
 
 Badge.propTypes = {
   children: PropTypes.node,
-};
+}
 
 Badge.defaultProps = {
   children: undefined,
-};
+}
 
-export default Badge;
+export default Badge

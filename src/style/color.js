@@ -1,4 +1,4 @@
-import { transparentize as fade } from 'polished';
+import { transparentize as fade } from 'polished'
 
 export const grays = {
   '000': '#FFFFFF',
@@ -14,7 +14,7 @@ export const grays = {
   '750': '#222222',
   '800': '#1A1A1A',
   '900': '#000000',
-};
+}
 
 export const dayColors = {
   red: '#FF3B30',
@@ -24,9 +24,9 @@ export const dayColors = {
   blue: '#007AFF',
   purple: '#5856D6',
   pink: '#FF2D55',
-};
+}
 
-export const colorNames = Object.keys(dayColors);
+export const colorNames = Object.keys(dayColors)
 
 export const pastelColors = {
   red: '#FAF3F2',
@@ -37,7 +37,7 @@ export const pastelColors = {
   purple: '#F0F0FA',
   pink: '#FAF2F5',
   gray: grays['100'],
-};
+}
 
 export const nightColors = {
   red: '#FF5E5E',
@@ -47,7 +47,7 @@ export const nightColors = {
   blue: '#66BBFF',
   purple: '#837BDB',
   pink: '#FF5577',
-};
+}
 
 export const neonColors = {
   red: grays['700'],
@@ -58,7 +58,7 @@ export const neonColors = {
   purple: grays['700'],
   pink: grays['700'],
   gray: grays['700'],
-};
+}
 
 export const DAY = {
   ...dayColors,
@@ -79,7 +79,7 @@ export const DAY = {
   textBold: grays['900'],
   textSubtle: grays['400'],
   title: grays['900'],
-};
+}
 
 export const NIGHT = {
   ...nightColors,
@@ -99,4 +99,4 @@ export const NIGHT = {
   textBold: grays['000'],
   textSubtle: grays['300'],
   title: grays['000'],
-};
+}

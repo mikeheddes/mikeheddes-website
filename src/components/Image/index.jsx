@@ -1,21 +1,21 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { radius as rad } from 'style';
-import { zDepthPropType, radiusPropType } from 'utils/PropTypes';
-import ContentBorder from 'components/ContentBorder';
-import Blur from 'components/Blur';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { radius as rad } from 'style'
+import { zDepthPropType, radiusPropType } from 'utils/PropTypes'
+import ContentBorder from 'components/ContentBorder'
+import Blur from 'components/Blur'
 
-import Wrapper from './Wrapper';
-import Badge from './Badge';
-import Content from './Content';
-import Preload from './Preload';
+import Wrapper from './Wrapper'
+import Badge from './Badge'
+import Content from './Content'
+import Preload from './Preload'
 
 const ratioLookup = {
   screen: 0.618,
   square: 1,
   tall: 0.75,
   wide: 0.533,
-};
+}
 
 class Image extends Component {
   static propTypes = {
@@ -34,7 +34,7 @@ class Image extends Component {
     onClick: PropTypes.func,
     width: PropTypes.number,
     height: PropTypes.number,
-  };
+  }
 
   static defaultProps = {
     src: null,
@@ -52,31 +52,31 @@ class Image extends Component {
     onClick: null,
     width: null,
     height: null,
-  };
+  }
 
   constructor(props) {
-    super(props);
-    this.setLoaded = this.setLoaded.bind(this);
-    this.loadImage = this.loadImage.bind(this);
+    super(props)
+    this.setLoaded = this.setLoaded.bind(this)
+    this.loadImage = this.loadImage.bind(this)
   }
 
   state = {
     loaded: false,
     showPreload: false,
-  };
+  }
 
   componentDidMount() {
-    this.loadImage();
+    this.loadImage()
   }
 
   setLoaded() {
     this.setState({
       loaded: true,
-    });
+    })
   }
 
   loadImage() {
-    this.setState({ showPreload: true });
+    this.setState({ showPreload: true })
   }
 
   render() {
@@ -96,13 +96,13 @@ class Image extends Component {
       height,
       rounded,
       radius,
-    } = this.props;
-    const { loaded, showPreload } = this.state;
-    const radiusInPx = rounded ? rad[radius] : 0;
+    } = this.props
+    const { loaded, showPreload } = this.state
+    const radiusInPx = rounded ? rad[radius] : 0
     const ratio =
       shape === 'original'
         ? height / width || ratioLookup.screen
-        : ratioLookup[shape];
+        : ratioLookup[shape]
     return (
       <Wrapper
         className={className}
@@ -140,8 +140,8 @@ class Image extends Component {
         {badge && <Badge>{badge}</Badge>}
         {children}
       </Wrapper>
-    );
+    )
   }
 }
 
-export default Image;
+export default Image

@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
-import { space } from 'style';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled, { css } from 'styled-components'
+import { space } from 'style'
 
 const listStyle = css`
   list-style-position: inside;
@@ -22,24 +22,24 @@ const listStyle = css`
       margin-bottom: 0;
     }
   }
-`;
+`
 
 const List = props => {
-  const { tag } = props;
+  const { tag } = props
   const L = styled(tag)`
     ${listStyle};
-  `;
-  return <L {...props} />;
-};
+  `
+  return <L {...props} />
+}
 
 List.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   tag: PropTypes.oneOf(['ol', 'ul']).isRequired,
-};
+}
 
 List.defaultProps = {
   className: '',
-};
+}
 
-export default List;
+export default List

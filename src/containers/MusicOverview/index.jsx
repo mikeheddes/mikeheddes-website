@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { ThemeProvider } from 'styled-components';
-import Helmet from 'react-helmet-async';
-import Banner from 'components/Banner';
-import ContentHighlight from 'containers/ContentHighlight/Loadable';
-import ContentGrid from 'containers/ContentGrid/Loadable';
-import { colorNames } from 'style/color';
-import Card from 'components/Card';
-import { visibilities } from 'actions/music';
-import { contentTypes } from 'actions/content';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { ThemeProvider } from 'styled-components'
+import Helmet from 'react-helmet-async'
+import Banner from 'components/Banner'
+import ContentHighlight from 'containers/ContentHighlight/Loadable'
+import ContentGrid from 'containers/ContentGrid/Loadable'
+import { colorNames } from 'style/color'
+import Card from 'components/Card'
+import { visibilities } from 'actions/music'
+import { contentTypes } from 'actions/content'
 
 const filters = [
   {
@@ -27,7 +27,7 @@ const filters = [
     name: 'Singles',
     action: visibilities.singles,
   },
-];
+]
 
 export default class MusicOverview extends Component {
   static propTypes = {
@@ -43,7 +43,7 @@ export default class MusicOverview extends Component {
         contentType: PropTypes.oneOf(contentTypes).isRequired,
       }).isRequired,
     }).isRequired,
-  };
+  }
 
   static defaultProps = {
     bannerLinks: [
@@ -65,20 +65,20 @@ export default class MusicOverview extends Component {
       },
     ],
     color: 'pink',
-  };
+  }
 
   setTheme = theme => {
-    const { color } = this.props;
+    const { color } = this.props
     return {
       ...theme,
       link: theme[color],
       surface: theme.surfaceColors[color],
-    };
-  };
+    }
+  }
 
   render() {
-    const { bannerLinks, match } = this.props;
-    const { contentType } = match.params;
+    const { bannerLinks, match } = this.props
+    const { contentType } = match.params
     return (
       <ThemeProvider theme={this.setTheme}>
         <React.Fragment>
@@ -129,6 +129,6 @@ export default class MusicOverview extends Component {
           </ContentGrid>
         </React.Fragment>
       </ThemeProvider>
-    );
+    )
   }
 }

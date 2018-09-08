@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components';
-import PropTypes from 'prop-types';
-import { typography, space, radius } from 'style';
-import { transparentize as fade } from 'polished';
+import styled, { css } from 'styled-components'
+import PropTypes from 'prop-types'
+import { typography, space, radius } from 'style'
+import { transparentize as fade } from 'polished'
 
 const Code = styled.code`
   font-size: 82%;
@@ -103,14 +103,14 @@ const Code = styled.code`
         font-style: italic;
       }
     `};
-`;
+`
 
 Code.propTypes = {
   type: PropTypes.oneOf(['inline', 'block']),
-};
+}
 
 Code.defaultProps = {
   type: 'inline',
-};
+}
 
-export default Code;
+export default Code

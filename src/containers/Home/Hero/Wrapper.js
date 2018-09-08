@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components';
-import { getLuminance } from 'polished';
-import space from 'style/space';
-import { media, fluidText } from 'utils/mixins';
+import styled, { css } from 'styled-components'
+import { getLuminance } from 'polished'
+import space from 'style/space'
+import { media, fluidText } from 'utils/mixins'
 
 export default styled.header`
   position: relative;
@@ -68,7 +68,7 @@ export default styled.header`
     font-weight: 700;
     margin-top: ${space.s}px;
   }
-`;
+`
 
 export const TitleBox = styled.div`
   margin-bottom: ${space.xM}px;
@@ -87,4 +87,4 @@ export const TitleBox = styled.div`
   ${media.desktop(css`
     margin-bottom: 420px;
   `)};
-`;
+`

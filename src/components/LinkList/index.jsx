@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import List, { Item } from './components';
+import React from 'react'
+import PropTypes from 'prop-types'
+import List, { Item } from './components'
 
 const LinkList = props => {
-  const { width, children, textAlign, ...other } = props;
+  const { width, children, textAlign, ...other } = props
   return (
     <List textAlign={textAlign} {...other}>
       {children.map(component => (
@@ -12,8 +12,8 @@ const LinkList = props => {
         </Item>
       ))}
     </List>
-  );
-};
+  )
+}
 
 LinkList.propTypes = {
   children: PropTypes.arrayOf(
@@ -23,11 +23,11 @@ LinkList.propTypes = {
   ).isRequired,
   textAlign: PropTypes.oneOf(['right', 'left', 'center']),
   width: PropTypes.oneOf(['dynamic', 'fixed']),
-};
+}
 
 LinkList.defaultProps = {
   textAlign: 'left',
   width: 'dynamic',
-};
+}
 
-export default LinkList;
+export default LinkList

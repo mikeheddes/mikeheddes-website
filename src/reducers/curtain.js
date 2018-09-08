@@ -1,9 +1,9 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from 'redux'
 
 import {
   TOGGLE_CURTAIN_VISIBILITY,
   SET_CURTAIN_VISIBILITY,
-} from 'actions/curtain';
+} from 'actions/curtain'
 
 // function config(state = ...) {
 //    determane the curtain transition config
@@ -12,14 +12,14 @@ import {
 function isVisible(state = false, action) {
   switch (action.type) {
     case TOGGLE_CURTAIN_VISIBILITY:
-      return !state;
+      return !state
     case SET_CURTAIN_VISIBILITY:
-      return action.payload;
+      return action.payload
     default:
-      return state;
+      return state
   }
 }
 
 export default combineReducers({
   isVisible,
-});
+})

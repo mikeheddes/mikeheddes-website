@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Helmet from 'react-helmet-async';
-import { ThemeProvider } from 'styled-components';
-import Banner from 'components/Banner';
-import ContentHighlight from 'containers/ContentHighlight/Loadable';
-import ContentGrid from 'containers/ContentGrid/Loadable';
-import Card from 'components/Card';
-import { colorNames } from 'style/color';
-import { visibilities } from 'actions/articles';
-import { contentTypes } from 'actions/content';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import Helmet from 'react-helmet-async'
+import { ThemeProvider } from 'styled-components'
+import Banner from 'components/Banner'
+import ContentHighlight from 'containers/ContentHighlight/Loadable'
+import ContentGrid from 'containers/ContentGrid/Loadable'
+import Card from 'components/Card'
+import { colorNames } from 'style/color'
+import { visibilities } from 'actions/articles'
+import { contentTypes } from 'actions/content'
 
 const filters = [
   {
@@ -27,7 +27,7 @@ const filters = [
     name: 'Travel',
     action: visibilities.travel,
   },
-];
+]
 
 export default class ArticlesOverview extends Component {
   static propTypes = {
@@ -43,7 +43,7 @@ export default class ArticlesOverview extends Component {
         contentType: PropTypes.oneOf(contentTypes).isRequired,
       }).isRequired,
     }).isRequired,
-  };
+  }
 
   static defaultProps = {
     color: 'orange',
@@ -61,20 +61,20 @@ export default class ArticlesOverview extends Component {
         href: 'https://www.behance.net/mikeheddesb203',
       },
     ],
-  };
+  }
 
   setTheme = theme => {
-    const { color } = this.props;
+    const { color } = this.props
     return {
       ...theme,
       link: theme[color],
       surface: theme.surfaceColors[color],
-    };
-  };
+    }
+  }
 
   render() {
-    const { bannerLinks, match } = this.props;
-    const { contentType } = match.params;
+    const { bannerLinks, match } = this.props
+    const { contentType } = match.params
     // console.log(article);
     return (
       <ThemeProvider theme={this.setTheme}>
@@ -124,6 +124,6 @@ export default class ArticlesOverview extends Component {
           </ContentGrid>
         </React.Fragment>
       </ThemeProvider>
-    );
+    )
   }
 }

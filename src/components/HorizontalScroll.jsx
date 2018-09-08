@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import PropTypes from 'prop-types'
+import styled, { css } from 'styled-components'
 
-import { media as md } from 'utils/mixins';
+import { media as md } from 'utils/mixins'
 
 const scrollStyle = css`
   overflow-x: scroll;
@@ -9,7 +9,7 @@ const scrollStyle = css`
   width: 100vw;
   left: 50%;
   transform: translateX(-50vw);
-`;
+`
 
 const HorizontalScrol = styled.div`
   -webkit-overflow-scrolling: touch;
@@ -22,14 +22,14 @@ const HorizontalScrol = styled.div`
         display: none;
       }
     `};
-`;
+`
 
 HorizontalScrol.propTypes = {
   media: PropTypes.oneOf(Object.keys(md)),
-};
+}
 
 HorizontalScrol.defaultProps = {
   media: undefined,
-};
+}
 
-export default HorizontalScrol;
+export default HorizontalScrol

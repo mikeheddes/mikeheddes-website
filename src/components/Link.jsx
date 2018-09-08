@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { Link as Anchor } from 'react-router-dom';
-import styled, { css } from 'styled-components';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react'
+import { Link as Anchor } from 'react-router-dom'
+import styled, { css } from 'styled-components'
+import PropTypes from 'prop-types'
 import {
   defaultStyle,
   linkStyle,
@@ -10,9 +10,9 @@ import {
   subtleStyle,
   actionStyle,
   basicStyle,
-} from 'components/Button';
-import ForwardSVG from 'components/svg/Forward';
-import ExitSVG from 'components/svg/Exit';
+} from 'components/Button'
+import ForwardSVG from 'components/svg/Forward'
+import ExitSVG from 'components/svg/Exit'
 
 const overallLinkStyle = css`
   ${({ noTheme }) =>
@@ -34,44 +34,44 @@ const overallLinkStyle = css`
       ${({ variation }) => {
         switch (variation) {
           case 'button':
-            return defaultStyle;
+            return defaultStyle
           case 'buttonPrimary':
-            return primaryStyle;
+            return primaryStyle
           case 'subtle':
-            return subtleLinkStyle;
+            return subtleLinkStyle
           case 'subtleButton':
-            return subtleStyle;
+            return subtleStyle
           case 'action':
-            return actionStyle;
+            return actionStyle
           default:
-            return linkStyle;
+            return linkStyle
         }
       }};
     `};
   cursor: pointer;
-`;
+`
 
 const ToToHref = styled.a`
   ${overallLinkStyle};
-`;
+`
 
 const LinkWithTarget = props => {
-  const { to, children, ...other } = props;
+  const { to, children, ...other } = props
   return (
     <ToToHref href={to} {...other}>
       {children}
     </ToToHref>
-  );
-};
+  )
+}
 
 LinkWithTarget.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string.isRequired,
   to: PropTypes.string.isRequired,
   target: PropTypes.string.isRequired,
-};
+}
 
-const LinkWithoutTarget = ToToHref.withComponent(Anchor);
+const LinkWithoutTarget = ToToHref.withComponent(Anchor)
 
 class Link extends Component {
   static propTypes = {
@@ -98,7 +98,7 @@ class Link extends Component {
     ]),
     // eslint-disable-next-line react/no-unused-prop-types
     textAlign: PropTypes.oneOf(['center', 'left', 'right']),
-  };
+  }
 
   static defaultProps = {
     className: '',
@@ -110,52 +110,52 @@ class Link extends Component {
     noTheme: false,
     variation: 'default',
     textAlign: 'center',
-  };
+  }
 
   getLinkType = () => {
-    const { download, to } = this.props;
+    const { download, to } = this.props
     if (download) {
-      return 'DOWNLOAD';
+      return 'DOWNLOAD'
     }
     if (to) {
       if (to.match(/^https?/g)) {
-        return 'EXIT';
+        return 'EXIT'
       }
       if (to === '#') {
-        return 'NONE';
+        return 'NONE'
       }
-      return 'INTERNAL';
+      return 'INTERNAL'
     }
-    return 'NONE';
-  };
+    return 'NONE'
+  }
 
   getIcon = linkType => {
     switch (linkType) {
       case 'DOWNLOAD':
-        return null;
+        return null
       case 'INTERNAL':
-        return ForwardSVG;
+        return ForwardSVG
       case 'EXIT':
-        return ExitSVG;
+        return ExitSVG
       default:
-        return null;
+        return null
     }
-  };
+  }
 
   getTarget = linkType => {
     switch (linkType) {
       case 'DOWNLOAD':
-        return '_self';
+        return '_self'
       case 'INTERNAL':
-        return undefined;
+        return undefined
       case 'EXIT':
-        return '_blank';
+        return '_blank'
       case 'NONE':
-        return '_self';
+        return '_self'
       default:
-        return undefined;
+        return undefined
     }
-  };
+  }
 
   render() {
     const {
@@ -165,21 +165,21 @@ class Link extends Component {
       noInner,
       to,
       ...styleProps
-    } = this.props;
-    const linkType = this.getLinkType();
-    const target = this.getTarget(linkType);
-    const href = linkType === 'DOWNLOAD' ? '#' : to;
-    const Icon = this.getIcon(linkType);
-    const Wrapper = target ? LinkWithTarget : LinkWithoutTarget;
+    } = this.props
+    const linkType = this.getLinkType()
+    const target = this.getTarget(linkType)
+    const href = linkType === 'DOWNLOAD' ? '#' : to
+    const Icon = this.getIcon(linkType)
+    const Wrapper = target ? LinkWithTarget : LinkWithoutTarget
     return (
       <Wrapper className={className} target={target} to={href} {...styleProps}>
         {!noInner ? <span>{children}</span> : children}
         {!noIcon && Icon && <Icon />}
       </Wrapper>
-    );
+    )
   }
 }
 
 // stylelint-disable block-no-empty
-export default styled(Link)``;
+export default styled(Link)``
 // stylelint-enable block-no-empty

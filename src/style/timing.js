@@ -12,6 +12,6 @@ const timing = {
   easeOut: 'ease-out',
   easeIn: 'ease-in',
   easeInOut: 'ease-in-out',
-};
+}
 
-export default timing;
+export default timing

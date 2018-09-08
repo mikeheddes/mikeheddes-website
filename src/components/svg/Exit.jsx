@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
 const Svg = styled.svg`
   display: inline-block;
@@ -10,7 +10,7 @@ const Svg = styled.svg`
   stroke-miterlimit: 10;
   stroke-width: 8px;
   margin-left: 0.13em;
-`;
+`
 
 export default () => (
   <Svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 62.87 100">
@@ -24,4 +24,4 @@ export default () => (
       <line id="Line_17" x1="6.75" y1="74.5" x2="53.5" y2="28" />
     </g>
   </Svg>
-);
+)

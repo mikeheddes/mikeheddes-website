@@ -1,10 +1,10 @@
-import styled, { css } from 'styled-components';
-import { transparentize as fade, timingFunctions as easeF } from 'polished';
-import { animated } from 'react-spring';
-import { media, has } from 'utils/mixins';
-import { space } from 'style';
+import styled, { css } from 'styled-components'
+import { transparentize as fade, timingFunctions as easeF } from 'polished'
+import { animated } from 'react-spring'
+import { media, has } from 'utils/mixins'
+import { space } from 'style'
 
-import config from '../config';
+import config from '../config'
 
 const Child = styled(animated.a)`
   text-decoration: none;
@@ -55,6 +55,6 @@ const Child = styled(animated.a)`
     css`
       color: ${({ theme }) => fade(0.5, theme.heading)};
     `};
-`;
+`
 
-export default Child;
+export default Child

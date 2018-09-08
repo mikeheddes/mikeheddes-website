@@ -1,14 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { contentTypes } from 'actions/content';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { contentTypes } from 'actions/content'
 
-import {
-  Artist,
-  BadgeDesktop,
-  Link,
-  Title,
-  Wrapper,
-} from './textBoxComponents';
+import { Artist, BadgeDesktop, Link, Title, Wrapper } from './textBoxComponents'
 
 const TextBox = props => {
   const {
@@ -20,7 +14,7 @@ const TextBox = props => {
     externalUrls,
     title,
     url,
-  } = props;
+  } = props
   return (
     <Wrapper>
       <BadgeDesktop
@@ -48,8 +42,8 @@ const TextBox = props => {
           </Link>
         )}
     </Wrapper>
-  );
-};
+  )
+}
 
 TextBox.propTypes = {
   actionTitle: PropTypes.node.isRequired,
@@ -65,7 +59,7 @@ TextBox.propTypes = {
   ),
   title: PropTypes.string,
   url: PropTypes.string,
-};
+}
 
 TextBox.defaultProps = {
   artist: undefined,
@@ -73,6 +67,6 @@ TextBox.defaultProps = {
   externalUrls: [],
   title: undefined,
   url: '#',
-};
+}
 
-export default TextBox;
+export default TextBox

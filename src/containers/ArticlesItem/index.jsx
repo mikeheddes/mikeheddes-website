@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Helmet from 'react-helmet-async';
-import { ThemeProvider } from 'styled-components';
-import { categories } from 'actions/articles';
-import { themes } from 'actions/ui';
-import components from 'components/Markdown';
-import Box from 'components/Box';
-import Section from 'components/Section';
-import NoMatch from 'components/NoMatch';
-import Button from 'components/Button';
-import Link from 'components/Link';
-import LinkList from 'components/LinkList';
-import clipboard from 'utils/clipboard';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import Helmet from 'react-helmet-async'
+import { ThemeProvider } from 'styled-components'
+import { categories } from 'actions/articles'
+import { themes } from 'actions/ui'
+import components from 'components/Markdown'
+import Box from 'components/Box'
+import Section from 'components/Section'
+import NoMatch from 'components/NoMatch'
+import Button from 'components/Button'
+import Link from 'components/Link'
+import LinkList from 'components/LinkList'
+import clipboard from 'utils/clipboard'
 
-import Image from 'components/Image';
+import Image from 'components/Image'
 import {
   HeaderWrapper,
   Title,
@@ -22,8 +22,8 @@ import {
   Author,
   PhotoCredit,
   LinkListWrapper,
-} from './components';
-import mapProps from './mapProps';
+} from './components'
+import mapProps from './mapProps'
 
 class ArticlesItem extends Component {
   static propTypes = {
@@ -55,24 +55,24 @@ class ArticlesItem extends Component {
         id: PropTypes.string.isRequired,
       }).isRequired,
     }).isRequired,
-  };
+  }
 
   static defaultProps = {
     item: null,
-  };
+  }
 
   state = {
     copiedUrl: false,
-  };
+  }
 
   componentDidMount() {
-    const { setTheme, item } = this.props;
-    setTheme(item.theme);
+    const { setTheme, item } = this.props
+    setTheme(item.theme)
   }
 
   componentWillUnmount() {
-    const { setTheme } = this.props;
-    setTheme(themes.DEFAULT);
+    const { setTheme } = this.props
+    setTheme(themes.DEFAULT)
   }
 
   formatDate = date => {
@@ -89,39 +89,39 @@ class ArticlesItem extends Component {
       'Oct',
       'Nov',
       'Dec',
-    ];
-    const day = date.getDate();
-    const monthIndex = date.getMonth();
-    const year = date.getFullYear();
-    return `${day} ${monthNames[monthIndex]} ${year}`;
-  };
+    ]
+    const day = date.getDate()
+    const monthIndex = date.getMonth()
+    const year = date.getFullYear()
+    return `${day} ${monthNames[monthIndex]} ${year}`
+  }
 
   copyPageUrl = () => {
     // eslint-disable-next-line no-undef
-    clipboard(window.location.href);
-    this.setState(prev => ({ ...prev, copiedUrl: true }));
-  };
+    clipboard(window.location.href)
+    this.setState(prev => ({ ...prev, copiedUrl: true }))
+  }
 
   setTheme = theme => {
-    const { item } = this.props;
-    const itemColorName = item.themeColor || 'orange';
+    const { item } = this.props
+    const itemColorName = item.themeColor || 'orange'
     return {
       ...theme,
       link: theme[itemColorName],
       surface: theme.surfaceColors[itemColorName],
-    };
-  };
+    }
+  }
 
   render() {
-    const { item } = this.props;
+    const { item } = this.props
     if (item && item.hasError) {
-      return <NoMatch />;
+      return <NoMatch />
     }
     if (!item) {
-      return <NoMatch />;
+      return <NoMatch />
     }
-    const Body = item.loadablePost;
-    const { copiedUrl } = this.state;
+    const Body = item.loadablePost
+    const { copiedUrl } = this.state
     return (
       <ThemeProvider theme={this.setTheme}>
         <article>
@@ -209,8 +209,8 @@ class ArticlesItem extends Component {
           </Section>
         </article>
       </ThemeProvider>
-    );
+    )
   }
 }
 
-export default mapProps(ArticlesItem);
+export default mapProps(ArticlesItem)

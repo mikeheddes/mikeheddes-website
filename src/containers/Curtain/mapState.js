@@ -1,9 +1,9 @@
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
 function mapStateToProps(state) {
   return {
     ...state.ui.curtain,
-  };
+  }
 }
 
-export default Component => connect(mapStateToProps)(Component);
+export default Component => connect(mapStateToProps)(Component)

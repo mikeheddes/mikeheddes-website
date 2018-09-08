@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components';
-import PropTypes from 'prop-types';
-import zD from 'style/zDepth';
+import styled, { css } from 'styled-components'
+import PropTypes from 'prop-types'
+import zD from 'style/zDepth'
 
 const Wrapper = styled.div`
   display: block;
@@ -19,7 +19,7 @@ const Wrapper = styled.div`
     css`
       box-shadow: ${zD[zDepth]};
     `};
-`;
+`
 
 Wrapper.propTypes = {
   micro: PropTypes.string,
@@ -27,13 +27,13 @@ Wrapper.propTypes = {
   color: PropTypes.string,
   radius: PropTypes.number,
   border: PropTypes.bool,
-};
+}
 
 Wrapper.defaultProps = {
   micro: null,
   color: null,
   radius: 0,
   border: true,
-};
+}
 
-export default Wrapper;
+export default Wrapper

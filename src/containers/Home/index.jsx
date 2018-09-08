@@ -1,13 +1,13 @@
-import React from 'react';
-import ContentHighlight from 'containers/ContentHighlight/Loadable';
-import Box from 'components/Box';
-import Section from 'components/Section';
+import React from 'react'
+import ContentHighlight from 'containers/ContentHighlight/Loadable'
+import Box from 'components/Box'
+import Section from 'components/Section'
 
-import Hero from './Hero';
-import Description from './Description';
+import Hero from './Hero'
+import Description from './Description'
 
 const description =
-  'This site is the place where I showcase and host my projects. I try to make the content fun and educational so it is less of a boring portfolio. The projects are mostly coding, design and music related but not limited to them.';
+  'This site is the place where I showcase and host my projects. I try to make the content fun and educational so it is less of a boring portfolio. The projects are mostly coding, design and music related but not limited to them.'
 
 export default () => (
   <React.Fragment>
@@ -33,4 +33,4 @@ export default () => (
       marginBottom
     />
   </React.Fragment>
-);
+)

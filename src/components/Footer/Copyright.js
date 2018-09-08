@@ -1,8 +1,8 @@
-import styled, { css } from 'styled-components';
-import { transparentize as fade } from 'polished';
+import styled, { css } from 'styled-components'
+import { transparentize as fade } from 'polished'
 
-import { size } from 'style';
-import { media } from 'utils/mixins';
+import { size } from 'style'
+import { media } from 'utils/mixins'
 
 const Copyright = styled.div`
   height: ${size.footerHeight / 2}px;
@@ -20,6 +20,6 @@ const Copyright = styled.div`
       font-weight: 500;
     `)};
   }
-`;
+`
 
-export default Copyright;
+export default Copyright

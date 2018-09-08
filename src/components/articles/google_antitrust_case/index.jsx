@@ -1,13 +1,13 @@
-import React from 'react';
-import Loadable from 'react-loadable';
-import { themes } from 'actions/ui';
+import React from 'react'
+import Loadable from 'react-loadable'
+import { themes } from 'actions/ui'
 
-import imageCover from 'assets/googleDroid.jpg';
+import imageCover from 'assets/googleDroid.jpg'
 
 const loadablePost = Loadable({
   loader: () => import('./article.mdx'),
   loading: () => <div />,
-});
+})
 
 // Metadata
 export default {
@@ -25,4 +25,4 @@ export default {
   title:
     'Six questions you were afraid to ask about Google’s EU antitrust case',
   updatedAt: null,
-};
+}

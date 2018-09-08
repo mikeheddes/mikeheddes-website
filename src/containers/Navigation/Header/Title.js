@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const Title = styled.h1`
   font-size: inherit;
@@ -9,6 +9,6 @@ const Title = styled.h1`
   text-overflow: ellipsis;
   white-space: nowrap;
   word-wrap: normal;
-`;
+`
 
-export default Title;
+export default Title

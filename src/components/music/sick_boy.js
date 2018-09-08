@@ -1,5 +1,5 @@
-import { themes } from 'actions/ui';
-import imageCover from 'assets/sick_boy.jpg';
+import { themes } from 'actions/ui'
+import imageCover from 'assets/sick_boy.jpg'
 
 export default {
   genre: 'Pop',
@@ -24,4 +24,4 @@ export default {
       url: 'https://spotify.com',
     },
   ],
-};
+}

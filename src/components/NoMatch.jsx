@@ -1,20 +1,20 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
-import Section from 'components/Section';
-import Link from 'components/Link';
-import B from 'components/Box';
-import { media } from 'utils/mixins';
-import { size } from 'style';
+import React from 'react'
+import styled, { css } from 'styled-components'
+import Section from 'components/Section'
+import Link from 'components/Link'
+import B from 'components/Box'
+import { media } from 'utils/mixins'
+import { size } from 'style'
 
 const Wrapper = Section.extend`
   min-height: calc(100vh - ${size.footerHeight}px);
-`;
+`
 
 const Box = B.extend`
   ${media.phoneOnly(css`
     flex-direction: column;
   `)};
-`;
+`
 
 const Status = styled.h1`
   padding: 15px 30px;
@@ -29,7 +29,7 @@ const Status = styled.h1`
     border-bottom: 2px solid;
     border-color: ${({ theme }) => theme.borderSeparate};
   `)};
-`;
+`
 
 const Message = styled.p`
   padding: 15px 30px;
@@ -37,7 +37,7 @@ const Message = styled.p`
   font-weight: 400;
   font-size: 16px;
   color: ${({ theme }) => theme.text};
-`;
+`
 
 export default () => (
   <Wrapper display="flex">
@@ -57,4 +57,4 @@ export default () => (
       </Message>
     </Box>
   </Wrapper>
-);
+)

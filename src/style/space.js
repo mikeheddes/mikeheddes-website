@@ -15,6 +15,6 @@ const space = {
   tabletPortrait: 80,
   tabletLandscape: 130,
   desktop: 130,
-};
+}
 
-export default space;
+export default space

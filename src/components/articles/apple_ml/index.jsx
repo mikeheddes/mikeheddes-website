@@ -1,13 +1,13 @@
-import React from 'react';
-import Loadable from 'react-loadable';
-import { themes } from 'actions/ui';
+import React from 'react'
+import Loadable from 'react-loadable'
+import { themes } from 'actions/ui'
 
-import imageCover from 'assets/acastro_180510_1777_siri_0002.0.jpg';
+import imageCover from 'assets/acastro_180510_1777_siri_0002.0.jpg'
 
 const loadablePost = Loadable({
   loader: () => import('./article.mdx'),
   loading: () => <div />,
-});
+})
 
 // Metadata
 export default {
@@ -26,4 +26,4 @@ export default {
   title:
     'Apple’s new AI chief now oversees Siri, Core ML, and machine learning teams',
   updatedAt: null,
-};
+}

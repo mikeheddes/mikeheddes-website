@@ -1,5 +1,5 @@
-import { themes } from 'actions/ui';
-import imageCover from 'assets/daytona.jpg';
+import { themes } from 'actions/ui'
+import imageCover from 'assets/daytona.jpg'
 
 // Metadata
 export default {
@@ -58,4 +58,4 @@ export default {
       url: 'https://itunes.apple.com/us/album/daytona/1388853738',
     },
   ],
-};
+}

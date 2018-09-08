@@ -1,4 +1,4 @@
-export const API_REQUEST = '[app] API request';
+export const API_REQUEST = '[app] API request'
 
 export const apiRequest = (
   contentType,
@@ -17,13 +17,13 @@ export const apiRequest = (
     onSuccess,
     onError,
   },
-});
+})
 
 export const requestById = (contentType, id, onSuccess, onError) =>
-  apiRequest(contentType, onSuccess, onError, { id });
+  apiRequest(contentType, onSuccess, onError, { id })
 
 export const requestAll = (contentType, onSuccess, onError) =>
-  apiRequest(contentType, onSuccess, onError);
+  apiRequest(contentType, onSuccess, onError)
 
 export const requestLatest = (contentType, onSuccess, onError) =>
-  apiRequest(contentType, onSuccess, onError, { query: { limit: 1 } });
+  apiRequest(contentType, onSuccess, onError, { query: { limit: 1 } })

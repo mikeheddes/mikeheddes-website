@@ -1,45 +1,45 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import EventListener from 'react-event-listener';
-import { debounce } from 'lodash';
+import React from 'react'
+import PropTypes from 'prop-types'
+import EventListener from 'react-event-listener'
+import { debounce } from 'lodash'
 
-import mapState from './mapState';
-import Wrapper from './Wrapper';
-import Header from './Header';
-import PageList from './PageList';
+import mapState from './mapState'
+import Wrapper from './Wrapper'
+import Header from './Header'
+import PageList from './PageList'
 
 class Navigation extends React.Component {
   constructor(props) {
-    super(props);
-    this.state = { solid: false };
-    this.handleScroll = this.handleScroll.bind(this);
-    this.handleResize = this.handleResize.bind(this);
-    this.toggleMenu = this.toggleMenu.bind(this);
-    this.handleResize = debounce(this.handleResize, 17);
+    super(props)
+    this.state = { solid: false }
+    this.handleScroll = this.handleScroll.bind(this)
+    this.handleResize = this.handleResize.bind(this)
+    this.toggleMenu = this.toggleMenu.bind(this)
+    this.handleResize = debounce(this.handleResize, 17)
   }
 
   handleResize() {
-    const { setMenuVisibility, setCurtainVisibility } = this.props;
-    setMenuVisibility(false);
-    setCurtainVisibility(false);
+    const { setMenuVisibility, setCurtainVisibility } = this.props
+    setMenuVisibility(false)
+    setCurtainVisibility(false)
   }
 
   handleScroll(e) {
-    const isSolid = e.currentTarget.pageYOffset !== 0;
-    const { solid } = this.state;
+    const isSolid = e.currentTarget.pageYOffset !== 0
+    const { solid } = this.state
     if (isSolid !== solid) {
-      this.setState({ solid: isSolid });
+      this.setState({ solid: isSolid })
     }
   }
 
   toggleMenu() {
-    const { toggleMenuVisibility, toggleCurtainVisibility } = this.props;
-    toggleMenuVisibility();
-    toggleCurtainVisibility();
+    const { toggleMenuVisibility, toggleCurtainVisibility } = this.props
+    toggleMenuVisibility()
+    toggleCurtainVisibility()
   }
 
   render() {
-    const { solid } = this.state;
+    const { solid } = this.state
     const {
       isVisible,
       menuHeight,
@@ -48,7 +48,7 @@ class Navigation extends React.Component {
       title,
       activePath,
       push,
-    } = this.props;
+    } = this.props
     return (
       <Wrapper solid={solid} isVisible={isVisible} menuHeight={menuHeight}>
         <Header
@@ -69,7 +69,7 @@ class Navigation extends React.Component {
           onScroll={this.handleScroll}
         />
       </Wrapper>
-    );
+    )
   }
 }
 
@@ -88,11 +88,11 @@ Navigation.propTypes = {
   }),
   title: PropTypes.string,
   activePath: PropTypes.string.isRequired,
-};
+}
 
 Navigation.defaultProps = {
   action: null,
   title: '',
-};
+}
 
-export default mapState(Navigation);
+export default mapState(Navigation)

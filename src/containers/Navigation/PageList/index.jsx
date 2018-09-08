@@ -1,12 +1,12 @@
-import React from 'react';
-import EventListener from 'react-event-listener';
-import PropTypes from 'prop-types';
-import { Keyframes } from 'react-spring';
-import { debounce } from 'lodash';
+import React from 'react'
+import EventListener from 'react-event-listener'
+import PropTypes from 'prop-types'
+import { Keyframes } from 'react-spring'
+import { debounce } from 'lodash'
 
-import config from '../config';
-import Wrapper from './Wrapper';
-import Item from './Item';
+import config from '../config'
+import Wrapper from './Wrapper'
+import Item from './Item'
 
 // Creates a keyframed trail
 const ListAnimation = Keyframes.Trail({
@@ -16,32 +16,32 @@ const ListAnimation = Keyframes.Trail({
     form: { y: -20, opacity: 0 },
     to: { y: -20, opacity: 0 },
   },
-});
+})
 
 class PageList extends React.Component {
   constructor(props) {
-    super(props);
-    this.setListRef = this.setListRef.bind(this);
-    this.handleResize = this.handleResize.bind(this);
-    this.handleResize = debounce(this.handleResize.bind(this), 17);
+    super(props)
+    this.setListRef = this.setListRef.bind(this)
+    this.handleResize = this.handleResize.bind(this)
+    this.handleResize = debounce(this.handleResize.bind(this), 17)
   }
 
   componentDidMount() {
-    const { setHeight } = this.props;
-    setHeight(this.listElement.offsetHeight);
+    const { setHeight } = this.props
+    setHeight(this.listElement.offsetHeight)
   }
 
   setListRef(node) {
-    this.listElement = node;
+    this.listElement = node
   }
 
   handleResize() {
-    const { setHeight } = this.props;
-    setHeight(this.listElement.offsetHeight);
+    const { setHeight } = this.props
+    setHeight(this.listElement.offsetHeight)
   }
 
   render() {
-    const { isVisible, activePath, navigateToLink } = this.props;
+    const { isVisible, activePath, navigateToLink } = this.props
     return (
       <Wrapper innerRef={this.setListRef}>
         <EventListener target="window" onResize={this.handleResize} />
@@ -65,7 +65,7 @@ class PageList extends React.Component {
           ))}
         </ListAnimation>
       </Wrapper>
-    );
+    )
   }
 }
 
@@ -74,6 +74,6 @@ PageList.propTypes = {
   setHeight: PropTypes.func.isRequired,
   activePath: PropTypes.string.isRequired,
   navigateToLink: PropTypes.func.isRequired,
-};
+}
 
-export default PageList;
+export default PageList

@@ -1,20 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
-import { space } from 'style';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled, { css } from 'styled-components'
+import { space } from 'style'
 
 const toTimeStamp = milliseconds => {
-  const totalSeconds = milliseconds / 1000;
-  const minutes = Math.floor(totalSeconds / 60);
-  const seconds = totalSeconds - minutes * 60;
-  return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-};
+  const totalSeconds = milliseconds / 1000
+  const minutes = Math.floor(totalSeconds / 60)
+  const seconds = totalSeconds - minutes * 60
+  return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
+}
 
 const checkSameArtists = (tracks, artist) =>
   tracks.reduce((accumulator, currentValue) => {
-    if (currentValue.artist === artist) return accumulator;
-    return false;
-  }, true);
+    if (currentValue.artist === artist) return accumulator
+    return false
+  }, true)
 
 const Wrapper = styled.table`
   border-top: 2px solid;
@@ -22,7 +22,7 @@ const Wrapper = styled.table`
   width: 100%;
   border-collapse: collapse;
   margin-top: ${space.m}px;
-`;
+`
 
 const Cell = styled.td`
   border-bottom: 2px solid;
@@ -59,22 +59,22 @@ const Cell = styled.td`
     css`
       text-align: right;
     `};
-`;
+`
 
 const Title = styled.span`
   font-weight: 500;
   font-size: 18px;
   color: ${({ theme }) => theme.text};
-`;
+`
 
 const Artist = styled.span`
   display: inline-block;
   margin-top: ${space.xs}px;
-`;
+`
 
 const TrackTable = props => {
-  const { tracks, artist } = props;
-  const hasSameArtists = checkSameArtists(tracks, artist);
+  const { tracks, artist } = props
+  const hasSameArtists = checkSameArtists(tracks, artist)
   return (
     <Wrapper>
       <tbody>
@@ -98,8 +98,8 @@ const TrackTable = props => {
         ))}
       </tbody>
     </Wrapper>
-  );
-};
+  )
+}
 
 TrackTable.propTypes = {
   tracks: PropTypes.arrayOf(
@@ -110,6 +110,6 @@ TrackTable.propTypes = {
     })
   ).isRequired,
   artist: PropTypes.string.isRequired,
-};
+}
 
-export default TrackTable;
+export default TrackTable

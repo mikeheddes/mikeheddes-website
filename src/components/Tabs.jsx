@@ -1,10 +1,10 @@
-import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
-import { media } from 'utils/mixins';
-import { createPadding } from 'utils/createSpace';
-import { transparentize as fade, darken } from 'polished';
-import space from 'style/space';
-import radius from 'style/radius';
+import PropTypes from 'prop-types'
+import styled, { css } from 'styled-components'
+import { media } from 'utils/mixins'
+import { createPadding } from 'utils/createSpace'
+import { transparentize as fade, darken } from 'polished'
+import space from 'style/space'
+import radius from 'style/radius'
 
 const TabRow = styled.ul`
   background-color: ${({ theme }) => theme.surface};
@@ -30,15 +30,15 @@ const TabRow = styled.ul`
   ${media.tabletPortrait(css`
     padding: ${createPadding(0, 'xr')};
   `)};
-`;
+`
 
 TabRow.propTypes = {
   withScroll: PropTypes.bool,
-};
+}
 
 TabRow.defaultProps = {
   withScroll: false,
-};
+}
 
 const Tab = styled.li`
   display: inline-block;
@@ -81,16 +81,16 @@ const Tab = styled.li`
         color: ${({ theme }) => fade(0.5, theme.link)};
       }
     `};
-`;
+`
 
 Tab.propTypes = {
   active: PropTypes.bool,
   onClick: PropTypes.func,
-};
+}
 
 Tab.defaultProps = {
   active: false,
   onClick: undefined,
-};
+}
 
-export { TabRow, Tab };
+export { TabRow, Tab }

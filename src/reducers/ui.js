@@ -1,16 +1,16 @@
-import { combineReducers } from 'redux';
-import { DEFAULT, SET_THEME } from 'actions/ui';
-import { musicUi } from './music';
-import { articlesUi } from './articles';
-import curtain from './curtain';
-import menu from './menu';
+import { combineReducers } from 'redux'
+import { DEFAULT, SET_THEME } from 'actions/ui'
+import { musicUi } from './music'
+import { articlesUi } from './articles'
+import curtain from './curtain'
+import menu from './menu'
 
 function themeName(state = DEFAULT, action) {
   switch (action.type) {
     case SET_THEME:
-      return action.payload;
+      return action.payload
     default:
-      return state;
+      return state
   }
 }
 
@@ -20,4 +20,4 @@ export default combineReducers({
   music: musicUi,
   articles: articlesUi,
   curtain,
-});
+})

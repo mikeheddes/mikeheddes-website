@@ -1,11 +1,11 @@
-import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
-import { transparentize as fade } from 'polished';
-import Anchor from 'components/Link';
-import Badge from 'components/Badge';
-import space from 'style/space';
-import radius from 'style/radius';
-import { media, fluidText, maxLines } from 'utils/mixins';
+import PropTypes from 'prop-types'
+import styled, { css } from 'styled-components'
+import { transparentize as fade } from 'polished'
+import Anchor from 'components/Link'
+import Badge from 'components/Badge'
+import space from 'style/space'
+import radius from 'style/radius'
+import { media, fluidText, maxLines } from 'utils/mixins'
 
 export const Title = styled.h1`
   ${fluidText(28, 44)};
@@ -39,11 +39,11 @@ export const Title = styled.h1`
         width: 100%;
       `)};
     `};
-`;
+`
 
 Title.propTypes = {
   lineClamp: PropTypes.number.isRequired,
-};
+}
 
 export const Artist = styled.h2`
   ${fluidText(22, 32)};
@@ -70,15 +70,15 @@ export const Artist = styled.h2`
         width: 70%;
       `)};
     `};
-`;
+`
 
 Artist.propTypes = {
   lineClamp: PropTypes.number,
-};
+}
 
 Artist.defaultProps = {
   lineClamp: 2,
-};
+}
 
 export const Link = Anchor.extend`
   ${fluidText(17, 20)};
@@ -93,7 +93,7 @@ export const Link = Anchor.extend`
   &:last-of-type {
     margin-bottom: 0;
   }
-`;
+`
 
 export const BadgeDesktop = Badge.extend`
   display: none;
@@ -101,7 +101,7 @@ export const BadgeDesktop = Badge.extend`
   ${media.desktop(css`
     display: inline-block;
   `)};
-`;
+`
 
 export const Wrapper = styled.div`
   flex: 1 1 auto;
@@ -114,4 +114,4 @@ export const Wrapper = styled.div`
     margin: 0;
     margin-left: ${space.l}px;
   `)};
-`;
+`

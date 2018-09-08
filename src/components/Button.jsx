@@ -1,11 +1,11 @@
-import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
-import { darken, transparentize as fade } from 'polished';
-import { radius, space } from 'style';
+import PropTypes from 'prop-types'
+import styled, { css } from 'styled-components'
+import { darken, transparentize as fade } from 'polished'
+import { radius, space } from 'style'
 
 const buttonPadding = css`
   padding: ${space.r}px ${space.m}px;
-`;
+`
 
 export const defaultStyle = css`
   ${buttonPadding};
@@ -25,7 +25,7 @@ export const defaultStyle = css`
         background-color: ${({ theme }) => darken(0.06, theme.surface)};
       }
     `};
-`;
+`
 
 export const primaryStyle = css`
   ${buttonPadding};
@@ -35,7 +35,7 @@ export const primaryStyle = css`
   &:hover {
     background-color: ${({ theme }) => darken(0.03, theme.link)};
   }
-`;
+`
 
 const warningStyle = css`
   ${buttonPadding};
@@ -45,7 +45,7 @@ const warningStyle = css`
   &:hover {
     background-color: ${({ theme }) => darken(0.03, theme.orange)};
   }
-`;
+`
 
 const deleteStyle = css`
   ${buttonPadding};
@@ -55,7 +55,7 @@ const deleteStyle = css`
   &:hover {
     background-color: ${({ theme }) => darken(0.03, theme.red)};
   }
-`;
+`
 
 export const actionStyle = css`
   padding: 4px 15px;
@@ -68,7 +68,7 @@ export const actionStyle = css`
   &:hover {
     background-color: ${({ theme }) => darken(0.03, theme.surface)};
   }
-`;
+`
 
 export const subtleStyle = css`
   ${buttonPadding};
@@ -78,7 +78,7 @@ export const subtleStyle = css`
   &:hover {
     background-color: ${({ theme }) => fade(0.95, theme.title)};
   }
-`;
+`
 
 export const subtleLinkStyle = css`
   color: ${({ theme }) => theme.textSubtle};
@@ -86,7 +86,7 @@ export const subtleLinkStyle = css`
   &:hover {
     text-decoration: underline;
   }
-`;
+`
 
 export const linkStyle = css`
   color: ${({ theme }) => theme.link};
@@ -94,7 +94,7 @@ export const linkStyle = css`
   &:hover {
     text-decoration: underline;
   }
-`;
+`
 
 const disableStyle = css`
   ${buttonPadding};
@@ -105,7 +105,7 @@ const disableStyle = css`
   &:active {
     opacity: 1;
   }
-`;
+`
 
 export const basicStyle = css`
   font-size: 17px;
@@ -128,7 +128,7 @@ export const basicStyle = css`
   &:active {
     opacity: 0.6;
   }
-`;
+`
 
 const Button = styled.button.attrs({
   disabled: ({ variation }) => variation === 'disabled' && variation,
@@ -138,26 +138,26 @@ const Button = styled.button.attrs({
   ${({ variation }) => {
     switch (variation) {
       case 'primary':
-        return primaryStyle;
+        return primaryStyle
       case 'link':
-        return linkStyle;
+        return linkStyle
       case 'subtle':
-        return subtleStyle;
+        return subtleStyle
       case 'subtleLink':
-        return subtleLinkStyle;
+        return subtleLinkStyle
       case 'disabled':
-        return disableStyle;
+        return disableStyle
       case 'warning':
-        return warningStyle;
+        return warningStyle
       case 'delete':
-        return deleteStyle;
+        return deleteStyle
       case 'action':
-        return actionStyle;
+        return actionStyle
       default:
-        return defaultStyle;
+        return defaultStyle
     }
   }};
-`;
+`
 
 Button.propTypes = {
   type: PropTypes.oneOf(['button', 'reset', 'submit']),
@@ -174,13 +174,13 @@ Button.propTypes = {
   ]),
   display: PropTypes.oneOf(['block', 'inline-block']),
   textAlign: PropTypes.oneOf(['center', 'left', 'right']),
-};
+}
 
 Button.defaultProps = {
   type: 'button',
   variation: 'default',
   display: 'inline-block',
   textAlign: 'center',
-};
+}
 
-export default Button;
+export default Button

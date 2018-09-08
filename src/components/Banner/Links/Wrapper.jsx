@@ -1,10 +1,10 @@
-import { darken } from 'polished';
-import styled, { css } from 'styled-components';
-import Anchor from 'components/Link';
+import { darken } from 'polished'
+import styled, { css } from 'styled-components'
+import Anchor from 'components/Link'
 
-import space from 'style/space';
-import radius from 'style/radius';
-import { media, fluidText } from 'utils/mixins';
+import space from 'style/space'
+import radius from 'style/radius'
+import { media, fluidText } from 'utils/mixins'
 
 const Wrapper = styled.ul`
   color: ${({ theme }) => theme.link};
@@ -34,9 +34,9 @@ const Wrapper = styled.ul`
       word-wrap: normal;
     `)};
   }
-`;
+`
 
-export default Wrapper;
+export default Wrapper
 
 export const Link = Anchor.extend`
   ${fluidText(17, 20)};
@@ -60,4 +60,4 @@ export const Link = Anchor.extend`
       margin-right: ${space.m}px;
     }
   `)};
-`;
+`

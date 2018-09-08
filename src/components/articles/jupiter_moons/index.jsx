@@ -1,13 +1,13 @@
-import React from 'react';
-import Loadable from 'react-loadable';
-import { themes } from 'actions/ui';
+import React from 'react'
+import Loadable from 'react-loadable'
+import { themes } from 'actions/ui'
 
-import imageCover from 'assets/14_jupiter_carousel_1.0.jpg';
+import imageCover from 'assets/14_jupiter_carousel_1.0.jpg'
 
 const loadablePost = Loadable({
   loader: () => import('./article.mdx'),
   loading: () => <div />,
-});
+})
 
 // Metadata
 export default {
@@ -26,4 +26,4 @@ export default {
   title:
     'Astronomers have found a new crop of moons around Jupiter, and one of them is a weirdo',
   updatedAt: null,
-};
+}

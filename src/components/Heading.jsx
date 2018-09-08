@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
-import { fluidText } from 'utils/mixins';
-import { space } from 'style';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled, { css } from 'styled-components'
+import { fluidText } from 'utils/mixins'
+import { space } from 'style'
 
-const availableTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+const availableTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
 
 const headingStyle = css`
   font-weight: 700;
@@ -67,7 +67,7 @@ const headingStyle = css`
       margin-bottom: ${space.s}px;
       font-weight: 600;
     `};
-`;
+`
 
 const styledElements = availableTags.reduce(
   (acc, tag) => ({
@@ -77,22 +77,22 @@ const styledElements = availableTags.reduce(
     `,
   }),
   {}
-);
+)
 
 const Heading = props => {
-  const { tag } = props;
-  const HeadingElement = styledElements[tag];
-  return <HeadingElement {...props} />;
-};
+  const { tag } = props
+  const HeadingElement = styledElements[tag]
+  return <HeadingElement {...props} />
+}
 
 Heading.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   tag: PropTypes.oneOf(availableTags).isRequired,
-};
+}
 
 Heading.defaultProps = {
   className: '',
-};
+}
 
-export default Heading;
+export default Heading

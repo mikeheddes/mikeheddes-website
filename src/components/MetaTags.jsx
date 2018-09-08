@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Helmet from 'react-helmet-async';
+import React from 'react'
+import PropTypes from 'prop-types'
+import Helmet from 'react-helmet-async'
 
-import openGraphLogo from 'assets/open_graph_logo.png';
-import favicon from 'assets/favicon.png?sizes[]=16,sizes[]=32,sizes[]=96';
-import touchicon from 'assets/touchicon.png?sizes[]=57,sizes[]=60,sizes[]=72,sizes[]=76,sizes[]=114,sizes[]=120,sizes[]=144,sizes[]=152,sizes[]=180';
+import openGraphLogo from 'assets/open_graph_logo.png'
+import favicon from 'assets/favicon.png?sizes[]=16,sizes[]=32,sizes[]=96'
+import touchicon from 'assets/touchicon.png?sizes[]=57,sizes[]=60,sizes[]=72,sizes[]=76,sizes[]=114,sizes[]=120,sizes[]=144,sizes[]=152,sizes[]=180'
 
 const MetaTags = ({ backgroundColor }) => (
   <Helmet defaultTitle="Mike Heddes" titleTemplate="Mike Heddes | %s">
@@ -96,10 +96,10 @@ const MetaTags = ({ backgroundColor }) => (
       on your browser, please enable JS to make this app work.
     </noscript>
   </Helmet>
-);
+)
 
 MetaTags.propTypes = {
   backgroundColor: PropTypes.string.isRequired,
-};
+}
 
-export default MetaTags;
+export default MetaTags

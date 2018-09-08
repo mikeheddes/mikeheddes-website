@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
-import { media } from 'utils/mixins';
-import space from 'style/space';
+import PropTypes from 'prop-types'
+import styled, { css } from 'styled-components'
+import { media } from 'utils/mixins'
+import space from 'style/space'
 
 const GridBox = styled.div`
   display: grid;
@@ -29,20 +29,20 @@ const GridBox = styled.div`
       1fr
     );
   `)};
-`;
+`
 
 GridBox.propTypes = {
   phoneColumns: PropTypes.number,
   tabletPortraitColumns: PropTypes.number,
   tabletLandscapeColumns: PropTypes.number,
   desktopColumns: PropTypes.number,
-};
+}
 
 GridBox.defaultProps = {
   phoneColumns: 2,
   tabletPortraitColumns: 3,
   tabletLandscapeColumns: 4,
   desktopColumns: 5,
-};
+}
 
-export default GridBox;
+export default GridBox

@@ -1,14 +1,14 @@
-import importAll from 'utils/importAll';
+import importAll from 'utils/importAll'
 
-const music = importAll(require.context('./', true, /.jsx?$/));
+const music = importAll(require.context('./', true, /.jsx?$/))
 
-delete music['./index.js'];
+delete music['./index.js']
 
 function getId(str) {
-  return str.split('/')[1].split('.')[0];
+  return str.split('/')[1].split('.')[0]
 }
 
 export default Object.entries(music).reduce((acc, cur) => {
-  const id = getId(cur[0]);
-  return { ...acc, [id]: { ...cur[1].default, id } };
-}, {});
+  const id = getId(cur[0])
+  return { ...acc, [id]: { ...cur[1].default, id } }
+}, {})

@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components'
 
-import { space } from 'style';
+import { space } from 'style'
 
 const Accessory = styled.div`
   display    : flex;
@@ -39,6 +39,6 @@ const Accessory = styled.div`
         opacity: 0.5;
       }
     `}
-`;
+`
 
-export default Accessory;
+export default Accessory

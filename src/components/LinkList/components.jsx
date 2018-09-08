@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components';
-import space from 'style/space';
-import { media } from 'utils/mixins';
+import styled, { css } from 'styled-components'
+import space from 'style/space'
+import { media } from 'utils/mixins'
 
 const Wrapper = styled.ul`
   color: ${({ theme }) => theme.link};
@@ -16,9 +16,9 @@ const Wrapper = styled.ul`
     opacity: 0;
     display: none;
   }
-`;
+`
 
-export default Wrapper;
+export default Wrapper
 
 const Item = styled.li`
   display: inline-block;
@@ -38,6 +38,6 @@ const Item = styled.li`
   &:last-of-type {
     margin-right: 0;
   }
-`;
+`
 
-export { Item };
+export { Item }

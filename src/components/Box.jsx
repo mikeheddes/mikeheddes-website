@@ -1,12 +1,12 @@
-import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import PropTypes from 'prop-types'
+import styled, { css } from 'styled-components'
 import {
   marginPropType,
   paddingPropType,
   zDepthPropType,
-} from 'utils/PropTypes';
-import { createMargin, createPadding, createWidth } from 'utils/createSpace';
-import { fluidText } from 'utils/mixins';
+} from 'utils/PropTypes'
+import { createMargin, createPadding, createWidth } from 'utils/createSpace'
+import { fluidText } from 'utils/mixins'
 
 const Box = styled.div`
   display: ${({ display }) => display};
@@ -35,28 +35,28 @@ const Box = styled.div`
   flex: ${props => {
     switch (props.flex) {
       case 'grow':
-        return '1 1 auto';
+        return '1 1 auto'
       case 'none':
-        return '0 0 auto';
+        return '0 0 auto'
       default:
-        return '0 1 auto';
+        return '0 1 auto'
     }
   }};
 
   align-self: ${props => {
     switch (props.alignSelf) {
       case 'auto':
-        return 'auto';
+        return 'auto'
       case 'start':
-        return 'flex-start';
+        return 'flex-start'
       case 'end':
-        return 'flex-end';
+        return 'flex-end'
       case 'center':
-        return 'center';
+        return 'center'
       case 'baseline':
-        return 'baseline';
+        return 'baseline'
       default:
-        return 'stretch';
+        return 'stretch'
     }
   }};
 
@@ -70,49 +70,49 @@ const Box = styled.div`
       justify-content: ${({ justifyContent }) => {
         switch (justifyContent) {
           case 'end':
-            return 'flex-end';
+            return 'flex-end'
           case 'center':
-            return 'center';
+            return 'center'
           case 'between':
-            return 'space-between';
+            return 'space-between'
           case 'around':
-            return 'space-around';
+            return 'space-around'
           default:
-            return 'flex-start';
+            return 'flex-start'
         }
       }};
 
       align-items: ${({ alignItems }) => {
         switch (alignItems) {
           case 'start':
-            return 'flex-start';
+            return 'flex-start'
           case 'end':
-            return 'flex-end';
+            return 'flex-end'
           case 'center':
-            return 'center';
+            return 'center'
           case 'baseline':
-            return 'baseline';
+            return 'baseline'
           default:
-            return 'stretch';
+            return 'stretch'
         }
       }};
 
       align-content: ${({ alignContent }) => {
         switch (alignContent) {
           case 'end':
-            return 'flex-end';
+            return 'flex-end'
           case 'center':
-            return 'center';
+            return 'center'
           case 'between':
-            return 'space-between';
+            return 'space-between'
           case 'around':
-            return 'space-around';
+            return 'space-around'
           default:
-            return 'flex-start';
+            return 'flex-start'
         }
       }};
     `}
-`;
+`
 
 Box.propTypes = {
   alignContent: PropTypes.oneOf([
@@ -174,7 +174,7 @@ Box.propTypes = {
   width: PropTypes.oneOf(['content', 'text', 'full', PropTypes.number]),
   wrap: PropTypes.bool,
   zDepth: zDepthPropType,
-};
+}
 
 Box.defaultProps = {
   alignContent: 'stretch',
@@ -193,6 +193,6 @@ Box.defaultProps = {
   shape: 'square',
   textAlign: 'left',
   width: null,
-};
+}
 
-export default Box;
+export default Box

@@ -1,10 +1,10 @@
-import styled, { css } from 'styled-components';
-import { transparentize as fade } from 'polished';
-import space from 'style/space';
-import radius from 'style/radius';
-import HScroll from 'components/HorizontalScroll';
-import { TabRow as TR, Tab as T } from 'components/Tabs';
-import { media, fluidText } from 'utils/mixins';
+import styled, { css } from 'styled-components'
+import { transparentize as fade } from 'polished'
+import space from 'style/space'
+import radius from 'style/radius'
+import HScroll from 'components/HorizontalScroll'
+import { TabRow as TR, Tab as T } from 'components/Tabs'
+import { media, fluidText } from 'utils/mixins'
 
 export const HorizontalScroll = HScroll.extend`
   ${media.tabletLandscape(css`
@@ -12,14 +12,14 @@ export const HorizontalScroll = HScroll.extend`
     right: 0;
     bottom: 0;
   `)};
-`;
+`
 
 export const TabRow = TR.extend`
   ${media.tabletLandscape(css`
     background-color: transparent;
     margin-bottom: ${space.xr}px;
   `)};
-`;
+`
 
 const bottomLine = css`
   content: '';
@@ -29,7 +29,7 @@ const bottomLine = css`
   height: 2px;
   border-radius: ${radius.r}px;
   width: 100%;
-`;
+`
 
 export const Tab = T.extend`
   font-weight: 500;
@@ -82,7 +82,7 @@ export const Tab = T.extend`
         }
       `};
   `)};
-`;
+`
 
 export const Title = styled.h1`
   ${fluidText(32, 40)};
@@ -98,4 +98,4 @@ export const Title = styled.h1`
     padding-bottom: ${space.xr}px;
     margin-bottom: ${space.xm}px;
   `)};
-`;
+`

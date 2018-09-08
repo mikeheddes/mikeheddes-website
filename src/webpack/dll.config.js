@@ -1,13 +1,13 @@
-const path = require('path');
-const webpack = require('webpack');
+const path = require('path')
+const webpack = require('webpack')
 
-const createConfig = require('./common.config');
+const createConfig = require('./common.config')
 
-const outputPath = path.resolve(__dirname, '../../dlls');
+const outputPath = path.resolve(__dirname, '../../dlls')
 
-const pkg = require('../package.json');
+const pkg = require('../package.json')
 
-const exclude = ['apollo-client', 'graphql', 'react-apollo', 'through'];
+const exclude = ['apollo-client', 'graphql', 'react-apollo', 'through']
 
 module.exports = createConfig({
   context: __dirname,
@@ -28,4 +28,4 @@ module.exports = createConfig({
     }),
   ],
   devtool: false,
-});
+})

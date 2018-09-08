@@ -1,5 +1,5 @@
-import { themes } from 'actions/ui';
-import imageCover from 'assets/i_fell_in_love_in_a_two_seater.jpg';
+import { themes } from 'actions/ui'
+import imageCover from 'assets/i_fell_in_love_in_a_two_seater.jpg'
 
 export default {
   publishedAt: new Date('2018-05-20'),
@@ -25,4 +25,4 @@ export default {
       url: 'https://open.spotify.com/album/1FMKfF1BtJXBso3gLOv6t7',
     },
   ],
-};
+}

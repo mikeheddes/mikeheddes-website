@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Wrapper, { Link } from './Wrapper';
+import React from 'react'
+import PropTypes from 'prop-types'
+import Wrapper, { Link } from './Wrapper'
 
 const Links = props => {
-  const { links } = props;
+  const { links } = props
   return (
     <Wrapper>
       {links &&
@@ -13,8 +13,8 @@ const Links = props => {
           </Link>
         ))}
     </Wrapper>
-  );
-};
+  )
+}
 
 Links.propTypes = {
   links: PropTypes.arrayOf(
@@ -23,6 +23,6 @@ Links.propTypes = {
       href: PropTypes.string.isRequired,
     })
   ).isRequired,
-};
+}
 
-export default Links;
+export default Links

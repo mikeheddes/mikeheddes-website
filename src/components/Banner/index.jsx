@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { ThemeProvider } from 'styled-components';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { ThemeProvider } from 'styled-components'
 
-import Wrapper from './Wrapper';
-import Links from './Links';
+import Wrapper from './Wrapper'
+import Links from './Links'
 
 export default class Banner extends Component {
   static propTypes = {
@@ -14,19 +14,19 @@ export default class Banner extends Component {
         href: PropTypes.string.isRequired,
       })
     ),
-  };
+  }
 
   static defaultProps = {
     links: [],
-  };
+  }
 
   setTheme = theme => ({
     ...theme,
     heading: theme.link,
-  });
+  })
 
   render() {
-    const { children, links } = this.props;
+    const { children, links } = this.props
     return (
       <ThemeProvider theme={this.setTheme}>
         <Wrapper links={!!links}>
@@ -34,6 +34,6 @@ export default class Banner extends Component {
           {links && <Links links={links} />}
         </Wrapper>
       </ThemeProvider>
-    );
+    )
   }
 }

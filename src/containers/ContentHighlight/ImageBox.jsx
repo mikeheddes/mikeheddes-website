@@ -1,14 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { contentTypes } from 'actions/content';
-import Badge from 'components/Badge';
-import Image from 'components/Image';
-import Link from 'components/Link';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { contentTypes } from 'actions/content'
+import Badge from 'components/Badge'
+import Image from 'components/Image'
+import Link from 'components/Link'
 
-import { EyebrowRow, Wrapper } from './imageBoxComponents';
+import { EyebrowRow, Wrapper } from './imageBoxComponents'
 
 const ImageBox = props => {
-  const { contentType, eyebrow, image, to } = props;
+  const { contentType, eyebrow, image, to } = props
   return (
     <Wrapper>
       <EyebrowRow>
@@ -23,8 +23,8 @@ const ImageBox = props => {
         <Image {...image} rounded zDepth={6} />
       </Link>
     </Wrapper>
-  );
-};
+  )
+}
 
 ImageBox.propTypes = {
   contentType: PropTypes.oneOf(contentTypes).isRequired,
@@ -33,11 +33,11 @@ ImageBox.propTypes = {
     src: PropTypes.string.isRequired,
   }),
   to: PropTypes.string,
-};
+}
 
 ImageBox.defaultProps = {
   image: undefined,
   to: '#',
-};
+}
 
-export default ImageBox;
+export default ImageBox

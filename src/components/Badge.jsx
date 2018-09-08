@@ -1,11 +1,11 @@
-import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
-import { transparentize as fade } from 'polished';
+import PropTypes from 'prop-types'
+import styled, { css } from 'styled-components'
+import { transparentize as fade } from 'polished'
 
-import { marginPropType } from 'utils/PropTypes';
-import { createMargin } from 'utils/createSpace';
-import space from 'style/space';
-import radius from 'style/radius';
+import { marginPropType } from 'utils/PropTypes'
+import { createMargin } from 'utils/createSpace'
+import space from 'style/space'
+import radius from 'style/radius'
 
 const Badge = styled.span`
   display: inline-block;
@@ -83,7 +83,7 @@ const Badge = styled.span`
           color: ${({ theme }) => fade(0.3, theme.title)};
         `};
     `}
-`;
+`
 
 Badge.propTypes = {
   children: PropTypes.node.isRequired,
@@ -97,7 +97,7 @@ Badge.propTypes = {
   onClick: PropTypes.func,
   size: PropTypes.oneOf(['r', 'l']),
   weight: PropTypes.oneOf(['bold', 'subtle']),
-};
+}
 
 Badge.defaultProps = {
   count: false,
@@ -109,6 +109,6 @@ Badge.defaultProps = {
   marginLeft: undefined,
   size: 'r',
   weight: 'bold',
-};
+}
 
-export default Badge;
+export default Badge

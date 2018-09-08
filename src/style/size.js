@@ -12,6 +12,6 @@ const size = {
   G: 384,
   xG: 512,
   footerHeight: 100,
-};
+}
 
-export default size;
+export default size

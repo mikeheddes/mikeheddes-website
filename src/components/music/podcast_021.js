@@ -1,5 +1,5 @@
-import { themes } from 'actions/ui';
-import imageCover from 'assets/podcast_021.jpg';
+import { themes } from 'actions/ui'
+import imageCover from 'assets/podcast_021.jpg'
 
 // Metadata
 export default {
@@ -48,4 +48,4 @@ export default {
       url: 'https://spotify.com',
     },
   ],
-};
+}

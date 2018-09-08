@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import { space, radius } from 'style';
-import position, { widthProp } from 'utils/position';
-import { transparentize as fade } from 'polished';
+import styled from 'styled-components'
+import { space, radius } from 'style'
+import position, { widthProp } from 'utils/position'
+import { transparentize as fade } from 'polished'
 
 const Table = styled.table`
   display: block;
@@ -43,14 +43,14 @@ const Table = styled.table`
       border-bottom-right-radius: ${radius.r}px;
     }
   }
-`;
+`
 
 Table.propTypes = {
   width: widthProp,
-};
+}
 
 Table.defaultProps = {
   width: 'text',
-};
+}
 
-export default Table;
+export default Table

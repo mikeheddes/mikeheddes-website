@@ -1,12 +1,12 @@
-import styled, { css } from 'styled-components';
-import { media } from 'utils/mixins';
-import space from 'style/space';
+import styled, { css } from 'styled-components'
+import { media } from 'utils/mixins'
+import space from 'style/space'
 
 export const Wrapper = styled.div`
   ${media.desktop(css`
     flex: 0 0 63%;
   `)};
-`;
+`
 
 export const EyebrowRow = styled.div`
   margin-bottom: ${space.xr}px;
@@ -17,4 +17,4 @@ export const EyebrowRow = styled.div`
   & > a {
     float: right;
   }
-`;
+`

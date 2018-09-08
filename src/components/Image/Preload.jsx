@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export default styled.img`
   position: absolute;
@@ -14,4 +14,4 @@ export default styled.img`
   filter: blur(20px);
   opacity: ${({ isVisible }) => Number(isVisible)};
   transition: opacity 1.25s ease-in 0.2s;
-`;
+`

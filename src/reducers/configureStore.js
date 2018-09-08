@@ -1,10 +1,10 @@
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux'
 // import thunkMiddleware from 'redux-thunk';
-import { connectRouter, routerMiddleware } from 'connected-react-router';
+import { connectRouter, routerMiddleware } from 'connected-react-router'
 
-import middlewares from 'middleware';
+import middlewares from 'middleware'
 
-import rootReducer from 'reducers';
+import rootReducer from 'reducers'
 // import { createLogger } from 'redux-logger'
 // const loggerMiddleware = createLogger()
 
@@ -19,13 +19,13 @@ export default function configureStore(history, initialState = {}) {
         ...middlewares
       )
     )
-  );
+  )
 
   if (module.hot) {
     module.hot.accept('reducers', () => {
-      store.replaceReducer(connectRouter(history)(rootReducer));
-    });
+      store.replaceReducer(connectRouter(history)(rootReducer))
+    })
   }
 
-  return store;
+  return store
 }

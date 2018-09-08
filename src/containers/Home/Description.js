@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components';
-import { createPadding } from 'utils/createSpace';
-import { media, fluidText, fluidValue } from 'utils/mixins';
+import styled, { css } from 'styled-components'
+import { createPadding } from 'utils/createSpace'
+import { media, fluidText, fluidValue } from 'utils/mixins'
 
 export default styled.p`
   color: ${({ theme }) => theme.heading};
@@ -11,4 +11,4 @@ export default styled.p`
   ${media.desktop(css`
     padding: ${createPadding('xm', 0)};
   `)};
-`;
+`

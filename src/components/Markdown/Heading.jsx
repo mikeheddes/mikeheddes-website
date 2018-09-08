@@ -1,1 +1,1 @@
-export default from 'components/Heading';
+export default from 'components/Heading'

@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components';
-import { transparentize as fade } from 'polished';
-import { media } from 'utils/mixins';
-import { space, radius } from 'style';
+import styled, { css } from 'styled-components'
+import { transparentize as fade } from 'polished'
+import { media } from 'utils/mixins'
+import { space, radius } from 'style'
 
 const Blockquote = styled.blockquote`
   font-size: inherit;
@@ -27,6 +27,6 @@ const Blockquote = styled.blockquote`
       margin-bottom: 0;
     }
   }
-`;
+`
 
-export default Blockquote;
+export default Blockquote

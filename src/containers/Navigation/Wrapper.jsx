@@ -1,17 +1,17 @@
-import styled, { css } from 'styled-components';
-import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components'
+import PropTypes from 'prop-types'
 import {
   transparentize as fade,
   timingFunctions as easeF,
   size,
-} from 'polished';
+} from 'polished'
 
-import { media, has } from 'utils/mixins';
-import config from './config';
+import { media, has } from 'utils/mixins'
+import config from './config'
 
-const easeInSine = easeF('easeInSine');
-const easeOutSine = easeF('easeOutSine');
-const easeInOutQubic = easeF('easeInOutQubic');
+const easeInSine = easeF('easeInSine')
+const easeOutSine = easeF('easeOutSine')
+const easeInOutQubic = easeF('easeInOutQubic')
 
 const Wrapper = styled.nav`
   ${size('auto', '100vw')};
@@ -78,18 +78,18 @@ const Wrapper = styled.nav`
         max-height: ${({ menuHeight }) => config.size.phone + menuHeight}px;
       `)};
     `};
-`;
+`
 
 Wrapper.propTypes = {
   menuHeight: PropTypes.number,
   isVisible: PropTypes.bool,
   solid: PropTypes.bool,
-};
+}
 
 Wrapper.defaultProps = {
   menuHeight: 0,
   isVisible: false,
   solid: false,
-};
+}
 
-export default Wrapper;
+export default Wrapper

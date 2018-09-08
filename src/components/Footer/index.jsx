@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
-import Wrapper from './Wrapper';
-import Copyright from './Copyright';
+import Wrapper from './Wrapper'
+import Copyright from './Copyright'
 
 export default () => (
   <Wrapper>
@@ -12,4 +12,4 @@ export default () => (
       </p>
     </Copyright>
   </Wrapper>
-);
+)

@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
-import Image from 'components/Image';
-import space from 'style/space';
-import { media, fluidText, maxLines } from 'utils/mixins';
-import Link from 'components/Link';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled, { css } from 'styled-components'
+import Image from 'components/Image'
+import space from 'style/space'
+import { media, fluidText, maxLines } from 'utils/mixins'
+import Link from 'components/Link'
 
 const Title = styled.h2`
   ${({ size }) => size === 'r' && fluidText(16, 18)};
@@ -17,7 +17,7 @@ const Title = styled.h2`
     margin-top: ${space.s}px;
     font-weight: 600;
   `)};
-`;
+`
 
 const Description = styled.p`
   ${({ size }) =>
@@ -32,7 +32,7 @@ const Description = styled.p`
   ${media.phoneOnly(css`
     margin-top: ${space.xs}px;
   `)};
-`;
+`
 
 const Card = props => {
   const {
@@ -46,8 +46,8 @@ const Card = props => {
     maxDescriptionLines,
     to,
     preload,
-  } = props;
-  const LinkWrapper = to ? Link : React.Fragment;
+  } = props
+  const LinkWrapper = to ? Link : React.Fragment
   return (
     <div onMouseEnter={preload}>
       <LinkWrapper
@@ -67,8 +67,8 @@ const Card = props => {
         {children}
       </Description>
     </div>
-  );
-};
+  )
+}
 
 Card.propTypes = {
   title: PropTypes.string.isRequired,
@@ -83,7 +83,7 @@ Card.propTypes = {
   preload: PropTypes.func,
   to: PropTypes.string,
   shape: PropTypes.string,
-};
+}
 
 Card.defaultProps = {
   maxTitleLines: 2,
@@ -94,6 +94,6 @@ Card.defaultProps = {
   size: 'r',
   to: undefined,
   shape: undefined,
-};
+}
 
-export default Card;
+export default Card

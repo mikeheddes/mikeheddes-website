@@ -8,7 +8,7 @@
     "start:dev": "NODE_ENV=development && node server/server.dev",
     "start:prod": "NODE_ENV=production && node server/server.prod",
     "lint": "npm run lint:js",
-    "lint:js": "eslint './**.js'"
+    "lint:js": "eslint --fix './**.js'"
   },
   "dependencies": {
     "firebase-admin": "^6.0.0",

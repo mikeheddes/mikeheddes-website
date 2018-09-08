@@ -1,13 +1,13 @@
-import React from 'react';
-import Loadable from 'react-loadable';
-import { themes } from 'actions/ui';
+import React from 'react'
+import Loadable from 'react-loadable'
+import { themes } from 'actions/ui'
 
-import imageCover from 'assets/appleOled.jpg';
+import imageCover from 'assets/appleOled.jpg'
 
 const loadablePost = Loadable({
   loader: () => import('./article.mdx'),
   loading: () => <div />,
-});
+})
 
 // Metadata
 export default {
@@ -25,4 +25,4 @@ export default {
   title:
     'Apple to reportedly get its OLED displays from LG to reduce reliance on Samsung',
   updatedAt: null,
-};
+}

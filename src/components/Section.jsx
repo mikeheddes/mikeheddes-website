@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
-import { media } from 'utils/mixins';
-import { createPadding } from 'utils/createSpace';
-import { space } from 'style';
-import { hiDPI } from 'polished';
+import PropTypes from 'prop-types'
+import styled, { css } from 'styled-components'
+import { media } from 'utils/mixins'
+import { createPadding } from 'utils/createSpace'
+import { space } from 'style'
+import { hiDPI } from 'polished'
 
 const Section = styled.section`
   position: ${({ position }) => position};
@@ -66,7 +66,7 @@ const Section = styled.section`
           `)};
         `
       : ''};
-`;
+`
 
 Section.propTypes = {
   background: PropTypes.bool,
@@ -78,7 +78,7 @@ Section.propTypes = {
   noPaddingX: PropTypes.bool,
   noPaddingY: PropTypes.bool,
   position: PropTypes.oneOf(['static', 'absolute', 'relative', 'fixed']),
-};
+}
 
 Section.defaultProps = {
   background: false,
@@ -90,6 +90,6 @@ Section.defaultProps = {
   noPaddingX: false,
   noPaddingY: false,
   position: 'static',
-};
+}
 
-export default Section;
+export default Section

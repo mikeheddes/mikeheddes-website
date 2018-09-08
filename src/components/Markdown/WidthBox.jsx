@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components';
-import { media, mediaWidthQuery } from 'utils/mixins';
-import { space, width as W } from 'style';
-import { widthProp } from 'utils/position';
+import styled, { css } from 'styled-components'
+import { media, mediaWidthQuery } from 'utils/mixins'
+import { space, width as W } from 'style'
+import { widthProp } from 'utils/position'
 
 const WidthBox = styled.div`
   ${({ width }) =>
@@ -40,14 +40,14 @@ const WidthBox = styled.div`
         padding: 0;
       `)};
     `};
-`;
+`
 
 WidthBox.propTypes = {
   width: widthProp,
-};
+}
 
 WidthBox.defaultProps = {
   width: 'text',
-};
+}
 
-export default WidthBox;
+export default WidthBox

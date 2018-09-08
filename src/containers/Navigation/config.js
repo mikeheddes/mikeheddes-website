@@ -1,7 +1,7 @@
-import articles from 'containers/ArticlesOverview/Loadable';
-import about from 'containers/About/Loadable';
-import music from 'containers/MusicOverview/Loadable';
-import home from 'containers/Home/Loadable';
+import articles from 'containers/ArticlesOverview/Loadable'
+import about from 'containers/About/Loadable'
+import music from 'containers/MusicOverview/Loadable'
+import home from 'containers/Home/Loadable'
 
 export default {
   links: [
@@ -36,4 +36,4 @@ export default {
     incomming: 0.94,
     standard: 0.62,
   },
-};
+}

@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Helmet from 'react-helmet-async';
-import { ThemeProvider } from 'styled-components';
-import { contentTypes } from 'actions/content';
-import { themes } from 'actions/ui';
-import Section from 'components/Section';
-import Box from 'components/Box';
-import Image from 'components/Image';
-import LinkList from 'components/LinkList';
-import Link from 'components/Link';
-import { size } from 'style';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import Helmet from 'react-helmet-async'
+import { ThemeProvider } from 'styled-components'
+import { contentTypes } from 'actions/content'
+import { themes } from 'actions/ui'
+import Section from 'components/Section'
+import Box from 'components/Box'
+import Image from 'components/Image'
+import LinkList from 'components/LinkList'
+import Link from 'components/Link'
+import { size } from 'style'
 
-import mapState from './mapState';
+import mapState from './mapState'
 import {
   Title,
   Artist,
@@ -20,13 +20,13 @@ import {
   Pline,
   LinkListWrapper,
   ContentWrapper,
-} from './components';
-import Description from './Description';
-import TrackTable from './TrackTable';
+} from './components'
+import Description from './Description'
+import TrackTable from './TrackTable'
 
 const Main = Section.withComponent('main').extend`
   min-height: calc(100vh - ${size.footerHeight}px);
-`;
+`
 
 const extraLinks = [
   {
@@ -49,7 +49,7 @@ const extraLinks = [
     service: 'Apple Music',
     url: 'https://itunes.com/mikeheddes',
   },
-];
+]
 
 class MusicItem extends Component {
   static propTypes = {
@@ -64,31 +64,31 @@ class MusicItem extends Component {
       id: PropTypes.string,
       artist: PropTypes.string,
     }),
-  };
+  }
 
   static defaultProps = {
     item: undefined,
-  };
+  }
 
   componentDidMount() {
-    const { setTheme, item } = this.props;
-    setTheme(item.theme);
+    const { setTheme, item } = this.props
+    setTheme(item.theme)
   }
 
   componentWillUnmount() {
-    const { setTheme } = this.props;
-    setTheme(themes.DEFAULT);
+    const { setTheme } = this.props
+    setTheme(themes.DEFAULT)
   }
 
   setTheme = theme => {
-    const { item } = this.props;
-    const itemColorName = (item && item.themeColor) || 'pink';
+    const { item } = this.props
+    const itemColorName = (item && item.themeColor) || 'pink'
     return {
       ...theme,
       link: theme[itemColorName],
       surface: theme.surfaceColors[itemColorName],
-    };
-  };
+    }
+  }
 
   albumTotalMinutes = tracks =>
     Math.round(
@@ -97,10 +97,10 @@ class MusicItem extends Component {
           accumulator + currentValue.duration / 1000 / 60,
         0
       )
-    );
+    )
 
   render() {
-    const { item } = this.props;
+    const { item } = this.props
     return (
       <ThemeProvider theme={theme => this.setTheme(theme)}>
         <Main>
@@ -168,8 +168,8 @@ class MusicItem extends Component {
           </ContentWrapper>
         </Main>
       </ThemeProvider>
-    );
+    )
   }
 }
 
-export default mapState(MusicItem);
+export default mapState(MusicItem)

@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components';
-import space from 'style/space';
-import { media, fluidText } from 'utils/mixins';
+import styled, { css } from 'styled-components'
+import space from 'style/space'
+import { media, fluidText } from 'utils/mixins'
 
 const Wrapper = styled.section`
   width: 100%;
@@ -35,6 +35,6 @@ const Wrapper = styled.section`
       padding-bottom: ${space.l}px;
     `)};
   }
-`;
+`
 
-export default Wrapper;
+export default Wrapper

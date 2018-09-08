@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Box from 'components/Box';
+import React from 'react'
+import PropTypes from 'prop-types'
+import Box from 'components/Box'
 
-import { TabRow, Tab, HorizontalScroll, Title } from './Components';
+import { TabRow, Tab, HorizontalScroll, Title } from './Components'
 
 const TitleRow = props => {
-  const { activeFilter, filters, title, setVisibility } = props;
+  const { activeFilter, filters, title, setVisibility } = props
   return (
     <Box position="relative">
       <Title>{title}</Title>
@@ -25,8 +25,8 @@ const TitleRow = props => {
         </HorizontalScroll>
       )}
     </Box>
-  );
-};
+  )
+}
 
 TitleRow.propTypes = {
   activeFilter: PropTypes.string.isRequired,
@@ -38,6 +38,6 @@ TitleRow.propTypes = {
   ).isRequired,
   setVisibility: PropTypes.func.isRequired,
   title: PropTypes.node.isRequired,
-};
+}
 
-export default TitleRow;
+export default TitleRow

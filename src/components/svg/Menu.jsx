@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import { Spring, animated } from 'react-spring';
+import React from 'react'
+import styled from 'styled-components'
+import PropTypes from 'prop-types'
+import { Spring, animated } from 'react-spring'
 
 const Svg = styled.svg`
   display: inline-block;
@@ -11,7 +11,7 @@ const Svg = styled.svg`
   fill: none;
   stroke-miterlimit: 10;
   stroke-width: 8px;
-`;
+`
 
 const coordinate = {
   cross: {
@@ -42,10 +42,10 @@ const coordinate = {
       y2: 20.05,
     },
   },
-};
+}
 
 const MenuSVG = ({ checked }) => {
-  const { burger, cross } = coordinate;
+  const { burger, cross } = coordinate
   return (
     <Spring
       native
@@ -78,11 +78,11 @@ const MenuSVG = ({ checked }) => {
         </Svg>
       )}
     </Spring>
-  );
-};
+  )
+}
 
 MenuSVG.propTypes = {
   checked: PropTypes.bool.isRequired,
-};
+}
 
-export default MenuSVG;
+export default MenuSVG

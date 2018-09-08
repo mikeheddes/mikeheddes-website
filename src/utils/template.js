@@ -2,14 +2,14 @@
 // initial state before sending it to the client
 
 function addScriptTag(src) {
-  return `<script type="text/javascript" src="${src}"></script>`;
+  return `<script type="text/javascript" src="${src}"></script>`
 }
 
 function unique(accum, current) {
   if (accum.indexOf(current) < 0) {
-    accum.push(current);
+    accum.push(current)
   }
-  return accum;
+  return accum
 }
 
 const addChunks = chunkBundles =>
@@ -20,7 +20,7 @@ const addChunks = chunkBundles =>
     )
     .reduce(unique, [])
     .map(bundle => addScriptTag(bundle.publicPath))
-    .join('\n');
+    .join('\n')
 
 export default opts => {
   const {
@@ -30,7 +30,7 @@ export default opts => {
     dllBundle,
     vendorBundle,
     runtimeBundle,
-  } = opts;
+  } = opts
   return [
     `
   <!DOCTYPE html>
@@ -59,5 +59,5 @@ export default opts => {
     ${addScriptTag(clientBundle)}
   </html>
   `,
-  ];
-};
+  ]
+}

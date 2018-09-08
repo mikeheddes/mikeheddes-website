@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import { ThemeProvider } from 'styled-components';
-import { transparentize as fade } from 'polished';
-import PropTypes from 'prop-types';
-import Blur from 'components/Blur';
-import { highlightTypes, contentTypes } from 'actions/content';
-import Section from 'components/Section';
+import React, { Component } from 'react'
+import { ThemeProvider } from 'styled-components'
+import { transparentize as fade } from 'polished'
+import PropTypes from 'prop-types'
+import Blur from 'components/Blur'
+import { highlightTypes, contentTypes } from 'actions/content'
+import Section from 'components/Section'
 
-import ContentWrapper from './components';
-import ImageBox from './ImageBox';
-import TextBox from './TextBox';
-import mapState from './mapState';
+import ContentWrapper from './components'
+import ImageBox from './ImageBox'
+import TextBox from './TextBox'
+import mapState from './mapState'
 
 class ContentHighlight extends Component {
   static propTypes = {
@@ -26,7 +26,7 @@ class ContentHighlight extends Component {
     externalActionTitle: PropTypes.node,
     marginTop: PropTypes.bool,
     marginBottom: PropTypes.bool,
-  };
+  }
 
   static defaultProps = {
     content: undefined,
@@ -35,17 +35,17 @@ class ContentHighlight extends Component {
     externalActionTitle: undefined,
     marginTop: undefined,
     marginBottom: undefined,
-  };
+  }
 
   componentDidMount() {
-    const { getContent, contentType, highlightType, noFetch } = this.props;
-    if (!noFetch) getContent(contentType, highlightType);
+    const { getContent, contentType, highlightType, noFetch } = this.props
+    if (!noFetch) getContent(contentType, highlightType)
   }
 
   setTheme = theme => ({
     ...theme,
     link: fade(0.3, theme.title),
-  });
+  })
 
   render() {
     const {
@@ -56,11 +56,11 @@ class ContentHighlight extends Component {
       externalActionTitle,
       contentType,
       actionTitle,
-    } = this.props;
+    } = this.props
     const placeholder =
       content &&
       ((content.heroImage && content.heroImage.placeholder) ||
-        (content.imageCover && content.imageCover.placeholder));
+        (content.imageCover && content.imageCover.placeholder))
     return (
       <ThemeProvider theme={this.setTheme}>
         <Section
@@ -101,8 +101,8 @@ class ContentHighlight extends Component {
           </ContentWrapper>
         </Section>
       </ThemeProvider>
-    );
+    )
   }
 }
 
-export default mapState(ContentHighlight);
+export default mapState(ContentHighlight)

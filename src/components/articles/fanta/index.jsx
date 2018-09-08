@@ -1,13 +1,13 @@
-import React from 'react';
-import Loadable from 'react-loadable';
-import { themes } from 'actions/ui';
+import React from 'react'
+import Loadable from 'react-loadable'
+import { themes } from 'actions/ui'
 
-import imageCover from 'assets/91bd3965372789.5b35307b5609e.png';
+import imageCover from 'assets/91bd3965372789.5b35307b5609e.png'
 
 const loadablePost = Loadable({
   loader: () => import('./article.mdx'),
   loading: () => <div />,
-});
+})
 
 // Metadata
 export default {
@@ -27,4 +27,4 @@ export default {
   themeColor: 'pink',
   title: 'Stay FANTA',
   updatedAt: null,
-};
+}

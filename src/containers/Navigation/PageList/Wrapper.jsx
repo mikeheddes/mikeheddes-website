@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components';
-import { media, center } from 'utils/mixins';
-import { space } from 'style';
-import config from '../config';
+import styled, { css } from 'styled-components'
+import { media, center } from 'utils/mixins'
+import { space } from 'style'
+import config from '../config'
 
 const Wrapper = styled.ul`
   display: flex;
@@ -23,6 +23,6 @@ const Wrapper = styled.ul`
     padding: ${space.l}px 0 ${space.M}px;
     transition: transform 1s ease-out;
   `)};
-`;
+`
 
-export default Wrapper;
+export default Wrapper

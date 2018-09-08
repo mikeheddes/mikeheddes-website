@@ -1,5 +1,5 @@
-import { injectGlobal } from 'styled-components';
-import fontFamilies from 'style/typography';
+import { injectGlobal } from 'styled-components'
+import fontFamilies from 'style/typography'
 
 // eslint-disable-next-line no-unused-expressions
 injectGlobal`
@@ -36,4 +36,4 @@ injectGlobal`
     overflow-x: hidden;
     overflow-y: auto;
   }
-`;
+`

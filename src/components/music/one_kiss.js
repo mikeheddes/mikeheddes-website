@@ -1,5 +1,5 @@
-import { themes } from 'actions/ui';
-import imageCover from 'assets/one_kiss.jpg';
+import { themes } from 'actions/ui'
+import imageCover from 'assets/one_kiss.jpg'
 
 export default {
   id: 'one_kiss',
@@ -26,4 +26,4 @@ export default {
       url: 'https://www.youtube.com/watch?v=Bm8rz-llMhE',
     },
   ],
-};
+}

@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { hiDPI } from 'polished';
+import styled from 'styled-components'
+import { hiDPI } from 'polished'
 
 const ContentBorder = styled.div`
   position: absolute;
@@ -18,6 +18,6 @@ const ContentBorder = styled.div`
   ${hiDPI(2)} {
     border-width: 0.5px;
   }
-`;
+`
 
-export default ContentBorder;
+export default ContentBorder
