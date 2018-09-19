@@ -6,11 +6,11 @@ import B from 'components/Box'
 import { media } from 'utils/mixins'
 import { size } from 'style'
 
-const Wrapper = Section.extend`
+const Wrapper = styled(Section)`
   min-height: calc(100vh - ${size.footerHeight}px);
 `
 
-const Box = B.extend`
+const Box = styled(B)`
   ${media.phoneOnly(css`
     flex-direction: column;
   `)};

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet-async'
-import { ThemeProvider } from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
 import { contentTypes } from 'actions/content'
 import { themes } from 'actions/ui'
 import Section from 'components/Section'
@@ -24,7 +24,8 @@ import {
 import Description from './Description'
 import TrackTable from './TrackTable'
 
-const Main = Section.withComponent('main').extend`
+const Main = styled(Section)`
+  background-color: red;
   min-height: calc(100vh - ${size.footerHeight}px);
 `
 
@@ -103,7 +104,7 @@ class MusicItem extends Component {
     const { item } = this.props
     return (
       <ThemeProvider theme={theme => this.setTheme(theme)}>
-        <Main>
+        <Main as="main">
           {item && (
             <Helmet>
               <title>{item.title}</title>

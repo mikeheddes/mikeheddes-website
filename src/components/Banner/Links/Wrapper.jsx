@@ -38,7 +38,7 @@ const Wrapper = styled.ul`
 
 export default Wrapper
 
-export const Link = Anchor.extend`
+export const Link = styled(Anchor)`
   ${fluidText(17, 20)};
   font-weight: 500;
   margin: 0 ${space.xr}px;

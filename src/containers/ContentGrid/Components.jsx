@@ -6,7 +6,7 @@ import HScroll from 'components/HorizontalScroll'
 import { TabRow as TR, Tab as T } from 'components/Tabs'
 import { media, fluidText } from 'utils/mixins'
 
-export const HorizontalScroll = HScroll.extend`
+export const HorizontalScroll = styled(HScroll)`
   ${media.tabletLandscape(css`
     position: absolute;
     right: 0;
@@ -14,7 +14,7 @@ export const HorizontalScroll = HScroll.extend`
   `)};
 `
 
-export const TabRow = TR.extend`
+export const TabRow = styled(TR)`
   ${media.tabletLandscape(css`
     background-color: transparent;
     margin-bottom: ${space.xr}px;
@@ -31,7 +31,7 @@ const bottomLine = css`
   width: 100%;
 `
 
-export const Tab = T.extend`
+export const Tab = styled(T)`
   font-weight: 500;
   ${media.tabletLandscape(css`
     background-color: transparent;

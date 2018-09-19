@@ -1,27 +1,9 @@
 const path = require('path')
-// const ExtractTextPlugin = require('extract-text-webpack-plugin');
-// const autoprefixer = require('autoprefixer');
 const webpack = require('webpack')
 const highlight = require('remark-highlight.js')
+const babelConfig = require('../babel.config')
 
 const isDev = process.env.NODE_ENV !== 'production'
-
-// const cssUseArray = [
-//   {
-//     loader: 'css-loader',
-//     options: {
-//       minimize: !isDev,
-//     },
-//   },
-//   {
-//     loader: 'postcss-loader',
-//     options: {
-//       ident: 'postcss',
-//       plugins: () => [autoprefixer()],
-//     },
-//   },
-//   'sass-loader',
-// ];
 
 module.exports = options => ({
   context: options.context,
@@ -34,22 +16,16 @@ module.exports = options => ({
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
+        options: babelConfig,
       },
-      // {
-      //   test: /\.(css|scss|sass)$/,
-      //   exclude: /node_modules/,
-      //   use: isDev
-      //     ? [].concat(['style-loader'], cssUseArray)
-      //     : ExtractTextPlugin.extract({
-      //         fallback: 'style-loader',
-      //         use: cssUseArray,
-      //       }),
-      // },
       {
         test: /\.mdx?$/,
         exclude: /node_modules/,
         use: [
-          'babel-loader',
+          {
+            loader: 'babel-loader',
+            options: babelConfig,
+          },
           {
             loader: '@mdx-js/loader',
             options: {
@@ -96,7 +72,6 @@ module.exports = options => ({
           WEBSITE_BASE: JSON.stringify('https://mikeheddes.nl'),
         }),
       ]),
-  // : options.plugins.concat([new ExtractTextPlugin('styles.css')]),
   resolve: {
     modules: [
       path.resolve(__dirname, '../../src'),

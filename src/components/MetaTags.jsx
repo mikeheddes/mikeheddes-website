@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet-async'
+import { withTheme } from 'styled-components'
 
 import openGraphLogo from 'assets/open_graph_logo.png'
 import favicon from 'assets/favicon.png?sizes[]=16,sizes[]=32,sizes[]=96'
 import touchicon from 'assets/touchicon.png?sizes[]=57,sizes[]=60,sizes[]=72,sizes[]=76,sizes[]=114,sizes[]=120,sizes[]=144,sizes[]=152,sizes[]=180'
 
-const MetaTags = ({ backgroundColor }) => (
+const MetaTags = ({ theme }) => (
   <Helmet defaultTitle="Mike Heddes" titleTemplate="Mike Heddes | %s">
     <html lang="en-US" />
     <meta charSet="utf-8" />
@@ -73,8 +74,8 @@ const MetaTags = ({ backgroundColor }) => (
       content={WEBSITE_BASE + openGraphLogo.toString()}
     />
     <meta name="twitter:domain" content="mikeheddes.nl" />
-    <meta name="theme-color" content={backgroundColor} />
-    <body onTouchStart="" style={`background-color: ${backgroundColor};`} />
+    <meta name="theme-color" content={theme.backgroundColor} />
+    <body onTouchStart="" />
     <script type="application/ld+json">
       {`{
         "@context": "http://schema.org",
@@ -99,7 +100,8 @@ const MetaTags = ({ backgroundColor }) => (
 )
 
 MetaTags.propTypes = {
-  backgroundColor: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  theme: PropTypes.object.isRequired,
 }
 
-export default MetaTags
+export default withTheme(MetaTags)

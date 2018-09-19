@@ -7,8 +7,6 @@ const clientManifest = require('./build/client-manifest.json')
 const loadableStats = require('./build/react-loadable.json')
 
 exports.app = functions.https.onRequest((req, res) => {
-  // res.set('Content-Type', 'text/html');
-  // res.set('Cache-Control', 'max-age=300');
   serverBundle
     .loadablePreload()
     .then(() =>

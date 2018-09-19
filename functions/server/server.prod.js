@@ -1,16 +1,16 @@
-const express = require('express');
+const express = require('express')
 
-const clientConfig = require('../../src/webpack/client.config');
-const clientManifest = require('../build/client-manifest.json');
-const loadableStats = require('../build/react-loadable.json');
-const serverBundle = require('../build/server.bundle.js');
+const clientConfig = require('../../src/webpack/client.config')
+const clientManifest = require('../build/client-manifest.json')
+const loadableStats = require('../build/react-loadable.json')
+const serverBundle = require('../build/server.bundle.js')
 
-const app = express();
+const app = express()
 
 app.use(
   clientConfig.output.publicPath,
   express.static(clientConfig.output.path)
-);
+)
 
 app.get('*', (req, res) => {
   serverBundle.default(req, res, {
@@ -18,8 +18,8 @@ app.get('*', (req, res) => {
     vendorBundle: clientManifest['vendors.js'],
     runtimeBundle: clientManifest['runtime.js'],
     loadableStats,
-  });
-});
+  })
+})
 
 serverBundle
   .loadablePreload()
@@ -29,5 +29,5 @@ serverBundle
     )
   )
   .catch(err => {
-    throw err;
-  });
+    throw err
+  })

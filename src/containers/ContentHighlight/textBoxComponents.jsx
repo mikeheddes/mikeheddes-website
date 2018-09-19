@@ -80,7 +80,7 @@ Artist.defaultProps = {
   lineClamp: 2,
 }
 
-export const Link = Anchor.extend`
+export const Link = styled(Anchor)`
   ${fluidText(17, 20)};
   font-weight: 500;
   margin-right: auto;
@@ -95,7 +95,7 @@ export const Link = Anchor.extend`
   }
 `
 
-export const BadgeDesktop = Badge.extend`
+export const BadgeDesktop = styled(Badge)`
   display: none;
 
   ${media.desktop(css`
