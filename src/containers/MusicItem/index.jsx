@@ -25,7 +25,6 @@ import Description from './Description'
 import TrackTable from './TrackTable'
 
 const Main = styled(Section)`
-  background-color: red;
   min-height: calc(100vh - ${size.footerHeight}px);
 `
 
