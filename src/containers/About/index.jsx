@@ -6,7 +6,6 @@ import Section from 'components/Section'
 import Banner from 'components/Banner'
 import { colorNames } from 'style/color'
 import Box from 'components/Box'
-import components from 'components/Markdown'
 
 import Txt from './text.md'
 
@@ -53,7 +52,7 @@ export default class About extends Component {
           </Banner>
           <Section>
             <Box width="text" marginLeft="auto" marginRight="auto" markdown>
-              <Txt components={components} />
+              <Txt />
             </Box>
           </Section>
         </React.Fragment>

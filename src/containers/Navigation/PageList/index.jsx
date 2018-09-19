@@ -43,7 +43,7 @@ class PageList extends React.Component {
   render() {
     const { isVisible, activePath, navigateToLink } = this.props
     return (
-      <Wrapper innerRef={this.setListRef}>
+      <Wrapper ref={this.setListRef}>
         <EventListener target="window" onResize={this.handleResize} />
         <ListAnimation
           native

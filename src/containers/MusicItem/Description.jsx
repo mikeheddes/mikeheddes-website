@@ -30,7 +30,7 @@ export default class Description extends PureComponent {
       <React.Fragment>
         <Heading tag="h6">Description</Heading>
         <Paragraph
-          innerRef={this.setDescriptionRef}
+          ref={this.setDescriptionRef}
           lineClamp={needToToggle && !extended ? 3 : null}
           color="subtle"
           size="r"

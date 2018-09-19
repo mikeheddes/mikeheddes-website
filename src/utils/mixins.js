@@ -1,4 +1,5 @@
 import { css } from 'styled-components'
+import { breakpoints } from 'style/breakpoints'
 
 // use em in breakpoints to work properly cross-browser and support users
 // changing their browsers font-size: https://zellwk.com/blog/media-query-units/
@@ -8,19 +9,12 @@ export const mediaWidthQuery = (size, type = 'min') => styles => css`
     }
   `
 
-export const mediaSize = {
-  giant: 1800,
-  desktop: 1200,
-  tabletLandscape: 900,
-  tabletPortrait: 600,
-}
-
 export const media = {
-  giant: mediaWidthQuery(mediaSize.giant),
-  desktop: mediaWidthQuery(mediaSize.desktop),
-  tabletLandscape: mediaWidthQuery(mediaSize.tabletLandscape),
-  tabletPortrait: mediaWidthQuery(mediaSize.tabletPortrait),
-  phoneOnly: mediaWidthQuery(mediaSize.tabletPortrait - 1, 'max'),
+  giant: mediaWidthQuery(breakpoints.giant),
+  desktop: mediaWidthQuery(breakpoints.desktop),
+  tabletLandscape: mediaWidthQuery(breakpoints.tabletLandscape),
+  tabletPortrait: mediaWidthQuery(breakpoints.tabletPortrait),
+  phoneOnly: mediaWidthQuery(breakpoints.tabletPortrait - 1, 'max'),
 }
 
 const cssQuery = query => styles => css`
@@ -58,8 +52,8 @@ export const fluidValue = (min, max, param, unit = '') => css`
 
   ${media.tabletPortrait(css`
     ${param}: calc(
-      ${max - min} * (100vw - 600px) /
-        ${mediaSize.desktop - mediaSize.tabletPortrait} + ${min} ${unit}
+      ${max - min} * (100vw - ${breakpoints.tabletPortrait}px) /
+        ${breakpoints.desktop - breakpoints.tabletPortrait} + ${`${min}${unit}`}
     );
   `)};
 

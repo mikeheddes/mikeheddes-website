@@ -4,7 +4,6 @@ import Helmet from 'react-helmet-async'
 import { ThemeProvider } from 'styled-components'
 import { categories } from 'actions/articles'
 import { themes } from 'actions/ui'
-import components from 'components/Markdown'
 import Box from 'components/Box'
 import Section from 'components/Section'
 import NoMatch from 'components/NoMatch'
@@ -183,7 +182,7 @@ class ArticlesItem extends Component {
           </HeaderWrapper>
           <Section>
             <Box width="text" marginLeft="auto" marginRight="auto" markdown>
-              <Body components={components} />
+              <Body />
               <LinkListWrapper>
                 <LinkList textAlign="center" aria-hidden="true">
                   <Button

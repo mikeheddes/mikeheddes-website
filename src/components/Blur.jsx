@@ -167,7 +167,7 @@ class Blur extends Component {
           loaded={loaded}
           opacity={opacity}
           background={background}
-          innerRef={this.setCanvasRef}
+          ref={this.setCanvasRef}
           {...otherProps}
         />
         <EventListener target="window" onResize={this.handleResize} />

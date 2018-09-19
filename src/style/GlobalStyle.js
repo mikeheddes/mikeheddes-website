@@ -1,8 +1,7 @@
-import { injectGlobal } from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
 import fontFamilies from 'style/typography'
 
-// eslint-disable-next-line no-unused-expressions
-injectGlobal`
+export default createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
@@ -28,6 +27,7 @@ injectGlobal`
     font-family: ${fontFamilies.sansSerif};
     text-align: left;
     overflow-x: hidden;
+    background-color: ${({ theme }) => theme.background};
   }
 
   #root {
