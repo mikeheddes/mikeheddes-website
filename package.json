@@ -11,16 +11,13 @@
   ],
   "repository": "https://github.com/mikeheddes/mikeheddes-website.git",
   "scripts": {
-    "start": "cd ./functions && npm run start:dev",
-    "start:prod": "cd ./functions && npm run start:prod",
-    "lint": "cd ./functions && npm run lint && cd ../src && npm run lint",
-    "build": "npm run build:prod",
-    "build:prod": "cd ./src && npm run build:prod",
-    "build:dev": "cd ./src && npm run build",
-    "build:dll": "cd ./src && npm run build:dll",
-    "modules": "npm run modules:yarn",
-    "modules:npm": "npm i && cd ./functions && npm i && cd ../src && npm i",
-    "modules:yarn": "yarn install && cd ./functions && yarn install && cd ../src && yarn install",
+    "start": "cd ./functions && yarn start:dev",
+    "start:prod": "cd ./functions && yarn start:prod",
+    "lint": "cd ./functions && yarn lint && cd ../src && yarn lint",
+    "build": "yarn build:prod",
+    "build:prod": "cd ./src && yarn build:prod",
+    "build:dev": "cd ./src && yarn build",
+    "build:dll": "cd ./src && yarn build:dll",
     "clean:modules": "rm -rf ./functions/node_modules && rm -rf ./src/node_modules"
   },
   "devDependencies": {

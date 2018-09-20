@@ -141,7 +141,7 @@ function setDisplay(display) {
     case 'visuallyHidden':
       return hideVisually()
     default:
-      return `display: ${display}`
+      return `display: ${display};`
   }
 }
 
