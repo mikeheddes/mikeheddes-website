@@ -19,7 +19,6 @@ import {
   AlbumInfo,
   Pline,
   LinkListWrapper,
-  ContentWrapper,
 } from './components'
 import Description from './Description'
 import TrackTable from './TrackTable'
@@ -120,13 +119,18 @@ class MusicItem extends Component {
               />
             </Helmet>
           )}
-          <ContentWrapper
-            display="flex"
+          <Box
+            display={{ phone: 'block', desktop: 'flex' }}
             width="content"
             marginLeft="auto"
             marginRight="auto"
+            marginTop={{
+              phone: 'l',
+              tabletPortrait: 'm',
+              tabletLandscape: 0,
+            }}
           >
-            <Box flex="grow" marginRight="l">
+            <Box flex="grow" marginRight={{ desktop: 'l' }}>
               <Image {...item && item.imageCover} shape="square" rounded />
               {item &&
                 item.description && (
@@ -165,7 +169,7 @@ class MusicItem extends Component {
                 </React.Fragment>
               )}
             </Box>
-          </ContentWrapper>
+          </Box>
         </Main>
       </ThemeProvider>
     )
