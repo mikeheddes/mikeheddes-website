@@ -3,16 +3,14 @@ See https://mikeheddes.nl
 
 Server side rendered, deployed with Google Firebase.
 
-> **Creating something is simple, making it look simple is hard.**<br />
-> Mike Heddes
-
 ## Installation and setup
 
 First run `yarn install` in the root directory to install all dependencies.
-*The first time cloning the repo or when updating the dependencies in the src folder run `npm run build:dll`.*
 Then run `yarn start` to start a development environment with hot-reloaded server side rendering.
 
 To get a production environment run `yarn run build` followed by `yarn run start:prod`.
+
+*When updating the dependencies in the src folder run `yarn build:dll` in the root folder*
 
 **For all available commands look at the scripts in the `./package.json`, `./src/package.json` and `./functions/package.json` files.**
 

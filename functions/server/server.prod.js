@@ -1,6 +1,6 @@
 const express = require('express')
 
-const clientConfig = require('../../src/webpack/client.config')
+const clientConfig = require('@mikeheddes-website/src/webpack/client.config')
 const clientManifest = require('../build/client-manifest.json')
 const loadableStats = require('../build/react-loadable.json')
 const serverBundle = require('../build/server.bundle.js')

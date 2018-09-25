@@ -130,7 +130,7 @@ class MusicItem extends Component {
               tabletLandscape: 0,
             }}
           >
-            <Box flex="grow" marginRight={{ desktop: 'l' }}>
+            <Box flex="1 0 1px" marginRight={{ desktop: 'l' }}>
               <Image {...item && item.imageCover} shape="square" rounded />
               {item &&
                 item.description && (
