@@ -14,8 +14,12 @@ import {
 } from 'utils/PropTypes'
 import style from './style'
 
+function ofTypeArray(options) {
+  return [oneOf(options), objectOf(oneOf(options))]
+}
+
 function oneOfObject(options) {
-  return oneOfType([oneOf(options), objectOf(oneOf(options))])
+  return oneOfType(ofTypeArray(options))
 }
 
 function oneOfBareObject(oneOfWithOptions) {
@@ -69,7 +73,7 @@ Box.propTypes = {
     'inlineBlock',
     'visuallyHidden',
   ]),
-  flex: oneOfObject(['grow', 'shrink', 'none']),
+  flex: oneOfType([...ofTypeArray(['grow', 'shrink', 'none']), string]),
   height: numberOrStringObject,
   justifyContent: oneOfObject(['start', 'end', 'center', 'between', 'around']),
   left: boolObject,

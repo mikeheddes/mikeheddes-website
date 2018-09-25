@@ -6,8 +6,8 @@ const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
 
 // const requireFromMemory = require('./require-from-memory');
-const clientConfig = require('../../src/webpack/client.config')
-const serverConfig = require('../../src/webpack/server.config')
+const clientConfig = require('@mikeheddes-website/src/webpack/client.config')
+const serverConfig = require('@mikeheddes-website/src/webpack/server.config')
 
 const app = express()
 

@@ -18,7 +18,10 @@
     "build:prod": "cd ./src && yarn build:prod",
     "build:dev": "cd ./src && yarn build",
     "build:dll": "cd ./src && yarn build:dll",
-    "clean:modules": "rm -rf ./functions/node_modules && rm -rf ./src/node_modules"
+    "clean:modules": "rm -rf ./node_modules",
+    "clean:dll": "rm -rf ./dlls",
+    "clean": "yarn clean:modules && yarn clean:dll",
+    "postinstall": "yarn build:dll"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
