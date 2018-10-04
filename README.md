@@ -1,7 +1,9 @@
-# My portfolio website
-See https://mikeheddes.nl
+<h1 align="center" size="200%">
+  🖥<br />
+  <a href="https://mikeheddes.nl" target="_blank">My personal website</a>
+</h1>
 
-Server side rendered, deployed with Google Firebase.
+Server side rendered, deployed with Google Firebase on https://mikeheddes.nl.
 
 ## Installation and setup
 
