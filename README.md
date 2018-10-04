@@ -1,7 +1,4 @@
-<h1 align="center" size="200%">
-  🖥<br />
-  <a href="https://mikeheddes.nl" target="_blank">My personal website</a>
-</h1>
+# [My personal website](https://mikeheddes.nl)
 
 Server side rendered, deployed with Google Firebase on https://mikeheddes.nl.
 
