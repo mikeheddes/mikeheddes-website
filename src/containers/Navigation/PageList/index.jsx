@@ -1,8 +1,8 @@
 import React from 'react'
-import EventListener from 'react-event-listener'
 import PropTypes from 'prop-types'
 import { Keyframes } from 'react-spring'
-import { debounce } from 'lodash'
+
+import OptimizedEvent from 'components/OptimizedEvent'
 
 import config from '../config'
 import Wrapper from './Wrapper'
@@ -23,7 +23,6 @@ class PageList extends React.Component {
     super(props)
     this.setListRef = this.setListRef.bind(this)
     this.handleResize = this.handleResize.bind(this)
-    this.handleResize = debounce(this.handleResize.bind(this), 17)
   }
 
   componentDidMount() {
@@ -44,7 +43,7 @@ class PageList extends React.Component {
     const { isVisible, activePath, navigateToLink } = this.props
     return (
       <Wrapper ref={this.setListRef}>
-        <EventListener target="window" onResize={this.handleResize} />
+        <OptimizedEvent event="resize" onEvent={this.handleResize} />
         <ListAnimation
           native
           onStart={this.handleResize}

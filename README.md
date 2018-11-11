@@ -5,12 +5,12 @@ Server side rendered, deployed with Google Firebase.
 
 ## Installation and setup
 
-First run `yarn install` in the root directory to install all dependencies.
-Then run `yarn start` to start a development environment with hot-reloaded server side rendering.
+1. Run **`yarn install`** in the root directory to install all dependencies.
+2. Run **`yarn start`** to start a development environment with hot-reloaded server side rendering.
 
-To get a production environment run `yarn run build` followed by `yarn run start:prod`.
-
-*When updating the dependencies in the src folder run `yarn build:dll` in the root folder*
+### Production environment
+1. Run **`yarn build`** to build the artefacts.
+2. Run **`yarn start:prod`** to start the production server.
 
 **For all available commands look at the scripts in the `./package.json`, `./src/package.json` and `./functions/package.json` files.**
 

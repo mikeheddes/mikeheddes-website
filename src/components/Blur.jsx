@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled, { withTheme } from 'styled-components'
 import StackBlur from 'stackblur-canvas'
-import lodash from 'lodash'
-import EventListener from 'react-event-listener'
+
+import OptimizedEvent from './OptimizedEvent'
 
 const Canvas = styled.canvas`
   position: absolute;
@@ -21,10 +21,6 @@ const Canvas = styled.canvas`
 `
 
 class Blur extends Component {
-  handleResize = lodash.debounce(() => {
-    this.drawImageFromScratch()
-  }, 200)
-
   scaleLookup = {
     cover: 'max',
     contain: 'min',
@@ -170,7 +166,7 @@ class Blur extends Component {
           ref={this.setCanvasRef}
           {...otherProps}
         />
-        <EventListener target="window" onResize={this.handleResize} />
+        <OptimizedEvent event="resize" onEvent={this.drawImageFromScratch} />
       </React.Fragment>
     )
   }

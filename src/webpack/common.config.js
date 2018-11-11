@@ -1,7 +1,10 @@
 const path = require('path')
 const webpack = require('webpack')
 const highlight = require('remark-highlight.js')
-const babelConfig = require('../babel.config')
+const babelCfgFile = require('../babel.config')
+
+const babelConfig = target =>
+  target === 'node' ? babelCfgFile.server : babelCfgFile.client
 
 const isDev = process.env.NODE_ENV !== 'production'
 
@@ -16,7 +19,7 @@ module.exports = options => ({
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
-        options: babelConfig,
+        options: babelConfig(options.target),
       },
       {
         test: /\.mdx?$/,
@@ -24,7 +27,7 @@ module.exports = options => ({
         use: [
           {
             loader: 'babel-loader',
-            options: babelConfig,
+            options: babelConfig(options.target),
           },
           {
             loader: '@mdx-js/loader',

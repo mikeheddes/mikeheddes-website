@@ -5,7 +5,7 @@ const commonPlugins = [
   '@babel/syntax-dynamic-import',
 ]
 
-module.exports = {
+const commonSetting = {
   presets: [['@babel/env', { modules: false }], '@babel/react'],
   env: {
     production: {
@@ -23,4 +23,9 @@ module.exports = {
       ),
     },
   },
+}
+
+module.exports = {
+  server: commonSetting,
+  client: commonSetting,
 }

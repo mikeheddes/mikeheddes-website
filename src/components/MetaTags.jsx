@@ -9,8 +9,6 @@ import touchicon from 'assets/touchicon.png?sizes[]=57,sizes[]=60,sizes[]=72,siz
 
 const MetaTags = ({ theme }) => (
   <Helmet defaultTitle="Mike Heddes" titleTemplate="Mike Heddes | %s">
-    <html lang="en-US" />
-    <meta charSet="utf-8" />
     <link rel="canonical" href={WEBSITE_BASE} />
     <link rel="shortcut icon" href={WEBSITE_BASE + favicon.toString()} />
     {favicon.images.map(({ width, height, path }) => (
@@ -31,10 +29,6 @@ const MetaTags = ({ theme }) => (
         href={WEBSITE_BASE + path}
       />
     ))}
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1"
-    />
     <meta
       name="keyWords"
       content="Mike Heddes, Creative, Curious, Developer, Frontend, Machine Learing, Data Science, Artist, DJ, Producer, Music, Dance, Pop, Electronic Dance Music"

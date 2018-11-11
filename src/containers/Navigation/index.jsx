@@ -1,7 +1,7 @@
+/* eslint-env browser */
 import React from 'react'
 import PropTypes from 'prop-types'
-import EventListener from 'react-event-listener'
-import { debounce } from 'lodash'
+import OptimizedEvent from 'components/OptimizedEvent'
 
 import mapState from './mapState'
 import Wrapper from './Wrapper'
@@ -9,13 +9,42 @@ import Header from './Header'
 import PageList from './PageList'
 
 class Navigation extends React.Component {
+  static propTypes = {
+    setMenuVisibility: PropTypes.func.isRequired,
+    toggleMenuVisibility: PropTypes.func.isRequired,
+    setCurtainVisibility: PropTypes.func.isRequired,
+    toggleCurtainVisibility: PropTypes.func.isRequired,
+    setMenuHeight: PropTypes.func.isRequired,
+    push: PropTypes.func.isRequired,
+    isVisible: PropTypes.bool.isRequired,
+    menuHeight: PropTypes.number.isRequired,
+    action: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      onClick: PropTypes.func.isRequired,
+    }),
+    title: PropTypes.string,
+    activePath: PropTypes.string.isRequired,
+  }
+
+  static defaultProps = {
+    action: null,
+    title: '',
+  }
+
   constructor(props) {
     super(props)
     this.state = { solid: false }
     this.handleScroll = this.handleScroll.bind(this)
     this.handleResize = this.handleResize.bind(this)
     this.toggleMenu = this.toggleMenu.bind(this)
-    this.handleResize = debounce(this.handleResize, 17)
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll)
   }
 
   handleResize() {
@@ -63,36 +92,10 @@ class Navigation extends React.Component {
           activePath={activePath}
           navigateToLink={push}
         />
-        <EventListener
-          target="window"
-          onResize={this.handleResize}
-          onScroll={this.handleScroll}
-        />
+        <OptimizedEvent event="resize" onEvent={this.handleResize} />
       </Wrapper>
     )
   }
-}
-
-Navigation.propTypes = {
-  setMenuVisibility: PropTypes.func.isRequired,
-  toggleMenuVisibility: PropTypes.func.isRequired,
-  setCurtainVisibility: PropTypes.func.isRequired,
-  toggleCurtainVisibility: PropTypes.func.isRequired,
-  setMenuHeight: PropTypes.func.isRequired,
-  push: PropTypes.func.isRequired,
-  isVisible: PropTypes.bool.isRequired,
-  menuHeight: PropTypes.number.isRequired,
-  action: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired,
-  }),
-  title: PropTypes.string,
-  activePath: PropTypes.string.isRequired,
-}
-
-Navigation.defaultProps = {
-  action: null,
-  title: '',
 }
 
 export default mapState(Navigation)

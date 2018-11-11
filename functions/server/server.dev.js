@@ -22,14 +22,17 @@ const serverOutputPath = path.resolve(baseOutput, 'server.bundle.js')
 const clientCompiler = webpack(clientConfig)
 let clientCompiling
 let resolveClientCompiling
+
 clientCompiler.hooks.beforeCompile.tap('before', () => {
   clientCompiling = new Promise(resolve => {
     resolveClientCompiling = resolve
   })
 })
+
 clientCompiler.hooks.done.tap('after', stats => {
   resolveClientCompiling(stats)
 })
+
 clientCompiler.hooks.failed.tap('error', error => {
   new Error(error)
 })
@@ -46,6 +49,7 @@ app.use(webpackHotMiddleware(clientCompiler))
 
 // Server middleware
 const serverCompiler = webpack(serverConfig)
+
 const holdingMiddleware = compiler => {
   let isCompiling = false
   let isFirstCompile = true
@@ -56,16 +60,19 @@ const holdingMiddleware = compiler => {
     serverCompiling = new Promise(resolve => {
       resolveServerCompiling = resolve
     })
+
     isCompiling = true
     // Do cache delete stuff
     if (!isFirstCompile) {
       const serverManifest = require(serverManifestPath)
+
       Object.keys(serverManifest)
         .filter(file => file.endsWith('.chunk.js'))
         .forEach(file => {
           const pathToCache = path.resolve(baseOutput, file)
           delete require.cache[pathToCache]
         })
+
       delete require.cache[loadableStatsPath]
       delete require.cache[serverOutputPath]
       delete require.cache[clientManifestPath]
@@ -97,7 +104,11 @@ const holdingMiddleware = compiler => {
     new Error(error)
   })
 
-  compiler.watch({ ignored: /node_modules/ }, () => {})
+  compiler.watch({ ignored: /node_modules/ }, err => {
+    if (err) {
+      new Error(err)
+    }
+  })
 
   return (req, res, next) => {
     if (isCompiling) {
@@ -121,6 +132,7 @@ app.get('*', (req, res) => {
   const clientManifest = require(clientManifestPath)
   const loadableStats = require(loadableStatsPath)
   const serverBundle = require(serverOutputPath)
+
   serverBundle.default(req, res, {
     clientBundle: clientManifest['client.js'],
     dllBundle: clientManifest['library.dll.js'],

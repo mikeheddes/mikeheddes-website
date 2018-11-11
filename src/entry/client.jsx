@@ -1,4 +1,5 @@
 /* eslint-env browser */
+import '@babel/polyfill'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { HelmetProvider } from 'react-helmet-async'
@@ -17,7 +18,7 @@ delete window.INITIAL_STATE
 const history = createHistory()
 const store = configureStore(history, initialState)
 
-const ClientApp = () => (
+const clientApp = (
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <HelmetProvider>
@@ -28,12 +29,12 @@ const ClientApp = () => (
 )
 
 Loadable.preloadReady().then(() => {
-  ReactDOM.hydrate(<ClientApp />, MOUNT_NODE)
+  ReactDOM.hydrate(clientApp, MOUNT_NODE)
 })
 
 if (module.hot) {
   module.hot.accept('containers/App', () => {
     ReactDOM.unmountComponentAtNode(MOUNT_NODE)
-    ReactDOM.render(<ClientApp />, MOUNT_NODE)
+    ReactDOM.render(clientApp, MOUNT_NODE)
   })
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link as Anchor } from 'react-router-dom'
 import styled, { css } from 'styled-components'
 import PropTypes from 'prop-types'
+
 import {
   defaultStyle,
   linkStyle,
@@ -20,6 +21,7 @@ const overallLinkStyle = css`
     css`
       text-decoration: none;
     `};
+
   ${({ noTheme }) =>
     !noTheme &&
     css`
@@ -51,29 +53,13 @@ const overallLinkStyle = css`
   cursor: pointer;
 `
 
-const ToToHref = styled.a`
+const StyledAnchor = styled.a.attrs({
+  href: props => props.to,
+})`
   ${overallLinkStyle};
 `
 
-const LinkWithTarget = props => {
-  const { to, children, ...other } = props
-  return (
-    <ToToHref href={to} {...other}>
-      {children}
-    </ToToHref>
-  )
-}
-
-LinkWithTarget.propTypes = {
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string.isRequired,
-  to: PropTypes.string.isRequired,
-  target: PropTypes.string.isRequired,
-}
-
-const LinkWithoutTarget = ToToHref.withComponent(Anchor)
-
-class Link extends Component {
+export default class Link extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     className: PropTypes.string,
@@ -149,7 +135,7 @@ class Link extends Component {
       case 'INTERNAL':
         return undefined
       case 'EXIT':
-        return '_blank'
+        return '_self'
       case 'NONE':
         return '_self'
       default:
@@ -170,16 +156,17 @@ class Link extends Component {
     const target = this.getTarget(linkType)
     const href = linkType === 'DOWNLOAD' ? '#' : to
     const Icon = this.getIcon(linkType)
-    const Wrapper = target ? LinkWithTarget : LinkWithoutTarget
     return (
-      <Wrapper className={className} target={target} to={href} {...styleProps}>
+      <StyledAnchor
+        as={target ? undefined : Anchor}
+        className={className}
+        target={target}
+        to={href}
+        {...styleProps}
+      >
         {!noInner ? <span>{children}</span> : children}
         {!noIcon && Icon && <Icon />}
-      </Wrapper>
+      </StyledAnchor>
     )
   }
 }
-
-// stylelint-disable block-no-empty
-export default styled(Link)``
-// stylelint-enable block-no-empty

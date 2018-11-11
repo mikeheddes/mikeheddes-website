@@ -1,3 +1,4 @@
+import '@babel/polyfill'
 import React from 'react'
 import through from 'through'
 import { renderToNodeStream } from 'react-dom/server'
@@ -24,7 +25,7 @@ const themeLookUp = {
   [MUSIC_CONTENT_TYPE]: music,
 }
 
-export default (req, res, { loadableStats, ...props }) => {
+export default async (req, res, { loadableStats, ...props }) => {
   const routerContext = {}
   const helmetContext = {}
   const sheet = new ServerStyleSheet()
@@ -42,7 +43,7 @@ export default (req, res, { loadableStats, ...props }) => {
   const history = createHistory()
   const store = configureStore(history, initialState)
 
-  const ServerApp = () => (
+  const serverApp = (
     <Loadable.Capture report={moduleName => modules.push(moduleName)}>
       <Provider store={store}>
         <StaticRouter location={req.url} context={routerContext}>
@@ -56,43 +57,40 @@ export default (req, res, { loadableStats, ...props }) => {
     </Loadable.Capture>
   )
 
-  getDataFromTree(ServerApp()).then(() => {
-    const stream = sheet.interleaveWithNodeStream(
-      renderToNodeStream(<ServerApp />)
-    )
+  await getDataFromTree(serverApp)
+  const stream = sheet.interleaveWithNodeStream(renderToNodeStream(serverApp))
 
-    if (routerContext.url) {
-      // console.log('REDIRECT: ', routerContext.url);
-      res.redirect(routerContext.status || 301, routerContext.url)
-      return
-    }
-    const chunkBundles = getBundles(loadableStats, modules)
+  if (routerContext.url) {
+    // console.log('REDIRECT: ', routerContext.url);
+    res.redirect(routerContext.status || 301, routerContext.url)
+    return
+  }
+  const chunkBundles = getBundles(loadableStats, modules)
 
-    const content = {
-      ...props,
-      helmet: helmetContext.helmet,
-      initialState,
-      chunkBundles,
-    }
+  const content = {
+    ...props,
+    helmet: helmetContext.helmet,
+    initialState,
+    chunkBundles,
+  }
 
-    const [header, footer] = template(content)
+  const [header, footer] = template(content)
 
-    res.status(200)
-    res.write(header)
-    stream
-      .pipe(
-        through(
-          function write(data) {
-            this.queue(data)
-          },
-          function end() {
-            this.queue(footer)
-            this.queue(null)
-          }
-        )
+  res.status(200)
+  res.write(header)
+  stream
+    .pipe(
+      through(
+        function write(data) {
+          this.queue(data)
+        },
+        function end() {
+          this.queue(footer)
+          this.queue(null)
+        }
       )
-      .pipe(res)
-  })
+    )
+    .pipe(res)
 }
 
 export const loadablePreload = Loadable.preloadAll

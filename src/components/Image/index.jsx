@@ -114,6 +114,7 @@ class Image extends Component {
         loaded={loaded}
       >
         <Preload
+          aria-hidden
           src={placeholder}
           radius={radiusInPx}
           isVisible={!showPreload}
@@ -121,6 +122,7 @@ class Image extends Component {
         {showPreload && (
           <React.Fragment>
             <Blur
+              aria-hidden
               background={null}
               src={placeholder}
               blur={40}
