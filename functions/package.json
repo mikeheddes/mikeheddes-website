@@ -4,10 +4,10 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "npm run start:dev",
+    "start": "yarn start:dev",
     "start:dev": "NODE_ENV=development && node server/server.dev",
     "start:prod": "NODE_ENV=production && node server/server.prod",
-    "lint": "npm run lint:js",
+    "lint": "yarn lint:js",
     "lint:js": "eslint --fix './**.js'"
   },
   "dependencies": {

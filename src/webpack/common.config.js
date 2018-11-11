@@ -1,7 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const highlight = require('remark-highlight.js')
-const babelCfgFile = require('../babel.config')
+const babelCfgFile = require('../createBabelConfig')
 
 const babelConfig = target =>
   target === 'node' ? babelCfgFile.server : babelCfgFile.client
