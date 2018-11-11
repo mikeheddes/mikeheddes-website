@@ -1,7 +1,6 @@
-# My portfolio website
-See https://mikeheddes.nl
+# [My personal website](https://mikeheddes.nl)
 
-Server side rendered, deployed with Google Firebase.
+Server side rendered, deployed with Google Firebase on https://mikeheddes.nl.
 
 ## Installation and setup
 
