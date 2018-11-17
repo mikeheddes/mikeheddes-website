@@ -1,7 +1,6 @@
 import Image from 'components/Markdown/Image';
 import WidthBox from 'components/Markdown/WidthBox';
 import distanceWeightGraph from 'assets/distanceWeightGraph.jpg';
-import scoreICAVideo from 'assets/score_ICA.mp4';
 import scoreICAThumb from 'assets/lane_score-thumb.png';
 
 The Intersection Control Algorithm (ICA) will be made to minimize
@@ -22,7 +21,7 @@ In order to give each lane a priority score the intersection communicates with t
 ### Implementation
 The video below is the first implementation of the score algorithm. The score of each lane is shown at the bottom right. The traffic lights are still switching at predetermined intervals but are now switching to the lane with the highest priority score. The next version will calculate the priority score for each lane a couple of seconds a head. That is needed to combine the score algorithm with Prototype V2 so each vehicle get’s the correct advise speed.
 <WidthBox width="text">
-  <video src={scoreICAVideo} poster={scoreICAThumb} muted controls style={{width: '100%'}}></video>
+  <video src="https://firebasestorage.googleapis.com/v0/b/project-1236391238174251673.appspot.com/o/videos%2F02458bbd9d8b088437607fc36ad78207.mp4?alt=media&token=f2745a34-9cd2-4baa-b80f-c34432d30648" poster={scoreICAThumb} muted controls style={{width: '100%'}}></video>
 </WidthBox>
 
 
