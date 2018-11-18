@@ -1,19 +1,49 @@
 {
   "name": "mikeheddes-website",
+  "author": "Mike Heddes",
+  "description": "My personal website",
   "version": "2.0.0",
   "private": true,
   "dependencies": {
+    "@loadable/component": "^5.1.2",
+    "@mdx-js/mdx": "^0.16.0",
+    "polished": "^2.3.0",
+    "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
-    "react-scripts": "2.1.1"
+    "react-helmet-async": "^0.2.0",
+    "react-redux": "^5.1.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.1",
+    "react-spring": "^6.1.8",
+    "redux": "^4.0.1",
+    "reselect": "^4.0.0",
+    "styled-components": "^4.1.1"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "husky": "^1.1.4",
+    "lint-staged": "^8.0.5",
+    "prettier": "^1.15.2"
   },
   "scripts": {
+    "build": "react-scripts build && react-snapshot",
+    "deploy": "firebase deploy",
+    "serve": "firebase serve",
     "start": "react-scripts start",
-    "build": "react-scripts build",
     "test": "react-scripts test"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,json}": [
+      "eslint --fix",
+      "git add"
+    ]
   },
   "browserslist": [
     ">0.2%",

@@ -78,3 +78,6 @@ typings/
 
 # Firebase
 .firebaserc
+
+# Create React App
+build
