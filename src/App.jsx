@@ -1,30 +1,41 @@
-import React, { Component } from 'react'
-import styled from 'styled-components'
+import React from 'react'
+import Helmet, { HelmetProvider } from 'react-helmet-async'
+import { MDXProvider } from '@mdx-js/tag'
+import MathJax from 'react-mathjax2'
+import { ThemeProvider } from 'styled-components'
+import { BrowserRouter as Router } from 'react-router-dom'
 
-const P = styled.p`
-  color: blue;
-`
+import Body from './README.md'
+import MDDefaults from './component/MarkdownDefaults'
+import GlobalStyles from './style/Global'
+import { DAY } from './style/color'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <P>
-            Edit <code>src/App.js</code> and save to reload.
-          </P>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    )
-  }
-}
+const App = () => (
+  <Router>
+    <HelmetProvider>
+      <ThemeProvider theme={DAY}>
+        <MathJax.Context
+          input="tex"
+          options={{
+            showMathMenu: false,
+            showProcessingMessages: false,
+            messageStyle: 'none',
+            tex2jax: { preview: 'none' },
+          }}
+        >
+          <MDXProvider components={MDDefaults}>
+            <GlobalStyles />
+            <div className="App">
+              <Body />
+              <Helmet>
+                <title>Hello World</title>
+              </Helmet>
+            </div>
+          </MDXProvider>
+        </MathJax.Context>
+      </ThemeProvider>
+    </HelmetProvider>
+  </Router>
+)
 
 export default App

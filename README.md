@@ -46,3 +46,4 @@ Deploys the code to Google Firebase.
 - `@loadable/components`
 - `react-spring`
 - `@mdx-js/mdx`
+- `react-mathjax2` - [LaTeX math](https://en.wikibooks.org/wiki/LaTeX/Mathematics) renderer with [MathJax](https://www.mathjax.org)
