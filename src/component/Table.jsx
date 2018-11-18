@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { transparentize as fade } from 'polished'
 
+import { marginPropTypes, setMargin } from '../style/margin'
 import { radius, space } from '../style'
 
 const Table = styled.table`
@@ -41,6 +42,12 @@ const Table = styled.table`
       border-bottom-right-radius: ${radius.sm};
     }
   }
+
+  ${setMargin};
 `
+
+Table.propTypes = {
+  ...marginPropTypes,
+}
 
 export default Table

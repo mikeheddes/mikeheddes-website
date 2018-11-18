@@ -16,7 +16,7 @@ export const center = css`
   margin-left: auto;
 `
 
-export const maxLines = css`
+export const ellipsis = css`
   display: block;
   display: -webkit-box;
   -webkit-line-clamp: ${({ maxlines }) => maxlines};

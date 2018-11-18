@@ -38,12 +38,12 @@ Starts a local production server to test if the Google Firebase environment work
 Deploys the code to Google Firebase.
 
 ## Included technologies
-- `react`
-- `redux`
-- `react-router-dom`
-- `styled-components`
-- `react-helmet-async`
-- `@loadable/components`
-- `react-spring`
-- `@mdx-js/mdx`
-- `react-mathjax2` - [LaTeX math](https://en.wikibooks.org/wiki/LaTeX/Mathematics) renderer with [MathJax](https://www.mathjax.org)
+- [`react`](https://github.com/facebook/react) - A JavaScript library for building user interfaces.
+- [`redux`](https://github.com/reduxjs/redux) - Predictable state container for JavaScript apps.
+- [`react-router-dom`](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom) - Declarative routing for React.
+- [`styled-components`](https://github.com/styled-components/styled-components) - Visual primitives for the component age.
+- [`react-helmet-async`](https://github.com/staylor/react-helmet-async) - Thread-safe document head manager for React.
+- [`@loadable/components`](https://github.com/smooth-code/loadable-components) - React code splitting made easy.
+- [`react-spring`](https://github.com/drcmda/react-spring) - A spring physics based React animation library
+- [`@mdx-js/mdx`](https://github.com/mdx-js/mdx) - JSX in Markdown for ambitious projects.
+- [`react-mathjax2`]() - [LaTeX math](https://en.wikibooks.org/wiki/LaTeX/Mathematics) renderer with [MathJax](https://www.mathjax.org)

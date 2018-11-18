@@ -3,12 +3,20 @@ import PropTypes from 'prop-types'
 import { Node } from 'react-mathjax2'
 import styled, { css } from 'styled-components'
 
+import { marginPropTypes, setMargin } from '../style/margin'
+
 const StyledMath = styled.div`
   ${({ inline }) =>
     !inline &&
     css`
       text-align: center;
       font-size: 1.1em;
+
+      .MJXc-display {
+        margin: 0;
+      }
+
+      ${setMargin};
     `}
 `
 
@@ -24,6 +32,7 @@ Math.propTypes = {
   inline: PropTypes.bool,
   children: PropTypes.string.isRequired,
   onRender: PropTypes.func,
+  ...marginPropTypes,
 }
 
 Math.defaultProps = {

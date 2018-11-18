@@ -4,8 +4,8 @@ import { fluidFont } from '../style/mixins'
 
 import Math from './Math'
 import Divider from './Divider'
-// import Heading from 'components/Heading'
-// import Paragraph from './Paragraph'
+import Heading from './Heading'
+import Paragraph from './Paragraph'
 import Code from './Code'
 import Preformatted from './Preformatted'
 import List from './List'
@@ -17,6 +17,9 @@ import Table from './Table'
 
 export const wrapper = styled.div`
   ${fluidFont(18, 20)};
+  color: ${({ theme }) => theme.heading};
+  max-width: 745px;
+  margin: 0 auto;
 `
 
 const span = props => {
@@ -28,7 +31,7 @@ const span = props => {
 
 const div = props => {
   if (props.className === 'math') {
-    return <Math {...props} />
+    return <Math marginBottom="lg" marginTop="lg" {...props} />
   }
   return <div {...props} />
 }
@@ -37,22 +40,32 @@ export default {
   div,
   span,
   a: ({ href, ...restProps }) => <Link to={href} {...restProps} />,
-  blockquote: Blockquote,
+  blockquote: props => (
+    <Blockquote marginBottom="md" marginTop="md" {...props} />
+  ),
   inlineCode: props => <Code variant="inline" {...props} />,
-  // h1: props => <Heading {...props} tag="h1" />,
-  // h2: props => <Heading {...props} tag="h2" />,
-  // h3: props => <Heading {...props} tag="h3" />,
-  // h4: props => <Heading {...props} tag="h4" />,
-  // h5: props => <Heading {...props} tag="h5" />,
-  // h6: props => <Heading {...props} tag="h6" />,
-  hr: Divider,
+  h1: props => <Heading as="h1" marginBottom="xr" marginTop="xl" {...props} />,
+  h2: props => <Heading as="h2" marginBottom="re" marginTop="lg" {...props} />,
+  h3: props => <Heading as="h3" marginBottom="re" marginTop="xm" {...props} />,
+  h4: props => <Heading as="h4" marginBottom="sm" marginTop="md" {...props} />,
+  h5: props => <Heading as="h5" marginBottom="sm" marginTop="xr" {...props} />,
+  h6: props => <Heading as="h6" marginBottom="xs" marginTop="re" {...props} />,
+  hr: props => (
+    <Divider
+      marginTop="xl"
+      marginBottom="xl"
+      marginRight="lg"
+      marginLeft="lg"
+      {...props}
+    />
+  ),
   // img: Image,
-  ol: props => <List {...props} as="ol" />,
-  // p: Paragraph,
-  pre: Preformatted,
+  ol: props => <List as="ol" marginBottom="xr" marginTop="xr" {...props} />,
+  p: props => <Paragraph marginBottom="xr" {...props} />,
+  pre: props => <Preformatted marginBottom="xr" marginTop="xr" {...props} />,
   code: props => <Code variant="block" {...props} />,
   strong: Bold,
-  table: Table,
-  ul: props => <List {...props} as="ul" />,
+  table: props => <Table marginBottom="xr" marginTop="xr" {...props} />,
+  ul: props => <List as="ul" marginBottom="xr" marginTop="xr" {...props} />,
   wrapper,
 }

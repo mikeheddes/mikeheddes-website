@@ -27,6 +27,7 @@ export default createGlobalStyle`
     ${font.modern};
     text-align: left;
     overflow-x: hidden;
+    background-color: ${({ theme }) => theme.background};
   }
 
   #root {

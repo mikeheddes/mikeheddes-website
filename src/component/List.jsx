@@ -1,26 +1,26 @@
 import styled from 'styled-components'
 
-import { space } from '../style'
+import { marginPropTypes, setMargin } from '../style/margin'
 
 const List = styled.ul`
-  list-style-position: inside;
   line-height: 1.2;
   color: ${({ theme }) => theme.text};
-  margin-bottom: ${space.xr};
-
-  ol,
-  ul {
-    padding-left: 1.25em;
-    margin-bottom: 0.5em;
-  }
+  padding-right: 1.25em;
+  transform: translateX(1.25em);
 
   li {
-    margin-bottom: 0.5em;
+    margin-bottom: 0.35em;
 
     &:last-of-type {
       margin-bottom: 0;
     }
   }
+
+  ${setMargin};
 `
+
+List.propTypes = {
+  ...marginPropTypes,
+}
 
 export default List

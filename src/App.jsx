@@ -10,10 +10,12 @@ import MDDefaults from './component/MarkdownDefaults'
 import GlobalStyles from './style/Global'
 import { DAY } from './style/color'
 
+const theme = { ...DAY, link: DAY['red'], surface: DAY.surfaceColors['red'] }
+
 const App = () => (
   <Router>
     <HelmetProvider>
-      <ThemeProvider theme={DAY}>
+      <ThemeProvider theme={theme}>
         <MathJax.Context
           input="tex"
           options={{

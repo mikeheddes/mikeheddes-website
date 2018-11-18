@@ -3,6 +3,7 @@ import { transparentize as fade } from 'polished'
 
 import { media } from '../style/breakpoints'
 import { space, radius } from '../style'
+import { marginPropTypes, setMargin } from '../style/margin'
 
 const Blockquote = styled.blockquote`
   font-size: inherit;
@@ -10,12 +11,10 @@ const Blockquote = styled.blockquote`
   border-color: ${({ theme }) => fade(0.5, theme.link)};
   background-color: ${({ theme }) => theme.surface};
   padding: ${space.md};
-  margin-top: ${space.xm};
-  margin-bottom: ${space.xm};
   border-radius: ${radius.sm};
 
   ${media.md`
-    padding: ${space.xm}px;
+    padding: ${space.xm};
   `};
 
   p {
@@ -28,6 +27,12 @@ const Blockquote = styled.blockquote`
       margin-bottom: 0;
     }
   }
+
+  ${setMargin};
 `
+
+Blockquote.propTypes = {
+  ...marginPropTypes,
+}
 
 export default Blockquote

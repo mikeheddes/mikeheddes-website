@@ -22,12 +22,13 @@ export const media = Object.keys(breakpoints).reduce((accumulator, label) => {
   return accumulator
 }, {})
 
-export const map = (prop, interpolateFn) => {
+export const mapMedia = (prop, interpolateFn) => {
+  if (prop === undefined) return []
   if (typeof prop !== 'object') {
-    return interpolateFn(prop)
+    return [interpolateFn(prop)]
   }
 
-  return prop.reduce((acc, key) => {
+  return Object.keys(prop).reduce((acc, key) => {
     if (key in breakpoints) {
       acc.push(media[key]`
         ${interpolateFn(prop[key])}

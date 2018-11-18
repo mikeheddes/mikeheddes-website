@@ -19,9 +19,6 @@ export const spaceNumbers = {
   desktop: 130,
 }
 
-const space = objectValuesToStrings(spaceNumbers, {
-  suffix: 'px',
-  initialObj: { auto: 'auto' },
-})
+const space = objectValuesToStrings(spaceNumbers, { suffix: 'px' })
 
 export default space

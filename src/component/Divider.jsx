@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+import { marginPropTypes, setMargin } from '../style/margin'
+
 const Divider = styled.hr`
   display: block;
   height: auto;
@@ -10,10 +12,12 @@ const Divider = styled.hr`
   border-top-style: solid;
   border-color: gray;
   border-width: ${({ size }) => size}px;
+  ${setMargin};
 `
 
 Divider.propTypes = {
   size: PropTypes.number,
+  ...marginPropTypes,
 }
 
 Divider.defaultProps = {
