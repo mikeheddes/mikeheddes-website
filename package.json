@@ -7,6 +7,7 @@
   "dependencies": {
     "@loadable/component": "^5.1.2",
     "@mdx-js/tag": "^0.16.0",
+    "mathjax": "^2.7.5",
     "polished": "^2.3.0",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
@@ -19,6 +20,7 @@
     "react-spring": "^6.1.8",
     "redux": "^4.0.1",
     "reselect": "^4.0.0",
+    "stackblur-canvas": "^2.0.0",
     "styled-components": "^4.1.1"
   },
   "devDependencies": {
