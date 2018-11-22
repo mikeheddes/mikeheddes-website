@@ -40,7 +40,7 @@ export function mapMedia(prop, interpolateFn) {
 }
 
 export function mapMediaProp(propName, styleFunc) {
-  return function(props) {
+  return function setMapMediaProp(props) {
     const styleProp = props[propName]
     return mapMedia(styleProp, styleFunc)
   }

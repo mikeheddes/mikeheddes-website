@@ -5,7 +5,6 @@
   "version": "2.0.0",
   "private": true,
   "dependencies": {
-    "@loadable/component": "^5.1.2",
     "@mdx-js/tag": "^0.16.0",
     "mathjax": "^2.7.5",
     "polished": "^2.3.0",
@@ -13,6 +12,7 @@
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-helmet-async": "^0.2.0",
+    "react-loadable": "^5.5.0",
     "react-mathjax2": "^0.0.2",
     "react-redux": "^5.1.1",
     "react-router-dom": "^4.3.1",
@@ -25,12 +25,12 @@
   },
   "devDependencies": {
     "@craco/craco": "^3.0.1",
-    "@loadable/babel-plugin": "^5.0.1",
-    "@loadable/webpack-plugin": "^5.0.2",
     "@mdx-js/loader": "^0.16.0",
     "@mdx-js/mdx": "^0.16.0",
     "babel-plugin-styled-components": "^1.8.0",
+    "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-jest": "^22.0.0",
     "eslint-plugin-prettier": "^3.0.0",
     "husky": "^1.1.4",
     "lint-staged": "^8.0.5",
@@ -44,7 +44,8 @@
     "deploy": "firebase deploy",
     "serve": "firebase serve",
     "start": "craco start",
-    "test": "craco test"
+    "test": "craco test",
+    "lint": "eslint './src/**/*.{js,jsx}'"
   },
   "husky": {
     "hooks": {

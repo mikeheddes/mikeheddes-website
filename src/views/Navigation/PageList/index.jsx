@@ -1,3 +1,4 @@
+/* eslint react/prop-types: 0 */
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
@@ -34,7 +35,7 @@ const ListItem = styled(animated.li)`
   `}
 `
 
-const PageList = React.forwardRef(({ isOpen, setHeight }, ref) => (
+const PageList = React.forwardRef(({ isOpen, setHeight, onClick }, ref) => (
   <Wrapper ref={ref}>
     <ListAnimation
       native
@@ -43,9 +44,10 @@ const PageList = React.forwardRef(({ isOpen, setHeight }, ref) => (
       state={isOpen ? 'open' : 'close'}
       items={config.links}
     >
-      {({ preload, to, title }, i) => ({ y, opacity }) => (
+      {({ preload, to, title }) => ({ y, opacity }) => (
         <ListItem
           onMouseEnter={preload}
+          onClick={onClick}
           style={{
             transform: y.interpolate(yi => `translateY(${yi}px)`),
             opacity,
@@ -60,6 +62,7 @@ const PageList = React.forwardRef(({ isOpen, setHeight }, ref) => (
 
 PageList.propTypes = {
   isOpen: PropTypes.bool.isRequired,
+  onClick: PropTypes.func,
 }
 
 export default PageList

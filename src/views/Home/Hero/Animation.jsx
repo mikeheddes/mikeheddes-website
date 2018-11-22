@@ -64,27 +64,21 @@ const SVG = styled.svg`
 export default withTheme(({ theme }) => (
   <Wrapper>
     <SVG viewBox="0 0 151 100">
-      <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <linearGradient id="blue_pink-grad" x1="0%" y1="0%" x2="0%" y2="100%">
         <stop offset="0%" style={{ stopColor: theme.blue, stopOpacity: 1 }} />
         <stop offset="100%" style={{ stopColor: theme.pink, stopOpacity: 1 }} />
       </linearGradient>
-      <linearGradient id="grad2" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" style={{ stopColor: theme.purple, stopOpacity: 1 }} />
-        <stop
-          offset="100%"
-          style={{ stopColor: theme.purple, stopOpacity: 1 }}
-        />
+      <linearGradient id="purple-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style={{ stopColor: '#904FF7', stopOpacity: 1 }} />
+        <stop offset="100%" style={{ stopColor: '#3E37E3', stopOpacity: 1 }} />
       </linearGradient>
-      <linearGradient id="grad3" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" style={{ stopColor: theme.green, stopOpacity: 1 }} />
-        <stop
-          offset="100%"
-          style={{ stopColor: theme.green, stopOpacity: 1 }}
-        />
+      <linearGradient id="green-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style={{ stopColor: '#46F77C', stopOpacity: 1 }} />
+        <stop offset="100%" style={{ stopColor: '#26CB3F', stopOpacity: 1 }} />
       </linearGradient>
-      <rect x="10" y="10" width="37" height="80" fill="url(#grad1)" />
-      <rect x="57" y="10" width="37" height="80" fill="url(#grad2)" />
-      <rect x="104" y="10" width="37" height="80" fill="url(#grad3)" />
+      <rect x="10" y="10" width="37" height="80" fill="url(#blue_pink-grad)" />
+      <rect x="57" y="10" width="37" height="80" fill="url(#purple-grad)" />
+      <rect x="104" y="10" width="37" height="80" fill="url(#green-grad)" />
     </SVG>
   </Wrapper>
 ))

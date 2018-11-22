@@ -1,14 +1,14 @@
 // import articles from 'containers/ArticlesOverview/Loadable'
 // import about from 'containers/About/Loadable'
-// import music from 'containers/MusicOverview/Loadable'
-import home from '../Home/Loadable'
+import Music from '../MusicOverview/Loadable'
+import Home from '../Home/Loadable'
 
 export default {
   links: [
     {
       title: 'Home',
       to: '/',
-      preload: home.loadAsync,
+      preload: Home.preload,
     },
     {
       title: 'Articles',
@@ -19,8 +19,7 @@ export default {
     {
       title: 'Music',
       to: '/music',
-      // preload: music.preload,
-      preload: () => {},
+      preload: Music.preload,
     },
     {
       title: 'About',

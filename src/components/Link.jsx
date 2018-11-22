@@ -18,14 +18,16 @@ import Heading from './Heading'
 //   basicStyle,
 // } from 'components/Button'
 
-const StyledAnchor = styled.a.attrs(props => ({
-  href: props.to,
+const StyledAnchor = styled.a.attrs(({ to }) => ({
+  href: to,
 }))`
   text-decoration: none;
   text-align: ${({ align }) => align};
   color: ${({ theme }) => theme.link};
   cursor: pointer;
   font-weight: 500;
+  font-size: ${({ fontSize }) =>
+    typeof fontSize === 'number' ? `${fontSize}px` : fontSize};
 
   ${Heading} & {
     font-weight: inherit;
@@ -53,6 +55,7 @@ export default class Link extends Component {
     ]),
     align: PropTypes.oneOf(['center', 'left', 'right']),
     target: PropTypes.oneOf(['self', 'blank']),
+    fontSize: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   }
 
   static defaultProps = {
@@ -62,6 +65,7 @@ export default class Link extends Component {
     variation: 'default',
     align: 'center',
     target: undefined,
+    fontSize: 'inherit',
   }
 
   isExternal = () => {

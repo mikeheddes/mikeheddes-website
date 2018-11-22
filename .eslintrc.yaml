@@ -1,5 +1,16 @@
 extends:
-  - react-app
+  - airbnb
+  - plugin:jest/recommended
   - plugin:prettier/recommended
   - prettier/react
 parser: babel-eslint
+plugins:
+  - jest
+env:
+  jest/globals: false
+overrides:
+  - files:
+      - '**/__tests__/**/*.js?(x)'
+      - '**/?(*.)+(spec|test).js?(x)'
+    env:
+      jest/globals: true

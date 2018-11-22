@@ -1,3 +1,4 @@
+/* eslint-env browser */
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
@@ -33,7 +34,7 @@ export default class Curtain extends React.Component {
       <Transition
         items={isOpen}
         from={{ opacity: 0 }}
-        enter={{ opacity: opacity }}
+        enter={{ opacity }}
         leave={{ opacity: 0 }}
       >
         {show =>

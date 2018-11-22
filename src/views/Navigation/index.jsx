@@ -1,3 +1,4 @@
+/* eslint-env browser */
 import React from 'react'
 import PropTypes from 'prop-types'
 
@@ -46,12 +47,11 @@ class Navigation extends React.Component {
     window.removeEventListener('scroll', this.handleScroll)
   }
 
-  closeMenu() {
-    const { isOpen } = this.state
-    if (isOpen) {
-      this.setState({
-        isOpen: false,
-      })
+  setHeight() {
+    const newHeight = this.list.current.offsetHeight
+    const { listHeight } = this.state
+    if (newHeight !== listHeight) {
+      this.setState({ listHeight: newHeight })
     }
   }
 
@@ -63,11 +63,12 @@ class Navigation extends React.Component {
     }
   }
 
-  setHeight() {
-    const newHeight = this.list.current.offsetHeight
-    const { listHeight } = this.state
-    if (newHeight !== listHeight) {
-      this.setState({ listHeight: newHeight })
+  closeMenu() {
+    const { isOpen } = this.state
+    if (isOpen) {
+      this.setState({
+        isOpen: false,
+      })
     }
   }
 
@@ -87,7 +88,12 @@ class Navigation extends React.Component {
           toggleMenu={this.toggleMenu}
           title={title}
         />
-        <PageList isOpen={isOpen} ref={this.list} setHeight={this.setHeight} />
+        <PageList
+          isOpen={isOpen}
+          ref={this.list}
+          setHeight={this.setHeight}
+          onClick={this.closeMenu}
+        />
         <OptimizedResize onResize={this.closeMenu} />
         <Curtain isOpen={isOpen} onClick={this.closeMenu} />
       </Wrapper>

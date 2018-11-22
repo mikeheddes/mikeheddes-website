@@ -7,7 +7,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import MDDefaults from '../components/MarkdownDefaults'
 import Footer from './Footer'
-import Home from './Home'
+import Home from './Home/Loadable'
+import Music from './MusicOverview/Loadable'
 import Navigation from './Navigation'
 import GlobalStyles from '../styles/Global'
 import { DAY } from '../styles/color'
@@ -32,7 +33,7 @@ const App = () => (
             <Switch>
               <Route exact path="/" component={Home} />
               {/* <Route exact path="/about" component={About} /> */}
-              {/* <Route exact path="/music" component={Music} /> */}
+              <Route exact path="/music" component={Music} />
               {/* <Route exact path="/articles" component={Articles} /> */}
               {/* <Route component={NoMatch} /> */}
             </Switch>

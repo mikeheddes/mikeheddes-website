@@ -38,14 +38,14 @@ const Wrapper = styled.nav`
         `
       : css`
           backdrop-filter: blur(30px) saturate(1.1);
-          background-color: ${({ theme }) => fade(0.4, theme.backgroundNav)};
+          background-color: ${fade(0.4, theme.backgroundNav)};
 
           ${media.sm`
             backdrop-filter: blur(40px) saturate(1.1);
           `};
 
           ${has.backdrop`
-            background-color: ${({ theme }) => fade(0.81, theme.backgroundNav)};
+            background-color: ${fade(0.81, theme.backgroundNav)};
           `};
         `};
 

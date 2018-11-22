@@ -160,9 +160,15 @@ function setWidth(val) {
 function setOverflow(overflow) {
   switch (overflow) {
     case 'scrollX':
-      return `overflow-x: scroll`
+      return css`
+        overflow-x: scroll
+        -webkit-overflow-scrolling: touch;
+      `
     case 'scrollY':
-      return `overflow-y: scroll`
+      return css`
+        overflow-y: scroll
+        -webkit-overflow-scrolling: touch;
+      `
     default:
       return `overflow: ${overflow}`
   }

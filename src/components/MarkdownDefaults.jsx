@@ -23,14 +23,16 @@ export const wrapper = styled.div`
 `
 
 const span = props => {
-  if (props.className === 'inlineMath') {
+  const { className } = props
+  if (className === 'inlineMath') {
     return <Math inline {...props} />
   }
   return <span {...props} />
 }
 
 const div = props => {
-  if (props.className === 'math') {
+  const { className } = props
+  if (className === 'math') {
     return <Math marginBottom="lg" marginTop="lg" {...props} />
   }
   return <div {...props} />

@@ -5,6 +5,7 @@ import { ThemeProvider } from 'styled-components'
 import Link from '../../../components/Link'
 import Box from '../../../components/Box'
 import Animation from './Animation'
+// import Stripes from './Stripes'
 
 import Wrapper, { TitleBox } from './Wrapper'
 
@@ -49,11 +50,12 @@ export default class Hero extends Component {
               <h1>{title}</h1>
             </TitleBox>
             {action && (
-              <Link to={action.url} icon>
+              <Link to={action.url} fontSize={17} icon>
                 {action.name}
               </Link>
             )}
           </Box>
+          {/* <Stripes /> */}
           <Animation />
         </Wrapper>
       </ThemeProvider>
