@@ -1,0 +1,98 @@
+[
+  {
+    "name": "Arts",
+    "subgenres": [
+      "Design",
+      "Fashion & Beauty",
+      "Food",
+      "Literature",
+      "Performing Arts",
+      "Visual Arts"
+    ]
+  },
+  {
+    "name": "Business",
+    "subgenres": [
+      "Business News",
+      "Careers",
+      "Investing",
+      "Management & Marketing",
+      "Shopping"
+    ]
+  },
+  {
+    "name": "Comedy",
+    "subgenres": []
+  },
+  {
+    "name": "Education",
+    "subgenres": [
+      "Educational Technology",
+      "Higher Education",
+      "K-12",
+      "Language Courses",
+      "Training"
+    ]
+  },
+  {
+    "name": "Games & Hobbies",
+    "subgenres": [
+      "Automotive",
+      "Aviation",
+      "Hobbies",
+      "Other Games",
+      "Video Games"
+    ]
+  },
+  {
+    "name": "Government & Organizations",
+    "subgenres": ["Local", "National", "Non-Profit", "Regional"]
+  },
+  {
+    "name": "Health",
+    "subgenres": [
+      "Alternative Health",
+      "Fitness & Nutrition",
+      "Self-Help",
+      "Sexuality"
+    ]
+  },
+  {
+    "name": "Music",
+    "subgenres": []
+  },
+  {
+    "name": "News & Politics",
+    "subgenres": []
+  },
+  {
+    "name": "Science & Medicine",
+    "subgenres": ["Medicine", "Natural Sciences", "Social Sciences"]
+  },
+  {
+    "name": "Society & Culture",
+    "subgenres": [
+      "History",
+      "Personal Journals",
+      "Philosophy",
+      "Places & Travel"
+    ]
+  },
+  {
+    "name": "Sports & Recreation",
+    "subgenres": [
+      "Amateur",
+      "College & High School",
+      "Outdoor",
+      "Professional"
+    ]
+  },
+  {
+    "name": "Technology",
+    "subgenres": ["Gadgets", "Tech News", "Podcasting", "Software How-To"]
+  },
+  {
+    "name": "TV & Film",
+    "subgenres": []
+  }
+]

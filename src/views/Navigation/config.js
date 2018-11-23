@@ -1,5 +1,5 @@
 import Articles from '../ArticlesOverview/Loadable'
-// import about from 'containers/About/Loadable'
+import About from '../About/Loadable'
 import Music from '../MusicOverview/Loadable'
 import Home from '../Home/Loadable'
 
@@ -23,8 +23,7 @@ export default {
     {
       title: 'About',
       to: '/about',
-      // preload: about.preload,
-      preload: () => {},
+      preload: About.preload,
     },
   ],
   size: {

@@ -1,5 +1,4 @@
 const { getLoader, loaderByName } = require('@craco/craco')
-const LoadablePlugin = require('@loadable/webpack-plugin')
 const slug = require('remark-slug')
 const math = require('remark-math')
 const highlight = require('remark-highlight.js')
@@ -12,11 +11,9 @@ module.exports = {
       isProd
         ? ['styled-components', { displayName: false, pure: true }]
         : 'styled-components',
-      '@loadable/babel-plugin',
     ],
   },
   webpack: {
-    plugins: [new LoadablePlugin()],
     configure: webpackConfig => {
       const {
         isFound,
@@ -25,7 +22,7 @@ module.exports = {
 
       if (isFound) {
         const newWebpackConfig = { ...webpackConfig }
-
+        // eslint-disable-next-line consistent-return
         newWebpackConfig.module.rules.forEach((rule, i) => {
           if (rule.oneOf) {
             newWebpackConfig.module.rules[i].oneOf.unshift({
@@ -41,7 +38,6 @@ module.exports = {
                 },
               ],
             })
-
             return newWebpackConfig
           }
         })
