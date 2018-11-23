@@ -1,7 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Wrapper, Eyebrow, Header, Link, LinkWrapper } from './components'
+import {
+  Wrapper,
+  Eyebrow,
+  Header,
+  Link,
+  LinkWrapper,
+  ListItem,
+} from './components'
 
 const Banner = ({ children, eyebrow, actions }) => (
   <Wrapper>
@@ -11,7 +18,7 @@ const Banner = ({ children, eyebrow, actions }) => (
       <LinkWrapper>
         {actions.map(link => (
           <Link key={link.name} to={link.url} icon>
-            <li>{link.name}</li>
+            <ListItem>{link.name}</ListItem>
           </Link>
         ))}
       </LinkWrapper>

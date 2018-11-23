@@ -1,4 +1,4 @@
-// import articles from 'containers/ArticlesOverview/Loadable'
+import Articles from '../ArticlesOverview/Loadable'
 // import about from 'containers/About/Loadable'
 import Music from '../MusicOverview/Loadable'
 import Home from '../Home/Loadable'
@@ -13,8 +13,7 @@ export default {
     {
       title: 'Articles',
       to: '/articles',
-      // preload: articles.preload,
-      preload: () => {},
+      preload: Articles.preload,
     },
     {
       title: 'Music',

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { darken } from 'polished'
+import { darken, transparentize as fade } from 'polished'
 
 import Anchor from '../../components/Link'
 import space, { spaceNumbers } from '../../styles/space'
@@ -56,26 +56,12 @@ export const LinkWrapper = styled.ul`
   overflow-x: scroll;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
-  color: ${({ theme }) => theme.link};
   text-align: center;
 
   ${media.sm`
     padding-top: ${space.re};
     padding-bottom: ${space.md};
   `};
-
-  & li {
-    max-width: calc(100% - 1em);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-wrap: normal;
-    display: inline-block;
-    text-decoration: inherit;
-
-    ${media.sm`
-      max-width: none;
-    `};
-  }
 `
 
 export const Link = styled(Anchor)`
@@ -87,6 +73,7 @@ export const Link = styled(Anchor)`
   background-color: ${({ theme }) => darken(0.03, theme.surface)};
   margin-right: ${space.re};
   border-radius: ${radius.md};
+  color: ${({ theme }) => theme.link};
 
   &:first-of-type {
     margin-left: ${space.md};
@@ -94,6 +81,10 @@ export const Link = styled(Anchor)`
 
   &:last-of-type {
     margin-right: ${space.md};
+  }
+
+  &:active {
+    color: ${({ theme }) => fade(0.5, theme.link)};
   }
 
   ${media.sm`
@@ -109,5 +100,18 @@ export const Link = styled(Anchor)`
     &:last-of-type {
       margin-right: 0;
     }
+  `};
+`
+
+export const ListItem = styled.li`
+  max-width: calc(100% - 1em);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: normal;
+  display: inline-block;
+  text-decoration: inherit;
+
+  ${media.sm`
+    max-width: none;
   `};
 `

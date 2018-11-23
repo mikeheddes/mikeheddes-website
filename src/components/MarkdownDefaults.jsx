@@ -18,8 +18,6 @@ import Table from './Table'
 export const wrapper = styled.div`
   ${fluidFont(18, 20)};
   color: ${({ theme }) => theme.heading};
-  max-width: 745px;
-  margin: 0 auto;
 `
 
 const span = props => {
