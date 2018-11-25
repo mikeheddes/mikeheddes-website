@@ -3,14 +3,14 @@ import Loadable from 'react-loadable'
 import imageCover from '../../../assets/gift-guide.jpg'
 
 const body = Loadable({
-  loader: () => import('./article.mdx'),
+  loader: () => import('./article.md'),
   loading: () => null,
 })
 
 export default {
   authors: [{ name: 'Verge Staff', url: 'https://theverge.com' }],
-  categorie: 'Technology',
-  description: '',
+  genre: 'Technology',
+  subgenre: 'Gadgets',
   imageCover,
   imageCredits: 'Photo by The Verge',
   body,
@@ -19,5 +19,4 @@ export default {
   theme: 'DAY',
   themeColor: 'purple',
   title: 'The Verge holiday gift guide 2017',
-  updatedAt: null,
 }

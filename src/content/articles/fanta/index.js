@@ -2,7 +2,7 @@ import Loadable from 'react-loadable'
 
 import imageCover from '../../../assets/91bd3965372789.5b35307b5609e.png'
 
-const loadablePost = Loadable({
+const body = Loadable({
   loader: () => import('./article.md'),
   loading: () => null,
 })
@@ -13,15 +13,13 @@ export default {
     { name: 'Lorena Restrepo', url: 'https://behance.com' },
     { name: 'Alexa Rodríguez', url: 'https://behance.com' },
   ],
-  categorie: 'Art',
-  description: null,
+  genre: 'Art',
+  subgenre: 'Design',
   imageCover,
-  imageCredits: null,
-  loadablePost,
+  body,
   publishedAt: new Date('2018-07-19'),
   tags: ['Artdirection', 'Reclame', 'Fotografie'],
   theme: 'NIGHT',
   themeColor: 'pink',
   title: 'Stay FANTA',
-  updatedAt: null,
 }

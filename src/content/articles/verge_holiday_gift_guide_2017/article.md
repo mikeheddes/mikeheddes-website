@@ -1,55 +1,6 @@
-import Image from 'components/Markdown/Image';
-import WidthBox from 'components/Markdown/WidthBox';
-import Box from 'components/Box';
-import GridBox from 'components/GridBox';
-import Card from 'components/Card';
-import aa from 'assets/akrales_171017_2067_audio_0020.jpg';
-import bb from 'assets/akrales_171017_2067_books_0044.jpg';
-import cc from 'assets/akrales_171017_2067_gadgets_0005-2.jpg';
-
 **For as long as gift-giving has been a tradition, there’s also been the inability to come up with good gift ideas.** Whether it’s for your mom, dad, sister, brother, partner, friend, colleague, they, them, him, her, cat, dog, secret Santa, or for a White Elephant party, it can often be tricky to select the perfect present for your recipient. Price can also be a huge factor in holiday shopping — whether you have a tight budget and / or a long list of friends and family members to buy gifts for. This season can make things pretty rough on your wallet.
 
 So as the 2017 holidays approach, The Verge put together our annual gift guide of the many wonderful things that would make great presents for all ages, sizes, genders, and budgets. At the very least, we hope these recommendations spark an idea for what you might gift your loved ones.
-<Box marginTop={{phone: "xm", tabletLandscape: "l"}}>
-<WidthBox width="content">
-<GridBox
-      phoneColumns={1}
-      tabletPortraitColumns={2}
-      tabletLandscapeColumns={2}
-      desktopColumns={3}>
-<Card
-        title="Anker Wireless Speaker"
-        maxTitleLines={1}
-        maxDescriptionLines={3}
-        shape="square"
-        badge="~$28"
-        image={aa}
-        size="m">
-This portable cube speaker will make a Beats Pill look like a joke. It has aux and Bluetooth connectivity and packs a serious punch for its size. You can trust Anker for good-quality anything, really.
-</Card>
-<Card
-        title="Phasma by Delilah S. Dawson"
-        maxTitleLines={1}
-        maxDescriptionLines={3}
-        shape="square"
-        badge="~$17"
-        image={bb}
-        size="m">
-When The Force Awakens hit theaters, moviegoers had one big complaint about a promising character: why was it so easy for Phasma to turn off the shields to Starkiller base? In Phasma, Dawson goes into Phasma’s past, exploring her Mad Max: Fury Road-style origins that shed considerable light on the character and what drives her.
-</Card>
-<Card
-        title="GoPro Hero 6"
-        maxTitleLines={1}
-        maxDescriptionLines={3}
-        shape="square"
-        badge="~$28"
-        image={cc}
-        size="m">
-The Hero 6 Black isn’t a massive upgrade over the Hero 5, but for \$100 more, you get buttery smooth stabilization, improved image quality, faster performance. It’s the best GoPro has to offer, regardless of whether you’re doing backflips on a BMX bike or chasing your kid around the yard.
-</Card>
-</GridBox>
-</WidthBox>
-</Box>
 
 ## Credits
 

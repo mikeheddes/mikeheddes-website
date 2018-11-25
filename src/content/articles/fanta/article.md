@@ -1,9 +1,8 @@
-import bbb from 'assets/66676965372789.5b3b92d48ef1e.gif';
-import Image from 'components/Markdown/Image';
+import bbb from '../../../assets/66676965372789.5b3b92d48ef1e.gif';
 
 This is Fanta’s new campaign. It was produced in Colombia and it will be executed in 5 of Central America’s markets.
 
-<Image src={bbb} shape="original" />
+<img src={bbb} shape="original" />
 
 **CLIENT:** THE COCA-COLA COMPANY<br />
 **ADVERTISING AGENCY:** OGILVY COLOMBIA<br />

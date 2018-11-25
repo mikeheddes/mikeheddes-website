@@ -10,7 +10,8 @@ const body = Loadable({
 // Metadata
 export default {
   authors: [{ name: 'Loren Grush', url: 'https://theverge.com' }],
-  categorie: 'Science & Medicine',
+  genre: 'Science & Medicine',
+  subgenre: 'Natural Sciences',
   description: 'The total is up to 79 now',
   imageCover,
   imageCredits:
@@ -22,5 +23,4 @@ export default {
   themeColor: 'orange',
   title:
     'Astronomers have found a new crop of moons around Jupiter, and one of them is a weirdo',
-  updatedAt: null,
 }

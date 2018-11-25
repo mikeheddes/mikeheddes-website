@@ -2,9 +2,7 @@ import Loadable from 'react-loadable'
 
 import imageCover from '../../../assets/ica-cover.jpg'
 
-imageCover.alt = 'Aerial view of a crossroad in Shah Alam, Malaysia'
-
-const loadablePost = Loadable({
+const body = Loadable({
   loader: () => import('./article.md'),
   loading: () => null,
 })
@@ -15,15 +13,15 @@ export default {
     { name: 'Mike Heddes', url: 'https://mikeheddes.nl' },
     { name: 'Niels Gräfe' },
   ],
-  categorie: 'Science & Medicine',
+  genre: 'Education',
+  subgenre: 'Higher Education',
   description: 'Minimize waiting time for traffic lights.',
   imageCover,
   imageCredits: 'Photo by Firdouss Ross on Unsplash',
-  loadablePost,
+  body,
   publishedAt: new Date('2018-01-08'),
   tags: ['traffic', 'V2I'],
   theme: 'DAY',
   themeColor: 'red',
   title: 'Intersection Control Algorithm',
-  updatedAt: null,
 }

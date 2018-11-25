@@ -1,7 +1,5 @@
-import Image from 'components/Markdown/Image';
-import WidthBox from 'components/Markdown/WidthBox';
-import distanceWeightGraph from 'assets/distanceWeightGraph.jpg';
-import scoreICAThumb from 'assets/lane_score-thumb.png';
+import introductionPaper from '../../../assets/introduction-and-approach.pdf'
+import Link from '../../../components/Link'
 
 The Intersection Control Algorithm (ICA) will be made to minimize
 the time you need to wait for the light to turn green.
@@ -9,6 +7,8 @@ The algorithm has to work for a wide range of intersections to be able to deploy
 The first step is advising speed to (non)-autonomous vehicles driving towards an intersection.
 After that we’ll minimize the use of traffic lights and head towards a
 fluent flow of vehicles crossing intersections without traffic lights.
+
+<Link to={introductionPaper} icon target="self">Introduction paper</Link>
 
 ## Lane Score Algorithm
 
@@ -23,14 +23,14 @@ In order to give each lane a priority score the intersection communicates with t
 ### Implementation
 
 The video below is the first implementation of the score algorithm. The score of each lane is shown at the bottom right. The traffic lights are still switching at predetermined intervals but are now switching to the lane with the highest priority score. The next version will calculate the priority score for each lane a couple of seconds a head. That is needed to combine the score algorithm with Prototype V2 so each vehicle get’s the correct advise speed.
-<WidthBox width="text">
-<video src="https://firebasestorage.googleapis.com/v0/b/project-1236391238174251673.appspot.com/o/videos%2F02458bbd9d8b088437607fc36ad78207.mp4?alt=media&token=f2745a34-9cd2-4baa-b80f-c34432d30648" poster={scoreICAThumb} muted controls style={{width: '100%'}}></video>
-</WidthBox>
 
 ### Distance Weight Formula
 
-The formula below is used to calculate the weight of the lane by distance. The closer a vehicle is to the intersection, the bigger the weight for that lane. The average coverage of a vehicle communication system is 300m, so we decided to start counting the weight from 300m.
-<Image {...distanceWeightGraph} shape="original" />
+The formula below is used to calculate the weight of the lane by distance. The closer a vehicle is to the intersection, the bigger the weight for that lane. The average coverage of a vehicle communication system is 300 meter, so we decided to start counting the weight from 300 meter.
+
+$$
+-\\frac{1}{300}^{3}\\cdot(x - 300)^{3}
+$$
 
 ### Score Algorithm Code
 

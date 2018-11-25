@@ -1,6 +1,5 @@
-import Image from 'components/Markdown/Image';
-import image002 from 'assets/image002.jpeg';
-import Jupiter_Moons_Recovery from 'assets/Jupiter_Moons_Recovery.jpeg';
+import image002 from '../../../assets/image002.jpeg';
+import Jupiter_Moons_Recovery from '../../../assets/Jupiter_Moons_Recovery.jpeg';
 
 Ten more moons have been confirmed to orbit around Jupiter, bringing the planet’s total known satellite count to 79. That’s the highest number of moons of any planet in the Solar System. And these newly discovered space rocks are giving astronomers insight as to why the Jupiter system looks like it does today.
 
@@ -12,7 +11,7 @@ These moons are all pretty tiny, ranging between less than a mile and nearly two
 
 Valetudo isn’t the only moon of Jupiter that acts this way. Another moon called Carpo also orbits far out from Jupiter, moving in the opposite direction of many other moons in the area. However, Valetudo orbits much farther away than Carpo, and it may actually be the smallest moon Jupiter has. Now with this discovery, astronomers think it’s good evidence that moon-on-moon collisions have happened in Jupiter’s past, and these are responsible for the lunar landscape around the planet today. “Valetudo, at just 1 kilometer across, is probably the last remnant of a much larger moon that’s been ground down into dust over time,” says Sheppard.
 
-<Image {...image002} shape="original" />
+<img src={image002} shape="original" />
 
 Image: Carnegie Science
 Finding moons around Jupiter can be tough. As the biggest planet in our Solar System, it has a very large area of influence, so there’s a lot of space where moons could potentially be. It’s difficult to search that area in a timely manner with a telescope. “It’s like looking through a straw, and you’re just covering as many points around Jupiter as you can looking for these things,” says Sheppard. And since Jupiter is so large, it reflects a whole lot of light. That means there can be a lot of glare when searching for super faint moons around the planet.
@@ -25,7 +24,7 @@ This also makes Blanco adept at finding incredibly distant, faint objects, which
 
 Sheppard believes this new crop of moons tells a big story about Jupiter’s past. The astronomers argue that those nine moons, all moving in the same direction far out from Jupiter, may actually be pieces of a bigger moon that existed long ago. Some of them share specific traits with each other, like the same orbital angles, which makes the scientists think that these moons are actually fragments of three larger moons. “We think, originally, there were three parent bodies, and, somehow, each of those parent bodies got broken apart. And a big question is: what broke those objects apart?” says Sheppard. That’s where Valetudo comes in. With a moon like that nearby, it’s possible that numerous head-on collisions occurred, reducing these objects to the small sizes we see today.
 
-<Image {...Jupiter_Moons_Recovery} shape="original" />
+<img src={Jupiter_Moons_Recovery} shape="original" />
 
 Images of Valetudo from the Magellan telescope in May 2018. Image: Carnegie Science
 All of these new moons are exciting for astronomers because they add to an already large group of objects surrounding Jupiter that stem from the earliest days of the Solar System. Unlike the planet’s large inner moons, like Europa and Io, this large cache of moons orbiting far out from Jupiter is thought to be made up of the same material that served as the building blocks for the planets. These pieces of rock and dust were likely floating around the Sun as it was forming, and rather than form into other planets, they got captured by Jupiter’s gargantuan gravitational pull. How that happened, though, is still a bit of a mystery. “The question we want to get at if we want to understand how Jupiter formed is what was the environment like that allowed the capture of moons? And how many moons were captured?” says Douglas Hamilton, an astronomer at the University of Maryland who was not part of the discovery team.

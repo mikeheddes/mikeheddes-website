@@ -1,6 +1,4 @@
-import Image from 'components/Markdown/Image';
-import WidthBox from 'components/Markdown/WidthBox';
-import grafity from 'assets/grafity.jpeg';
+import grafity from '../../../assets/grafity.jpeg';
 
 **For as long as gift-giving has been a tradition, there’s also been the inability to come up with good gift ideas.** Whether it’s for your mom, dad, sister, brother, partner, friend, colleague, they, them, him, her, cat, dog, secret Santa, or for a White Elephant party, it can often be tricky to select the perfect present for your recipient. Price can also be a `huge factor` in holiday shopping — whether you have a tight budget and / or a long list of friends and family members to buy gifts for. This season can make things pretty rough on your wallet.
 
@@ -108,19 +106,7 @@ Start numbering with offset:
 
 Default width and extra hight:
 
-<Image {...grafity} rounded shape="tall" />
-
-Content width and default hight:
-
-<WidthBox width="content">
-  <Image {...grafity} />
-</WidthBox>
-
-Full width and less hight:
-
-<WidthBox width="full">
-  <Image {...grafity} shape="wide" />
-</WidthBox>
+<img src={grafity} rounded shape="tall" />
 
 ## Code
 

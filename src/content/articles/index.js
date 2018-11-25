@@ -1,16 +1,16 @@
 import importAll from '../../utils/importAll'
 
-const articles = importAll(require.context('./', true, /index.jsx?$/))
+const articles = importAll(require.context('./', true, /index.jsx?$/), [
+  './index.js',
+])
 
-delete articles['./index.js']
-
-function getId(str) {
-  return str.split('/')[1].split('.')[0]
+function getIdFromPath(path) {
+  return path.split('/')[1].split('.')[0]
 }
 
-export default Object.entries(articles).reduce((acc, cur) => {
-  const id = getId(cur[0])
-  return { ...acc, [id]: { ...cur[1].default, id } }
+export default Object.keys(articles).reduce((acc, key) => {
+  const id = getIdFromPath(key)
+  return { ...acc, [id]: { ...articles[key].default, id } }
 }, {})
 
 // Apple iTunes categories
