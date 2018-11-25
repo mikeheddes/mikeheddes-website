@@ -13,6 +13,7 @@ import Articles from './Articles/Loadable'
 import Article from './Article/Loadable'
 import About from './About/Loadable'
 import Navigation from './Navigation'
+import ResetPagePosition from '../components/ResetPagePosition'
 import GlobalStyles from '../styles/Global'
 import { DAY } from '../styles/color'
 
@@ -63,6 +64,7 @@ export default class App extends Component {
                   {/* <Route component={NoMatch} /> */}
                 </Switch>
                 <Footer />
+                <ResetPagePosition />
               </MDXProvider>
             </MathJax.Context>
           </ThemeProvider>
