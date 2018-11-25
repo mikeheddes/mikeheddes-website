@@ -18,26 +18,6 @@ export const fluidValue = (min, max, param, unit = '') => css`
   `};
 `
 
-// const shake = keyframes`
-//   0% {
-//     ${'' /* transform: skewY(20deg) */}
-//     transform: rotateX(30deg) rotateY(0deg)
-//   }
-//   25% {
-//     transform: rotateX(0deg) rotateY(30deg)
-//   }
-//   50% {
-//     transform: rotateX(-30deg) rotateY(30deg)
-//   }
-//   75% {
-//     transform: rotateX(3deg) rotateY(-30deg)
-//   }
-//   100% {
-//     transform: rotateX(30deg) rotateY(0deg)
-//     ${'' /* transform: skewY(-20deg); */}
-//   }
-// `
-
 const Wrapper = styled.div`
   position: absolute;
   top: 0;
@@ -55,11 +35,6 @@ const SVG = styled.svg`
   width: 100%;
   max-width: ${width.text};
   ${fluidValue(35, 60, 'filter', 'px')};
-  ${'' /* animation: ${shake} 3s ease; */}
-  animation-direction: alternate;
-  animation-iteration-count: infinite;
-  will-change: transform filter;
-  perspective: 600px;
 `
 
 export default withTheme(({ theme }) => (

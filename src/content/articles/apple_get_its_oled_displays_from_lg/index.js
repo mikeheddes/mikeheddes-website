@@ -18,7 +18,7 @@ export default {
   body,
   publishedAt: new Date('2018-06-30'),
   tags: ['iPhone', 'Apple'],
-  theme: 'DAY',
+  themeName: 'DAY',
   themeColor: 'pink',
   title:
     'Apple to reportedly get its OLED displays from LG to reduce reliance on Samsung',

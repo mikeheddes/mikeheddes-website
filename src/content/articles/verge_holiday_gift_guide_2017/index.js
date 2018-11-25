@@ -16,7 +16,7 @@ export default {
   body,
   publishedAt: new Date('2018-07-14'),
   tags: ['holiday', 'gifts'],
-  theme: 'DAY',
+  themeName: 'DAY',
   themeColor: 'purple',
   title: 'The Verge holiday gift guide 2017',
 }

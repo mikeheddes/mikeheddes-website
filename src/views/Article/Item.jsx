@@ -36,7 +36,11 @@ class Item extends Component {
     publishedAt: PropTypes.instanceOf(Date).isRequired,
     // subgenre: PropTypes.string,
     // tags: PropTypes.arrayOf(PropTypes.string),
-    // theme: PropTypes.oneOf(['DAY', 'NIGHT']).isRequired,
+    theme: PropTypes.shape({
+      setTheme: PropTypes.func.isRequired,
+      setDefaultTheme: PropTypes.func.isRequired,
+    }).isRequired,
+    themeName: PropTypes.oneOf(['DAY', 'NIGHT']).isRequired,
     themeColor: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     updatedAt: PropTypes.instanceOf(Date),
@@ -52,6 +56,16 @@ class Item extends Component {
 
   state = {
     copiedUrl: false,
+  }
+
+  componentDidMount() {
+    const { theme, themeName } = this.props
+    theme.setTheme(themeName)
+  }
+
+  componentWillUnmount() {
+    const { theme } = this.props
+    theme.setDefaultTheme()
   }
 
   copyPageUrl = () => {

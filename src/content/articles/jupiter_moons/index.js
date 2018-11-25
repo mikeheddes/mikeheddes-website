@@ -19,7 +19,7 @@ export default {
   body,
   publishedAt: new Date('2018-07-17'),
   tags: ['NASA', 'Jupiter', 'moons'],
-  theme: 'NIGHT',
+  themeName: 'NIGHT',
   themeColor: 'orange',
   title:
     'Astronomers have found a new crop of moons around Jupiter, and one of them is a weirdo',

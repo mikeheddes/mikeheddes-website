@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
-import { darken, transparentize as fade, mix } from 'polished'
+import { darken, transparentize as fade } from 'polished'
 
 import { radius, space } from '../styles'
 import { marginPropTypes, setMargin } from '../styles/space'
@@ -35,7 +35,7 @@ export const primaryStyle = css`
   color: ${({ theme }) => theme.background};
 
   &:hover {
-    background-color: ${({ theme }) => mix(0.95, theme.link, theme.title)};
+    background-color: ${({ theme }) => darken(0.08, theme.link, theme.title)};
   }
 `
 

@@ -18,7 +18,7 @@ export default {
   body,
   publishedAt: new Date('2018-07-19'),
   tags: ['Google', 'Antitrust'],
-  theme: 'DAY',
+  themeName: 'DAY',
   themeColor: 'yellow',
   title:
     'Six questions you were afraid to ask about Google’s EU antitrust case',

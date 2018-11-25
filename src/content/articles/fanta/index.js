@@ -19,7 +19,7 @@ export default {
   body,
   publishedAt: new Date('2018-07-19'),
   tags: ['Artdirection', 'Reclame', 'Fotografie'],
-  theme: 'NIGHT',
+  themeName: 'NIGHT',
   themeColor: 'pink',
   title: 'Stay FANTA',
 }

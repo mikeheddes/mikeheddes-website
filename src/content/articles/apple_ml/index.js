@@ -19,7 +19,7 @@ export default {
   body,
   publishedAt: new Date('2018-07-20'),
   tags: ['Apple', 'machine learning'],
-  theme: 'DAY',
+  themeName: 'DAY',
   themeColor: 'purple',
   title:
     'Apple’s new AI chief now oversees Siri, Core ML, and machine learning teams',

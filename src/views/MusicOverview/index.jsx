@@ -39,7 +39,7 @@ const setTheme = theme => ({
   surface: theme.surfaceColors[color],
 })
 
-const Music = () => (
+const MusicOverview = () => (
   <ThemeProvider theme={setTheme}>
     <React.Fragment>
       <Helmet>
@@ -74,4 +74,4 @@ const Music = () => (
   </ThemeProvider>
 )
 
-export default Music
+export default MusicOverview

@@ -21,7 +21,7 @@ export default {
   body,
   publishedAt: new Date('2018-01-08'),
   tags: ['traffic', 'V2I'],
-  theme: 'DAY',
+  themeName: 'DAY',
   themeColor: 'red',
   title: 'Intersection Control Algorithm',
 }
