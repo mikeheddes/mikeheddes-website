@@ -4,27 +4,14 @@ import Helmet from 'react-helmet-async'
 
 import Banner from '../Banner'
 import LatestMusic from '../ContentHighlight/LatestMusic'
-// import ContentGrid from 'containers/ContentGrid/Loadable'
-// import Card from 'components/Card'
+import ContentGrid from '../ContentGrid/Loadable'
+import Card from '../../components/Card'
+import music from '../../content/music'
 
-// const filters = [
-//   {
-//     name: 'All music',
-//     action: visibilities.all,
-//   },
-//   {
-//     name: 'Podcasts',
-//     action: visibilities.podcasts,
-//   },
-//   {
-//     name: 'Albums',
-//     action: visibilities.albums,
-//   },
-//   {
-//     name: 'Singles',
-//     action: visibilities.singles,
-//   },
-// ]
+const sortedmusic = Object.values(music).sort(
+  (a, b) => b.publishedAt - a.publishedAt
+)
+
 const bannerLinks = [
   {
     name: 'Spotify',
@@ -63,35 +50,26 @@ const Music = () => (
         <br />
         Never Heard.
       </Banner>
-      <LatestMusic
-        marginTop={{ xs: 'xr', md: 'md' }}
-        marginBottom={{ xs: 'xr', md: 'md' }}
-      />
-      {/* <ContentGrid
-            contentType={contentType}
-            title="All music"
-            filters={filters}
-            phoneColumns={2}
-            tabletPortraitColumns={3}
-            tabletLandscapeColumns={4}
-            desktopColumns={5}
-            >
-            {items =>
-              items.map(item => (
-            <Card
+      <LatestMusic marginTop={{ xs: 'xr', md: 'md' }} />
+      <ContentGrid
+        title="All music"
+        content={sortedmusic}
+        columns={{ xs: 2, sm: 3, md: 4, lg: 5 }}
+      >
+        {item => (
+          <Card
             key={item.id}
             shape="square"
             maxTitleLines={1}
             maxDescriptionLines={1}
-            to={`/${contentType}/${item.id}`}
+            url={item.url}
             title={item.title}
-            image={item.imageCover || item.imageHero}
-            >
+            image={item.imageCover}
+          >
             {item.artist}
-            </Card>
-              ))
-            }
-          </ContentGrid> */}
+          </Card>
+        )}
+      </ContentGrid>
     </React.Fragment>
   </ThemeProvider>
 )

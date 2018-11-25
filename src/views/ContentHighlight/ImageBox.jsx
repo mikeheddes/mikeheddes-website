@@ -18,7 +18,7 @@ const ImageBox = ({ eyebrow, image, url }) => {
         </Badge>
         <Link to={baseUrl}>See all</Link>
       </EyebrowRow>
-      <Link to={url}>
+      <Link to={url} variant="none">
         <Image src={image} depth={6} />
       </Link>
     </ImageBoxWrapper>

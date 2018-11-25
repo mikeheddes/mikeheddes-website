@@ -37,7 +37,7 @@ export const pastelColors = {
   blue: '#EDF3FA',
   purple: '#F0F0FA',
   pink: '#FAF2F5',
-  gray: grays['200'],
+  gray: grays['100'],
 }
 
 export const nightColors = {

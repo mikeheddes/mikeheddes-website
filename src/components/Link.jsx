@@ -57,7 +57,8 @@ const StyledAnchor = styled.a.attrs(({ to, target }) => ({
   }
 
   &:hover {
-    text-decoration: underline;
+    text-decoration: ${({ variant }) =>
+      variant === 'none' ? 'none' : 'underline'};
   }
 `
 
@@ -75,6 +76,7 @@ export default class Link extends Component {
       'action',
       'subtleButton',
       'subtle',
+      'none',
     ]),
     align: PropTypes.oneOf(['center', 'left', 'right']),
     target: PropTypes.oneOf(['self', 'blank']),

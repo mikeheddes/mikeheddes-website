@@ -4,27 +4,13 @@ import { ThemeProvider } from 'styled-components'
 
 import Banner from '../Banner'
 import LatestArticle from '../ContentHighlight/LatestArticle'
-// import ContentGrid from 'containers/ContentGrid/Loadable'
-// import Card from 'components/Card'
+import ContentGrid from '../ContentGrid/Loadable'
+import Card from '../../components/Card'
+import articles from '../../content/articles'
 
-// const filters = [
-//   {
-//     name: 'All articles',
-//     action: visibilities.all,
-//   },
-//   {
-//     name: 'Code',
-//     action: visibilities.code,
-//   },
-//   {
-//     name: 'Design',
-//     action: visibilities.design,
-//   },
-//   {
-//     name: 'Travel',
-//     action: visibilities.travel,
-//   },
-// ]
+const sortedArticles = Object.values(articles).sort(
+  (a, b) => b.publishedAt - a.publishedAt
+)
 
 const bannerLinks = [
   {
@@ -60,34 +46,25 @@ const Articles = () => (
         <br />
         Worth Reading.
       </Banner>
-      <LatestArticle
-        marginTop={{ xs: 'xr', md: 'md' }}
-        marginBottom={{ xs: 'xr', md: 'md' }}
-      />
-      {/*  <ContentGrid
-            contentType={contentType}
-            title="All articles"
-            filters={filters}
-            phoneColumns={1}
-            tabletPortraitColumns={2}
-            tabletLandscapeColumns={2}
-            desktopColumns={3}
-            >
-            {items =>
-              items.map(item => (
-            <Card
+      <LatestArticle marginTop={{ xs: 'xr', md: 'md' }} />
+      <ContentGrid
+        content={sortedArticles}
+        title="All articles"
+        columns={{ xs: 1, sm: 2, lg: 3 }}
+      >
+        {item => (
+          <Card
             key={item.id}
             title={item.title}
             maxTitleLines={2}
             maxDescriptionLines={3}
             image={item.imageCover}
-            size="m"
-            preload={item.loadablePost.preload}
-            to={`/${contentType}/${item.id}`}
-            />
-              ))
-            }
-          </ContentGrid> */}
+            size="md"
+            preload={item.body.preload}
+            url={item.url}
+          />
+        )}
+      </ContentGrid>
     </>
   </ThemeProvider>
 )

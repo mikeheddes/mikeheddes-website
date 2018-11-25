@@ -14,5 +14,6 @@ export default props => (
     action={{ name: 'Read article', url: latestArticle.url }}
     image={latestArticle.imageCover}
     title={latestArticle.title}
+    preload={latestArticle.body.preload}
   />
 )

@@ -13,6 +13,7 @@ import { marginPropTypes } from '../../styles/space'
 const setTheme = theme => ({
   ...theme,
   link: fade(0.3, theme.title),
+  surface: theme.surfaceColors.gray,
 })
 
 const ContentHighlight = ({
@@ -23,6 +24,7 @@ const ContentHighlight = ({
   extraAction,
   eyebrow,
   image,
+  preload,
   title,
 }) => (
   <ThemeProvider theme={setTheme}>
@@ -30,7 +32,8 @@ const ContentHighlight = ({
       marginTop={marginTop}
       marginBottom={marginBottom}
       position="relative"
-      background
+      onMouseEnter={preload}
+      color="surface"
     >
       <Blur src={image} opacity={0.6} />
       <Box
@@ -66,6 +69,7 @@ ContentHighlight.propTypes = {
   eyebrow: PropTypes.node,
   image: PropTypes.string.isRequired,
   title: PropTypes.node.isRequired,
+  preload: PropTypes.func,
   ...marginPropTypes,
 }
 
@@ -73,6 +77,7 @@ ContentHighlight.defaultProps = {
   author: undefined,
   extraAction: undefined,
   eyebrow: undefined,
+  preload: undefined,
 }
 
 export default ContentHighlight

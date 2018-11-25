@@ -115,6 +115,9 @@ const Image = ({
   border,
   depth,
   radius,
+  src,
+  alt,
+  srcSet,
   margin,
   marginTop,
   marginLeft,
@@ -138,12 +141,15 @@ const Image = ({
       border={border}
       radius={radius}
       hasCapton={!!caption}
+      {...restProps}
     >
       <StyledImage
         ratio={ratioLookup[shape]}
         radius={radius}
         hasCapton={!!caption}
-        {...restProps}
+        src={src}
+        alt={alt}
+        srcSet={srcSet}
       />
       {children && (
         <Box position="absolute" top="0" bottom="0" left="0" right="0">
