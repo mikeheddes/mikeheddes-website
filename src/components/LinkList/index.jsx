@@ -14,11 +14,8 @@ const LinkList = ({ width, children, textAlign, links, ...restProps }) => (
 )
 
 LinkList.propTypes = {
-  children: PropTypes.arrayOf(
-    PropTypes.shape({
-      key: PropTypes.string.isRequired,
-    })
-  ).isRequired,
+  children: PropTypes.func.isRequired,
+  links: PropTypes.arrayOf(PropTypes.object).isRequired,
   textAlign: PropTypes.oneOf(['right', 'left', 'center']),
   width: PropTypes.oneOf(['dynamic', 'fixed']),
 }

@@ -46,5 +46,21 @@ export default {
       service: 'Spotify',
       url: 'https://spotify.com',
     },
+    {
+      service: 'Deezer',
+      url: 'https://deezer.com',
+    },
+    {
+      service: 'SoundCloud',
+      url: 'https://soundcloud.com/mikeheddes',
+    },
+    {
+      service: 'YouTube',
+      url: 'https://youtube.com/mikeheddes',
+    },
+    {
+      service: 'Apple Music',
+      url: 'https://itunes.com/mikeheddes',
+    },
   ],
 }
