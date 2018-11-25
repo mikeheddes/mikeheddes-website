@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { HelmetProvider } from 'react-helmet-async'
+import Helmet, { HelmetProvider } from 'react-helmet-async'
 import { MDXProvider } from '@mdx-js/tag'
 import MathJax from 'react-mathjax2'
 import { ThemeProvider } from 'styled-components'
@@ -15,6 +15,7 @@ import Article from './Article/Loadable'
 import About from './About/Loadable'
 import Navigation from './Navigation'
 import ResetPagePosition from '../components/ResetPagePosition'
+import MetaTags from '../components/MetaTags'
 import GlobalStyles from '../styles/Global'
 import { DAY, NIGHT } from '../styles/color'
 
@@ -58,8 +59,12 @@ export default class App extends Component {
               }}
             >
               <MDXProvider components={MDDefaults}>
+                <Helmet
+                  defaultTitle="Mike Heddes"
+                  titleTemplate="Mike Heddes | %s"
+                />
                 <GlobalStyles />
-                {/* <MetaTags /> */}
+                <MetaTags />
                 <Navigation />
                 <Switch>
                   <Route exact path="/" component={Home} />
