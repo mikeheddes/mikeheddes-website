@@ -3,6 +3,7 @@
   "author": "Mike Heddes",
   "description": "My personal website",
   "version": "2.0.0",
+  "homepage" : "https://mikeheddes.nl",
   "private": true,
   "dependencies": {
     "@mdx-js/tag": "^0.16.0",
@@ -38,7 +39,7 @@
   },
   "scripts": {
     "build": "craco build",
-    "deploy": "firebase deploy",
+    "deploy": "yarn build && firebase deploy",
     "serve": "firebase serve",
     "start": "craco start",
     "test": "craco test",
