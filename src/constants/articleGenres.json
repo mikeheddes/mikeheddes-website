@@ -80,12 +80,7 @@
   },
   {
     "name": "Sports & Recreation",
-    "subgenres": [
-      "Amateur",
-      "College & High School",
-      "Outdoor",
-      "Professional"
-    ]
+    "subgenres": ["Amateur", "College & High School", "Outdoor", "Professional"]
   },
   {
     "name": "Technology",

@@ -13,7 +13,8 @@ import Bold from './Bold'
 import Link from './Link'
 import Blockquote from './Blockquote'
 import Table from './Table'
-// import Image from './Image'
+import Mark from './Mark'
+import Image from './Image'
 
 export const wrapper = styled.div`
   ${fluidFont(18, 20)};
@@ -39,6 +40,7 @@ const div = props => {
 export default {
   div,
   span,
+  mark: Mark,
   a: ({ href, ...restProps }) => <Link to={href} {...restProps} />,
   blockquote: props => (
     <Blockquote marginBottom="md" marginTop="md" {...props} />
@@ -59,7 +61,7 @@ export default {
       {...props}
     />
   ),
-  // img: Image,
+  img: props => <Image marginBottom="xr" marginTop="xr" {...props} />,
   ol: props => <List as="ol" marginBottom="xr" marginTop="xr" {...props} />,
   p: props => <Paragraph marginBottom="xr" {...props} />,
   pre: props => <Preformatted marginBottom="xr" marginTop="xr" {...props} />,

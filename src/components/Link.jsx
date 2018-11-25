@@ -8,28 +8,51 @@ import ArrowDown from './icon/ArrowDown'
 import Carrot from './icon/Carrot'
 import Heading from './Heading'
 
-// import {
-//   defaultStyle,
-//   linkStyle,
-//   primaryStyle,
-//   subtleLinkStyle,
-//   subtleStyle,
-//   actionStyle,
-//   basicStyle,
-// } from 'components/Button'
+import {
+  defaultStyle,
+  linkStyle,
+  primaryStyle,
+  subtleLinkStyle,
+  subtleStyle,
+  actionStyle,
+  basicStyle,
+} from './Button'
 
-const StyledAnchor = styled.a.attrs(({ to }) => ({
+const StyledAnchor = styled.a.attrs(({ to, target }) => ({
   href: to,
+  rel: target === '_blank' ? 'noopener noreferrer' : '',
 }))`
   text-decoration: none;
   text-align: ${({ align }) => align};
   color: ${({ theme }) => theme.link};
   cursor: pointer;
   font-weight: 500;
+  -webkit-tap-highlight-color: transparent;
   font-size: ${({ fontSize }) =>
     typeof fontSize === 'number' ? `${fontSize}px` : fontSize};
 
-  ${Heading} & {
+  ${basicStyle};
+
+  ${({ variant }) => {
+    switch (variant) {
+      case 'button':
+        return defaultStyle
+      case 'buttonPrimary':
+        return primaryStyle
+      case 'subtle':
+        return subtleLinkStyle
+      case 'subtleButton':
+        return subtleStyle
+      case 'action':
+        return actionStyle
+      default:
+        return linkStyle
+    }
+  }};
+
+  ${Heading} &,
+  strong &,
+  b & {
     font-weight: inherit;
   }
 
@@ -45,7 +68,7 @@ export default class Link extends Component {
     to: PropTypes.string.isRequired,
     display: PropTypes.oneOf(['block', 'inline']),
     icon: PropTypes.bool,
-    variation: PropTypes.oneOf([
+    variant: PropTypes.oneOf([
       'default',
       'button',
       'buttonPrimary',
@@ -62,7 +85,7 @@ export default class Link extends Component {
     download: false,
     display: 'inline',
     icon: false,
-    variation: 'default',
+    variant: 'default',
     align: 'center',
     target: undefined,
     fontSize: 'inherit',
@@ -101,7 +124,7 @@ export default class Link extends Component {
     return (
       <StyledAnchor
         as={isExtern || download ? undefined : Anchor}
-        target={target}
+        target={`_${target}`}
         to={to}
         download={download}
         {...restProps}

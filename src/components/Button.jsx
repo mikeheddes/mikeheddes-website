@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
-import { darken, transparentize as fade } from 'polished'
+import { darken, transparentize as fade, mix } from 'polished'
 
 import { radius, space } from '../styles'
 
@@ -34,7 +34,7 @@ export const primaryStyle = css`
   color: ${({ theme }) => theme.background};
 
   &:hover {
-    background-color: ${({ theme }) => darken(0.03, theme.link)};
+    background-color: ${({ theme }) => mix(0.9, theme.link, theme.title)};
   }
 `
 
@@ -109,13 +109,8 @@ const disableStyle = css`
 `
 
 export const basicStyle = css`
-  font-size: 17px;
   text-align: ${({ textAlign }) => textAlign};
-  ${({ display }) =>
-    display &&
-    css`
-      display: ${display};
-    `};
+  ${({ display }) => display && `display: ${display};`};
   font-weight: 500;
   border: 0;
   cursor: pointer;
@@ -134,6 +129,7 @@ export const basicStyle = css`
 const Button = styled.button.attrs(({ variant }) => ({
   disabled: variant === 'disabled' && variant,
 }))`
+  font-size: 17px;
   ${basicStyle};
 
   ${({ variant }) => {

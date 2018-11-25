@@ -35,7 +35,7 @@ export default class ArticlesOverview extends Component {
     bannerLinks: PropTypes.arrayOf(
       PropTypes.shape({
         name: PropTypes.string.isRequired,
-        href: PropTypes.string.isRequired,
+        url: PropTypes.string.isRequired,
       })
     ),
     color: PropTypes.oneOf(colorNames),

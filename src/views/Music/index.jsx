@@ -30,7 +30,7 @@ import { colorNames } from '../../styles/color'
 //   },
 // ]
 
-export default class MusicOverview extends Component {
+export default class Music extends Component {
   static propTypes = {
     bannerLinks: PropTypes.arrayOf(
       PropTypes.shape({

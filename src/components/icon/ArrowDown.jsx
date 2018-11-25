@@ -6,10 +6,10 @@ export default () => (
   <SVG viewBox="0 0 60 100">
     <g>
       <path
-        d="M53,60.5 L30,85 L7,60.5"
+        d="M53,52.5 L30,77 L7,52.5"
         style={{ strokeLinecap: 'round', strokeLinejoin: 'round' }}
       />
-      <line x1="30" y1="18" x2="30" y2="85" />
+      <line x1="30" y1="10" x2="30" y2="77" />
     </g>
   </SVG>
 )

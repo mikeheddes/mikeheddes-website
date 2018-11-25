@@ -1,7 +1,13 @@
-export default function importAll(r) {
+function importAll(r, exeptions = []) {
   const cache = {}
+
   r.keys().forEach(key => {
-    cache[key] = r(key)
+    if (exeptions.indexOf(key) === -1) {
+      cache[key] = r(key)
+    }
   })
+
   return cache
 }
+
+export default importAll

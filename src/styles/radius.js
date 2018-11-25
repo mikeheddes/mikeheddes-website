@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { objectValuesToStrings } from '../utils'
 
 export const radiusNumbers = {
@@ -11,3 +12,5 @@ export const radiusNumbers = {
 const radius = objectValuesToStrings(radiusNumbers, { suffix: 'px' })
 
 export default radius
+
+export const radiusPropType = PropTypes.oneOf(Object.keys(radius))
