@@ -1,7 +1,7 @@
 import { css } from 'styled-components'
 import { hideVisually } from 'polished'
 
-import { radius, width, depth } from '../../styles'
+import { width, depth } from '../../styles'
 import { mapMediaProp } from '../../styles/breakpoints'
 import { setMargin, setPadding } from '../../styles/space'
 
@@ -174,13 +174,11 @@ function setOverflow(overflow) {
   }
 }
 
-const boxRadius = radius.sm
-
 function setShape(shape) {
   switch (shape) {
     case 'rounded':
       return css`
-        border-radius: ${boxRadius};
+        border-radius: ${({ radius }) => radius};
       `
     case 'circle':
       return css`
@@ -192,23 +190,23 @@ function setShape(shape) {
       `
     case 'roundedTop':
       return css`
-        border-top-right-radius: ${boxRadius};
-        border-top-left-radius: ${boxRadius};
+        border-top-right-radius: ${({ radius }) => radius};
+        border-top-left-radius: ${({ radius }) => radius};
       `
     case 'roundedBottom':
       return css`
-        border-bottom-right-radius: ${boxRadius};
-        border-bottom-left-radius: ${boxRadius};
+        border-bottom-right-radius: ${({ radius }) => radius};
+        border-bottom-left-radius: ${({ radius }) => radius};
       `
     case 'roundedLeft':
       return css`
-        border-top-left-radius: ${boxRadius};
-        border-bottom-left-radius: ${boxRadius};
+        border-top-left-radius: ${({ radius }) => radius};
+        border-bottom-left-radius: ${({ radius }) => radius};
       `
     case 'roundedRight':
       return css`
-        border-top-right-radius: ${boxRadius};
-        border-bottom-right-radius: ${boxRadius};
+        border-top-right-radius: ${({ radius }) => radius};
+        border-bottom-right-radius: ${({ radius }) => radius};
       `
     default:
       return ''

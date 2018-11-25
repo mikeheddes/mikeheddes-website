@@ -160,8 +160,17 @@ class Item extends Component {
                 aria-hidden="true"
                 display="flex"
                 justifyContent="center"
+                color="surface"
+                paddingX="xm"
+                paddingY="lg"
+                shape="rounded"
+                radius="lg"
               >
-                <Button variant="primary" onClick={this.copyPageUrl}>
+                <Button
+                  variant="primary"
+                  onClick={this.copyPageUrl}
+                  marginRight="xr"
+                >
                   {`${copiedUrl ? 'Copied' : 'Copy'} article URL`}
                 </Button>
                 <Link

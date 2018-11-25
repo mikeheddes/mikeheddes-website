@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components'
 import { darken, transparentize as fade, mix } from 'polished'
 
 import { radius, space } from '../styles'
+import { marginPropTypes, setMargin } from '../styles/space'
 
 const buttonPadding = css`
   padding: ${space.re} ${space.md};
@@ -34,7 +35,7 @@ export const primaryStyle = css`
   color: ${({ theme }) => theme.background};
 
   &:hover {
-    background-color: ${({ theme }) => mix(0.9, theme.link, theme.title)};
+    background-color: ${({ theme }) => mix(0.95, theme.link, theme.title)};
   }
 `
 
@@ -154,6 +155,7 @@ const Button = styled.button.attrs(({ variant }) => ({
         return defaultStyle
     }
   }};
+  ${setMargin};
 `
 
 Button.propTypes = {
@@ -171,6 +173,7 @@ Button.propTypes = {
   ]),
   display: PropTypes.oneOf(['block', 'inline-block']),
   textAlign: PropTypes.oneOf(['center', 'left', 'right']),
+  ...marginPropTypes,
 }
 
 Button.defaultProps = {

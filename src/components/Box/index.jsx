@@ -11,6 +11,7 @@ import styled from 'styled-components'
 import style from './style'
 import { marginPropTypes, paddingPropTypes } from '../../styles/space'
 import { depthPropType } from '../../styles/depth'
+import radius from '../../styles/radius'
 
 function ofTypeArray(options) {
   return [oneOf(options), objectOf(oneOf(options))]
@@ -32,7 +33,9 @@ const numberOrStringObject = oneOfType([
   objectOf(oneOfType([number, string])),
 ])
 
-const Box = styled.div`
+const Box = styled.div.attrs(({ radius: ra }) => ({
+  radius: radius[ra],
+}))`
   ${style};
 `
 Box.propTypes = {
@@ -88,6 +91,7 @@ Box.propTypes = {
     'auto',
   ]),
   position: oneOfObject(['static', 'absolute', 'relative', 'fixed']),
+  radius: oneOfObject(Object.keys(radius)),
   right: boolObject,
   shape: oneOfObject([
     'square',
@@ -126,6 +130,7 @@ Box.defaultProps = {
   minWidth: null,
   overflow: 'visible',
   position: 'static',
+  radius: 'sm',
   right: false,
   shape: 'square',
   top: false,
