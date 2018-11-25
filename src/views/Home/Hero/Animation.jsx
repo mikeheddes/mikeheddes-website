@@ -48,6 +48,7 @@ const Wrapper = styled.div`
   display: flex;
   align-content: center;
   justify-content: center;
+  background-color: ${({ theme }) => theme.surface};
 `
 
 const SVG = styled.svg`

@@ -15,7 +15,7 @@ export default {
   ],
   genre: 'Education',
   subgenre: 'Higher Education',
-  description: 'Minimize waiting time for traffic lights.',
+  description: 'Minimize waiting for traffic lights',
   imageCover,
   imageCredits: 'Photo by Firdouss Ross on Unsplash',
   body,

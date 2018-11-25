@@ -1,15 +1,11 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import Helmet from 'react-helmet-async'
 
 import Banner from '../Banner'
-// import ContentHighlight from 'containers/ContentHighlight/Loadable'
+import LatestMusic from '../ContentHighlight/LatestMusic'
 // import ContentGrid from 'containers/ContentGrid/Loadable'
-import { colorNames } from '../../styles/color'
 // import Card from 'components/Card'
-// import { visibilities } from 'actions/music'
-// import { contentTypes } from 'actions/content'
 
 // const filters = [
 //   {
@@ -29,77 +25,49 @@ import { colorNames } from '../../styles/color'
 //     action: visibilities.singles,
 //   },
 // ]
+const bannerLinks = [
+  {
+    name: 'Spotify',
+    url: 'https://open.spotify.com/artist/4kQdT4uFc2e0zHL755qJ0U',
+  },
+  {
+    name: 'Apple Music',
+    url: 'https://itunes.apple.com/nl/artist/mike-heddes/1185471953',
+  },
+  {
+    name: 'YouTube',
+    url: 'https://youtube.com/mikeheddes',
+  },
+  {
+    name: 'SoundCloud',
+    url: 'https://soundcloud.com/mikeheddes',
+  },
+]
 
-export default class Music extends Component {
-  static propTypes = {
-    bannerLinks: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        url: PropTypes.string.isRequired,
-      })
-    ),
-    color: PropTypes.oneOf(colorNames),
-    // match: PropTypes.shape({
-    //   params: PropTypes.shape({
-    //     contentType: PropTypes.oneOf(contentTypes).isRequired,
-    //   }).isRequired,
-    // }).isRequired,
-  }
+const color = 'pink'
 
-  static defaultProps = {
-    bannerLinks: [
-      {
-        name: 'Spotify',
-        url: 'https://open.spotify.com/artist/4kQdT4uFc2e0zHL755qJ0U',
-      },
-      {
-        name: 'Apple Music',
-        url: 'https://itunes.apple.com/nl/artist/mike-heddes/1185471953',
-      },
-      {
-        name: 'YouTube',
-        url: 'https://youtube.com/mikeheddes',
-      },
-      {
-        name: 'SoundCloud',
-        url: 'https://soundcloud.com/mikeheddes',
-      },
-    ],
-    color: 'pink',
-  }
+const setTheme = theme => ({
+  ...theme,
+  link: theme[color],
+  surface: theme.surfaceColors[color],
+})
 
-  setTheme = theme => {
-    const { color } = this.props
-    return {
-      ...theme,
-      link: theme[color],
-      surface: theme.surfaceColors[color],
-    }
-  }
-
-  render() {
-    const { bannerLinks } = this.props
-    return (
-      <ThemeProvider theme={this.setTheme}>
-        <React.Fragment>
-          <Helmet>
-            <title>Music</title>
-          </Helmet>
-          <Banner actions={bannerLinks} eyebrow="Music">
-            Like You Have
-            <br />
-            Never Heard.
-          </Banner>
-          {/* <ContentHighlight
-            noFetch
-            actionTitle="More info"
-            contentType={contentType}
-            eyebrow="Latest music"
-            externalActionTitle="Listen on"
-            highlightType="latest"
-            marginTop
-            />
-            <ContentGrid
+const Music = () => (
+  <ThemeProvider theme={setTheme}>
+    <React.Fragment>
+      <Helmet>
+        <title>Music</title>
+      </Helmet>
+      <Banner actions={bannerLinks} eyebrow="Music">
+        Like You Have
+        <br />
+        Never Heard.
+      </Banner>
+      <LatestMusic
+        marginTop={{ xs: 'xr', md: 'md' }}
+        marginBottom={{ xs: 'xr', md: 'md' }}
+      />
+      {/* <ContentGrid
             contentType={contentType}
             title="All music"
             filters={filters}
@@ -124,8 +92,8 @@ export default class Music extends Component {
               ))
             }
           </ContentGrid> */}
-        </React.Fragment>
-      </ThemeProvider>
-    )
-  }
-}
+    </React.Fragment>
+  </ThemeProvider>
+)
+
+export default Music

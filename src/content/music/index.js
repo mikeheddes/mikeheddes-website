@@ -1,8 +1,6 @@
 import importAll from '../../utils/importAll'
 
-const music = importAll(require.context('./', true, /.jsx?$/))
-
-delete music['./index.js']
+const music = importAll(require.context('./', true, /.jsx?$/), ['./index.js'])
 
 function getId(str) {
   return str.split('/')[1].split('.')[0]
@@ -10,7 +8,8 @@ function getId(str) {
 
 export default Object.entries(music).reduce((acc, cur) => {
   const id = getId(cur[0])
-  return { ...acc, [id]: { ...cur[1].default, id } }
+  const url = `/music/${id}`
+  return { ...acc, [id]: { ...cur[1].default, id, url } }
 }, {})
 
 // Apple iTunes categories

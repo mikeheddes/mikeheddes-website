@@ -1,15 +1,11 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React from 'react'
 import Helmet from 'react-helmet-async'
 import { ThemeProvider } from 'styled-components'
 
 import Banner from '../Banner'
-// import ContentHighlight from 'containers/ContentHighlight/Loadable'
+import LatestArticle from '../ContentHighlight/LatestArticle'
 // import ContentGrid from 'containers/ContentGrid/Loadable'
 // import Card from 'components/Card'
-import { colorNames } from '../../styles/color'
-// import { visibilities } from 'actions/articles'
-// import { contentTypes } from 'actions/content'
 
 // const filters = [
 //   {
@@ -30,71 +26,45 @@ import { colorNames } from '../../styles/color'
 //   },
 // ]
 
-export default class ArticlesOverview extends Component {
-  static propTypes = {
-    bannerLinks: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        url: PropTypes.string.isRequired,
-      })
-    ),
-    color: PropTypes.oneOf(colorNames),
-    // match: PropTypes.shape({
-    //   params: PropTypes.shape({
-    //     contentType: PropTypes.oneOf(contentTypes).isRequired,
-    //   }).isRequired,
-    // }).isRequired,
-  }
+const bannerLinks = [
+  {
+    name: 'GitHub',
+    url: 'https://github.com/mikeheddes',
+  },
+  {
+    name: 'Medium',
+    url: 'https://medium.com/@mikeheddes',
+  },
+  {
+    name: 'Behance',
+    url: 'https://www.behance.net/mikeheddesb203',
+  },
+]
 
-  static defaultProps = {
-    color: 'orange',
-    bannerLinks: [
-      {
-        name: 'GitHub',
-        url: 'https://github.com/mikeheddes',
-      },
-      {
-        name: 'Medium',
-        url: 'https://medium.com/@mikeheddes',
-      },
-      {
-        name: 'Behance',
-        url: 'https://www.behance.net/mikeheddesb203',
-      },
-    ],
-  }
+const color = 'orange'
 
-  setTheme = theme => {
-    const { color } = this.props
-    return {
-      ...theme,
-      link: theme[color],
-      surface: theme.surfaceColors[color],
-    }
-  }
+const setTheme = theme => ({
+  ...theme,
+  link: theme[color],
+  surface: theme.surfaceColors[color],
+})
 
-  render() {
-    const { bannerLinks } = this.props
-    return (
-      <ThemeProvider theme={this.setTheme}>
-        <React.Fragment>
-          <Helmet>
-            <title>Articles</title>
-          </Helmet>
-          <Banner actions={bannerLinks} eyebrow="Articles">
-            Interesting Ideas
-            <br />
-            Worth Reading.
-          </Banner>
-          {/* <ContentHighlight
-            noFetch
-            eyebrow="Latest article"
-            highlightType="latest"
-            contentType={contentType}
-            actionTitle="Read more"
-            marginTop
-            />
-            <ContentGrid
+const Articles = () => (
+  <ThemeProvider theme={setTheme}>
+    <>
+      <Helmet>
+        <title>Articles</title>
+      </Helmet>
+      <Banner actions={bannerLinks} eyebrow="Articles">
+        Interesting Ideas
+        <br />
+        Worth Reading.
+      </Banner>
+      <LatestArticle
+        marginTop={{ xs: 'xr', md: 'md' }}
+        marginBottom={{ xs: 'xr', md: 'md' }}
+      />
+      {/*  <ContentGrid
             contentType={contentType}
             title="All articles"
             filters={filters}
@@ -118,8 +88,8 @@ export default class ArticlesOverview extends Component {
               ))
             }
           </ContentGrid> */}
-        </React.Fragment>
-      </ThemeProvider>
-    )
-  }
-}
+    </>
+  </ThemeProvider>
+)
+
+export default Articles

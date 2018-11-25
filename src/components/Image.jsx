@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
+import { transparentize as fade } from 'polished'
 
 import Box from './Box'
 import { radius as rad, depth as DEPTH } from '../styles'
 import { depthPropType } from '../styles/depth'
 import { radiusPropType } from '../styles/radius'
-import { marginPropTypes, setMargin } from '../styles/space'
+import space, { marginPropTypes, setMargin } from '../styles/space'
 
 const ratioLookup = {
   screen: 0.618,
@@ -17,6 +18,7 @@ const ratioLookup = {
 
 const StyledImage = styled.img`
   max-width: 100%;
+  display: block;
 
   ${({ ratio }) =>
     ratio &&
@@ -33,6 +35,18 @@ const StyledImage = styled.img`
     `};
 
   ${({ onClick }) => onClick && `cursor: pointer;`};
+  ${({ radius, hasCapton }) =>
+    radius &&
+    css`
+      border-top-left-radius: ${rad[radius]};
+      border-top-right-radius: ${rad[radius]};
+
+      ${!hasCapton &&
+        css`
+          border-bottom-left-radius: ${rad[radius]};
+          border-bottom-right-radius: ${rad[radius]};
+        `}
+    `}
 `
 
 const RatioWrapper = styled.div`
@@ -48,15 +62,57 @@ const RatioWrapper = styled.div`
           width: 100%;
         `};
 
+  ${({ border, radius, hasCapton, theme }) =>
+    border &&
+    css`
+      &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border: 1px solid ${theme.borderContent};
+
+        ${radius &&
+          css`
+            border-top-left-radius: ${rad[radius]};
+            border-top-right-radius: ${rad[radius]};
+
+            ${!hasCapton &&
+              css`
+                border-bottom-left-radius: ${rad[radius]};
+                border-bottom-right-radius: ${rad[radius]};
+              `}
+          `}
+      }
+    `}
+`
+
+const Caption = styled.figcaption`
+  font-size: 0.9em;
+  background-color: ${({ theme }) => theme.surface};
+  padding: ${space.xr} ${space.md};
+  color: ${({ theme }) => fade(0.5, theme.title)};
+  text-align: center;
+  border-top: 5px solid;
+  border-color: ${({ theme }) => fade(0.5, theme.link)};
+`
+
+const Figure = styled.figure`
+  ${setMargin};
+  overflow: hidden;
+  position: relative;
   ${({ radius }) => radius && `border-radius: ${rad[radius]};`};
   ${({ depth }) => depth && `box-shadow: ${DEPTH[depth]};`};
-  ${setMargin};
 `
 
 const Image = ({
+  caption,
   className,
   children,
   shape,
+  border,
   depth,
   radius,
   margin,
@@ -66,29 +122,43 @@ const Image = ({
   marginBottom,
   ...restProps
 }) => (
-  <RatioWrapper
+  <Figure
     className={className}
     radius={radius}
-    ratio={ratioLookup[shape]}
-    depth={depth}
     margin={margin}
     marginTop={marginTop}
     marginLeft={marginLeft}
     marginRight={marginRight}
     marginBottom={marginBottom}
+    depth={depth}
+    border={border}
   >
-    <StyledImage ratio={ratioLookup[shape]} {...restProps} />
-    {children && (
-      <Box position="absolute" top={0} bottom={0} left={0} rigth={0}>
-        {children}
-      </Box>
-    )}
-  </RatioWrapper>
+    <RatioWrapper
+      ratio={ratioLookup[shape]}
+      border={border}
+      radius={radius}
+      hasCapton={!!caption}
+    >
+      <StyledImage
+        ratio={ratioLookup[shape]}
+        radius={radius}
+        hasCapton={!!caption}
+        {...restProps}
+      />
+      {children && (
+        <Box position="absolute" top="0" bottom="0" left="0" right="0">
+          {children}
+        </Box>
+      )}
+    </RatioWrapper>
+    {caption && <Caption>{caption}</Caption>}
+  </Figure>
 )
 
 Image.propTypes = {
   src: PropTypes.string,
   children: PropTypes.node,
+  caption: PropTypes.node,
   className: PropTypes.string,
   alt: PropTypes.string,
   srcSet: PropTypes.string,
@@ -113,6 +183,7 @@ Image.defaultProps = {
   border: true,
   width: null,
   height: null,
+  caption: null,
 }
 
 export default Image

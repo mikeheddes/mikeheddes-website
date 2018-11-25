@@ -60,7 +60,6 @@ export const InfoLine = styled.div`
 
 export const Author = styled.span`
   font-weight: 500;
-  color: ${({ theme }) => theme.link};
 `
 
 export const PhotoCredit = styled.span`

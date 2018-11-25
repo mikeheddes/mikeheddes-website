@@ -10,7 +10,8 @@ function getIdFromPath(path) {
 
 export default Object.keys(articles).reduce((acc, key) => {
   const id = getIdFromPath(key)
-  return { ...acc, [id]: { ...articles[key].default, id } }
+  const url = `/articles/${id}`
+  return { ...acc, [id]: { ...articles[key].default, id, url } }
 }, {})
 
 // Apple iTunes categories

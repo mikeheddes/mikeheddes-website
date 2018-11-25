@@ -1,4 +1,5 @@
 import grafity from '../../../assets/grafity.jpeg';
+import Image from '../../../components/Image'
 
 **For as long as gift-giving has been a tradition, there’s also been the inability to come up with good gift ideas.** Whether it’s for your mom, dad, sister, brother, partner, friend, colleague, they, them, him, her, cat, dog, secret Santa, or for a White Elephant party, it can often be tricky to select the perfect present for your recipient. Price can also be a `huge factor` in holiday shopping — whether you have a tight budget and / or a long list of friends and family members to buy gifts for. This season can make things pretty rough on your wallet.
 
@@ -106,7 +107,7 @@ Start numbering with offset:
 
 Default width and extra hight:
 
-<img src={grafity} rounded shape="tall" />
+<Image src={grafity} shape="tall" marginTop="md" marginBottom="md" />
 
 ## Code
 

@@ -124,7 +124,7 @@ export default class Link extends Component {
     return (
       <StyledAnchor
         as={isExtern || download ? undefined : Anchor}
-        target={`_${target}`}
+        target={target ? `_${target}` : target}
         to={to}
         download={download}
         {...restProps}

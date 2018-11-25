@@ -13,6 +13,7 @@ import Image from '../../components/Image'
 import {
   HeaderWrapper,
   Title,
+  Author,
   Description,
   InfoLine,
   PhotoCredit,
@@ -115,7 +116,7 @@ class Item extends Component {
                       {author.url ? (
                         <Link to={author.url}>{author.name}</Link>
                       ) : (
-                        author.name
+                        <Author>{author.name}</Author>
                       )}
                       {' | '}
                     </Fragment>
@@ -138,7 +139,6 @@ class Item extends Component {
             <Image
               src={imageCover}
               shape="wide"
-              depth={0}
               alt={title}
               title={title}
               radius={null}

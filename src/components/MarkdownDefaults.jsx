@@ -52,16 +52,8 @@ export default {
   h4: props => <Heading as="h4" marginBottom="sm" marginTop="md" {...props} />,
   h5: props => <Heading as="h5" marginBottom="sm" marginTop="xr" {...props} />,
   h6: props => <Heading as="h6" marginBottom="xs" marginTop="re" {...props} />,
-  hr: props => (
-    <Divider
-      marginTop="xl"
-      marginBottom="xl"
-      marginRight="lg"
-      marginLeft="lg"
-      {...props}
-    />
-  ),
-  img: props => <Image marginBottom="xr" marginTop="xr" {...props} />,
+  hr: props => <Divider marginTop="xl" marginBottom="xl" {...props} />,
+  img: props => <Image marginBottom="md" marginTop="md" {...props} />,
   ol: props => <List as="ol" marginBottom="xr" marginTop="xr" {...props} />,
   p: props => <Paragraph marginBottom="xr" {...props} />,
   pre: props => <Preformatted marginBottom="xr" marginTop="xr" {...props} />,
