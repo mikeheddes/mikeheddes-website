@@ -1,6 +1,6 @@
 import Articles from '../Articles/Loadable'
 import About from '../About/Loadable'
-import Music from '../Music/Loadable'
+import Music from '../MusicOverview/Loadable'
 import Home from '../Home/Loadable'
 
 export default {
