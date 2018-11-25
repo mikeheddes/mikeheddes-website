@@ -6,7 +6,7 @@ export default {
   publishedAt: new Date('2018-01-26'),
   imageCover,
   artist: 'The Chainsmokers',
-  theme: 'NIGHT',
+  themeName: 'NIGHT',
   license: 'The Chainsmokers 2017',
   tracks: [
     {

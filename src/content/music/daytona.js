@@ -3,7 +3,7 @@ import imageCover from '../../assets/daytona.jpg'
 // Metadata
 export default {
   themeColor: 'pink',
-  theme: 'NIGHT',
+  themeName: 'NIGHT',
   publishedAt: new Date('2018-07-01'),
   imageCover,
   artist: 'Pusha T',

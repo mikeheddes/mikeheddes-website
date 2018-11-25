@@ -2,7 +2,7 @@ import imageCover from '../../assets/podcast_021.jpg'
 
 // Metadata
 export default {
-  theme: 'DAY',
+  themeName: 'DAY',
   themeColor: 'pink',
   publishedAt: new Date('2018-02-01'),
   publishStatus: 'DRAFT',

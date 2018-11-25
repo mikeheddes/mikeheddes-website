@@ -2,7 +2,7 @@ import imageCover from '../../assets/one_kiss.jpg'
 
 export default {
   id: 'one_kiss',
-  theme: 'DAY',
+  themeName: 'DAY',
   themeColor: 'blue',
   imageCover,
   genre: 'Pop',

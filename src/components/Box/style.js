@@ -81,17 +81,14 @@ function setWrap(wrap) {
   `
 }
 
-function flexParentOptions({ display }) {
-  if (display === 'flex') {
-    return css`
-      ${mapMediaProp('direction', setDirection)};
-      ${mapMediaProp('wrap', setWrap)};
-      ${mapMediaProp('justifyContent', setJustifyContent)};
-      ${mapMediaProp('alignItems', setAlignItems)};
-      ${mapMediaProp('alignContent', setAlignContent)};
-    `
-  }
-  return ''
+function flexParentOptions() {
+  return css`
+    ${mapMediaProp('direction', setDirection)};
+    ${mapMediaProp('wrap', setWrap)};
+    ${mapMediaProp('justifyContent', setJustifyContent)};
+    ${mapMediaProp('alignItems', setAlignItems)};
+    ${mapMediaProp('alignContent', setAlignContent)};
+  `
 }
 
 function flexChildOptions() {
@@ -225,6 +222,12 @@ function setDepth(depthIdx) {
   `
 }
 
+function setTextAlign(textAlign) {
+  return css`
+    text-align: ${textAlign};
+  `
+}
+
 // The css renderd by the component
 export default css`
   ${mapMediaProp('display', setDisplay)};
@@ -241,6 +244,7 @@ export default css`
   ${mapMediaProp('shape', setShape)};
   ${mapMediaProp('color', setColor)};
   ${mapMediaProp('depth', setDepth)};
+  ${mapMediaProp('textAlign', setTextAlign)};
   ${setMargin};
   ${setPadding};
 `

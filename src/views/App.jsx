@@ -9,7 +9,7 @@ import MDDefaults from '../components/MarkdownDefaults'
 import Footer from './Footer'
 import Home from './Home/Loadable'
 import MusicOverview from './MusicOverview/Loadable'
-// import MusicItem from './MusicItem/Loadable'
+import MusicItem from './MusicItem/Loadable'
 import Articles from './Articles/Loadable'
 import Article from './Article/Loadable'
 import About from './About/Loadable'
@@ -65,7 +65,7 @@ export default class App extends Component {
                   <Route exact path="/" component={Home} />
                   <Route exact path="/about" component={About} />
                   <Route exact path="/music" component={MusicOverview} />
-                  {/* <Route exact path="/music/:id" component={MusicItem} /> */}
+                  <Route exact path="/music/:id" component={MusicItem} />
                   <Route exact path="/articles" component={Articles} />
                   <Route exact path="/articles/:id" component={Article} />
                   {/* <Route component={NoMatch} /> */}

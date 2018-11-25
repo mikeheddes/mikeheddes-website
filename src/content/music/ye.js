@@ -2,7 +2,7 @@ import imageCover from '../../assets/ye.jpg'
 
 // Metadata
 export default {
-  theme: 'NIGHT',
+  themeName: 'NIGHT',
   themeColor: 'purple',
   publishedAt: new Date('2018-06-30'),
   imageCover,

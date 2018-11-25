@@ -171,9 +171,9 @@ class Item extends Component {
               <Box
                 marginTop={{ xs: 'xm', sm: 'lg' }}
                 textAlign="center"
-                aria-hidden="true"
-                display="flex"
                 justifyContent="center"
+                aria-hidden="true"
+                display={{ xs: 'none', sm: 'flex' }}
                 color="surface"
                 paddingX="xm"
                 paddingY="lg"

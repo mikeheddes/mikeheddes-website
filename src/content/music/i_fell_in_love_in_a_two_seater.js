@@ -2,7 +2,7 @@ import imageCover from '../../assets/i_fell_in_love_in_a_two_seater.jpg'
 
 export default {
   publishedAt: new Date('2018-05-20'),
-  theme: 'NIGHT',
+  themeName: 'NIGHT',
   themeColor: 'orange',
   imageCover,
   artist: 'Deezie Brown',
