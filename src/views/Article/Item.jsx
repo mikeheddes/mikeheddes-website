@@ -137,7 +137,7 @@ class Item extends Component {
                   ))}
                   <time dateTime={publishedAt}>{dateFormat(publishedAt)}</time>
                   {updatedAt && (
-                    <>
+                    <React.Fragment>
                       {' | '}
                       <i>
                         {'updated on '}
@@ -145,7 +145,7 @@ class Item extends Component {
                           {dateFormat(updatedAt)}
                         </time>
                       </i>
-                    </>
+                    </React.Fragment>
                   )}
                 </InfoLine>
               </Box>

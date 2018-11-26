@@ -28,8 +28,16 @@ export default class Curtain extends React.Component {
     onClick: undefined,
   }
 
+  componentDidMount() {
+    if (!CURTAIN_ROOT) {
+      // eslint-disable-next-line no-console
+      console.error('Curtain error: element #curtain-root does not exist')
+    }
+  }
+
   render() {
     const { isOpen, opacity, onClick } = this.props
+    if (!CURTAIN_ROOT) return null
     return ReactDOM.createPortal(
       <Transition
         items={isOpen}

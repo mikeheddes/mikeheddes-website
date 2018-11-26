@@ -37,7 +37,7 @@ const setTheme = theme => ({
 
 const Articles = () => (
   <ThemeProvider theme={setTheme}>
-    <>
+    <React.Fragment>
       <Helmet>
         <title>Articles</title>
       </Helmet>
@@ -65,7 +65,7 @@ const Articles = () => (
           />
         )}
       </ContentGrid>
-    </>
+    </React.Fragment>
   </ThemeProvider>
 )
 

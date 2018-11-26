@@ -159,10 +159,10 @@ class Blur extends Component {
     const { blur, ...restProps } = this.props
     const { loaded } = this.state
     return (
-      <>
+      <React.Fragment>
         <Canvas loaded={loaded} ref={this.canvas} {...restProps} />
         <OptimizedResize onResize={this.drawImageFromScratch} />
-      </>
+      </React.Fragment>
     )
   }
 }

@@ -2,9 +2,16 @@
   "name": "mikeheddes-website",
   "author": "Mike Heddes",
   "description": "My personal website",
-  "version": "2.0.0",
-  "homepage" : "https://mikeheddes.nl",
+  "version": "2.0.1",
+  "homepage": "https://mikeheddes.nl",
   "private": true,
+  "license": "MIT",
+  "scripts": {
+    "start": "react-static start",
+    "stage": "react-static build --staging",
+    "build": "react-static build",
+    "serve": "serve dist -p 3000"
+  },
   "dependencies": {
     "@mdx-js/tag": "^0.16.0",
     "mathjax": "^2.7.5",
@@ -16,16 +23,15 @@
     "react-loadable": "^5.5.0",
     "react-mathjax2": "^0.0.2",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.1",
     "react-spring": "^6.1.8",
+    "react-static": "^5.9.12",
     "stackblur-canvas": "^2.0.0",
     "styled-components": "^4.1.1"
   },
   "devDependencies": {
-    "@craco/craco": "^3.0.1",
     "@mdx-js/loader": "^0.16.0",
     "@mdx-js/mdx": "^0.16.0",
-    "babel-plugin-styled-components": "^1.8.0",
+    "babel-plugin-styled-components": "1.3.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.3.0",
     "eslint-plugin-jest": "^22.0.0",
@@ -35,15 +41,8 @@
     "prettier": "^1.15.2",
     "remark-highlight.js": "^5.0.0",
     "remark-math": "^1.0.5",
-    "remark-slug": "^5.1.0"
-  },
-  "scripts": {
-    "build": "craco build",
-    "deploy": "yarn build && firebase deploy",
-    "serve": "firebase serve",
-    "start": "craco start",
-    "test": "craco test",
-    "lint": "eslint './src/**/*.{js,jsx}'"
+    "remark-slug": "^5.1.0",
+    "serve": "^6.1.0"
   },
   "husky": {
     "hooks": {
