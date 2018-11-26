@@ -4,6 +4,7 @@ import { MDXProvider } from '@mdx-js/tag'
 import MathJax from 'react-mathjax2'
 import { ThemeProvider } from 'styled-components'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+// import { hot } from 'react-hot-loader'
 
 import MDDefaults from '../components/MarkdownDefaults'
 import Footer from './Footer'
@@ -19,9 +20,7 @@ import MetaTags from '../components/MetaTags'
 import GlobalStyles from '../styles/Global'
 import { DAY, NIGHT } from '../styles/color'
 
-// const theme
-
-export default class App extends Component {
+class App extends Component {
   defaultTheme = DAY
 
   themeLookup = {
@@ -85,3 +84,6 @@ export default class App extends Component {
     )
   }
 }
+
+// export default hot(module)(App)
+export default App
