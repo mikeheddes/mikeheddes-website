@@ -188,7 +188,7 @@ class Item extends Component {
                   {`${copiedUrl ? 'Copied' : 'Copy'} article URL`}
                 </Button>
                 <Link
-                  to={`https://github.com/mikeheddes/mikeheddes-website/blob/master/src/components/articles/${id}/article.mdx`}
+                  to={`https://github.com/mikeheddes/mikeheddes-website/blob/master/src/content/articles/${id}/article.md`}
                   variant="button"
                 >
                   Edit on GitHub
