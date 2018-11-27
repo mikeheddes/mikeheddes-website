@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Node } from 'react-mathjax2'
+import TeX from '@matejmazur/react-katex'
 import styled, { css } from 'styled-components'
 
 import { marginPropTypes, setMargin } from '../styles/space'
@@ -10,9 +10,9 @@ const StyledMath = styled.div`
     !inline &&
     css`
       text-align: center;
-      font-size: 1.1em;
+      font-size: 1.08em;
 
-      .MJXc-display {
+      .katex-display {
         margin: 0;
       }
 
@@ -20,24 +20,20 @@ const StyledMath = styled.div`
     `}
 `
 
-const Math = ({ inline, children, onRender, ...restProps }) => (
+const Math = ({ inline, children, ...restProps }) => (
   <StyledMath inline={inline} as={inline ? 'span' : 'div'} {...restProps}>
-    <Node onRender={onRender} inline={inline}>
-      {children}
-    </Node>
+    <TeX block={!inline}>{children}</TeX>
   </StyledMath>
 )
 
 Math.propTypes = {
   inline: PropTypes.bool,
   children: PropTypes.string.isRequired,
-  onRender: PropTypes.func,
   ...marginPropTypes,
 }
 
 Math.defaultProps = {
   inline: false,
-  onRender: undefined,
 }
 
 export default Math

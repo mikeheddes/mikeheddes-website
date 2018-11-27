@@ -26,10 +26,10 @@ The video below is the first implementation of the score algorithm. The score of
 
 ### Distance Weight Formula
 
-The formula below is used to calculate the weight of the lane by distance. The closer a vehicle is to the intersection, the bigger the weight for that lane. The average coverage of a vehicle communication system is 300 meter, so we decided to start counting the weight from 300 meter.
+The formula below is used to calculate the weight of the lane by distance. The closer a vehicle is to the intersection, the bigger the weight for that lane. The average coverage of a vehicle communication system is 300 meter, so we decided to start counting the weight from 300 meter ($D$).
 
 $$
--\\left(\\frac{1}{300}\\right)^{3}\\cdot(x - 300)^{3}
+D=-\\left(\\frac{1}{300}\\right)^{3}\\cdot(x - 300)^{3}
 $$
 
 ### Score Algorithm Code

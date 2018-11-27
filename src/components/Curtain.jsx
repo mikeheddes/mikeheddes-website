@@ -5,7 +5,11 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Transition, animated } from 'react-spring'
 
-const CURTAIN_ROOT = document.getElementById('curtain-root')
+let CURTAIN_ROOT
+
+if (typeof document !== 'undefined') {
+  CURTAIN_ROOT = document.getElementById('curtain-root')
+}
 
 const StyledCurtain = styled(animated.div)`
   position: fixed;

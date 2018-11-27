@@ -1,5 +1,8 @@
+/* eslint-disable react/jsx-filename-extension */
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { HelmetProvider } from 'react-helmet-async'
+import Loadable from 'react-loadable'
 
 import App from './views/App'
 
@@ -11,9 +14,18 @@ if (typeof document !== 'undefined') {
     : ReactDOM.hydrate || ReactDOM.render
 
   const render = () => {
-    // eslint-disable-next-line no-undef, react/jsx-filename-extension
-    renderMethod(<App />, document.getElementById('root'))
+    renderMethod(
+      <HelmetProvider>
+        <App />
+      </HelmetProvider>,
+      // eslint-disable-next-line no-undef
+      document.getElementById('root')
+    )
   }
 
-  render()
+  if (module.hot) {
+    render()
+  } else {
+    Loadable.preloadReady().then(render)
+  }
 }
