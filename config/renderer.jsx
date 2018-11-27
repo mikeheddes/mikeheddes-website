@@ -6,6 +6,7 @@ import { getBundles } from 'react-loadable/webpack'
 
 export default async (render, Comp, meta) => {
   await Loadable.preloadAll()
+
   // eslint-disable-next-line global-require
   const stats = require('../dist/react-loadable.json')
 
