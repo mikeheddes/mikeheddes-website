@@ -82,4 +82,5 @@ typings/
 
 # Create React App
 build
+dist
 tmp

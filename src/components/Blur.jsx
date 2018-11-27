@@ -1,8 +1,6 @@
-/* eslint-env browser */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled, { withTheme } from 'styled-components'
-import * as StackBlur from 'stackblur-canvas'
 
 import OptimizedResize from './OptimizedResize'
 
@@ -31,6 +29,7 @@ class Blur extends Component {
 
   state = {
     loaded: false,
+    StackBlur: null,
   }
 
   static propTypes = {
@@ -70,6 +69,11 @@ class Blur extends Component {
 
   componentDidMount() {
     const { src } = this.props
+    if (process.env.REACT_STATIC_ENV !== 'node') {
+      import('stackblur-canvas').then(StackBlur => {
+        this.setState({ StackBlur })
+      })
+    }
     this.loadImage(src)
   }
 
@@ -87,6 +91,7 @@ class Blur extends Component {
 
   loadImage(src) {
     const { onLoad } = this.props
+    // eslint-disable-next-line no-undef
     const sourceImage = new Image()
     sourceImage.onload = () => {
       this.drawImageFromScratch()
@@ -126,14 +131,17 @@ class Blur extends Component {
   blurImage(radius) {
     this.drawImage()
     const { offsetWidth, offsetHeight } = this.canvas.current
-    StackBlur.canvasRGB(
-      this.canvas.current,
-      0,
-      0,
-      offsetWidth,
-      offsetHeight,
-      Math.round(radius)
-    )
+    const { StackBlur } = this.state
+    if (StackBlur) {
+      StackBlur.canvasRGB(
+        this.canvas.current,
+        0,
+        0,
+        offsetWidth,
+        offsetHeight,
+        Math.round(radius)
+      )
+    }
   }
 
   drawImage() {
@@ -157,10 +165,14 @@ class Blur extends Component {
 
   render() {
     const { blur, ...restProps } = this.props
-    const { loaded } = this.state
+    const { loaded, StackBlur } = this.state
     return (
       <React.Fragment>
-        <Canvas loaded={loaded} ref={this.canvas} {...restProps} />
+        <Canvas
+          loaded={loaded && !!StackBlur}
+          ref={this.canvas}
+          {...restProps}
+        />
         <OptimizedResize onResize={this.drawImageFromScratch} />
       </React.Fragment>
     )

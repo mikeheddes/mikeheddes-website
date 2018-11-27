@@ -14,3 +14,7 @@ overrides:
       - '**/?(*.)+(spec|test).js?(x)'
     env:
       jest/globals: true
+  - files:
+      - 'static.config.js'
+    rules:
+      import/no-extraneous-dependencies: off

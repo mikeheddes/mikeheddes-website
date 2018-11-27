@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import Helmet, { HelmetProvider } from 'react-helmet-async'
+import Helmet from 'react-helmet-async'
 import { MDXProvider } from '@mdx-js/tag'
-import MathJax from 'react-mathjax2'
 import { ThemeProvider } from 'styled-components'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-// import { hot } from 'react-hot-loader'
+import { Router } from 'react-static'
+import { Route, Switch } from 'react-router-dom'
 
 import MDDefaults from '../components/MarkdownDefaults'
 import Footer from './Footer'
@@ -15,7 +14,6 @@ import Articles from './Articles/Loadable'
 import Article from './Article/Loadable'
 import About from './About/Loadable'
 import Navigation from './Navigation'
-import ResetPagePosition from '../components/ResetPagePosition'
 import MetaTags from '../components/MetaTags'
 import GlobalStyles from '../styles/Global'
 import { DAY, NIGHT } from '../styles/color'
@@ -46,44 +44,35 @@ class App extends Component {
     }
     return (
       <Router>
-        <HelmetProvider>
-          <ThemeProvider theme={{ ...theme, ...themeFuncs }}>
-            <MathJax.Context
-              input="tex"
-              options={{
-                showMathMenu: false,
-                showProcessingMessages: false,
-                messageStyle: 'none',
-                tex2jax: { preview: 'none' },
-              }}
-            >
-              <MDXProvider components={MDDefaults}>
-                <Helmet
-                  defaultTitle="Mike Heddes"
-                  titleTemplate="Mike Heddes | %s"
-                />
-                <GlobalStyles />
-                <MetaTags />
-                <Navigation />
-                <Switch>
-                  <Route exact path="/" component={Home} />
-                  <Route exact path="/about" component={About} />
-                  <Route exact path="/music" component={MusicOverview} />
-                  <Route exact path="/music/:id" component={MusicItem} />
-                  <Route exact path="/articles" component={Articles} />
-                  <Route exact path="/articles/:id" component={Article} />
-                  {/* <Route component={NoMatch} /> */}
-                </Switch>
-                <Footer />
-                <ResetPagePosition />
-              </MDXProvider>
-            </MathJax.Context>
-          </ThemeProvider>
-        </HelmetProvider>
+        <ThemeProvider theme={{ ...theme, ...themeFuncs }}>
+          <MDXProvider components={MDDefaults}>
+            <Helmet defaultTitle="Mike Heddes" titleTemplate="Mike Heddes | %s">
+              <link
+                rel="stylesheet"
+                href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css"
+                type="text/css"
+                integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y"
+                crossOrigin="anonymous"
+              />
+            </Helmet>
+            <GlobalStyles />
+            <MetaTags />
+            <Navigation />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/about" component={About} />
+              <Route exact path="/music" component={MusicOverview} />
+              <Route exact path="/music/:id" component={MusicItem} />
+              <Route exact path="/articles" component={Articles} />
+              <Route exact path="/articles/:id" component={Article} />
+              {/* <Route component={NoMatch} /> */}
+            </Switch>
+            <Footer />
+          </MDXProvider>
+        </ThemeProvider>
       </Router>
     )
   }
 }
 
-// export default hot(module)(App)
 export default App
