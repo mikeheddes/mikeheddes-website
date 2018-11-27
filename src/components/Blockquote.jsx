@@ -8,7 +8,7 @@ import { marginPropTypes, setMargin } from '../styles/space'
 const Blockquote = styled.blockquote`
   font-size: inherit;
   border-left: 5px solid;
-  border-color: ${({ theme }) => fade(0.5, theme.link)};
+  border-color: ${({ theme }) => fade(0.3, theme.link)};
   background-color: ${({ theme }) => theme.surface};
   padding: ${space.md};
   border-radius: ${radius.sm};
