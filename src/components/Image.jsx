@@ -96,7 +96,7 @@ const Caption = styled.figcaption`
   color: ${({ theme }) => fade(0.5, theme.title)};
   text-align: center;
   border-top: 5px solid;
-  border-color: ${({ theme }) => fade(0.5, theme.link)};
+  border-color: ${({ theme }) => fade(0.3, theme.link)};
 `
 
 const Figure = styled.figure`
