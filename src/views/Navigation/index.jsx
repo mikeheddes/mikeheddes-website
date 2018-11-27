@@ -73,8 +73,7 @@ class Navigation extends React.Component {
   }
 
   toggleMenu() {
-    const { isOpen } = this.state
-    this.setState({ isOpen: !isOpen })
+    this.setState(({ isOpen }) => ({ isOpen: !isOpen }))
   }
 
   render() {
