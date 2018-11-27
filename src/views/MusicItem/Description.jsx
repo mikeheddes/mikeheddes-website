@@ -16,8 +16,7 @@ export default class Description extends PureComponent {
   }
 
   toggleDescription = () => {
-    const { extended } = this.state
-    this.setState({ extended: !extended })
+    this.setState(({ extended }) => ({ extended: !extended }))
   }
 
   render() {
