@@ -2,15 +2,15 @@
   "name": "mikeheddes-website",
   "author": "Mike Heddes",
   "description": "My personal website",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "homepage": "https://mikeheddes.nl",
   "private": true,
   "license": "MIT",
   "scripts": {
     "start": "react-static start",
-    "stage": "react-static build --staging",
     "build": "react-static build",
-    "serve": "serve dist -p 3000"
+    "serve": "serve dist -p 3000",
+    "lint": "eslint src/**/*.{js,jsx}"
   },
   "dependencies": {
     "@matejmazur/react-katex": "^3.0.2",
