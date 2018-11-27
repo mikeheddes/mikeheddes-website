@@ -7,23 +7,17 @@ const musicDir = path.join(baseDir, 'music')
 
 const removeIndex = fileName => !fileName.match(/index.jsx?$/)
 
+const getBasenameWithoutExtention = fileName =>
+  path.basename(fileName, path.extname(fileName))
+
 export default async () => {
   let articles = await fs.promises.readdir(articlesDir)
   articles = articles.filter(removeIndex)
 
   let music = await fs.promises.readdir(musicDir)
-  music = music.filter(removeIndex)
+  music = music.filter(removeIndex).map(getBasenameWithoutExtention)
 
   return [
-    {
-      path: '/',
-    },
-    {
-      path: '/articles',
-      children: articles.map(articleId => ({
-        path: articleId,
-      })),
-    },
     {
       path: '/music',
       children: music.map(musicId => ({
@@ -31,7 +25,16 @@ export default async () => {
       })),
     },
     {
+      path: '/',
+    },
+    {
       path: '/about',
+    },
+    {
+      path: '/articles',
+      children: articles.map(articleId => ({
+        path: articleId,
+      })),
     },
   ]
 }
