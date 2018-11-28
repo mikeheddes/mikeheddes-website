@@ -63,7 +63,7 @@ workflows:
       - checks:
           requires:
             - setup
-      - build
+      - build:
           requires:
             - setup
           filters:
