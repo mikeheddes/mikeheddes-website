@@ -57,7 +57,8 @@ jobs:
 
 workflows:
   version: 2
-  checks-and-deploy-master:
+  # The main workflow tests PR's and deploys master
+  main:
     jobs:
       - setup
       - checks:
