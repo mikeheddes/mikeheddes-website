@@ -1,24 +1,21 @@
 version: 2
+
 jobs:
-  check:
+  build:
     docker:
       - image: circleci/node:10.13
-
     working_directory: ~/repo
-
     steps:
       - checkout
 
-      # Download and cache dependencies
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
       - run:
-        name: Install packages
-        command: yarn install
+          name: Install packages
+          command: yarn install
 
       - save_cache:
           paths:
@@ -26,55 +23,34 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run:
-        name: Lint code
-        command: yarn lint
+          name: Lint code
+          command: yarn lint
+
+      - run:
+          name: Build artifacts
+          command: yarn build
+
+      - store_artifacts:
+          path: dist
 
 
   deploy:
     docker:
       - image: circleci/node:10.13
-
     working_directory: ~/repo
-
     steps:
-      - checkout
-
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
-      - run:
-        name: Install packages
-        command: yarn install
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
-      - run:
-        name: Build static files
-        command: yarn build
-
-      - run:
-        name: Deploy to Firebase
+      - deploy:
         command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
 
 
 workflows:
   version: 2
-
-  - "Deploy master":
+  Deploy master:
     jobs:
-      - check
+      - build
       - deploy:
+          requires:
+            - build
           filters:
             branches:
               only: master
-              
-  - "Pull request checks":
-    jobs:
-      - check
