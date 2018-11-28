@@ -1,7 +1,7 @@
 version: 2
 
 jobs:
-  build:
+  setup:
     docker:
       - image: circleci/node:10.13
     working_directory: ~/repo
@@ -22,10 +22,22 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
+
+  checks:
+    docker:
+      - image: circleci/node:10.13
+    working_directory: ~/repo
+    steps:
       - run:
           name: Lint code
           command: yarn lint
 
+
+  build:
+    docker:
+      - image: circleci/node:10.13
+    working_directory: ~/repo
+    steps:
       - run:
           name: Build artifacts
           command: yarn build
@@ -45,11 +57,21 @@ jobs:
 
 workflows:
   version: 2
-  Deploy master:
+  checks-and-deploy-master:
     jobs:
+      - setup
+      - checks:
+          requires:
+            - setup
       - build
+          requires:
+            - setup
+          filters:
+            branches:
+              only: master
       - deploy:
           requires:
+            - setup
             - build
           filters:
             branches:
