@@ -1,7 +1,8 @@
 version: 2
 
 jobs:
-  setup:
+
+  Checks:
     docker:
       - image: circleci/node:10.13
     working_directory: ~/repo
@@ -22,22 +23,32 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-
-  checks:
-    docker:
-      - image: circleci/node:10.13
-    working_directory: ~/repo
-    steps:
       - run:
           name: Lint code
           command: yarn lint
 
 
-  build:
+  Build:
     docker:
       - image: circleci/node:10.13
     working_directory: ~/repo
     steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+
+      - run:
+          name: Install packages
+          command: yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
       - run:
           name: Build artifacts
           command: yarn build
@@ -45,14 +56,38 @@ jobs:
       - store_artifacts:
           path: dist
 
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - dist
 
-  deploy:
+
+  Deploy:
     docker:
       - image: circleci/node:10.13
     working_directory: ~/repo
     steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+
+      - run:
+          name: Install packages
+          command: yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - attach_workspace:
+          at: ~/repo
+
       - deploy:
-        command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
+          command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
 
 
 workflows:
@@ -60,20 +95,14 @@ workflows:
   # The main workflow tests PR's and deploys master
   main:
     jobs:
-      - setup
-      - checks:
-          requires:
-            - setup
-      - build:
-          requires:
-            - setup
+      - Checks
+      - Build:
           filters:
             branches:
               only: master
-      - deploy:
+      - Deploy:
           requires:
-            - setup
-            - build
+            - Build
           filters:
             branches:
               only: master
