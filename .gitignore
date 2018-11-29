@@ -77,7 +77,6 @@ typings/
 .fusebox/
 
 # Firebase
-.firebaserc
 .firebase/
 
 # Create React App
