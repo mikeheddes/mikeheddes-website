@@ -1,19 +1,46 @@
 import React from 'react'
+import { StaticQuery, graphql } from 'gatsby'
 
-import articles from '../../content/articles'
 import ContentHighlight from './'
 
-const latestArticle = Object.values(articles).sort(
-  (a, b) => b.publishedAt - a.publishedAt
-)[0]
+const query = graphql`
+  query latestContent {
+    allMarkdownRemark(
+      limit: 1
+      sort: { fields: [frontmatter___publishedAt], order: DESC }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            title
+            image {
+              childImageSharp {
+                fluid(maxHeight: 400, quality: 80) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
+            }
+          }
+          fields {
+            slug
+          }
+        }
+      }
+    }
+  }
+`
 
 export default props => (
-  <ContentHighlight
-    {...props}
-    eyebrow="Latest article"
-    action={{ name: 'Read article', url: latestArticle.url }}
-    image={latestArticle.imageCover}
-    title={latestArticle.title}
-    preload={latestArticle.body.preload}
+  <StaticQuery
+    query={query}
+    render={({ allMarkdownRemark: { edges } }) => (
+      <ContentHighlight
+        {...props}
+        eyebrow="Latest article"
+        action={{ name: 'Read article', url: edges[0].node.fields.slug }}
+        image={edges[0].node.frontmatter.image.childImageSharp.fluid}
+        title={edges[0].node.frontmatter.title}
+      />
+    )}
   />
 )

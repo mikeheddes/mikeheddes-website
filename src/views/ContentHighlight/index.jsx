@@ -35,7 +35,7 @@ const ContentHighlight = ({
       onMouseEnter={preload}
       color="surface"
     >
-      <Blur src={image} opacity={0.6} />
+      <Blur src={image.src} base64={image.base64} opacity={0.6} />
       <Box
         marginLeft="auto"
         marginRight="auto"
@@ -67,17 +67,10 @@ ContentHighlight.propTypes = {
     url: PropTypes.string.isRequired,
   }),
   eyebrow: PropTypes.node,
-  image: PropTypes.string.isRequired,
+  image: PropTypes.object.isRequired,
   title: PropTypes.node.isRequired,
   preload: PropTypes.func,
   ...marginPropTypes,
-}
-
-ContentHighlight.defaultProps = {
-  author: undefined,
-  extraAction: undefined,
-  eyebrow: undefined,
-  preload: undefined,
 }
 
 export default ContentHighlight

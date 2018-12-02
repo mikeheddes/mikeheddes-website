@@ -19,7 +19,7 @@ const ImageBox = ({ eyebrow, image, url }) => {
         <Link to={baseUrl}>See all</Link>
       </EyebrowRow>
       <Link to={url} variant="none">
-        <Image src={image} depth={6} />
+        <Image fluid={image} depth={6} />
       </Link>
     </ImageBoxWrapper>
   )
@@ -27,7 +27,7 @@ const ImageBox = ({ eyebrow, image, url }) => {
 
 ImageBox.propTypes = {
   eyebrow: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
+  image: PropTypes.object.isRequired,
   url: PropTypes.string.isRequired,
 }
 

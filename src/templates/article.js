@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import { ThemeProvider } from 'styled-components'
-import Img from 'gatsby-image'
 import rehypeReact from 'rehype-react'
 
 import Box from '../components/Box'
@@ -12,7 +11,7 @@ import Button from '../components/Button'
 import Link from '../components/Link'
 import clipboard from '../utils/clipboard'
 import MarkdownDefault from '../components/MarkdownDefaults'
-// import Image from '../components/Image'
+import Image from '../components/Image'
 import {
   HeaderWrapper,
   Title,
@@ -60,7 +59,6 @@ class Article extends Component {
   }
 
   copyPageUrl = () => {
-    // eslint-disable-next-line no-undef
     clipboard(window.location.href)
     this.setState({ copiedUrl: true })
   }
@@ -141,13 +139,12 @@ class Article extends Component {
               </Box>
             </Section>
             <div>
-              <Img
-                fluid={{
-                  ...image.childImageSharp.fluid,
-                  aspectRatio: 1 / 0.533,
-                }}
+              <Image
+                fluid={image.childImageSharp.fluid}
                 alt={imageMeta.title}
                 title={imageMeta.title}
+                shape="wide"
+                radius={null}
               />
             </div>
             {imageMeta.credits && (
@@ -215,7 +212,7 @@ export const pageQuery = graphql`
         }
         image {
           childImageSharp {
-            fluid(maxHeight: 500) {
+            fluid(maxHeight: 500, quality: 80) {
               ...GatsbyImageSharpFluid_withWebp
             }
           }

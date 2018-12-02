@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled, { withTheme } from 'styled-components'
+import * as StackBlur from 'stackblur-canvas'
 
 import OptimizedResize from './OptimizedResize'
 
@@ -18,7 +19,7 @@ const Canvas = styled.canvas`
     background && theme[background]};
   ${({ radius }) => radius && `border-radius: ${radius}px`};
 `
-
+// TODO: add base64 support
 class Blur extends Component {
   scaleLookup = {
     cover: 'max',
@@ -35,6 +36,7 @@ class Blur extends Component {
   static propTypes = {
     className: PropTypes.string,
     src: PropTypes.string.isRequired,
+    base64: PropTypes.string,
     blur: PropTypes.number,
     radius: PropTypes.number,
     opacity: PropTypes.number,
@@ -51,7 +53,6 @@ class Blur extends Component {
   static defaultProps = {
     className: '',
     blur: 100,
-    radius: null,
     opacity: 1,
     onLoad: () => {},
     fit: 'cover',
@@ -69,11 +70,6 @@ class Blur extends Component {
 
   componentDidMount() {
     const { src } = this.props
-    if (process.env.REACT_STATIC_ENV !== 'node') {
-      import('stackblur-canvas').then(StackBlur => {
-        this.setState({ StackBlur })
-      })
-    }
     this.loadImage(src)
   }
 
@@ -87,7 +83,6 @@ class Blur extends Component {
 
   loadImage(src) {
     const { onLoad } = this.props
-    // eslint-disable-next-line no-undef
     const sourceImage = new Image()
     sourceImage.onload = () => {
       this.drawImageFromScratch()
@@ -127,17 +122,14 @@ class Blur extends Component {
   blurImage(radius) {
     this.drawImage()
     const { offsetWidth, offsetHeight } = this.canvas.current
-    const { StackBlur } = this.state
-    if (StackBlur) {
-      StackBlur.canvasRGB(
-        this.canvas.current,
-        0,
-        0,
-        offsetWidth,
-        offsetHeight,
-        Math.round(radius)
-      )
-    }
+    StackBlur.canvasRGB(
+      this.canvas.current,
+      0,
+      0,
+      offsetWidth,
+      offsetHeight,
+      Math.round(radius)
+    )
   }
 
   drawImage() {
@@ -160,15 +152,11 @@ class Blur extends Component {
   }
 
   render() {
-    const { blur, ...restProps } = this.props
-    const { loaded, StackBlur } = this.state
+    const { _blur, ...restProps } = this.props
+    const { loaded } = this.state
     return (
       <React.Fragment>
-        <Canvas
-          loaded={loaded && !!StackBlur}
-          ref={this.canvas}
-          {...restProps}
-        />
+        <Canvas loaded={loaded} ref={this.canvas} {...restProps} />
         <OptimizedResize onResize={this.drawImageFromScratch} />
       </React.Fragment>
     )

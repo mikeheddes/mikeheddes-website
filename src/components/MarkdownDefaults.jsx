@@ -14,7 +14,7 @@ import Link from './Link'
 import Blockquote from './Blockquote'
 import Table from './Table'
 import Mark from './Mark'
-// import Image from './Image'
+import Image from './Image'
 
 export const wrapper = styled.div`
   ${fluidFont(18, 20)};
@@ -46,6 +46,9 @@ const span = props => {
   const { className } = props
   if (className === 'katex-display') {
     return <Math {...props} marginBottom="lg" marginTop="lg" />
+  }
+  if (className === 'gatsby-resp-image-wrapper') {
+    return <Image as="span" {...props} />
   }
   return <span {...props} />
 }
