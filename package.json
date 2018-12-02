@@ -1,13 +1,18 @@
 {
-  "name": "gatsby-starter-hello-world",
-  "description": "Gatsby hello world starter",
+  "name": "mikeheddes-website",
+  "author": "Mike Heddes",
+  "description": "My personal website",
+  "version": "2.2.0",
+  "homepage": "https://mikeheddes.nl",
+  "private": true,
   "license": "MIT",
   "scripts": {
     "develop": "gatsby develop",
     "start": "npm run develop",
     "build": "gatsby build",
-    "serve": "gatsby serve"
-  },
+    "serve": "gatsby serve",
+    "lint": "eslint src/**/*.{js,jsx}"
+},
   "dependencies": {
     "babel-plugin-styled-components": "^1.9.2",
     "gatsby": "^2.0.33",
