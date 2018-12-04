@@ -1,29 +1,55 @@
 import React from 'react'
+import { StaticQuery, graphql } from 'gatsby'
 
-import music from '../../content/music'
 import ContentHighlight from './'
 
-const latestMusic = Object.values(music).sort(
-  (a, b) => b.publishedAt - a.publishedAt
-)[0]
-
-const extraAction =
-  latestMusic.externalUrls &&
-  latestMusic.externalUrls.length > 0 &&
-  latestMusic.externalUrls[0]
+const query = graphql`
+  query latestMusic {
+    allMusicYaml(limit: 1, sort: { fields: [publishedAt], order: DESC }) {
+      edges {
+        node {
+          artist
+          title
+          image {
+            childImageSharp {
+              fluid(maxHeight: 400, quality: 100) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+          fields {
+            slug
+          }
+          externalUrls {
+            service
+            url
+          }
+        }
+      }
+    }
+  }
+`
 
 export default props => (
-  <ContentHighlight
-    {...props}
-    eyebrow="Latest music"
-    action={{ name: 'More info', url: latestMusic.url }}
-    image={latestMusic.imageCover}
-    title={latestMusic.title}
-    author={latestMusic.artist}
-    extraAction={
-      extraAction
-        ? { name: `Listen on ${extraAction.service}`, url: extraAction.url }
-        : undefined
-    }
+  <StaticQuery
+    query={query}
+    render={({ allMusicYaml: { edges } }) => (
+      <ContentHighlight
+        {...props}
+        eyebrow="Latest music"
+        action={{ name: 'More info', url: edges[0].node.fields.slug }}
+        image={edges[0].node.image.childImageSharp.fluid}
+        title={edges[0].node.title}
+        author={edges[0].node.artist}
+        extraAction={
+          edges[0].node.externalUrls.length > 0
+            ? {
+                name: `Listen on ${edges[0].node.externalUrls[0].service}`,
+                url: edges[0].node.externalUrls[0].url,
+              }
+            : undefined
+        }
+      />
+    )}
   />
 )

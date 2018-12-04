@@ -33,40 +33,40 @@ const highlighting = css`
 
   .token.entity,
   .token.symbol,
-  .token.number,
   .token.boolean,
   .token.constant,
   .token.property,
-  .token.inserted {
-    color: ${({ theme }) => theme.blue};
+  .token.inserted,
+  .token.atrule,
+  .token.attr-name,
+  .token.number,
+  .language-autohotkey .token.selector {
+    color: ${({ theme }) => theme.orange};
   }
 
   .token.url,
   .token.regex {
-    color: ${({ theme }) => theme.green};
+    color: ${({ theme }) => theme.blue};
   }
 
   .token.variable {
     color: ${({ theme }) => theme.yellow};
   }
 
-  .token.atrule,
-  .token.keyword,
-  .token.attr-name,
-  .language-autohotkey .token.selector {
-    color: ${({ theme }) => theme.pink};
+  .token.keyword {
+    color: ${({ theme }) => theme.purple};
   }
 
   .token.function,
   .token.deleted,
   .language-autohotkey .token.tag {
-    color: ${({ theme }) => theme.purple};
+    color: ${({ theme }) => theme.blue};
   }
 
   .token.tag,
   .token.selector,
   .language-autohotkey .token.keyword {
-    color: ${({ theme }) => theme.orange};
+    color: ${({ theme }) => theme.red};
   }
 
   .token.important,

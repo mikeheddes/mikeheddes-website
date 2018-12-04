@@ -4,7 +4,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import ContentHighlight from './'
 
 const query = graphql`
-  query latestContent {
+  query latestArticle {
     allMarkdownRemark(
       limit: 1
       sort: { fields: [frontmatter___publishedAt], order: DESC }
@@ -15,7 +15,7 @@ const query = graphql`
             title
             image {
               childImageSharp {
-                fluid(maxHeight: 400, quality: 80) {
+                fluid(maxHeight: 400, quality: 100) {
                   ...GatsbyImageSharpFluid_withWebp
                 }
               }

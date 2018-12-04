@@ -7,7 +7,6 @@ import { marginPropTypes, setMargin } from '../styles/space'
 const availableTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
 
 const Heading = styled.h1.attrs(props => ({ tag: props.as }))`
-  font-weight: 700;
   line-height: 1.13;
   color: ${({ theme }) => theme.heading};
   position: relative;
@@ -40,6 +39,7 @@ const Heading = styled.h1.attrs(props => ({ tag: props.as }))`
       font-size: 1.1875em;
       font-weight: 600;
       color: ${({ theme }) => fade(0.1, theme.heading)};
+      font-variation-settings: 'wght' 625;
     `};
 
   ${({ tag }) =>
@@ -48,13 +48,14 @@ const Heading = styled.h1.attrs(props => ({ tag: props.as }))`
       font-size: 1.09375em;
       font-weight: 600;
       color: ${({ theme }) => fade(0.2, theme.heading)};
+      font-variation-settings: 'wght' 650;
     `};
 
   ${({ tag }) =>
     tag === 'h6' &&
     css`
       font-size: 1em;
-      font-weight: 600;
+      font-weight: 700;
       color: ${({ theme }) => fade(0.3, theme.heading)};
     `};
 

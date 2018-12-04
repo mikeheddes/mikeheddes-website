@@ -2,10 +2,7 @@ const path = require('path')
 
 module.exports = {
   siteMetadata: {
-    title: `gatsby-example-using-remark`,
-    author: `@gatsbyjs`,
-    description: `Blazing fast modern site generator for React`,
-    homepage: `https://www.gatsbyjs.org`,
+    homepage: `https://mikeheddes.nl/`,
     defaultTheme: 'day',
   },
   mapping: {

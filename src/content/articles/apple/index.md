@@ -3,11 +3,11 @@ title: Apple to reportedly get its OLED displays from LG to reduce reliance on S
 authors:
   - Shannon Liao
 description: For the iPhone X and future iPhones with OLED displays
-image: ../../assets/appleOled.jpg
+image: ./appleOled.jpg
 imageMeta:
   credits: Photo by The Verge
 publishedAt: 2018-06-30
-theme: night
+theme: day
 color: pink
 ---
 
@@ -20,15 +20,17 @@ var foo = function(bar) {
   return bar++
 }
 
+const ceder = true;
+const regex = /someRegEx/;
+let setUp = 'JavaScript syntax highlighting';
+
 console.log(foo(5))
+
 ```
 
-```javascript
-var s = 'JavaScript syntax highlighting'
-alert(s)
-```
 
 ```python
+# Some Comment
 import numpy as np
 
 grade_with_weight = [
@@ -50,7 +52,6 @@ grade_with_weight = [
     (9, 30),  # semester 2
 ]
 
-# Some Comment
 grades, weights = zip(*grade_with_weight)
 
 print("Total credits: ", np.sum(weights))
@@ -156,8 +157,8 @@ Ordered
 2. Consectetur adipiscing elit
 3. Integer molestie lorem at massa
 
-1) You can use sequential numbers...
-1) ...or keep all the numbers as `1.`
+4) You can use sequential numbers...
+5) ...or keep all the numbers as `1.`
 
 Start numbering with offset:
 
@@ -168,7 +169,7 @@ Start numbering with offset:
 
 Default width and extra hight:
 
-![Grafity](../../assets/grafity.jpeg)
+![Grafity](./grafity.jpeg)
 
 ## Code
 

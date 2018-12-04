@@ -78,7 +78,12 @@ class Article extends Component {
 
   render() {
     const {
-      data: { markdownRemark: post },
+      data: {
+        markdownRemark: post,
+        site: {
+          siteMetadata: { homepage },
+        },
+      },
     } = this.props
     const {
       description,
@@ -86,7 +91,9 @@ class Article extends Component {
       publishedAt,
       updatedAt,
       authors,
-      image,
+      image: {
+        childImageSharp: { fluid: image },
+      },
       imageMeta,
     } = post.frontmatter
 
@@ -99,14 +106,8 @@ class Article extends Component {
             <meta name="description" content={description} />
             <meta property="og:title" content={title} />
             <meta property="og:description" content={description} />
-            {/* <meta
-                property="og:image"
-                content={WEBSITE_BASE + item.imageCover.toString()}
-                />
-                <meta
-                name="twitter:image"
-                content={WEBSITE_BASE + item.imageCover.toString()}
-            /> */}
+            <meta property="og:image" content={homepage + image.src} />
+            <meta name="twitter:image" content={homepage + image.src} />
           </Helmet>
           <HeaderWrapper>
             <Section paddingY={0}>
@@ -140,7 +141,7 @@ class Article extends Component {
             </Section>
             <div>
               <Image
-                fluid={image.childImageSharp.fluid}
+                fluid={image}
                 alt={imageMeta.title}
                 title={imageMeta.title}
                 shape="wide"
@@ -212,7 +213,7 @@ export const pageQuery = graphql`
         }
         image {
           childImageSharp {
-            fluid(maxHeight: 500, quality: 80) {
+            fluid(maxHeight: 500, quality: 100) {
               ...GatsbyImageSharpFluid_withWebp
             }
           }
@@ -221,6 +222,11 @@ export const pageQuery = graphql`
           title
           credits
         }
+      }
+    }
+    site {
+      siteMetadata {
+        homepage
       }
     }
   }

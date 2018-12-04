@@ -4,7 +4,7 @@ authors:
   - Mike Heddes
   - Niels Gräfe
 description: Minimize waiting for traffic lights
-image: ../../assets/ica-cover.jpg
+image: ./ica-cover.jpg
 imageMeta:
   title: Somewhere
   credits: Photo by Firdouss Ross on Unsplash
@@ -19,6 +19,8 @@ The algorithm has to work for a wide range of intersections to be able to deploy
 The first step is advising speed to (non)-autonomous vehicles driving towards an intersection.
 After that we’ll minimize the use of traffic lights and head towards a
 fluent flow of vehicles crossing intersections without traffic lights.
+
+[Introduction paper](./introduction-and-approach.pdf)
 
 ## Lane Score Algorithm
 
