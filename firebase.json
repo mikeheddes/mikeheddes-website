@@ -7,16 +7,7 @@
     ],
     "headers": [
       {
-        "source": "**/*.html",
-        "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "public, max-age=14400"
-          }
-        ]
-      },
-      {
-        "source": "**",
+        "source": "**/!(*.html)",
         "headers": [
           {
             "key": "Cache-Control",
