@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react'
-import Helmet from 'react-helmet'
 import { ThemeProvider } from 'styled-components'
 import { StaticQuery, graphql } from 'gatsby'
 
@@ -28,7 +27,6 @@ const query = graphql`
     site {
       siteMetadata {
         defaultTheme
-        homepage
       }
     }
   }
@@ -42,9 +40,8 @@ const Layout = ({ children, pageContext }) => (
         theme={getTheme(pageContext.theme, siteMetadata.defaultTheme)}
       >
         <Fragment>
-          <Helmet defaultTitle="Mike Heddes" titleTemplate="Mike Heddes | %s" />
           <GlobalStyles />
-          <MetaTags homepage={siteMetadata.homepage} />
+          <MetaTags />
           <Navigation />
           {children}
           <Footer />

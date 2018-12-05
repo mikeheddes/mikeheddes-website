@@ -2,7 +2,7 @@ const path = require('path')
 
 module.exports = {
   siteMetadata: {
-    homepage: `https://mikeheddes.nl/`,
+    homepage: `https://mikeheddes.nl`,
     defaultTheme: 'day',
   },
   mapping: {
@@ -66,7 +66,6 @@ module.exports = {
     `gatsby-transformer-yaml`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-catch-links`,
     `gatsby-plugin-styled-components`,
   ],
 }
