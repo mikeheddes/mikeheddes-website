@@ -17,9 +17,11 @@ const Banner = ({ children, eyebrow, actions }) => (
     {actions && (
       <LinkWrapper>
         {actions.map(link => (
-          <Link key={link.name} to={link.url} icon>
-            <ListItem>{link.name}</ListItem>
-          </Link>
+          <ListItem key={link.name}>
+            <Link to={link.url} icon>
+              {link.name}
+            </Link>
+          </ListItem>
         ))}
       </LinkWrapper>
     )}

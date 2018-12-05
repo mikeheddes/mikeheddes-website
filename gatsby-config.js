@@ -46,7 +46,12 @@ module.exports = {
               className: `autolink-header`,
             },
           },
-          `gatsby-remark-copy-linked-files`,
+          {
+            resolve: 'gatsby-remark-copy-linked-files',
+            options: {
+              destinationDir: 'static',
+            },
+          },
           {
             resolve: `gatsby-remark-images`,
             options: {

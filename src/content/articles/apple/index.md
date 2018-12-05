@@ -7,6 +7,7 @@ image: ./appleOled.jpg
 imageMeta:
   credits: Photo by The Verge
 publishedAt: 2018-06-30
+updatedAt: 2018-11-24
 theme: day
 color: pink
 ---
@@ -160,10 +161,15 @@ Ordered
 4) You can use sequential numbers...
 5) ...or keep all the numbers as `1.`
 
+
+- [ ] Buy an Apple
+- [x] Create this awesome checkbox
+
+
 Start numbering with offset:
 
-57. foo
-1. bar
+1.  foo
+2. bar
 
 ## Images
 

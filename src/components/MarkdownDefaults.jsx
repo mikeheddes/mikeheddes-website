@@ -15,6 +15,7 @@ import Blockquote from './Blockquote'
 import Table from './Table'
 import Mark from './Mark'
 import Image from './Image'
+import Checkbox from './Checkbox'
 
 export const wrapper = styled.div`
   ${fluidFont(18, 20)};
@@ -44,25 +45,34 @@ const AutoLinkHeader = styled.a`
 
 const span = props => {
   const { className } = props
+
   if (className === 'katex-display') {
     return <Math {...props} marginBottom="lg" marginTop="lg" />
   }
+
   if (className === 'gatsby-resp-image-wrapper') {
     return <Image as="span" {...props} />
   }
+
   return <span {...props} />
 }
 
 const handleAutoLinkHeaderClick = e => {
-  window.history.pushState({}, e.target.textContent, e.target.parentNode.href)
+  window.history.replaceState(
+    {},
+    e.target.textContent,
+    e.target.parentNode.href
+  )
   e.preventDefault()
 }
 
 const a = props => {
-  const { className, href, ...restProps } = props
+  const { className, href, icon, ...restProps } = props
+
   if (className === 'gatsby-resp-image-link') {
     return <a {...props} />
   }
+
   if (className === 'autolink-header') {
     return (
       <AutoLinkHeader
@@ -72,7 +82,38 @@ const a = props => {
       />
     )
   }
-  return <Link to={href} className={className} {...restProps} />
+
+  return <Link to={href} className={className} icon={!!icon} {...restProps} />
+}
+
+const input = props => {
+  const { type, ...restProps } = props
+
+  if (type === 'checkbox') {
+    return <Checkbox {...restProps} />
+  }
+
+  return <input {...props} />
+}
+
+const ListNoStyle = styled.li`
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+
+  & > input {
+    margin-right: 10px;
+  }
+`
+
+const li = props => {
+  const { className } = props
+
+  if (className === 'task-list-item') {
+    return <ListNoStyle {...props} />
+  }
+
+  return <li {...props} />
 }
 
 export default {
@@ -90,7 +131,6 @@ export default {
   h5: props => <Heading as="h5" marginBottom="sm" marginTop="xr" {...props} />,
   h6: props => <Heading as="h6" marginBottom="xs" marginTop="re" {...props} />,
   hr: props => <Divider marginTop="xl" marginBottom="xl" {...props} />,
-  // img: props => <Image marginBottom="md" marginTop="md" {...props} />,
   ol: props => <List as="ol" marginBottom="xr" marginTop="xr" {...props} />,
   p: props => <Paragraph marginBottom="xr" {...props} />,
   pre: props => <Preformatted marginBottom="xr" marginTop="xr" {...props} />,
@@ -98,5 +138,7 @@ export default {
   strong: Bold,
   table: props => <Table marginBottom="xr" marginTop="xr" {...props} />,
   ul: props => <List as="ul" marginBottom="xr" marginTop="xr" {...props} />,
+  input,
+  li,
   wrapper,
 }

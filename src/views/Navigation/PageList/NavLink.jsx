@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { transparentize as fade, timingFunctions as easeF } from 'polished'
 import { Link } from 'gatsby'
 
@@ -45,12 +45,7 @@ const NavigationLink = styled(Link)`
     }
   `};
 
-  ${({ active, theme }) =>
-    active &&
-    css`
-      color: ${fade(0.5, theme.heading)};
-    `}
-
+  &.active,
   &:active {
     color: ${({ theme }) => fade(0.5, theme.heading)};
   }

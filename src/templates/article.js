@@ -103,6 +103,14 @@ class Article extends Component {
         <article>
           <Helmet>
             <title>{title}</title>
+            <link
+              rel="stylesheet"
+              href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css"
+              type="text/css"
+              defer
+              integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y"
+              crossOrigin="anonymous"
+            />
             <meta name="description" content={description} />
             <meta property="og:title" content={title} />
             <meta property="og:description" content={description} />
@@ -136,6 +144,8 @@ class Article extends Component {
                       </i>
                     </Fragment>
                   )}
+                  {' | '}
+                  <i>~ {post.timeToRead} minutes long</i>
                 </InfoLine>
               </Box>
             </Section>
@@ -206,7 +216,8 @@ export const pageQuery = graphql`
       frontmatter {
         title
         color
-        publishedAt(formatString: "MMMM DD, YYYY")
+        publishedAt(formatString: "MMM D, YYYY")
+        updatedAt(formatString: "MMM D, YYYY")
         authors {
           id
           url

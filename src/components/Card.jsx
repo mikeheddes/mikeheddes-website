@@ -45,11 +45,10 @@ const Card = ({
   maxTitleLines,
   maxDescriptionLines,
   url,
-  preload,
 }) => (
-  <div onMouseEnter={preload}>
+  <div>
     <Link to={url} variant="none">
-      <Image src={image} shape={shape} />
+      <Image fluid={image} shape={shape} />
       <Title size={size} maxlines={maxTitleLines}>
         {title}
       </Title>
@@ -64,10 +63,9 @@ Card.propTypes = {
   title: PropTypes.string.isRequired,
   maxTitleLines: PropTypes.number,
   maxDescriptionLines: PropTypes.number,
-  image: PropTypes.string.isRequired,
+  image: PropTypes.object.isRequired,
   size: PropTypes.oneOf(['re', 'md']),
   children: PropTypes.node,
-  preload: PropTypes.func,
   url: PropTypes.string.isRequired,
   shape: PropTypes.string,
 }
@@ -76,7 +74,6 @@ Card.defaultProps = {
   maxTitleLines: 2,
   maxDescriptionLines: 3,
   children: null,
-  preload: undefined,
   size: 're',
   shape: 'screen',
 }

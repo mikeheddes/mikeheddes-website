@@ -36,12 +36,7 @@ const ContentGrid = ({ content, children, title, columns }) => (
 )
 
 ContentGrid.propTypes = {
-  content: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      id: PropTypes.string.isRequired,
-    })
-  ),
+  content: PropTypes.arrayOf(PropTypes.object),
   children: PropTypes.func.isRequired,
   title: PropTypes.string,
   columns: PropTypes.oneOfType([

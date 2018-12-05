@@ -20,7 +20,11 @@ The first step is advising speed to (non)-autonomous vehicles driving towards an
 After that we’ll minimize the use of traffic lights and head towards a
 fluent flow of vehicles crossing intersections without traffic lights.
 
-[Introduction paper](./introduction-and-approach.pdf)
+<!--
+href will include file in static folder
+need target self because it is not a react app page
+ -->
+<a href="./introduction-and-approach.pdf" target="self" icon="true">Introduction paper</a>
 
 ## Lane Score Algorithm
 

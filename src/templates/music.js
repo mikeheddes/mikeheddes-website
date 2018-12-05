@@ -28,31 +28,36 @@ const Main = styled(Section)`
 
 class MusicItem extends Component {
   static propTypes = {
-    theme: PropTypes.shape({
-      setTheme: PropTypes.func.isRequired,
-      setDefaultTheme: PropTypes.func.isRequired,
-    }).isRequired,
-    color: PropTypes.string,
-    title: PropTypes.string.isRequired,
-    publishedAt: PropTypes.string.isRequired,
-    image: PropTypes.object.isRequired,
-    artist: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    description: PropTypes.string,
-    license: PropTypes.string,
-    tracks: PropTypes.arrayOf(
-      PropTypes.shape({
-        artist: PropTypes.string,
+    data: PropTypes.shape({
+      musicYaml: PropTypes.shape({
+        color: PropTypes.string,
         title: PropTypes.string.isRequired,
-        duration: PropTypes.number.isRequired,
-      })
-    ).isRequired,
-    externalUrls: PropTypes.arrayOf(
-      PropTypes.shape({
-        service: PropTypes.string.isRequired,
-        url: PropTypes.string.isRequired,
-      })
-    ),
+        publishedAt: PropTypes.string.isRequired,
+        image: PropTypes.object.isRequired,
+        artist: PropTypes.string.isRequired,
+        genre: PropTypes.string.isRequired,
+        description: PropTypes.string,
+        license: PropTypes.string,
+        tracks: PropTypes.arrayOf(
+          PropTypes.shape({
+            artist: PropTypes.string,
+            title: PropTypes.string.isRequired,
+            duration: PropTypes.number.isRequired,
+          })
+        ).isRequired,
+        externalUrls: PropTypes.arrayOf(
+          PropTypes.shape({
+            service: PropTypes.string.isRequired,
+            url: PropTypes.string.isRequired,
+          })
+        ),
+      }).isRequired,
+      site: PropTypes.shape({
+        siteMetadata: PropTypes.shape({
+          homepage: PropTypes.string.isRequired,
+        }).isRequired,
+      }).isRequired,
+    }).isRequired,
   }
 
   static defaultProps = {
@@ -60,7 +65,11 @@ class MusicItem extends Component {
   }
 
   setTheme = theme => {
-    const { color } = this.props
+    const {
+      data: {
+        musicYaml: { color },
+      },
+    } = this.props
     const themeColor = color || 'pink'
     return {
       ...theme,

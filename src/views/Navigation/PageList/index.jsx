@@ -1,4 +1,3 @@
-/* eslint react/prop-types: 0 */
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
@@ -52,7 +51,9 @@ const PageList = React.forwardRef(({ isOpen, setHeight, onClick }, ref) => (
             opacity,
           }}
         >
-          <NavLink to={to}>{title}</NavLink>
+          <NavLink to={to} activeClassName="active">
+            {title}
+          </NavLink>
         </ListItem>
       )}
     </ListAnimation>

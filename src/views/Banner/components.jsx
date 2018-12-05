@@ -71,17 +71,8 @@ export const Link = styled(Anchor)`
   padding: ${space.re} ${space.xr};
   width: calc(66.67vw - ${spaceNumbers.md + spaceNumbers.re / 2}px);
   background-color: ${({ theme }) => darken(0.03, theme.surface)};
-  margin-right: ${space.re};
   border-radius: ${radius.md};
   color: ${({ theme }) => theme.link};
-
-  &:first-of-type {
-    margin-left: ${space.md};
-  }
-
-  &:last-of-type {
-    margin-right: ${space.md};
-  }
 
   &:active {
     color: ${({ theme }) => fade(0.5, theme.link)};
@@ -90,16 +81,7 @@ export const Link = styled(Anchor)`
   ${media.sm`
     padding: 0;
     width: auto;
-    margin: 0 ${space.xr};
     background-color: transparent;
-
-    &:first-of-type {
-      margin-left: 0;
-    }
-
-    &:last-of-type {
-      margin-right: 0;
-    }
   `};
 `
 
@@ -110,8 +92,28 @@ export const ListItem = styled.li`
   word-wrap: normal;
   display: inline-block;
   text-decoration: inherit;
+  margin-right: ${space.re};
+
+  &:first-of-type {
+    margin-left: ${space.md};
+  }
+
+  &:last-of-type {
+    margin-right: ${space.md};
+  }
 
   ${media.sm`
     max-width: none;
+    margin: 0 ${space.xr};
+    background-color: transparent;
+
+    &:first-of-type {
+      margin-left: 0;
+    }
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+
   `};
 `
