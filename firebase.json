@@ -3,18 +3,16 @@
     "public": "public",
     "cleanUrls": true,
     "trailingSlash": false,
-    "hosting": {
-      "headers": [
-        {
-          "source": "**/*.@(jpg|jpeg|gif|png|webp|js)",
-          "headers": [
-            {
-              "key": "Cache-Control",
-              "value": "max-age=31536000"
-            }
-          ]
-        }
-      ]
-    }
+    "headers": [
+      {
+        "source": "**/*.@(jpg|jpeg|gif|png|webp|js)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=31536000"
+          }
+        ]
+      }
+    ]
   }
 }
