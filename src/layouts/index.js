@@ -7,6 +7,7 @@ import Navigation from '../views/Navigation'
 import Footer from '../views/Footer'
 import GlobalStyles from '../styles/Global'
 import { DAY, NIGHT } from '../styles/color'
+import MetaTags from '../components/MetaTags'
 
 const themeLookup = {
   DAY,
@@ -27,6 +28,7 @@ const query = graphql`
     site {
       siteMetadata {
         defaultTheme
+        homepage
       }
     }
   }
@@ -35,22 +37,14 @@ const query = graphql`
 const Layout = ({ children, pageContext }) => (
   <StaticQuery
     query={query}
-    render={({ site }) => (
+    render={({ site: { siteMetadata } }) => (
       <ThemeProvider
-        theme={getTheme(pageContext.theme, site.siteMetadata.defaultTheme)}
+        theme={getTheme(pageContext.theme, siteMetadata.defaultTheme)}
       >
         <Fragment>
-          <Helmet defaultTitle="Mike Heddes" titleTemplate="Mike Heddes | %s">
-            <link
-              rel="stylesheet"
-              href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css"
-              type="text/css"
-              defer
-              integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y"
-              crossOrigin="anonymous"
-            />
-          </Helmet>
+          <Helmet defaultTitle="Mike Heddes" titleTemplate="Mike Heddes | %s" />
           <GlobalStyles />
+          <MetaTags homepage={siteMetadata.homepage} />
           <Navigation />
           {children}
           <Footer />

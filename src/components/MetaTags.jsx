@@ -10,10 +10,11 @@ import { withTheme } from 'styled-components'
 const description =
   'My personal website. Here I host my projects, research and music'
 
-const MetaTags = ({ theme }) => (
+const MetaTags = ({ theme, homepage }) => (
   <Helmet>
-    {/* <link rel="canonical" href={WEBSITE_BASE} />
-      <link rel="shortcut icon" href={WEBSITE_BASE + favicon.toString()} />
+    <html lang="en" />
+    <link rel="canonical" href={homepage} />
+    {/* <link rel="shortcut icon" href={WEBSITE_BASE + favicon.toString()} />
       {favicon.images.map(({ width, height, path }) => (
       <link
         key={width}
@@ -32,7 +33,7 @@ const MetaTags = ({ theme }) => (
         href={WEBSITE_BASE + path}
       />
     ))} */}
-    <meta name="keyWords" content={description} />
+    <meta name="keywords" content="coding, design, music, research" />
     <meta name="description" content={description} />
     <meta name="application-name" content="Mike Heddes" />
     <meta name="robots" content="index, follow" />
@@ -46,7 +47,7 @@ const MetaTags = ({ theme }) => (
     <meta httpEquiv="content-language" content="en" />
     <meta property="og:title" content="Mike Heddes" />
     <meta property="og:description" content={description} />
-    {/* <meta property="og:url" content={WEBSITE_BASE} /> */}
+    <meta property="og:url" content={homepage} />
     <meta property="og:locale" content="en_US" />
     {/* <meta
       property="og:image"
@@ -61,14 +62,14 @@ const MetaTags = ({ theme }) => (
       name="twitter:image"
       content={WEBSITE_BASE + openGraphLogo.toString()}
     /> */}
-    <meta name="twitter:domain" content="mikeheddes.nl" />
+    <meta name="twitter:domain" content={homepage} />
     <meta name="theme-color" content={theme.backgroundColor} />
     <script type="application/ld+json">
       {`{
         "@context": "http://schema.org",
         "@type": "Person",
         "name": "Mike Heddes",
-        "url": "https://mikeheddes.nl",
+        "url": "${homepage}",
         "sameAs": [
           "https://facebook.com/djmikeheddes",
           "https://instagram.com/mikeheddes",
@@ -83,8 +84,8 @@ const MetaTags = ({ theme }) => (
 )
 
 MetaTags.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
   theme: PropTypes.object.isRequired,
+  homepage: PropTypes.string.isRequired,
 }
 
 export default withTheme(MetaTags)
