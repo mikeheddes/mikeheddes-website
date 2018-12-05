@@ -15,6 +15,9 @@ const query = graphql`
               fluid(maxHeight: 400, quality: 100) {
                 ...GatsbyImageSharpFluid_withWebp
               }
+              fixed(width: 120, quality: 50) {
+                src
+              }
             }
           }
           fields {
@@ -33,19 +36,24 @@ const query = graphql`
 export default props => (
   <StaticQuery
     query={query}
-    render={({ allMusicYaml: { edges } }) => (
+    render={({
+      allMusicYaml: {
+        edges: [{ node }],
+      },
+    }) => (
       <ContentHighlight
         {...props}
         eyebrow="Latest music"
-        action={{ name: 'More info', url: edges[0].node.fields.slug }}
-        image={edges[0].node.image.childImageSharp.fluid}
-        title={edges[0].node.title}
-        author={edges[0].node.artist}
+        action={{ name: 'More info', url: node.fields.slug }}
+        image={node.image.childImageSharp.fluid}
+        blurImage={node.image.childImageSharp.fixed.src}
+        title={node.title}
+        author={node.artist}
         extraAction={
-          edges[0].node.externalUrls.length > 0
+          node.externalUrls.length > 0
             ? {
-                name: `Listen on ${edges[0].node.externalUrls[0].service}`,
-                url: edges[0].node.externalUrls[0].url,
+                name: `Listen on ${node.externalUrls[0].service}`,
+                url: node.externalUrls[0].url,
               }
             : undefined
         }

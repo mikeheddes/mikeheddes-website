@@ -24,7 +24,7 @@ const ContentHighlight = ({
   extraAction,
   eyebrow,
   image,
-  preload,
+  blurImage,
   title,
 }) => (
   <ThemeProvider theme={setTheme}>
@@ -32,10 +32,9 @@ const ContentHighlight = ({
       marginTop={marginTop}
       marginBottom={marginBottom}
       position="relative"
-      onMouseEnter={preload}
       color="surface"
     >
-      <Blur src={image.src} base64={image.base64} opacity={0.6} />
+      <Blur src={blurImage || image.src} base64={image.base64} opacity={0.6} />
       <Box
         marginLeft="auto"
         marginRight="auto"
@@ -68,6 +67,7 @@ ContentHighlight.propTypes = {
   }),
   eyebrow: PropTypes.node,
   image: PropTypes.object.isRequired,
+  blurImage: PropTypes.string,
   title: PropTypes.node.isRequired,
   preload: PropTypes.func,
   ...marginPropTypes,

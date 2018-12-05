@@ -18,6 +18,9 @@ const query = graphql`
                 fluid(maxHeight: 400, quality: 100) {
                   ...GatsbyImageSharpFluid_withWebp
                 }
+                fixed(width: 120, quality: 50) {
+                  src
+                }
               }
             }
           }
@@ -33,13 +36,18 @@ const query = graphql`
 export default props => (
   <StaticQuery
     query={query}
-    render={({ allMarkdownRemark: { edges } }) => (
+    render={({
+      allMarkdownRemark: {
+        edges: [{ node }],
+      },
+    }) => (
       <ContentHighlight
         {...props}
         eyebrow="Latest article"
-        action={{ name: 'Read article', url: edges[0].node.fields.slug }}
-        image={edges[0].node.frontmatter.image.childImageSharp.fluid}
-        title={edges[0].node.frontmatter.title}
+        action={{ name: 'Read article', url: node.fields.slug }}
+        image={node.frontmatter.image.childImageSharp.fluid}
+        blurImage={node.frontmatter.image.childImageSharp.fixed.src}
+        title={node.frontmatter.title}
       />
     )}
   />
