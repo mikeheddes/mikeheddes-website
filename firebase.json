@@ -1,11 +1,22 @@
 {
   "hosting": {
     "public": "public",
-    "cleanUrls": true,
-    "trailingSlash": false,
+    "ignore": [
+      ".*",
+      "**/node_modules/**"
+    ],
     "headers": [
       {
-        "source": "**/*.@(jpg|jpeg|gif|png|webp|js)",
+        "source": "**/*.html",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=14400"
+          }
+        ]
+      },
+      {
+        "source": "**",
         "headers": [
           {
             "key": "Cache-Control",
@@ -13,6 +24,8 @@
           }
         ]
       }
-    ]
+    ],
+    "cleanUrls": true,
+    "trailingSlash": false
   }
 }
