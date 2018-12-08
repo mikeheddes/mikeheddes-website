@@ -16,6 +16,7 @@ import Table from './Table'
 import Mark from './Mark'
 import Image from './Image'
 import Checkbox from './Checkbox'
+import Video from './Video'
 
 export const wrapper = styled.div`
   ${fluidFont(18, 20)};
@@ -120,6 +121,9 @@ export default {
   span,
   a,
   mark: Mark,
+  video: props => (
+    <Video marginBottom="xr" marginLeft="auto" marginRight="auto" {...props} />
+  ),
   blockquote: props => (
     <Blockquote marginBottom="md" marginTop="md" {...props} />
   ),
@@ -130,7 +134,13 @@ export default {
   h4: props => <Heading as="h4" marginBottom="sm" marginTop="md" {...props} />,
   h5: props => <Heading as="h5" marginBottom="sm" marginTop="xr" {...props} />,
   h6: props => <Heading as="h6" marginBottom="xs" marginTop="re" {...props} />,
-  hr: props => <Divider marginTop="xl" marginBottom="xl" {...props} />,
+  hr: props => (
+    <Divider
+      marginTop={{ xs: 'lg', md: 'xl' }}
+      marginBottom={{ xs: 'lg', md: 'xl' }}
+      {...props}
+    />
+  ),
   ol: props => <List as="ol" marginBottom="xr" marginTop="xr" {...props} />,
   p: props => <Paragraph marginBottom="xr" {...props} />,
   pre: props => <Preformatted marginBottom="xr" marginTop="xr" {...props} />,
