@@ -31,8 +31,13 @@ const ratioLookup = {
 const Wrapper = styled(Img)`
   overflow: hidden;
   max-width: 100% !important;
+  z-index: 0;
   ${({ depth }) => depth && `box-shadow: ${DEPTH[depth]};`};
   ${setMargin};
+
+  & img {
+    z-index: 1;
+  }
 
   ${({ border, radius, hasCapton, theme }) =>
     border &&

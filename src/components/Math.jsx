@@ -3,9 +3,12 @@ import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 
 import space, { marginPropTypes, setMargin } from '../styles/space'
+import { media } from '../styles/breakpoints'
 
 const StyledMath = styled.div`
   && {
+    overflow: auto;
+
     ${({ inline }) =>
       !inline &&
       css`
@@ -16,7 +19,11 @@ const StyledMath = styled.div`
         & + & {
           margin-top: -${space.xr};
         }
-      `}
+      `};
+
+    ${media.sm`
+      overflow: visible;
+    `};
   }
 `
 
