@@ -86,6 +86,9 @@ class Article extends Component {
       },
     } = this.props
     const {
+      fields: { slug },
+    } = post
+    const {
       description,
       title,
       publishedAt,
@@ -191,7 +194,7 @@ class Article extends Component {
                   {`${copiedUrl ? 'Copied' : 'Copy'} article URL`}
                 </Button>
                 <Link
-                  to={`https://github.com/mikeheddes/mikeheddes-website/blob/master/src/content/articles/`}
+                  to={`https://github.com/mikeheddes/mikeheddes-website/blob/master/src/content/${slug}/index.md`}
                   variant="button"
                 >
                   Edit on GitHub
@@ -213,9 +216,13 @@ export const pageQuery = graphql`
       htmlAst
       timeToRead
       tableOfContents
+      fields {
+        slug
+      }
       frontmatter {
         title
         color
+        description
         publishedAt(formatString: "MMM D, YYYY")
         updatedAt(formatString: "MMM D, YYYY")
         authors {
@@ -224,7 +231,7 @@ export const pageQuery = graphql`
         }
         image {
           childImageSharp {
-            fluid(maxHeight: 500, quality: 100) {
+            fluid(maxHeight: 900, quality: 100) {
               ...GatsbyImageSharpFluid_withWebp
             }
           }
