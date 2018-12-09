@@ -25,6 +25,7 @@ fluent flow of vehicles crossing intersections without traffic lights.
 
 <video width="400" controls>
   <source src="./simulation-now.mp4" type="video/mp4" />
+  <source src="./simulation-now.mov" type="video/quicktime" />
   Your browser does not support the video tag.
 </video>
 
@@ -32,6 +33,7 @@ fluent flow of vehicles crossing intersections without traffic lights.
 
 <video width="400" controls>
   <source src="./simulation-future.mp4" type="video/mp4" />
+  <source src="./simulation-future.mov" type="video/quicktime" />
   Your browser does not support the video tag.
 </video>
 
@@ -52,6 +54,7 @@ The video below is the first implementation of the score algorithm. The score of
 
 <video controls>
   <source src="./score.mp4" type="video/mp4" />
+  <source src="./score.mov" type="video/quicktime" />
   Your browser does not support the video tag.
 </video>
 
@@ -111,6 +114,7 @@ Iteration 1: **First simulation**
 
 <video controls>
   <source src="./simulation_1.mp4" type="video/mp4" />
+  <source src="./simulation_1.mov" type="video/quicktime" />
   Your browser does not support the video tag.
 </video>
 
@@ -122,6 +126,7 @@ Iteration 2: **Changed notification distance**
 
 <video controls>
   <source src="./simulation_2.mp4" type="video/mp4" />
+  <source src="./simulation_2.mov" type="video/quicktime" />
   Your browser does not support the video tag.
 </video>
 
@@ -133,6 +138,7 @@ Iteration 3: **Algorithms combined**
 
 <video controls>
   <source src="./simulation_3.mp4" type="video/mp4" />
+  <source src="./simulation_3.mov" type="video/quicktime" />
   Your browser does not support the video tag.
 </video>
 
