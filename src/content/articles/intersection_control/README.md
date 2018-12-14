@@ -24,16 +24,14 @@ fluent flow of vehicles crossing intersections without traffic lights.
 **Now** the blue vehicle has to stop to avoid the pink vehicle.
 
 <video width="400" controls>
-  <source src="./simulation-now.mp4" type="video/mp4" />
-  <source src="./simulation-now.mov" type="video/quicktime" />
+  <source src="https://firebasestorage.googleapis.com/v0/b/project-1236391238174251673.appspot.com/o/videos%2Fsimulation-now.mp4?alt=media&token=63e07174-5aec-4e7f-937a-c48244de245f" type="video/mp4" />
   Your browser does not support the video tag.
 </video>
 
 **Future** vehicles receive a suggested speed so they don’t have to stop.
 
 <video width="400" controls>
-  <source src="./simulation-future.mp4" type="video/mp4" />
-  <source src="./simulation-future.mov" type="video/quicktime" />
+  <source src="https://firebasestorage.googleapis.com/v0/b/project-1236391238174251673.appspot.com/o/videos%2Fsimulation-future.mp4?alt=media&token=9f72d621-495a-45ee-b577-790852589cf8" type="video/mp4" />
   Your browser does not support the video tag.
 </video>
 
@@ -53,8 +51,7 @@ In order to give each lane a priority score the intersection communicates with t
 The video below is the first implementation of the score algorithm. The score of each lane is shown at the bottom right. The traffic lights are still switching at predetermined intervals but are now switching to the lane with the highest priority score. The next version will calculate the priority score for each lane a couple of seconds a head. That is needed to be able to give each vehicle the correct advice speed.
 
 <video controls>
-  <source src="./score.mp4" type="video/mp4" />
-  <source src="./score.mov" type="video/quicktime" />
+  <source src="https://firebasestorage.googleapis.com/v0/b/project-1236391238174251673.appspot.com/o/videos%2Fscore.mp4?alt=media&token=3720a090-cce7-48d1-8a8f-831acb6b3b61" type="video/mp4" />
   Your browser does not support the video tag.
 </video>
 
@@ -113,8 +110,7 @@ simulation in real time. For more information see the [SUMO wiki page](http://su
 Iteration 1: **First simulation**
 
 <video controls>
-  <source src="./simulation_1.mp4" type="video/mp4" />
-  <source src="./simulation_1.mov" type="video/quicktime" />
+  <source src="https://firebasestorage.googleapis.com/v0/b/project-1236391238174251673.appspot.com/o/videos%2Fsimulation_1.mp4?alt=media&token=82b37836-118e-4c17-a4f5-59668d4092d5" type="video/mp4" />
   Your browser does not support the video tag.
 </video>
 
@@ -125,8 +121,7 @@ The first simulation takes place at a basic intersection. All vehicles spawn ran
 Iteration 2: **Changed notification distance**
 
 <video controls>
-  <source src="./simulation_2.mp4" type="video/mp4" />
-  <source src="./simulation_2.mov" type="video/quicktime" />
+  <source src="https://firebasestorage.googleapis.com/v0/b/project-1236391238174251673.appspot.com/o/videos%2Fsimulation_2.mp4?alt=media&token=da164019-5df3-4dfb-ba56-c9207038c13d" type="video/mp4" />
   Your browser does not support the video tag.
 </video>
 
@@ -137,8 +132,7 @@ The simulation now takes in account the amount and length of the vehicles in fro
 Iteration 3: **Algorithms combined**
 
 <video controls>
-  <source src="./simulation_3.mp4" type="video/mp4" />
-  <source src="./simulation_3.mov" type="video/quicktime" />
+  <source src="https://firebasestorage.googleapis.com/v0/b/project-1236391238174251673.appspot.com/o/videos%2Fsimulation_3.mp4?alt=media&token=b85df9ad-b281-44a4-bf17-a5c2e144df03" type="video/mp4" />
   Your browser does not support the video tag.
 </video>
 
