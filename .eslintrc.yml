@@ -3,7 +3,6 @@ extends:
   - plugin:prettier/recommended
   - prettier/react
 plugins:
-  - prettier
   - react
 parser:
   babel-eslint

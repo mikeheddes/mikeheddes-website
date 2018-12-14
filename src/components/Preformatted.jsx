@@ -5,7 +5,7 @@ import { radius, fonts } from '../styles'
 import { marginPropTypes, setMargin } from '../styles/space'
 
 const Preformatted = styled.pre`
-  background-color: ${({ theme }) => fade(0.25, theme.surface)};
+  border: 2px solid ${({ theme }) => fade(0.25, theme.surface)};
   ${fonts.mono};
   line-height: 1.25;
   border-radius: ${radius.md};
