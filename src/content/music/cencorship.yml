@@ -1,0 +1,18 @@
+artist: Mike Heddes
+title: Cencorship
+color: red
+theme: night
+publishedAt: 2017-05-05
+image: ../../assets/censorship.jpg
+genre: Dance
+description:
+license: 2017 Mike Heddes
+tracks:
+  - artist: Mike Heddes
+    title: Censorship
+    duration: 178000
+externalUrls:
+  - service: YouTube
+    url: https://youtu.be/UELp8TU1LI8
+  - service: SoundCloud
+    url: https://soundcloud.com/mikeheddes/censorship

@@ -1,0 +1,22 @@
+artist: Mike Heddes
+title: Losing Focus
+color: pink
+theme: day
+publishedAt: 2016-08-21
+image: ../../assets/losing_focus.jpg
+genre: Dance
+description:
+license: 2016 Mike Heddes
+tracks:
+  - artist: Mike Heddes
+    title: Losing Focus
+    duration: 277000
+externalUrls:
+  - service: Apple Music
+    url: https://itunes.apple.com/nl/album/losing-focus/1185471946?i=1185471956
+  - service: Spotify
+    url: https://open.spotify.com/track/0sAvK5xHNVcpkUDuDEHwW3?si=cKsz3C_9Q_63WXWCrUT0xQ
+  - service: YouTube
+    url: https://youtu.be/NcRE9Pefq0M
+  - service: SoundCloud
+    url: https://soundcloud.com/mikeheddes/losingfocus
