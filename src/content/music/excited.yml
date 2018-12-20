@@ -1,0 +1,18 @@
+artist: Mike Heddes
+title: Excited
+color: yellow
+theme: day
+publishedAt: 2016-03-14
+image: ../../assets/excited.jpg
+genre: Dance
+description:
+license: 2016 Mike Heddes
+tracks:
+  - artist: Mike Heddes
+    title: Excited
+    duration: 264000
+externalUrls:
+  - service: YouTube
+    url: https://youtu.be/MxqFutVj8O4
+  - service: SoundCloud
+    url: https://soundcloud.com/mikeheddes/excited

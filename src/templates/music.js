@@ -171,9 +171,9 @@ class MusicItem extends Component {
               </LinkListWrapper>
               <TrackTable tracks={tracks} artist={artist} />
               <AlbumInfo>
-                {`${tracks.length} tracks, ${this.albumTotalMinutes(
-                  tracks
-                )} minutes`}
+                {`${tracks.length} track${
+                  tracks.length > 1 ? 's' : ''
+                }, ${this.albumTotalMinutes(tracks)} minutes`}
               </AlbumInfo>
               {license && <Pline>{`Ⓟ ${license}`}</Pline>}
             </Box>
