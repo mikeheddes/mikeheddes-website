@@ -14,7 +14,7 @@ const Heading = styled.h1.attrs(props => ({ tag: props.as }))`
   ${({ tag }) =>
     tag === 'h1' &&
     css`
-      font-size: 2.5em;
+      font-size: 2.1em;
       line-height: 1.0625;
       font-weight: 700;
     `};
@@ -22,15 +22,16 @@ const Heading = styled.h1.attrs(props => ({ tag: props.as }))`
   ${({ tag }) =>
     tag === 'h2' &&
     css`
-      font-size: 1.75em;
-      font-weight: 700;
+      font-size: 1.563em;
+      font-weight: 600;
     `};
 
   ${({ tag }) =>
     tag === 'h3' &&
     css`
-      font-size: 1.375em;
+      font-size: 1.25em;
       font-weight: 700;
+      font-variation-settings: 'wght' 650;
     `};
 
   ${({ tag }) =>

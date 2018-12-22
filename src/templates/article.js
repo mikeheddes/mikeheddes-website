@@ -177,28 +177,32 @@ class Article extends Component {
               <Box
                 marginTop={{ xs: 'xm', sm: 'lg' }}
                 textAlign="center"
-                justifyContent="center"
                 aria-hidden="true"
-                display={{ xs: 'none', sm: 'flex' }}
+                display={{ xs: 'none', sm: 'block' }}
                 color="surface"
                 paddingX="xm"
                 paddingY="lg"
                 shape="rounded"
                 radius="lg"
               >
-                <Button
-                  variant="primary"
-                  onClick={this.copyPageUrl}
-                  marginRight="xr"
-                >
-                  {`${copiedUrl ? 'Copied' : 'Copy'} article URL`}
-                </Button>
-                <Link
-                  to={`https://github.com/mikeheddes/mikeheddes-website/blob/master/src/content/${slug}`}
-                  variant="button"
-                >
-                  Edit on GitHub
-                </Link>
+                {/* TODO add appendix <Box marginBottom="xm">
+                  Hello
+                </Box> */}
+                <Box>
+                  <Button
+                    variant="primary"
+                    onClick={this.copyPageUrl}
+                    marginRight="xr"
+                  >
+                    {`${copiedUrl ? 'Copied' : 'Copy'} article URL`}
+                  </Button>
+                  <Link
+                    to={`https://github.com/mikeheddes/mikeheddes-website/blob/master/src/content/${slug}`}
+                    variant="button"
+                  >
+                    Edit on GitHub
+                  </Link>
+                </Box>
               </Box>
             </Box>
           </Section>
