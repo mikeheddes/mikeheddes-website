@@ -47,11 +47,12 @@ export const Description = styled.p`
   `};
 `
 
-export const InfoLine = styled.div`
+export const InfoLine = styled.p`
   ${fluidFont(14, 17)};
   font-weight: 400;
   color: ${({ theme }) => theme.textSubtle};
   margin-bottom: ${space.re};
+  line-height: 1.4;
 
   ${media.md`
     margin-bottom: ${space.md};

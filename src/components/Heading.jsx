@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components'
 import { transparentize as fade } from 'polished'
 
 import { marginPropTypes, setMargin } from '../styles/space'
+import { fluidValue } from '../styles/mixins'
 
 const availableTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
 
@@ -14,7 +15,7 @@ const Heading = styled.h1.attrs(props => ({ tag: props.as }))`
   ${({ tag }) =>
     tag === 'h1' &&
     css`
-      font-size: 2.1em;
+      ${fluidValue(1.75, 2.1, 'font-size', 'em')};
       line-height: 1.0625;
       font-weight: 700;
     `};
@@ -22,14 +23,14 @@ const Heading = styled.h1.attrs(props => ({ tag: props.as }))`
   ${({ tag }) =>
     tag === 'h2' &&
     css`
-      font-size: 1.563em;
+      ${fluidValue(1.323, 1.563, 'font-size', 'em')};
       font-weight: 600;
     `};
 
   ${({ tag }) =>
     tag === 'h3' &&
     css`
-      font-size: 1.25em;
+      ${fluidValue(1.15, 1.25, 'font-size', 'em')};
       font-weight: 700;
       font-variation-settings: 'wght' 650;
     `};
@@ -37,7 +38,7 @@ const Heading = styled.h1.attrs(props => ({ tag: props.as }))`
   ${({ tag }) =>
     tag === 'h4' &&
     css`
-      font-size: 1.1875em;
+      ${fluidValue(1.05, 1.1875, 'font-size', 'em')};
       font-weight: 600;
       color: ${({ theme }) => fade(0.1, theme.heading)};
       font-variation-settings: 'wght' 625;
@@ -46,7 +47,7 @@ const Heading = styled.h1.attrs(props => ({ tag: props.as }))`
   ${({ tag }) =>
     tag === 'h5' &&
     css`
-      font-size: 1.09375em;
+      ${fluidValue(1, 1.09375, 'font-size', 'em')};
       font-weight: 600;
       color: ${({ theme }) => fade(0.2, theme.heading)};
       font-variation-settings: 'wght' 650;
