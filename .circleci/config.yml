@@ -96,10 +96,7 @@ workflows:
   main:
     jobs:
       - Checks
-      - Build:
-          filters:
-            branches:
-              only: master
+      - Build
       - Deploy:
           requires:
             - Build

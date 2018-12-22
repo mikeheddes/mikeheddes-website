@@ -8,7 +8,8 @@ image: ./ica-cover.jpg
 imageMeta:
   title: Aerial view of a crossroad in Shah Alam, Malaysia
   credits: Photo by Firdouss Ross on Unsplash
-publishedAt: 2018-01-08
+publishedAt: 2017-09-20
+updatedAt: 2018-01-08
 theme: day
 color: red
 ---
