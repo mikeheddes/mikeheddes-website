@@ -10,7 +10,7 @@ const Checkbox = styled.input.attrs({ type: 'checkbox' })`
   display: inline-block;
   border-radius: ${radius.sm};
   border: 2px solid ${({ theme }) => theme.link};
-  background-color: ${({ theme }) => theme.surface};
+  background-color: ${({ theme }) => theme.background};
   transition: background-color 125ms ease-out;
 
   &:after {
