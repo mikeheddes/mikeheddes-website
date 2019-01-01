@@ -11,6 +11,7 @@ const Wrapper = styled.ul`
   white-space: nowrap;
   display: block;
   overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
   text-align: ${({ textAlign }) => textAlign};
 
   &::-webkit-scrollbar {
