@@ -17,6 +17,7 @@ import Mark from './Mark'
 import Image from './Image'
 import Checkbox from './Checkbox'
 import Video from './Video'
+import Figcaption from './Figcaption'
 
 export const wrapper = styled.div`
   ${fluidFont(18, 20)};
@@ -150,5 +151,8 @@ export default {
   ul: props => <List as="ul" marginBottom="xr" marginTop="xr" {...props} />,
   input,
   li,
+  figcaption: props => (
+    <Figcaption css={'; margin-top: -15px;'} marginBottom="md" {...props} />
+  ),
   wrapper,
 }
