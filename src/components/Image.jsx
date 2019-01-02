@@ -1,14 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
-// import { transparentize as fade } from 'polished'
 import Img from 'gatsby-image'
 
-// import Box from './Box'
 import { radius as rad, depth as DEPTH } from '../styles'
 import { depthPropType } from '../styles/depth'
 import { radiusPropType } from '../styles/radius'
-// import space, { marginPropTypes, setMargin } from '../styles/space'
 import { marginPropTypes, setMargin } from '../styles/space'
 
 const ratioLookup = {
@@ -17,16 +14,6 @@ const ratioLookup = {
   tall: 0.75,
   wide: 0.533,
 }
-
-// const Caption = styled.figcaption`
-//   font-size: 0.9em;
-//   background-color: ${({ theme }) => theme.surface};
-//   padding: ${space.xr} ${space.md};
-//   color: ${({ theme }) => fade(0.5, theme.title)};
-//   text-align: center;
-//   border-top: 5px solid;
-//   border-color: ${({ theme }) => fade(0.3, theme.link)};
-// `
 
 const Wrapper = styled(Img)`
   overflow: hidden;

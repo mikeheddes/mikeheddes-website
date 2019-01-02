@@ -5,7 +5,6 @@ import { marginPropTypes, setMargin } from '../styles/space'
 import { radius, space } from '../styles'
 
 const Table = styled.table`
-  display: block;
   width: 100%;
   font-size: 90%;
   overflow: auto;
