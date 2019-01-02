@@ -152,7 +152,7 @@ export default {
   input,
   li,
   figcaption: props => (
-    <Figcaption marginBottom="md" marginTop="-15px" {...props} />
+    <Figcaption css={'; margin-top: -15px;'} marginBottom="md" {...props} />
   ),
   wrapper,
 }
