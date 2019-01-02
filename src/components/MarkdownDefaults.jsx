@@ -118,6 +118,15 @@ const li = props => {
   return <li {...props} />
 }
 
+const TableWrapper = styled.div`
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`
+
 export default {
   span,
   a,
@@ -147,12 +156,16 @@ export default {
   pre: props => <Preformatted marginBottom="xr" marginTop="xr" {...props} />,
   code: props => <Code {...props} />,
   strong: Bold,
-  table: props => <Table marginBottom="xr" marginTop="xr" {...props} />,
+  table: props => (
+    <TableWrapper>
+      <Table marginBottom="xr" marginTop="xr" {...props} />
+    </TableWrapper>
+  ),
   ul: props => <List as="ul" marginBottom="xr" marginTop="xr" {...props} />,
   input,
   li,
   figcaption: props => (
-    <Figcaption css={'; margin-top: -15px;'} marginBottom="md" {...props} />
+    <Figcaption css="margin-top: -15px;" marginBottom="md" {...props} />
   ),
   wrapper,
 }

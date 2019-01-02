@@ -6,7 +6,7 @@ import { radius, space } from '../styles'
 
 const Table = styled.table`
   width: 100%;
-  font-size: 90%;
+  font-size: 0.9em;
   overflow: auto;
   border-spacing: 0;
   border-collapse: collapse;

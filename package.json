@@ -12,9 +12,9 @@
     "serve": "firebase serve",
     "deploy": "firebase deploy",
     "lint": "eslint src/**/*.{js,jsx}"
-},
+  },
   "dependencies": {
-    "babel-plugin-styled-components": "^1.9.2",
+    "babel-plugin-styled-components": "^1.10.0",
     "gatsby": "^2.0.33",
     "gatsby-image": "^2.0.22",
     "gatsby-plugin-layout": "^1.0.10",
