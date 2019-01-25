@@ -22,6 +22,7 @@ const highlighting = css`
   }
 
   .token.string,
+  .token.inserted,
   .token.attr-value {
     color: ${({ theme }) => theme.green};
   }
@@ -36,7 +37,6 @@ const highlighting = css`
   .token.boolean,
   .token.constant,
   .token.property,
-  .token.inserted,
   .token.atrule,
   .token.attr-name,
   .token.number,
@@ -58,13 +58,13 @@ const highlighting = css`
   }
 
   .token.function,
-  .token.deleted,
   .language-autohotkey .token.tag {
     color: ${({ theme }) => theme.blue};
   }
 
   .token.tag,
   .token.selector,
+  .token.deleted,
   .language-autohotkey .token.keyword {
     color: ${({ theme }) => theme.red};
   }
