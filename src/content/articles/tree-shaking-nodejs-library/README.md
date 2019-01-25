@@ -7,7 +7,7 @@ image: ./tree-shaking.jpg
 imageMeta:
   title: ‘That Wanaka Tree’ - now a famous photo spot - at first light on the last day of winter. Serene and picturesque.
   credits: Photo by Hamish Clark on Unsplash
-publishedAt: 2019-01-28
+publishedAt: 2019-01-25
 theme: day
 color: blue
 ---
