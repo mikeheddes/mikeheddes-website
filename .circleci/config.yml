@@ -16,7 +16,7 @@ jobs:
 
       - run:
           name: Install packages
-          command: yarn install
+          command: npm install
 
       - save_cache:
           paths:
@@ -25,7 +25,7 @@ jobs:
 
       - run:
           name: Lint code
-          command: yarn lint
+          command: npm run lint
 
 
   Build:
@@ -42,7 +42,7 @@ jobs:
 
       - run:
           name: Install packages
-          command: yarn install
+          command: npm install
 
       - save_cache:
           paths:
@@ -51,7 +51,7 @@ jobs:
 
       - run:
           name: Build artifacts
-          command: yarn build
+          command: npm run build
 
       - store_artifacts:
           path: public
@@ -76,7 +76,7 @@ jobs:
 
       - run:
           name: Install packages
-          command: yarn install
+          command: npm install
 
       - save_cache:
           paths:
@@ -87,7 +87,7 @@ jobs:
           at: ~/repo
 
       - deploy:
-          command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
+          command: npx firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
 
 
 workflows:

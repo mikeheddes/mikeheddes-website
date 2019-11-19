@@ -1,14 +1,14 @@
 const path = require('path')
 
+const { homepage } = require('./package.json')
+
 module.exports = {
   siteMetadata: {
-    homepage: `https://mikeheddes.nl`,
-    defaultTheme: 'day',
-  },
-  mapping: {
-    'MarkdownRemark.frontmatter.authors': `AuthorYaml`,
+    homepage,
+    siteUrl: homepage,
   },
   plugins: [
+    `gatsby-transformer-yaml`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -19,8 +19,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: path.join(__dirname, `src`, `content`, `articles`),
-        name: `articles`,
+        path: path.join(__dirname, `src`, `content`, `post`),
+        name: `post`,
       },
     },
     {
@@ -31,19 +31,19 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-layout`,
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: `gatsby-plugin-mdx`,
       options: {
-        gfm: true,
-        commonmark: true,
-        footnotes: true,
-        pedantic: true,
-        plugins: [
+        extensions: [`.mdx`, `.md`],
+        gatsbyRemarkPlugins: [
           {
-            resolve: `gatsby-remark-autolink-headers`,
+            resolve: `gatsby-remark-images`,
             options: {
-              className: `autolink-header`,
+              withWebp: true,
+              quality: 100,
+              maxWidth: 1440,
+              background: 'transparent',
+              linkImagesToOriginal: 0,
             },
           },
           {
@@ -52,20 +52,25 @@ module.exports = {
               destinationDir: 'static',
             },
           },
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 740,
-            },
-          },
           `gatsby-remark-prismjs`,
           `gatsby-remark-katex`,
         ],
+        remarkPlugins: [require('remark-emoji')],
       },
     },
-    `gatsby-transformer-yaml`,
-    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaultQuality: 100,
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-styled-components`,
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        policy: [{ userAgent: '*', allow: '/' }],
+      },
+    },
   ],
 }

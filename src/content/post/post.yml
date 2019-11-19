@@ -1,0 +1,24 @@
+# - title: Intersection Control Algorithm
+#   authors:
+#     - Mike Heddes
+#     - Niels Gräfe
+#   description: Minimize waiting for traffic lights
+#   date: 2017-09-20
+#   updatedAt: 2018-01-08
+#   component: ./intersection-control/index.js
+- title: SpaceX Grid Fin Design
+  description: Air flow, pressure, stress and displacement
+  date: 2018-12-22
+  genre: Engineering
+  component: ./spacex-grid-fin/index.js
+- title: GTOC X Galaxy Animation
+  description: Reach for the stars
+  date: 2019-11-10
+  genre: Orbital Mechanics
+  component: ./galaxy-animation/index.js
+- title: Tree-shaking Nodejs Libraries
+  description: Using Rollup to make your library tree-shakable with Webpack
+  date: 2019-01-25
+  genre: Web Development
+  component: ./tree-shaking-nodejs-library/index.js
+

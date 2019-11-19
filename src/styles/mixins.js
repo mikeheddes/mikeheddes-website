@@ -1,20 +1,7 @@
 import { css } from 'styled-components'
-import { media, breakpoints } from './breakpoints'
-
-const cssQuery = query => (...args) => css`
-  ${query} {
-    ${css(...args)};
-  }
-`
-
-export const has = {
-  backdrop: cssQuery('@supports (backdrop-filter: blur(2px))'),
-}
-
-export const center = css`
-  margin-right: auto;
-  margin-left: auto;
-`
+import { breakpoints } from './breakpoints'
+import { up, down } from 'styled-breakpoints'
+import { between, rem } from 'polished'
 
 export const ellipsis = css`
   display: block;
@@ -26,18 +13,55 @@ export const ellipsis = css`
   text-overflow: ellipsis;
 `
 
-export const fluidValue = (min, max, param, unit = '') => css`
-  ${param}: ${`${min}${unit}`};
+const tracking = fontSize =>
+  `${-0.0223 + 0.185 * Math.exp(-0.1745 * fontSize)}em`
 
-  ${media.sm`
-    ${param}: calc((100vw - ${breakpoints.sm}px) / ${(breakpoints.lg -
-    breakpoints.sm) /
-    (max - min)} + ${`${min}${unit}`});
-  `};
+const trackingBetween = (x1, x2, y1, y2, mid) => {
+  const slope = (x2 - x1) / (y2 - y1)
+  const base = x2 - slope * y2
 
-  ${media.lg`
-    ${param}: ${`${max}${unit}`};
-  `};
+  return tracking(slope * mid + base)
+}
+
+/**
+ *
+ * @param {Number} min font-size in pixels
+ * @param {Number} max font-size in pixels
+ */
+export const fluidFont = (min, max) => css`
+  ${down('sm')} {
+    font-size: ${rem(min)};
+    letter-spacing: ${tracking(min)};
+  }
+
+  ${up('sm')} {
+    font-size: ${between(
+      rem(min),
+      rem(max),
+      rem(breakpoints.sm),
+      rem(breakpoints.lg)
+    )};
+    letter-spacing: ${trackingBetween(
+      min,
+      max,
+      breakpoints.sm,
+      breakpoints.lg,
+      (breakpoints.sm + breakpoints.md) / 2
+    )};
+  }
+
+  ${up('md')} {
+    letter-spacing: ${trackingBetween(
+      min,
+      max,
+      breakpoints.sm,
+      breakpoints.lg,
+      (breakpoints.md + breakpoints.lg) / 2
+    )};
+  }
+
+  ${up('lg')} {
+    font-size: ${rem(max)};
+    letter-spacing: ${tracking(max)};
+  }
 `
-
-export const fluidFont = (min, max) => fluidValue(min, max, 'font-size', 'px')

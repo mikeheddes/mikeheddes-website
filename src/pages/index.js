@@ -1,16 +1,65 @@
 import React from 'react'
+import styled from 'styled-components'
 
 import Hero from '../views/Home/Hero'
-import LatestArticle from '../views/ContentHighlight/LatestArticle'
-import LatestMusic from '../views/ContentHighlight/LatestMusic'
+import { graphql, Link } from 'gatsby'
 
-export default () => (
-  <React.Fragment>
-    <Hero />
-    <LatestArticle
-      marginTop={{ xs: 'xr', md: 'md' }}
-      marginBottom={{ xs: 'xr', md: 'md' }}
-    />
-    <LatestMusic marginBottom={{ xs: 'xr', md: 'md' }} />
-  </React.Fragment>
-)
+const unwrapNode = ({ node }) => ({
+  title: node.title,
+  date: new Date(node.date),
+  slug: node.fields.slug,
+})
+
+const Home = ({ data }) => {
+  const music = data.allMusicYaml.edges.map(unwrapNode)
+  const posts = data.allPostYaml.edges.map(unwrapNode)
+
+  const content = [...music, ...posts].sort((a, b) => b.date - a.date)
+
+  return (
+    <>
+      <Hero />
+      <div css="height: 100vh;" />
+      <ul>
+        {content.map(({ title, date, slug }) => (
+          <li key={slug} css="margin-bottom: 15px;">
+            <Link to={slug}>
+              <strong>{title}</strong>
+            </Link>
+            <br />
+            {date.toString()}
+          </li>
+        ))}
+      </ul>
+    </>
+  )
+}
+
+export default Home
+
+export const pageQuery = graphql`
+  query homePageQuery {
+    allPostYaml {
+      edges {
+        node {
+          title
+          date
+          fields {
+            slug
+          }
+        }
+      }
+    }
+    allMusicYaml {
+      edges {
+        node {
+          date
+          fields {
+            slug
+          }
+          title
+        }
+      }
+    }
+  }
+`

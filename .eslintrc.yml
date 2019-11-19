@@ -1,13 +1,9 @@
+globals:
+  __PATH_PREFIX__: true
 extends:
-  - fbjs
+  - react-app
+  - plugin:import/errors
+  - plugin:import/warnings
+  - plugin:jest/recommended
   - plugin:prettier/recommended
   - prettier/react
-plugins:
-  - react
-parser:
-  babel-eslint
-rules:
-  relay/graphql-naming: 0
-env:
-  node: true
-  browser: true
