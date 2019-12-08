@@ -1,7 +1,7 @@
 import React from 'react'
 import { MDXProvider } from '@mdx-js/react'
 import GlobalStyles from '../styles/global'
-import Theme from '../styles/themeWrapper'
+import Theme from '../styles/theme'
 import MetaTags from './meta-tags'
 import Markdown from './markdown'
 
