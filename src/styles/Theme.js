@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components'
 
 import { breakpoints } from './breakpoints'
 import { dark, light } from './colors'
-import { useMediaQuery } from '../hooks'
+import { useMediaQuery } from '../shared/hooks'
 
 const Theme = props => {
   const prefersDark = useMediaQuery('(prefers-color-scheme: dark)')

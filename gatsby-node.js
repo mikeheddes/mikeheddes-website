@@ -11,7 +11,7 @@ const createSlug = text =>
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
-  const musicTemplate = path.resolve(`src/views/Music/index.js`)
+  const musicTemplate = path.resolve(`src/music/index.js`)
 
   const { data, errors } = await graphql(`
     query loadPagesQuery {
@@ -83,7 +83,7 @@ exports.onCreateNode = ({ node, actions }) => {
   }
 
   if (node.internal.type === 'MusicYaml') {
-    const slug = `/music/${createSlug(node.title)}`
+    const slug = `/music/${createSlug(node.album)}`
 
     createNodeField({
       node,

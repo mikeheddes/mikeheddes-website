@@ -1,0 +1,74 @@
+- album: Livin’
+  date: 2019-12-09
+  cover: ./livin/cover.jpg
+  wallpaper: ./livin/wallpaper.jpg
+  genre: Dance
+  upc: '5059366947684'
+  tracks:
+    - title: Livin’
+      isrc: GBSMU7285829
+      duration: 4:06
+      file: './livin/track-0.mp3'
+  sameAs:
+- album: Cencorship
+  date: 2017-05-05
+  cover: ./censorship/cover.jpg
+  wallpaper: ./censorship/wallpaper.jpg
+  genre: Dance
+  tracks:
+    - title: Censorship
+      duration: 2:58
+      file: './censorship/track-0.mp3'
+  sameAs:
+    - service: YouTube
+      url: https://youtu.be/UELp8TU1LI8
+    - service: SoundCloud
+      url: https://soundcloud.com/mikeheddes/censorship
+- album: Losing Focus
+  date: 2016-08-21
+  cover: ./losing-focus/cover.jpg
+  wallpaper: ./losing-focus/wallpaper.jpg
+  genre: Dance
+  upc: '5057302984120'
+  tracks:
+    - title: Losing Focus
+      isrc: GBSMU3224615
+      duration: 4:38
+      file: './losing-focus/track-0.mp3'
+  sameAs:
+    - service: Apple Music
+      url: https://itunes.apple.com/nl/album/losing-focus/1185471946?i=1185471956
+    - service: Spotify
+      url: https://open.spotify.com/track/0sAvK5xHNVcpkUDuDEHwW3?si=cKsz3C_9Q_63WXWCrUT0xQ
+    - service: YouTube
+      url: https://youtu.be/NcRE9Pefq0M
+    - service: SoundCloud
+      url: https://soundcloud.com/mikeheddes/losingfocus
+- album: Excited
+  date: 2016-03-14
+  cover: ./excited/cover.jpg
+  wallpaper: ./excited/wallpaper.jpg
+  genre: Dance
+  tracks:
+    - title: Excited
+      duration: 4:24
+      file: './excited/track-0.mp3'
+  sameAs:
+    - service: YouTube
+      url: https://youtu.be/MxqFutVj8O4
+    - service: SoundCloud
+      url: https://soundcloud.com/mikeheddes/excited
+- album: Fusion
+  date: 2016-01-04
+  cover: ./fusion/cover.jpg
+  wallpaper: ./fusion/wallpaper.jpg
+  genre: Dance
+  tracks:
+    - title: Fusion
+      duration: 4:05
+      file: './fusion/track-0.mp3'
+  sameAs:
+    - service: YouTube
+      url: https://youtu.be/ld4swScNrKk
+    - service: SoundCloud
+      url: https://soundcloud.com/mikeheddes/mike-heddes-fusion-free

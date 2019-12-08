@@ -43,9 +43,11 @@ export const colorVariables = css`
     --foreground-lightness: 0%;
     --surface: var(--gray-100);
     --surface-faded: rgba(0, 0, 0, 0.05);
+    --surface-backdrop: rgba(242, 242, 242, 0.6);
     --surface-tint: var(--tint-blue);
     --surface-subtle: var(--gray-050);
     --surface-obvious: var(--gray-200);
+    --surface-obvious-backdrop: rgba(216, 216, 216, 0.6);
     --border-content: rgba(0, 0, 0, 0.1);
     --border-divider-solid: var(--gray-200);
     --border-divider-faded: rgba(0, 0, 0, 0.25);
@@ -86,9 +88,11 @@ export const colorVariables = css`
       --foreground-lightness: 100%;
       --surface: var(--gray-700);
       --surface-faded: rgba(255, 255, 255, 0.05);
+      --surface-backdrop: rgba(38, 38, 38, 0.6);
       --surface-tint: var(--tint-blue);
       --surface-subtle: var(--gray-750);
       --surface-obvious: var(--gray-600);
+      --surface-obvious-backdrop: rgba(54, 54, 54, 0.6);
       --border-content: rgba(255, 255, 255, 0.1);
       --border-divider-solid: var(--gray-500);
       --border-divider-faded: rgba(255, 255, 255, 0.25);
@@ -172,7 +176,7 @@ export const light = {
   textObvious: grays['800'],
   primary: lightColors.blue,
   surface: grays['100'],
-  surfaceTint: pastelColors.blue,
+  surfaceTint: pastelColors.tintBlue,
   surfaceSubtle: grays['050'],
   surfaceObvious: grays['200'],
 }
@@ -180,7 +184,7 @@ export const light = {
 export const dark = {
   ...darkColors,
   ...neonColors,
-  background: grays['000'],
+  background: grays['800'],
   borderContent: 'rgba(255, 255, 255, 0.1)',
   borderDividerSolid: grays['500'],
   borderDividerOpacity: 'rgba(255, 255, 255, 0.25)',
@@ -192,7 +196,7 @@ export const dark = {
   textObvious: grays['100'],
   primary: darkColors.blue,
   surface: grays['700'],
-  surfaceTint: neonColors.blue,
+  surfaceTint: neonColors.tintBlue,
   surfaceSubtle: grays['750'],
   surfaceObvious: grays['600'],
 }

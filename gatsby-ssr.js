@@ -1,9 +1,3 @@
-/**
- * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/ssr-apis/
- */
-
-import PageWrapper from './src/components/PageWrapper'
+import PageWrapper from './src/shared/page-wrapper'
 
 export const wrapPageElement = PageWrapper

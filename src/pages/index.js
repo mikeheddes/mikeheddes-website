@@ -1,51 +1,60 @@
-import React from 'react'
-import styled from 'styled-components'
+import { graphql } from 'gatsby'
 
-import Hero from '../views/Home/Hero'
-import { graphql, Link } from 'gatsby'
-
-const unwrapNode = ({ node }) => ({
-  title: node.title,
-  date: new Date(node.date),
-  slug: node.fields.slug,
-})
-
-const Home = ({ data }) => {
-  const music = data.allMusicYaml.edges.map(unwrapNode)
-  const posts = data.allPostYaml.edges.map(unwrapNode)
-
-  const content = [...music, ...posts].sort((a, b) => b.date - a.date)
-
-  return (
-    <>
-      <Hero />
-      <div css="height: 100vh;" />
-      <ul>
-        {content.map(({ title, date, slug }) => (
-          <li key={slug} css="margin-bottom: 15px;">
-            <Link to={slug}>
-              <strong>{title}</strong>
-            </Link>
-            <br />
-            {date.toString()}
-          </li>
-        ))}
-      </ul>
-    </>
-  )
-}
-
-export default Home
+import Home from '../home'
 
 export const pageQuery = graphql`
   query homePageQuery {
+    site {
+      siteMetadata {
+        siteUrl
+      }
+    }
+    wideImage: file(relativePath: { eq: "mike-heddes-wide.jpg" }) {
+      childImageSharp {
+        fluid(maxHeight: 500) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+    profileImage: file(relativePath: { eq: "mike-heddes.jpg" }) {
+      childImageSharp {
+        resize(height: 1080, width: 1080) {
+          src
+        }
+      }
+    }
+    profileImageTwitter: file(relativePath: { eq: "mike-heddes-wide.jpg" }) {
+      childImageSharp {
+        resize(height: 1080, width: 2160) {
+          src
+        }
+      }
+    }
     allPostYaml {
       edges {
         node {
           title
           date
+          genre
           fields {
             slug
+          }
+          image: cover {
+            dark {
+              childImageSharp {
+                fluid(maxHeight: 475) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
+            }
+            light {
+              childImageSharp {
+                fluid(maxHeight: 475) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
+            }
+            precedence
           }
         }
       }
@@ -57,9 +66,19 @@ export const pageQuery = graphql`
           fields {
             slug
           }
-          title
+          album
+          genre
+          image: wallpaper {
+            childImageSharp {
+              fluid(maxHeight: 475) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
         }
       }
     }
   }
 `
+
+export default Home
