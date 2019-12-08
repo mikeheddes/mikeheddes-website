@@ -1,58 +1,62 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import styled, { ThemeProvider } from 'styled-components'
+import styled from 'styled-components'
+import { Link } from 'gatsby'
 
-import Section from '../components/Section'
-import Link from '../components/Link'
-import Box from '../components/Box'
-import P from '../components/Paragraph'
-import { fluidFont } from '../styles/mixins'
-import { size } from '../styles'
+import { fluidFont, contentWrapper } from '../styles'
+import Footer from '../shared/footer'
 
-const Main = styled(Section)`
-  min-height: calc(100vh - ${size.footerHeight});
+const Wrapper = styled.main`
+  min-height: 100vh;
+  /* prevent margin overflow */
+  border: 1px solid transparent;
+  display: flex;
+  flex-direction: column;
 `
 
 const MegaHeader = styled.h1`
+  margin: 0.5em 0 0.3em;
   text-align: center;
   font-weight: 700;
   ${fluidFont(120, 300)};
-  color: ${({ theme }) => theme.surface};
+  color: var(--surface-obvious);
+  font-feature-settings: 'liga' 1, 'case' 1, 'calt' 1, 'ss01' 1;
 `
 
-const themeColor = 'blue'
-const setTheme = theme => {
-  return {
-    ...theme,
-    link: theme[themeColor],
-    surface: theme.surfaceColors[themeColor],
+const Body = styled.p`
+  ${fluidFont(21, 24)};
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+`
+
+const Anchor = styled(Link)`
+  text-decoration: none;
+  color: var(--primary);
+  transition: opacity 100ms ease-out;
+
+  :active {
+    opacity: 0.5;
   }
-}
+`
 
 const NotFound = () => (
-  <React.Fragment>
+  <Wrapper>
     <Helmet>
       <title>Page Not Found</title>
     </Helmet>
-    <ThemeProvider theme={setTheme}>
-      <Main display="flex" justifyContent="center" direction="column">
-        <MegaHeader>404</MegaHeader>
-        <Box
-          width="text"
-          marginLeft="auto"
-          marginRight="auto"
-          marginTop="xm"
-          marginBottom="xm"
-          textAlign="center"
-        >
-          <P size="md">
-            Sorry the page you are looking for does not exist. You could start
-            at <Link to="/">the home page</Link>.
-          </P>
-        </Box>
-      </Main>
-    </ThemeProvider>
-  </React.Fragment>
+
+    <MegaHeader>404</MegaHeader>
+    <div css={contentWrapper}>
+      <Body>
+        Sorry, the page that you are looking for does not exist. <br />
+        The <Anchor to="/">home page</Anchor> is a great place to continue your
+        search.
+      </Body>
+    </div>
+    <div css="flex-grow: 1;" />
+    <Footer />
+  </Wrapper>
 )
 
 export default NotFound

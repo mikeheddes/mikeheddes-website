@@ -1,14 +1,13 @@
 const path = require('path')
 
+const { homepage } = require('./package.json')
+
 module.exports = {
   siteMetadata: {
-    homepage: `https://mikeheddes.nl`,
-    defaultTheme: 'day',
-  },
-  mapping: {
-    'MarkdownRemark.frontmatter.authors': `AuthorYaml`,
+    siteUrl: homepage,
   },
   plugins: [
+    `gatsby-transformer-yaml`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -19,31 +18,31 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: path.join(__dirname, `src`, `content`, `articles`),
-        name: `articles`,
+        path: path.join(__dirname, `src`, `posts`),
+        name: `post`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: path.join(__dirname, `src`, `content`, `music`),
+        path: path.join(__dirname, `src`, `music`),
         name: `music`,
       },
     },
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-layout`,
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: `gatsby-plugin-mdx`,
       options: {
-        gfm: true,
-        commonmark: true,
-        footnotes: true,
-        pedantic: true,
-        plugins: [
+        extensions: [`.mdx`, `.md`],
+        gatsbyRemarkPlugins: [
           {
-            resolve: `gatsby-remark-autolink-headers`,
+            resolve: `gatsby-remark-images`,
             options: {
-              className: `autolink-header`,
+              withWebp: true,
+              quality: 80,
+              maxWidth: 1440,
+              background: 'transparent',
+              linkImagesToOriginal: 0,
             },
           },
           {
@@ -52,20 +51,57 @@ module.exports = {
               destinationDir: 'static',
             },
           },
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 740,
-            },
-          },
           `gatsby-remark-prismjs`,
           `gatsby-remark-katex`,
         ],
+        remarkPlugins: [require('remark-emoji')],
       },
     },
-    `gatsby-transformer-yaml`,
-    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        useMozJpeg: true,
+        defaultQuality: 80,
+      },
+    },
     `gatsby-transformer-sharp`,
+    {
+      resolve: `gatsby-plugin-alias-imports`,
+      options: {
+        alias: {
+          three$: path.resolve(__dirname, 'src/three-exports.js'),
+        },
+        extensions: [],
+      },
+    },
     `gatsby-plugin-styled-components`,
+    // `gatsby-plugin-polished`,
+    `gatsby-plugin-lodash`,
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        policy: [{ userAgent: '*', allow: '/' }],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        // The property ID; the tracking code won't be generated without it
+        trackingId: 'UA-153140699-1',
+        // Defines where to place the tracking script - `true` in the head and `false` in the body
+        head: true, // recommended by Google
+        // Setting this parameter is optional
+        // anonymize: true,
+        // Setting this parameter is also optional
+        // respectDNT: true,
+      },
+    },
+    // {
+    //   resolve: 'gatsby-plugin-webpack-bundle-analyzer',
+    //   options: {
+    //     analyzerPort: 3000,
+    //     production: true,
+    //   },
+    // },
   ],
 }
