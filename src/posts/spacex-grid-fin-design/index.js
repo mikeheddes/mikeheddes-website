@@ -6,9 +6,15 @@ import Caption from '../../shared/caption'
 import Body from './README.md'
 import Animation from './animation'
 
-const Post = ({ data: { gltf, postYaml } }) => {
+const Post = ({ data: { gltf, postYaml, site } }) => {
   return (
-    <Article {...postYaml}>
+    <Article
+      {...postYaml}
+      siteUrl={site.siteMetadata.siteUrl}
+      slug={postYaml.fields.slug}
+      imageSquare={postYaml.imageSquare.light.childImageSharp.resize.src}
+      imageWide={postYaml.imageWide.light.childImageSharp.resize.src}
+    >
       <figure>
         <Animation gridFinGLTF={gltf.publicURL} />
         <Caption>3D model by Jon Ross</Caption>
@@ -27,6 +33,32 @@ export const pageQuery = graphql`
       description
       date
       genre
+      fields {
+        slug
+      }
+      imageSquare: cover {
+        light {
+          childImageSharp {
+            resize(height: 1080, width: 1080) {
+              src
+            }
+          }
+        }
+      }
+      imageWide: cover {
+        light {
+          childImageSharp {
+            resize(height: 1080, width: 2160) {
+              src
+            }
+          }
+        }
+      }
+    }
+    site {
+      siteMetadata {
+        siteUrl
+      }
     }
     gltf: file(relativePath: { eq: "spacex-grid-fin-design/grid-fin.glb" }) {
       publicURL

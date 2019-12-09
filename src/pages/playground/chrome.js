@@ -7,17 +7,9 @@ import { useThree, useFrame } from 'react-three-fiber'
 import { Link } from 'gatsby'
 
 import { useTheme } from '../../shared/hooks'
+import useStudioCubeTexture from '../../shared/studio-cube-texture'
 import Canvas from '../../shared/three-canvas'
 import Hand from '../../icons/hand/draw/fill'
-
-import nx from '../../posts/spacex-grid-fin-design/nx.png'
-import ny from '../../posts/spacex-grid-fin-design/ny.png'
-import nz from '../../posts/spacex-grid-fin-design/nz.png'
-import px from '../../posts/spacex-grid-fin-design/px.png'
-import py from '../../posts/spacex-grid-fin-design/py.png'
-import pz from '../../posts/spacex-grid-fin-design/pz.png'
-
-const CubeTextureUrls = [px, nx, py, ny, pz, nz]
 
 const delay = time => new Promise(resolve => setTimeout(resolve, time))
 

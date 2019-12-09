@@ -8,7 +8,7 @@
     - title: Livin’
       isrc: GBSMU7285829
       duration: 4:06
-      file: './livin/track-0.mp3'
+      file: https://firebasestorage.googleapis.com/v0/b/project-1236391238174251673.appspot.com/o/music%2Flivin.mp3?alt=media&token=99dc5e96-bb42-495f-8549-6aeee5424b4b
   sameAs:
 - album: Cencorship
   date: 2017-05-05
@@ -18,7 +18,7 @@
   tracks:
     - title: Censorship
       duration: 2:58
-      file: './censorship/track-0.mp3'
+      file: https://firebasestorage.googleapis.com/v0/b/project-1236391238174251673.appspot.com/o/music%2Fcencorship.mp3?alt=media&token=a0328b48-b158-4666-8d7a-c56cc5bda5d5
   sameAs:
     - service: YouTube
       url: https://youtu.be/UELp8TU1LI8
@@ -34,7 +34,7 @@
     - title: Losing Focus
       isrc: GBSMU3224615
       duration: 4:38
-      file: './losing-focus/track-0.mp3'
+      file: https://firebasestorage.googleapis.com/v0/b/project-1236391238174251673.appspot.com/o/music%2Flosing-focus.mp3?alt=media&token=572dfe90-36d2-480c-957d-208857be5f36
   sameAs:
     - service: Apple Music
       url: https://itunes.apple.com/nl/album/losing-focus/1185471946?i=1185471956
@@ -52,7 +52,7 @@
   tracks:
     - title: Excited
       duration: 4:24
-      file: './excited/track-0.mp3'
+      file: https://firebasestorage.googleapis.com/v0/b/project-1236391238174251673.appspot.com/o/music%2Fexcited.mp3?alt=media&token=e29ecd35-20cb-4d73-baa6-ad0303aa6d2c
   sameAs:
     - service: YouTube
       url: https://youtu.be/MxqFutVj8O4
@@ -66,7 +66,7 @@
   tracks:
     - title: Fusion
       duration: 4:05
-      file: './fusion/track-0.mp3'
+      file: https://firebasestorage.googleapis.com/v0/b/project-1236391238174251673.appspot.com/o/music%2Ffusion.mp3?alt=media&token=e716d077-b14d-4af5-8a0f-9288fb28539a
   sameAs:
     - service: YouTube
       url: https://youtu.be/ld4swScNrKk

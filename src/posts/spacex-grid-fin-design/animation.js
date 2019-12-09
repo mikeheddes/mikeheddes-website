@@ -1,23 +1,14 @@
-import React, { useEffect, useState, useMemo } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'gatsby'
 import styled, { css } from 'styled-components'
 import { up } from 'styled-breakpoints'
-import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
 import TrackballControl from '../../shared/trackball-control'
+import useStudioCubeTexture from '../../shared/studio-cube-texture'
 import Canvas from '../../shared/three-canvas'
 import Button from '../../shared/button'
 import Hand from '../../icons/hand/draw/fill'
-
-import nx from './nx.png'
-import ny from './ny.png'
-import nz from './nz.png'
-import px from './px.png'
-import py from './py.png'
-import pz from './pz.png'
-
-const CubeTextureUrls = [px, nx, py, ny, pz, nz]
 
 const Wrapper = styled.div`
   width: 100%;
@@ -36,9 +27,7 @@ const Filler = styled.div`
 export const GridFinMesh = ({ url }) => {
   const [gltf, setGltf] = useState()
 
-  const textureCube = useMemo(() => {
-    return new THREE.CubeTextureLoader().load(CubeTextureUrls)
-  }, [])
+  const textureCube = useStudioCubeTexture()
 
   useEffect(() => {
     const loader = new GLTFLoader()
