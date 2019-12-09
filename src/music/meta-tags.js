@@ -18,7 +18,7 @@ const MetaTags = ({
   sameAs,
 }) => {
   const formattedDate = dateFormatter.format(new Date(date))
-  const description = `${genre} by Mike Heddes released on ${formattedDate}.`
+  const description = `${genre} music by Mike Heddes released on ${formattedDate}.`
 
   return (
     <>

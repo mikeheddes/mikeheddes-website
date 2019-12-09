@@ -3,12 +3,14 @@ import styled from 'styled-components'
 import { up } from 'styled-breakpoints'
 import { graphql } from 'gatsby'
 
-import Article from '../posts'
 import { contentWrapper } from '../styles'
 import Cover from './cover'
 import { PlayPauseButton, ProgressIndicator, usePlayer } from './player'
 import MetaTags from './meta-tags'
 import ActionBlock, { ActionItem } from '../shared/action-block'
+import Footer from '../shared/footer'
+import Navigation from '../posts/navigation'
+import TitleView from '../posts/title-view'
 import SoundCloud from '../icons/logos/soundcloud'
 import AppleMusic from '../icons/logos/apple-music'
 import YouTube from '../icons/logos/youtube'
@@ -51,7 +53,7 @@ const Music = ({ data: { musicYaml, site } }) => {
   } = usePlayer()
 
   return (
-    <Article title={album} date={date} genre={genre}>
+    <>
       <MetaTags
         siteUrl={site.siteMetadata.siteUrl}
         album={album}
@@ -65,39 +67,53 @@ const Music = ({ data: { musicYaml, site } }) => {
         imageWide={musicYaml.imageWide.childImageSharp.resize.src}
         imageSquare={musicYaml.imageSquare.childImageSharp.resize.src}
       />
-      <div css={contentWrapper}>
-        <Wrapper>
-          <Cover {...cover.childImageSharp.fluid} isPlaying={isPlaying} />
-          <PlayPauseButtonWrapper>
-            <PlayPauseButton isPlaying={isPlaying} play={play} pause={pause} />
-          </PlayPauseButtonWrapper>
-          <ProgressIndicator
-            fraction={fraction}
-            durationMs={durationMs}
-            seekFraction={seekFraction}
-            isPlaying={isPlaying}
-            play={play}
-          />
-          <audio
-            {...bind}
-            src={tracks[0].file}
-            css="display: none;"
-            preload="auto"
-          />
-        </Wrapper>
-      </div>
-      {sameAs && (
-        <div css="margin-top: 80px;">
-          <ActionBlock title="Available on">
-            {sameAs.map(({ service, url }) => (
-              <ActionItem key={url} icon={getIconByService(service)} href={url}>
-                {service}
-              </ActionItem>
-            ))}
-          </ActionBlock>
+
+      <Navigation />
+      <main>
+        <TitleView title={album} date={date} genre={genre} />
+        <div css={contentWrapper}>
+          <Wrapper>
+            <Cover {...cover.childImageSharp.fluid} isPlaying={isPlaying} />
+            <PlayPauseButtonWrapper>
+              <PlayPauseButton
+                isPlaying={isPlaying}
+                play={play}
+                pause={pause}
+              />
+            </PlayPauseButtonWrapper>
+            <ProgressIndicator
+              fraction={fraction}
+              durationMs={durationMs}
+              seekFraction={seekFraction}
+              isPlaying={isPlaying}
+              play={play}
+            />
+            <audio
+              {...bind}
+              src={tracks[0].file}
+              css="display: none;"
+              preload="auto"
+            />
+          </Wrapper>
         </div>
-      )}
-    </Article>
+        {sameAs && (
+          <div css="margin-top: 80px;">
+            <ActionBlock title="Available on">
+              {sameAs.map(({ service, url }) => (
+                <ActionItem
+                  key={url}
+                  icon={getIconByService(service)}
+                  href={url}
+                >
+                  {service}
+                </ActionItem>
+              ))}
+            </ActionBlock>
+          </div>
+        )}
+      </main>
+      <Footer />
+    </>
   )
 }
 

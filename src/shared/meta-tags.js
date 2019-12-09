@@ -11,36 +11,6 @@ const query = graphql`
         siteUrl
       }
     }
-    favicon: file(
-      sourceInstanceName: { eq: "assets" }
-      relativePath: { eq: "favicon.png" }
-    ) {
-      xs: childImageSharp {
-        fixed(width: 16) {
-          ...faviconItems
-        }
-      }
-      sm: childImageSharp {
-        fixed(width: 32) {
-          ...faviconItems
-        }
-      }
-      md: childImageSharp {
-        fixed(width: 96) {
-          ...faviconItems
-        }
-      }
-      lg: childImageSharp {
-        fixed(width: 120) {
-          ...faviconItems
-        }
-      }
-      xl: childImageSharp {
-        fixed(width: 180) {
-          ...faviconItems
-        }
-      }
-    }
   }
 
   fragment faviconItems on ImageSharpFixed {
@@ -55,13 +25,9 @@ const MetaTags = () => {
     site: {
       siteMetadata: { siteUrl },
     },
-    favicon: { xs, sm, md, lg, xl },
   } = useStaticQuery(query)
 
   const theme = useTheme()
-
-  const favicon = [xs, sm, md]
-  const touchIcons = [lg, xl]
 
   return (
     <Helmet defaultTitle="Mike Heddes" titleTemplate="%s | Mike Heddes">
@@ -72,25 +38,26 @@ const MetaTags = () => {
       */}
       <body ontouchstart="" />
       <link rel="canonical" href={siteUrl} />
-      <link rel="shortcut icon" href={siteUrl + md.fixed.src} />
-      {favicon.map(({ fixed: { width, height, src } }) => (
-        <link
-          key={width}
-          rel="icon"
-          type="image/png"
-          sizes={`${width}x${height}`}
-          href={siteUrl + src}
-        />
-      ))}
-      {touchIcons.map(({ fixed: { width, height, src } }) => (
-        <link
-          key={width}
-          rel="apple-touch-icon"
-          type="image/png"
-          sizes={`${width}x${height}`}
-          href={siteUrl + src}
-        />
-      ))}
+
+      <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href="/apple-touch-icon.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="32x32"
+        href="/favicon-32x32.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="16x16"
+        href="/favicon-16x16.png"
+      />
+
+      <link rel="manifest" href="/manifest.json" />
       <meta name="application-name" content="Mike Heddes" />
       <meta name="robots" content="index, follow" />
       <meta name="googlebot" content="noodp" />
