@@ -80,7 +80,7 @@ const Music = ({ data: { musicYaml, site } }) => {
           />
           <audio
             {...bind}
-            src={tracks[0].file.publicURL}
+            src={tracks[0].file}
             css="display: none;"
             preload="auto"
           />
@@ -142,9 +142,7 @@ export const pageQuery = graphql`
         title
         duration
         isrc
-        file {
-          publicURL
-        }
+        file
       }
       sameAs {
         service
