@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 
 import Article from '../index'
 import Body from './README.md'
+import ProgressiveImage from '../../shared/progressive-image'
 
 const Post = ({ data: { postYaml, site } }) => {
   return (
@@ -13,6 +14,12 @@ const Post = ({ data: { postYaml, site } }) => {
       imageSquare={postYaml.imageSquare.light.childImageSharp.resize.src}
       imageWide={postYaml.imageWide.light.childImageSharp.resize.src}
     >
+      <figure>
+        <ProgressiveImage
+          {...postYaml.cover.light.childImageSharp.fluid}
+          shape="cinema"
+        />
+      </figure>
       <Body />
     </Article>
   )
@@ -44,6 +51,15 @@ export const pageQuery = graphql`
           childImageSharp {
             resize(height: 1080, width: 2160) {
               src
+            }
+          }
+        }
+      }
+      cover {
+        light {
+          childImageSharp {
+            fluid(maxHeight: 500) {
+              ...GatsbyImageSharpFluid_withWebp
             }
           }
         }

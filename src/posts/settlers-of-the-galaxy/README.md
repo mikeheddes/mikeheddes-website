@@ -1,4 +1,4 @@
-In May 2019 the Jet Propulsion Laboratory (JPL) held the tenth edition of the Global Trajectory Optimization Competition (GTOC) named _Settlers of the Galaxy_ [1]. GTOC was started by the Advanced Concepts Team (ACT) of the European Space Agency (ESA) [2]. Each edition teams need to optimize a highly complex problem related to interplanetary trajectory design. The problem is provided by the team that won the previous edition.
+In May 2019 the Jet Propulsion Laboratory (JPL) held the tenth edition of the Global Trajectory Optimization Competition (GTOC) named [_Settlers of the Galaxy_](https://gtocx.jpl.nasa.gov/gtocx/competition/). GTOC was started by the Advanced Concepts Team (ACT) of the European Space Agency (ESA). Each edition teams need to optimize a highly complex problem related to interplanetary trajectory design. The problem is provided by the team that won the previous edition. More about the origin of GTOC can be found on the [GTOC origin page](https://sophia.estec.esa.int/gtoc_portal/?page_id=147).
 
 > The task in GTOC X is to settle as many of the one hundred thousand star systems as possible, in as uniform a spatial distribution as possible, while using as little propulsive velocity change as possible.
 >
@@ -11,10 +11,4 @@ During GTOC X I was interning in the ACT. I had a front-row seat during this ten
   <figcaption>Figure 1: The final submission by the Advanced Concept Team.</figcaption>
 </figure>
 
-I have used the data provided by JPL for the competition to simulate an approximation of our galaxy in WebGL. The simulation includes 100,000 stars in various circular orbits around the center of the galaxy.
-
-## References
-[1] Jet Propulsion Laboratory, ‘Settlers of the Galaxy’, 2019. [Online]. Available: https://gtocx.jpl.nasa.gov/gtocx/competition/. [Accessed: Dec 8, 2019].
-
-[2] Advanced Concepts Team, ‘Origins’. [Online]. Available: https://sophia.estec.esa.int/gtoc_portal/?page_id=147. [Accessed: Dec 8, 2019].
-
+I have used the data provided by JPL for the competition to simulate an approximation of our galaxy using WebGL. The simulation includes 100,000 stars in various circular orbits around the center of the galaxy. An interactive version of this simulation can be found on the [Settlers of the Galaxy playground page](/playground/gtocx-galaxy). The code for this animation can be found in my [GitHub repository](https://github.com/mikeheddes/mikeheddes-website/blob/master/src/pages/playground/gtocx-galaxy.js).

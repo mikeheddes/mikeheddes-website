@@ -14,13 +14,12 @@ import video from './youtube-video'
 
 const wrapper = styled.main`
   ${contentWrapper};
-  ${fluidFont(18, 20)};
+  ${fluidFont(17, 19)};
   font-weight: 400;
-  line-height: 1.48;
+  line-height: 1.6;
   color: var(--text);
   margin-top: 50px;
   text-align: left;
-  /* text-align: justify; */
 
   ${up('md')} {
     margin-top: 80px;

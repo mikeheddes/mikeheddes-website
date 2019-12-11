@@ -42,14 +42,14 @@ export const pageQuery = graphql`
           image: cover {
             dark {
               childImageSharp {
-                fluid(maxHeight: 475) {
+                fluid(maxHeight: 500) {
                   ...GatsbyImageSharpFluid_withWebp
                 }
               }
             }
             light {
               childImageSharp {
-                fluid(maxHeight: 475) {
+                fluid(maxHeight: 500) {
                   ...GatsbyImageSharpFluid_withWebp
                 }
               }

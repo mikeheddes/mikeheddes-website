@@ -5,7 +5,7 @@ import StructuredData from '../shared/structured-data'
 
 const TITLE = "Mike Heddes' Personal Website"
 const DESCRIPTION =
-  'Combining Art, Technology, and Science, the projects on my personal website cover my diverse interests.'
+  'I am Mike Heddes. I am passionate about art, technology, and science. I want to stay curious and use my creativity to develop innovative and artistic products, constantly seeking perfection.'
 
 const MetaTags = ({ siteUrl, profileImage, profileImageTwitter }) => (
   <>
@@ -21,7 +21,7 @@ const MetaTags = ({ siteUrl, profileImage, profileImageTwitter }) => (
       <meta name="twitter:image" content={siteUrl + profileImageTwitter} />
       <meta
         name="keywords"
-        content="coding, design, music, technology, science, art, computers"
+        content="Mike Heddes, coding, design, music, technology, science, art, computers"
       />
       <meta name="description" content={DESCRIPTION} />
     </Helmet>
