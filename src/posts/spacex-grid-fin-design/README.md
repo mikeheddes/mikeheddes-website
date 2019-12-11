@@ -26,13 +26,8 @@ SpaceX improved upon their first design and in June 2017 flown their first missi
   <figcaption>Figure 2: close-up of the newer titanium grid fins first flown in June 2017</figcaption>
 </figure>
 
-After decades of stagnation in the space industry, SpaceX stirred up excitement again with its innovations in landing amongst other things, enabling SpaceX to reuse its first stage rocket. To me, this is a fascinating achievement and very inspiring. The grid fin is a critical part of orchestrating the landing of the first stage. Since it is located outside of the rocket, there are sufficient public resources available. Special thanks to Jon Ross for creating a stunning 3D model of the grid fin [2].
+After decades of stagnation in the space industry, SpaceX stirred up excitement again with its innovations in landing amongst other things, enabling SpaceX to reuse its first stage rocket. To me, this is a fascinating achievement and very inspiring. The grid fin is a critical part of orchestrating the landing of the first stage. Since it is located outside of the rocket, there are sufficient public resources available. Special thanks to Jon Ross for creating a [stunning 3D model](https://sketchfab.com/3d-models/spacex-falcon-9-block-5-grid-fin-a800195f7a654c33b52a3f59773d2632) of the grid fin. An interactive version of the titanium grid fin can be found on the [grid fin playground page](/playground/grid-fin).
 
-## References
-
-[1] SpaceX, ‘GRID FINS’, Aug 31, 2015. [Online]. Available: https://www.spacex.com/news/2015/08/31/grid-fins. [Accessed: Dec 8, 2019].
-
-[2] J. Ross, ‘SpaceX Falcon 9 Block 5 grid fin’, 2017. [Online]. Available: https://sketchfab.com/3d-models/spacex-falcon-9-block-5-grid-fin-a800195f7a654c33b52a3f59773d2632. [Accessed: Dec 8, 2019].
 
 <!--
 # Stress analysis
