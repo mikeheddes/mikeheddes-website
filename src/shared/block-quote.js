@@ -7,6 +7,7 @@ const Blockquote = styled.blockquote`
   ${fluidFont(20, 22)}
   font-weight: 600;
   padding: 4px 20px;
+  line-height: 1.5;
 
   ${up('md')} {
     padding: 4px 30px;

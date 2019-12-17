@@ -1,12 +1,12 @@
 import { AluminumPropertiesTable, MaxStressTable } from './tables';
 
-SpaceX is the first private company to successfully launch, orbit, and land a rocket. In 2015 SpaceX managed to perform a successful vertical landing with a Falcon 9 first stage for the first time. This was achieved by a number of maneuvers that occur after the first stage separation. The steps are depicted in the [Falcon 9 First Stage Reusability Graphic](https://en.wikipedia.org/wiki/File:Falcon_9_First_Stage_Reusability_Graphic.jpg). SpaceX added grid fins to the first stage of the Falcon 9 to provide the ability to roll, pitch and yaw during aerodynamic guidance by producing lift. This makes it possible to change the trajectory during the aerodynamic translation maneuver towards the landing site [1].
+SpaceX is the first private company to successfully launch, orbit, and land a rocket. In 2015 SpaceX managed to perform a successful vertical landing with a Falcon 9 first stage for the first time. This was achieved by a number of maneuvers that occur after the first stage separation. The steps are depicted in the [Falcon 9 First Stage Reusability Graphic](https://en.wikipedia.org/wiki/File:Falcon_9_First_Stage_Reusability_Graphic.jpg). SpaceX added grid fins to the first stage of the Falcon 9 to provide the ability to roll, pitch and yaw during aerodynamic guidance by producing lift. This makes it possible to change the trajectory during the aerodynamic translation maneuver towards the landing site.
 
 > The landing at Landing Zone 1 was the first time SpaceX had successfully landed the rocket’s first stage.
 >
 > [Space News](https://spacenews.com/falcon-9-launches-orbcomm-satellites-first-stage-lands/)
 
-The first version of the grid fin design by SpaceX was made of aluminum and measures 4 by 5 feet [1]. In order to survive the extreme conditions during re-entry, it required a heat shield coating that needed to be applied after each mission. Figure 1 shows the design of the initial grid fins in the contracted state.
+The first version of the grid fin design by SpaceX was made of aluminum and measures 4 by 5 feet. In order to survive the extreme conditions during re-entry, it required a heat shield coating that needed to be applied after each mission. Figure 1 shows the design of the initial grid fins in the contracted state.
 
 <figure>
   <img src="./grid-fin-2015.jpg" alt="Initial design aluminum grid fins, retracted. February 2015" />
