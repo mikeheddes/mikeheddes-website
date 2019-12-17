@@ -175,9 +175,9 @@ const hr = styled.hr`
   height: auto;
   border-bottom: 0;
   border-left: 0;
-  border-style: dashed;
+  border-style: solid;
   border-color: var(--border-divider-solid);
-  border-width: 2px;
+  border-width: 1px;
   margin: 50px 20px;
 
   ${up('sm')} {

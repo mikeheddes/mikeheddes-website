@@ -9,18 +9,20 @@ import { OutboundLink } from 'gatsby-plugin-google-analytics'
 import { contentWrapper, fluidFont } from '../styles'
 
 const Link = styled(OutboundLink)`
-  ${fluidFont(18, 18)};
+  ${fluidFont(18, 20)};
   display: inline-block;
-  background: var(--tint-blue);
   text-decoration: none;
   color: var(--blue);
   font-weight: 500;
-  padding: 12px 22px;
-  border-radius: 6px;
+  transition: opacity 100ms ease-out;
+
+  :active {
+    opacity: 0.5;
+  }
 `
 
 const Header = styled.h3`
-  ${fluidFont(21, 24)};
+  ${fluidFont(21, 25)};
   font-weight: 700;
   margin-bottom: 30px;
   color: var(--heading);
