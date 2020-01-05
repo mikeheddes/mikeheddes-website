@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 import Article from '../index'
 import Body from './README.md'
 import ProgressiveImage from '../../shared/progressive-image'
+import Caption from '../../shared/caption'
 
 const Post = ({ data: { postYaml, site } }) => {
   return (
@@ -17,8 +18,10 @@ const Post = ({ data: { postYaml, site } }) => {
       <figure>
         <ProgressiveImage
           {...postYaml.cover.light.childImageSharp.fluid}
+          sizes="100vw"
           shape="cinema"
         />
+        <Caption>Abstract art, because a post needs an image.</Caption>
       </figure>
       <Body />
     </Article>

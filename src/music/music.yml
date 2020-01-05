@@ -10,6 +10,10 @@
       duration: 4:06
       file: https://firebasestorage.googleapis.com/v0/b/project-1236391238174251673.appspot.com/o/music%2Flivin.mp3?alt=media&token=99dc5e96-bb42-495f-8549-6aeee5424b4b
   sameAs:
+    - service: Apple Music
+      url: https://music.apple.com/nl/album/livin-single/1491180645
+    - service: Spotify
+      url: https://open.spotify.com/track/1ZlERMFeFN8BUSgsmg0Jas
 - album: Cencorship
   date: 2017-05-05
   cover: ./censorship/cover.jpg
@@ -37,9 +41,9 @@
       file: https://firebasestorage.googleapis.com/v0/b/project-1236391238174251673.appspot.com/o/music%2Flosing-focus.mp3?alt=media&token=572dfe90-36d2-480c-957d-208857be5f36
   sameAs:
     - service: Apple Music
-      url: https://itunes.apple.com/nl/album/losing-focus/1185471946?i=1185471956
+      url: https://itunes.apple.com/nl/album/losing-focus/1185471946
     - service: Spotify
-      url: https://open.spotify.com/track/0sAvK5xHNVcpkUDuDEHwW3?si=cKsz3C_9Q_63WXWCrUT0xQ
+      url: https://open.spotify.com/track/0sAvK5xHNVcpkUDuDEHwW3
     - service: YouTube
       url: https://youtu.be/NcRE9Pefq0M
     - service: SoundCloud

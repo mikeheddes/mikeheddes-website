@@ -71,28 +71,20 @@ const Description = styled.h3`
   line-height: 1.45;
 `
 
-const BlurAnimation = styled(animated.div)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  will-change: backdrop-filter, -webkit-backdrop-filter;
-`
-
 const ColorAnimation = styled(animated.div)`
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  overflow: hidden;
   text-align: center;
   background-color: var(--surface);
   will-change: opacity;
 
   @supports (backdrop-filter: blur(10px)) {
     background-color: var(--surface-backdrop);
+    backdrop-filter: blur(20px) saturate(1.1);
   }
 `
 
@@ -114,35 +106,25 @@ const Filler = styled.div`
 `
 
 const AboutScreen = ({ progress, onClose }) => {
-  const filter = progress.interpolate(
-    val => `blur(${val * 20}px) saturate(${1 + 0.1 * val})`
-  )
   const transform = progress.interpolate(val => `scale(${1.2 - 0.2 * val})`)
 
   return (
-    <BlurAnimation
-      style={{
-        backdropFilter: filter,
-        WebkitBackdropFilter: filter,
-      }}
-    >
-      <ColorAnimation style={{ opacity: progress }}>
-        <TextAnimation style={{ transform }}>
-          <Name>Mike Heddes</Name>
-          <Phrase>Curious. Creative.</Phrase>
-          <Description>
-            I’m passionate about art, technology, and science. I want to stay
-            curious and use my creativity to develop innovative and artistic
-            products, constantly seeking perfection.
-          </Description>
-          <Close onClick={onClose}>Close about</Close>
-        </TextAnimation>
-      </ColorAnimation>
-    </BlurAnimation>
+    <ColorAnimation style={{ opacity: progress }}>
+      <TextAnimation style={{ transform }}>
+        <Name>Mike Heddes</Name>
+        <Phrase>Curious. Creative.</Phrase>
+        <Description>
+          I’m passionate about art, technology, and science. I want to stay
+          curious and use my creativity to develop innovative and artistic
+          products, constantly seeking perfection.
+        </Description>
+        <Close onClick={onClose}>Close about</Close>
+      </TextAnimation>
+    </ColorAnimation>
   )
 }
 
-const Hero = ({ image }) => {
+export default function Hero({ image }) {
   const [isAboutVisible, setIsAboutVisible] = useState(false)
 
   const transitions = useTransition(isAboutVisible, null, {
@@ -186,5 +168,3 @@ const Hero = ({ image }) => {
     </div>
   )
 }
-
-export default Hero
