@@ -1,15 +1,7 @@
 import polyfill from '@juggle/resize-observer'
-import {
-  useState,
-  useRef,
-  useEffect,
-  useMemo,
-  useContext,
-  useCallback,
-} from 'react'
+import { useState, useRef, useEffect, useMemo, useContext } from 'react'
 import { ThemeContext } from 'styled-components'
 import useMeasureNoPolyfill from 'react-use-measure'
-import screen from 'fscreen'
 
 /**
  * Hook to remember and provide the previous value.
@@ -118,40 +110,4 @@ export const useWindowSize = () => {
   })
 
   return size
-}
-
-export const useFullscreen = () => {
-  const [isFullScreen, setIsFullScreen] = useState(!!screen.fullscreenElement)
-
-  const requestFullscreen = useCallback(element => {
-    if (screen.fullscreenEnabled) {
-      screen.requestFullscreen(element || document.documentElement)
-    }
-  }, [])
-
-  const exitFullscreen = useCallback(() => {
-    if (screen.fullscreenElement) {
-      screen.exitFullscreen()
-    }
-  }, [])
-
-  useEffect(() => {
-    if (!screen.fullscreenEnabled) return
-
-    const changeHandler = () => {
-      if (screen.fullscreenElement) {
-        setIsFullScreen(true)
-      } else {
-        setIsFullScreen(false)
-      }
-    }
-
-    screen.addEventListener('fullscreenchange', changeHandler, false)
-
-    return () => {
-      screen.removeEventListener('fullscreenchange', changeHandler, false)
-    }
-  }, [])
-
-  return { isFullScreen, requestFullscreen, exitFullscreen }
 }

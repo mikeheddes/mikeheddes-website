@@ -15,6 +15,7 @@ import GitHub from '../icons/logos/github'
 import Twitter from '../icons/logos/twitter'
 import Instagram from '../icons/logos/instagram'
 import YouTube from '../icons/logos/youtube'
+import { breakpoints } from '../styles/breakpoints'
 
 const InfoWrapper = styled(Link)`
   text-decoration: none;
@@ -100,7 +101,13 @@ const Item = props => {
 
   return (
     <ItemWrapper>
-      {imageFluid && <Image alt={title || album} {...imageFluid.fluid} />}
+      {imageFluid && (
+        <Image
+          alt={title || album}
+          {...imageFluid.fluid}
+          sizes={`(max-width: ${breakpoints.sm}px) 150vw, 100vw`}
+        />
+      )}
       <InfoPosition>
         <InfoWrapper to={slug}>
           <div>
@@ -118,7 +125,7 @@ const Item = props => {
   )
 }
 
-const Home = ({ data }) => {
+export default function Home({ data }) {
   const music = data.allMusicYaml.edges.map(unwrapNode('music'))
   const posts = data.allPostYaml.edges.map(unwrapNode('post'))
   const content = [...music, ...posts].sort((a, b) => b.date - a.date)
@@ -170,5 +177,3 @@ const Home = ({ data }) => {
     </>
   )
 }
-
-export default Home
