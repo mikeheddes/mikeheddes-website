@@ -1,18 +1,17 @@
 import { useMemo } from 'react'
 import * as THREE from 'three'
 
-import nx from '../assets/nx.png'
-import ny from '../assets/ny.png'
-import nz from '../assets/nz.png'
-import px from '../assets/px.png'
-import py from '../assets/py.png'
-import pz from '../assets/pz.png'
+import nx from '../assets/studio-hdr/nx.png'
+import ny from '../assets/studio-hdr/ny.png'
+import nz from '../assets/studio-hdr/nz.png'
+import px from '../assets/studio-hdr/px.png'
+import py from '../assets/studio-hdr/py.png'
+import pz from '../assets/studio-hdr/pz.png'
 
 const CubeTextureUrls = [px, nx, py, ny, pz, nz]
 
-const useStudioCubeTexture = () =>
-  useMemo(() => {
+export default function useStudioCubeTexture() {
+  return useMemo(() => {
     return new THREE.CubeTextureLoader().load(CubeTextureUrls)
   }, [])
-
-export default useStudioCubeTexture
+}
