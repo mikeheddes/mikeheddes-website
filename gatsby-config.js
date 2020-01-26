@@ -42,7 +42,7 @@ module.exports = {
               quality: 80,
               maxWidth: 1440,
               background: 'transparent',
-              linkImagesToOriginal: 0,
+              linkImagesToOriginal: false,
             },
           },
           {
@@ -54,7 +54,7 @@ module.exports = {
           `gatsby-remark-prismjs`,
           `gatsby-remark-katex`,
         ],
-        remarkPlugins: [require('remark-emoji')],
+        // remarkPlugins: [],
       },
     },
     {
@@ -75,7 +75,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-styled-components`,
-    // `gatsby-plugin-polished`,
     `gatsby-plugin-lodash`,
     {
       resolve: 'gatsby-plugin-robots-txt',
