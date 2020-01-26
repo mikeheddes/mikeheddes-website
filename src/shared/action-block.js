@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { up } from 'styled-breakpoints'
 import { OutboundLink } from 'gatsby-plugin-google-analytics'
 
+import { screen } from '../styles/breakpoints'
 import { contentWrapper, fluidFont } from '../styles'
 
 const Wrapper = styled.div`
@@ -18,7 +18,7 @@ const Title = styled.h4`
   font-weight: 600;
   margin-bottom: 15px;
 
-  ${up('md')} {
+  @media ${screen.md} {
     margin-bottom: 20px;
   }
 `
@@ -30,7 +30,7 @@ const Grid = styled.div`
   max-width: 375px;
   margin: 0 auto;
 
-  ${up('sm')} {
+  @media ${screen.sm} {
     margin: 0;
     max-width: none;
     border-radius: 0px;
@@ -62,7 +62,7 @@ const ItemWrapper = styled(OutboundLink)`
     border-bottom: none;
   }
 
-  ${up('sm')} {
+  @media ${screen.sm} {
     height: auto;
     background-color: var(--background);
     display: block;
@@ -73,7 +73,7 @@ const ItemWrapper = styled(OutboundLink)`
 `
 
 const IconWrapper = styled.div`
-  ${up('sm')} {
+  @media ${screen.sm} {
     margin: 12px 0 8px;
   }
 
@@ -82,7 +82,7 @@ const IconWrapper = styled.div`
     height: 24px;
     fill: currentColor;
 
-    ${up('sm')} {
+    @media ${screen.sm} {
       width: 34px;
       height: 34px;
     }
@@ -96,7 +96,7 @@ const Label = styled.div`
   ${fluidFont(18, 18)};
   margin-right: 15px;
 
-  ${up('sm')} {
+  @media ${screen.sm} {
     margin-right: 0px;
     text-align: center;
     opacity: 0.5;

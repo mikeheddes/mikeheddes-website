@@ -1,7 +1,7 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
-import { up } from 'styled-breakpoints'
+
+import { screen } from '../styles/breakpoints'
 
 const StyledMath = styled.div`
   && {
@@ -17,7 +17,7 @@ const StyledMath = styled.div`
         }
       `};
 
-    ${up('sm')} {
+    @media ${screen.sm} {
       overflow: visible;
     }
   }
@@ -28,11 +28,6 @@ const Math = ({ inline, children, ...restProps }) => (
     {children}
   </StyledMath>
 )
-
-Math.propTypes = {
-  inline: PropTypes.bool,
-  children: PropTypes.node.isRequired,
-}
 
 Math.defaultProps = {
   inline: false,

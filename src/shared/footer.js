@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { up } from 'styled-breakpoints'
 
+import { screen } from '../styles/breakpoints'
 import { fluidFont } from '../styles'
 
 const Wrapper = styled.footer`
@@ -15,14 +15,14 @@ const Wrapper = styled.footer`
   margin-top: 50px;
   line-height: 1.8;
 
-  ${up('sm')} {
+  @media ${screen.sm} {
     font-weight: 500;
   }
 `
 
 const Footer = () => (
   <Wrapper>
-    Designed and developed by Mike Heddes.
+    Design by Mike Heddes.
     <br />
     Copyright © {new Date().getFullYear()} Mike Heddes. All rights reserved.
   </Wrapper>

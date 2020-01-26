@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
 
 const Base = styled.svg.attrs(({ boxWidth }) => ({
   role: 'img',
@@ -14,10 +13,6 @@ const Base = styled.svg.attrs(({ boxWidth }) => ({
   vertical-align: text-bottom;
   transform-origin: center;
 `
-
-Base.propTypes = {
-  boxWidth: PropTypes.number.isRequired,
-}
 
 export default React.forwardRef(({ children, ...restProps }, ref) => (
   <Base {...restProps} ref={ref}>

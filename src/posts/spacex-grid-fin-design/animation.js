@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'gatsby'
 import styled, { css } from 'styled-components'
-import { up } from 'styled-breakpoints'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
+import { screen } from '../../styles/breakpoints'
 import TrackballControl from '../../shared/trackball-control'
 import useStudioCubeTexture from '../../shared/studio-cube-texture'
 import Canvas from '../../shared/three-canvas'
@@ -19,7 +19,7 @@ const Wrapper = styled.div`
 const Filler = styled.div`
   padding-bottom: 125%;
 
-  ${up('sm')} {
+  @media ${screen.sm} {
     padding-bottom: 53.3%;
   }
 `
@@ -58,7 +58,7 @@ const buttonPosition = css`
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  ${up('md')} {
+  @media ${screen.md} {
     bottom: 30px;
   }
 `
@@ -76,7 +76,12 @@ const Animation = ({ gridFinGLTF }) => {
         />
         <directionalLight intensity={0.1} position={[-4, 0, 0]} />
       </Canvas>
-      <Button css={buttonPosition} as={Link} to="/playground/grid-fin">
+      <Button
+        css={buttonPosition}
+        as={Link}
+        to="/playground/grid-fin"
+        state={{ fromBlogPost: true }}
+      >
         <Hand css="margin-right: 15px;" />
         Interact
       </Button>

@@ -37,7 +37,7 @@ varying float alpha;
 
 void main() {
   // makes the points round
-  float cr = length( gl_PointCoord - vec2( 0.5, 0.5 ) ) / 0.475;
+  float cr = length( gl_PointCoord - vec2( 0.5, 0.5 ) ) / 0.5;
   if (cr > 1.0) discard;
 
   gl_FragColor = vec4( starColor, alpha );

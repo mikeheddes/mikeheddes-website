@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { up } from 'styled-breakpoints'
 
+import { screen } from '../styles/breakpoints'
 import { fluidFont } from '../styles'
 
 const Blockquote = styled.blockquote`
@@ -9,11 +9,11 @@ const Blockquote = styled.blockquote`
   padding: 4px 20px;
   line-height: 1.5;
 
-  ${up('md')} {
+  @media ${screen.md} {
     padding: 4px 30px;
   }
 
-  ${up('lg')} {
+  @media ${screen.lg} {
     padding: 8px 50px;
   }
 

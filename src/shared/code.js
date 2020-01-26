@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
-import PropTypes from 'prop-types'
-import { up } from 'styled-breakpoints'
+
+import { screen } from '../styles/breakpoints'
 
 const highlighting = css`
   .token.comment,
@@ -98,22 +98,14 @@ const Code = styled.code`
     color: var(--text);
     padding: 0px 20px;
 
-    ${up('md')} {
+    @media ${screen.md} {
       padding: 0px 30px;
     }
 
-    ${up('lg')} {
+    @media ${screen.lg} {
       padding: 0px 50px;
     }
   }
 `
-
-Code.propTypes = {
-  variant: PropTypes.oneOf(['inline', 'block']),
-}
-
-Code.defaultProps = {
-  variant: 'inline',
-}
 
 export default Code

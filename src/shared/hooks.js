@@ -1,7 +1,7 @@
-import polyfill from '@juggle/resize-observer'
+import { ResizeObserver as polyfill } from '@juggle/resize-observer'
 import { useState, useRef, useEffect, useMemo, useContext } from 'react'
 import { ThemeContext } from 'styled-components'
-import useMeasureNoPolyfill from 'react-use-measure'
+import useMeasureWOPolyfill from 'react-use-measure'
 
 /**
  * Hook to remember and provide the previous value.
@@ -34,8 +34,9 @@ export function usePrevious(value) {
  *
  * @returns {[{ ref }, bounds]}
  */
-export const useMeasure = (options = {}) =>
-  useMeasureNoPolyfill({ ...options, polyfill })
+export function useMeasure(options = {}) {
+  return useMeasureWOPolyfill({ ...options, polyfill })
+}
 
 /**
  * Hook to see if a media query matches the current environment. If window is not defined it returns undefined.
@@ -44,7 +45,7 @@ export const useMeasure = (options = {}) =>
  * @param {string} query The CSS media query to evaluate.
  * @returns {boolean} Whether the media query matches the current environment.
  */
-export const useMediaQuery = query => {
+export function useMediaQuery(query) {
   const queryList = useMemo(() => {
     if (typeof window === 'undefined') return
 
@@ -69,9 +70,11 @@ export const useMediaQuery = query => {
   return queryList ? matches : undefined
 }
 
-export const useTheme = () => useContext(ThemeContext)
+export function useTheme() {
+  return useContext(ThemeContext)
+}
 
-export const useResize = eventHandler => {
+export function useResize(eventHandler) {
   const handlerRef = useRef(eventHandler)
   handlerRef.current = eventHandler
 
@@ -97,12 +100,14 @@ export const useResize = eventHandler => {
   }, [])
 }
 
-const getWindowSize = () => ({
-  width: window.innerWidth,
-  height: window.innerHeight,
-})
+function getWindowSize() {
+  return {
+    width: window.innerWidth,
+    height: window.innerHeight,
+  }
+}
 
-export const useWindowSize = () => {
+export function useWindowSize() {
   const [size, setSize] = useState(getWindowSize())
 
   useResize(() => {

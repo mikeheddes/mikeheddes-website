@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useRef } from 'react'
 import styled, { css } from 'styled-components'
-import { up } from 'styled-breakpoints'
 import * as THREE from 'three'
 import { useSpring, animated } from 'react-spring/three'
 import { useThree, useFrame } from 'react-three-fiber'
@@ -17,6 +16,7 @@ import Canvas from '../../shared/three-canvas'
 import Hand from '../../icons/hand/draw/fill'
 import Button from '../../shared/button'
 import { delay } from '../../shared/spring'
+import { screen } from '../../styles/breakpoints'
 
 const STAR_TIME_OFFSET = -20.0
 const STAR_SPEED = 1 // ms / MYr
@@ -35,7 +35,7 @@ const Wrapper = styled.div`
 const Filler = styled.div`
   padding-bottom: 125%;
 
-  ${up('sm')} {
+  @media ${screen.sm} {
     padding-bottom: 41.8%;
   }
 `
@@ -169,7 +169,7 @@ const buttonPosition = css`
   left: 50%;
   transform: translateX(-50%);
 
-  ${up('md')} {
+  @media ${screen.md} {
     bottom: 30px;
   }
 `
@@ -189,7 +189,12 @@ const Animation = ({ starsURL }) => {
           isNightTheme={isNightTheme}
         />
       </Canvas>
-      <Button css={buttonPosition} as={Link} to="/playground/gtocx-galaxy">
+      <Button
+        css={buttonPosition}
+        as={Link}
+        to="/playground/gtocx-galaxy"
+        state={{ fromBlogPost: true }}
+      >
         <Hand css="margin-right: 15px;" />
         Interact
       </Button>

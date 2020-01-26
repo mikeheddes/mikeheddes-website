@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { up } from 'styled-breakpoints'
 
+import { screen } from '../styles/breakpoints'
 import { fluidFont, contentWrapper } from '../styles'
 import { dateFormatter } from '../shared/formatters'
 
@@ -12,7 +12,7 @@ const Wrapper = styled.header`
   padding-top: 30px;
   padding-bottom: 30px;
 
-  ${up('md')} {
+  @media ${screen.md} {
     padding-top: 50px;
     padding-bottom: 50px;
   }
@@ -26,7 +26,7 @@ const Title = styled.h1`
   margin: 0;
   margin-bottom: 20px;
 
-  ${up('md')} {
+  @media ${screen.md} {
     margin-bottom: 30px;
   }
 `

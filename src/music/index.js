@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { up } from 'styled-breakpoints'
 import { graphql } from 'gatsby'
 
+import { screen } from '../styles/breakpoints'
 import { contentWrapper } from '../styles'
 import Cover from './cover'
 import { PlayPauseButton, ProgressIndicator, usePlayer } from './player'
@@ -25,7 +25,7 @@ const Wrapper = styled.div`
 const PlayPauseButtonWrapper = styled.div`
   margin: 20px 0;
 
-  ${up('md')} {
+  @media ${screen.md} {
     margin: 30px 0;
   }
 `

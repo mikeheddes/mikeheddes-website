@@ -1,10 +1,10 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { up } from 'styled-breakpoints'
 import { useSpring, animated } from 'react-spring'
 
 import { makeSpringConfig } from '../shared/spring'
 import ProgressiveImage from '../shared/progressive-image'
+import { screen } from '../styles/breakpoints'
 
 const Wrapper = styled(animated.div)`
   position: relative;
@@ -12,7 +12,7 @@ const Wrapper = styled(animated.div)`
   margin: 0 15px;
   border-radius: 4px;
 
-  ${up('sm')} {
+  @media ${screen.sm} {
     width: 100%;
     margin: 0;
   }

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { useTransition, animated } from 'react-spring'
-import { up } from 'styled-breakpoints'
 
+import { screen } from '../styles/breakpoints'
 import { contentWrapper, fluidFont } from '../styles'
 import { makeSpringConfig } from '../shared/spring'
 import ProgressiveImage from '../shared/progressive-image'
@@ -99,7 +99,7 @@ const Filler = styled.div`
   width: 100%;
   height: 500px;
 
-  ${up('lg')} {
+  @media ${screen.lg} {
     height: auto;
     padding-bottom: 34.8%;
   }
