@@ -1,4 +1,4 @@
-import polyfill from '@juggle/resize-observer'
+import { ResizeObserver as polyfill } from '@juggle/resize-observer'
 import React from 'react'
 import { Canvas as DefaultCanvas } from 'react-three-fiber'
 

@@ -1,9 +1,9 @@
 import React, { useCallback, useState, useRef } from 'react'
 import styled from 'styled-components'
-import { up } from 'styled-breakpoints'
 import { animated, useSpring } from 'react-spring'
 import { useDrag } from 'react-use-gesture'
 
+import { screen } from '../styles/breakpoints'
 import { fluidFont } from '../styles'
 import PlayIcon from '../icons/Play/fill'
 import PauseIcon from '../icons/Pause/fill'
@@ -27,11 +27,11 @@ const ProgressIndicatorWrapper = styled.div`
   user-select: none;
   padding: 0 30px;
 
-  ${up('sm')} {
+  @media ${screen.sm} {
     padding: 0 50px;
   }
 
-  ${up('md')} {
+  @media ${screen.md} {
     padding: 0 70px;
   }
 `

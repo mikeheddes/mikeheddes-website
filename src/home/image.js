@@ -1,22 +1,22 @@
 import React from 'react'
 import styled from 'styled-components'
-import { up } from 'styled-breakpoints'
 
+import { screen } from '../styles/breakpoints'
 import ProgressiveImage from '../shared/progressive-image'
 
 const Filler = styled.div`
   width: 100%;
   padding-bottom: 133%;
 
-  ${up('sm')} {
+  @media ${screen.sm} {
     padding-bottom: 61.8%;
   }
 
-  ${up('md')} {
+  @media ${screen.md} {
     padding-bottom: 53.3%;
   }
 
-  ${up('lg')} {
+  @media ${screen.lg} {
     padding-bottom: 41.8%;
   }
 `

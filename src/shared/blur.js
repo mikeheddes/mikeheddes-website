@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { imageDataRGB } from 'stackblur-canvas/dist/stackblur-es'
 import { useSpring, animated } from 'react-spring'
@@ -119,13 +118,6 @@ const Blur = ({ src, blur, ...restProps }) => {
 
 Blur.defaultProps = {
   blur: 50,
-}
-
-Blur.propTypes = {
-  src: PropTypes.string.isRequired,
-  base64: PropTypes.string,
-  blur: PropTypes.number,
-  onLoad: PropTypes.func,
 }
 
 export default Blur

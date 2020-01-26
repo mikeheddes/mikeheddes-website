@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 
 const EMPTY_CHARACTER = '\u200B'
@@ -26,12 +25,6 @@ TableCell.defaultProps = {
   children: EMPTY_CHARACTER,
   subtle: false,
   align: 'left',
-}
-
-TableCell.propTypes = {
-  subtle: PropTypes.bool,
-  colSpan: PropTypes.number,
-  align: PropTypes.oneOf(['left', 'right', 'center']),
 }
 
 export { TableCell }
@@ -119,14 +112,5 @@ const Table = styled.div.attrs({ role: 'table' })`
     background-color: var(--surface);
   }
 `
-
-Table.defaultProps = {}
-
-Table.propTypes = {
-  columns: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.arrayOf(PropTypes.string.isRequired),
-  ]).isRequired,
-}
 
 export { Table }

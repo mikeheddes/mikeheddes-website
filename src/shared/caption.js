@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { up } from 'styled-breakpoints'
 
+import { screen } from '../styles/breakpoints'
 import { fluidFont } from '../styles'
 
 const Caption = styled.figcaption`
@@ -14,12 +14,12 @@ const Caption = styled.figcaption`
   padding-left: 0px;
   padding-right: 0px;
 
-  ${up('sm')} {
+  @media ${screen.sm} {
     padding-left: 30px;
     padding-right: 30px;
   }
 
-  ${up('md')} {
+  @media ${screen.md} {
     padding-left: 80px;
     padding-right: 80px;
   }

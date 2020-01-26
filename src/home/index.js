@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { up } from 'styled-breakpoints'
 import { Link } from 'gatsby'
 
+import { breakpoints, screen } from '../styles/breakpoints'
 import Footer from '../shared/footer'
 import Hero from './hero'
 import Image from './image'
@@ -15,7 +15,6 @@ import GitHub from '../icons/logos/github'
 import Twitter from '../icons/logos/twitter'
 import Instagram from '../icons/logos/instagram'
 import YouTube from '../icons/logos/youtube'
-import { breakpoints } from '../styles/breakpoints'
 
 const InfoWrapper = styled(Link)`
   text-decoration: none;
@@ -30,7 +29,7 @@ const InfoWrapper = styled(Link)`
   align-items: center;
   flex-direction: row;
 
-  ${up('sm')} {
+  @media ${screen.sm} {
     max-width: 393px;
   }
 `
@@ -42,11 +41,11 @@ const InfoPosition = styled.div`
   width: 100%;
   padding: 15px;
 
-  ${up('sm')} {
+  @media ${screen.sm} {
     padding: 20px;
   }
 
-  ${up('md')} {
+  @media ${screen.md} {
     padding: 30px;
   }
 `
@@ -54,12 +53,14 @@ const InfoPosition = styled.div`
 const ItemWrapper = styled.div`
   margin: 30px 0px;
   position: relative;
+  border-radius: 2px;
+  overflow: hidden;
 
-  ${up('sm')} {
+  @media ${screen.sm} {
     margin: 50px 0px;
   }
 
-  ${up('md')} {
+  @media ${screen.md} {
     margin: 80px 0px;
   }
 `

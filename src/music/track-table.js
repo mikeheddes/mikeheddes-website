@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { up } from 'styled-breakpoints'
 
+import { screen } from '../styles/breakpoints'
 import { fluidFont } from '../styles'
 
 const toTimeStamp = milliseconds => {
@@ -32,7 +32,7 @@ const Cell = styled.td`
     variant === 'number' ? 'transparent' : theme.surface};
   padding: 8px;
 
-  ${up('sm')} {
+  @media ${screen.sm} {
     padding: 15px;
   }
 
@@ -44,7 +44,7 @@ const Cell = styled.td`
     css`
       padding-right: 20px;
 
-      ${up('sm')} {
+      @media ${screen.sm} {
         padding-right: 30px;
       }
     `};

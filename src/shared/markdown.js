@@ -1,9 +1,9 @@
 import 'katex/dist/katex.min.css'
 import React from 'react'
 import styled from 'styled-components'
-import { up } from 'styled-breakpoints'
 import { OutboundLink } from 'gatsby-plugin-google-analytics'
 
+import { screen } from '../styles/breakpoints'
 import { fluidFont, contentWrapper } from '../styles'
 import Math from './math'
 import Code from './code'
@@ -21,7 +21,7 @@ const wrapper = styled.main`
   margin-top: 50px;
   text-align: left;
 
-  ${up('md')} {
+  @media ${screen.md} {
     margin-top: 80px;
   }
 `
@@ -39,7 +39,7 @@ const h1 = styled.h1`
   margin-top: 80px;
   margin-bottom: 15px;
 
-  ${up('md')} {
+  @media ${screen.md} {
     margin-top: 130px;
     margin-bottom: 20px;
   }
@@ -53,7 +53,7 @@ const h2 = styled.h2`
   margin-top: 50px;
   margin-bottom: 8px;
 
-  ${up('md')} {
+  @media ${screen.md} {
     margin-top: 50px;
     margin-bottom: 15px;
   }
@@ -67,7 +67,7 @@ const h3 = styled.h3`
   margin-top: 30px;
   margin-bottom: 4px;
 
-  ${up('md')} {
+  @media ${screen.md} {
     margin-bottom: 8px;
   }
 `
@@ -80,7 +80,7 @@ const h4 = styled.h4`
   margin-top: 30px;
   margin-bottom: 4px;
 
-  ${up('md')} {
+  @media ${screen.md} {
     margin-bottom: 8px;
   }
 `
@@ -180,11 +180,11 @@ const hr = styled.hr`
   border-width: 1px;
   margin: 50px 20px;
 
-  ${up('sm')} {
+  @media ${screen.sm} {
     margin: 80px 30px;
   }
 
-  ${up('lg')} {
+  @media ${screen.lg} {
     margin: 130px 50px;
   }
 `

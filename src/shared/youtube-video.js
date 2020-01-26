@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react'
 import YouTubePlayer from 'youtube-player'
 import styled from 'styled-components'
-import { up } from 'styled-breakpoints'
 import { useSpring, animated } from 'react-spring'
 
+import { screen } from '../styles/breakpoints'
 import Play from '../icons/Play/fill'
 import { fluidFont } from '../styles'
 import { makeSpringConfig } from './spring'
@@ -25,7 +25,7 @@ const IconWrapper = styled.div`
   height: 100%;
   align-items: center;
   justify-content: center;
-  ${fluidFont(24, 26)};
+  ${fluidFont(22, 24)};
   color: white;
 `
 
@@ -38,14 +38,14 @@ const IconCircle = styled.div`
   width: 60px;
   height: 60px;
 
-  ${up('sm')} {
-    width: 64px;
-    height: 64px;
+  @media ${screen.sm} {
+    width: 62px;
+    height: 62px;
   }
 
-  ${up('md')} {
-    width: 70px;
-    height: 70px;
+  @media ${screen.md} {
+    width: 64px;
+    height: 64px;
   }
 `
 

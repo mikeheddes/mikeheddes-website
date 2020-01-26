@@ -28,6 +28,7 @@ const Body = styled.p`
   font-weight: 600;
   line-height: 1.5;
   text-align: center;
+  color: var(--text);
 `
 
 const Anchor = styled(Link)`
