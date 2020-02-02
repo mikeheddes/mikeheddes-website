@@ -18,20 +18,28 @@ const MetaTags = ({
   return (
     <>
       <Helmet>
+        <title>{title}</title>
+        <meta name="twitter:title" content={title} />
+        <meta property="og:title" content={title} />
+
+        <meta
+          name="keywords"
+          content={`technology, ${genre}, art, science, computer graphics, computer science`}
+        />
+
+        <meta property="og:description" content={description} />
+        <meta name="twitter:description" content={description} />
+        <meta name="description" content={description} />
+
         <meta property="og:url" content={siteUrl + slug} />
         <meta property="og:type" content="article" />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:image" content={siteUrl + imageSquare} />
         <meta property="article:published_time" content={isoString} />
         <meta property="article:author" content="Mike Heddes" />
         <meta property="article:section" content={genre} />
 
-        <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={description} />
+        <meta name="image" content={siteUrl + imageSquare} />
+        <meta property="og:image" content={siteUrl + imageSquare} />
         <meta name="twitter:image" content={siteUrl + imageWide} />
-        <meta name="keywords" content={`technology, ${genre}, art, science`} />
-        <meta name="description" content={description} />
       </Helmet>
       <StructuredData>
         {{
@@ -45,7 +53,7 @@ const MetaTags = ({
           datePublished: isoString,
           inLanguage: 'en-US',
           isFamilyFriendly: 'true',
-          copyrightYear: '2019',
+          copyrightYear: new Date().getFullYear().toString(),
           copyrightHolder: 'Mike Heddes',
           author: {
             '@type': 'Person',

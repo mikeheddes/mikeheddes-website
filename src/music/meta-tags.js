@@ -18,25 +18,31 @@ const MetaTags = ({
   sameAs,
 }) => {
   const formattedDate = dateFormatter.format(new Date(date))
+  const isoString = new Date(date).toISOString()
   const description = `${genre} music by Mike Heddes released on ${formattedDate}.`
 
   return (
     <>
       <Helmet>
+        <title>{album}</title>
+        <meta name="twitter:title" content={`${album} by Mike Heddes`} />
+        <meta property="og:title" content={`${album} by Mike Heddes`} />
+
+        <meta name="keywords" content={`music, ${genre}, art`} />
+
+        <meta property="og:description" content={description} />
+        <meta name="twitter:description" content={description} />
+        <meta name="description" content={description} />
+
         <meta property="og:url" content={siteUrl + slug} />
         <meta property="og:type" content="music.song" />
-        <meta property="og:title" content={`${album} by Mike Heddes`} />
-        <meta property="og:description" content={description} />
-        <meta property="og:image" content={siteUrl + imageSquare} />
         <meta property="music:album" content={album} />
         <meta property="music:musician" content="Mike Heddes" />
         <meta property="music:song:url" content={siteUrl + slug} />
 
-        <meta name="twitter:title" content={`${album} by Mike Heddes`} />
-        <meta name="twitter:description" content={description} />
+        <meta name="image" content={siteUrl + imageSquare} />
+        <meta property="og:image" content={siteUrl + imageSquare} />
         <meta name="twitter:image" content={siteUrl + imageWide} />
-        <meta name="keywords" content={`music, ${genre}, art`} />
-        <meta name="description" content={description} />
       </Helmet>
       <StructuredData>
         {{
@@ -52,7 +58,7 @@ const MetaTags = ({
           genre,
           identifier: upc,
           numtracks: `${tracks.length}`,
-          datePublished: new Date(date).toISOString(),
+          datePublished: isoString,
           track: tracks.map(({ title, isrc, duration }, i) => ({
             '@type': 'MusicRecording',
             position: `${i + 1}`,

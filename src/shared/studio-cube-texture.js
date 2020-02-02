@@ -12,6 +12,9 @@ const CubeTextureUrls = [px, nx, py, ny, pz, nz]
 
 export default function useStudioCubeTexture() {
   return useMemo(() => {
-    return new THREE.CubeTextureLoader().load(CubeTextureUrls)
+    let cubeTexture = new THREE.CubeTextureLoader().load(CubeTextureUrls)
+    // Results in better colors, see: https://gist.github.com/donmccurdy/fefb35c5ba033e7dcd641f9684e47a82
+    cubeTexture.encoding = THREE.sRGBEncoding
+    return cubeTexture
   }, [])
 }

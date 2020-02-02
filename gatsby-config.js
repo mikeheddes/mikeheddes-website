@@ -95,6 +95,33 @@ module.exports = {
         // respectDNT: true,
       },
     },
+    {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl: homepage,
+        stripQueryString: true,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Mike Heddes' Personal Website`,
+        short_name: `Mike Heddes`,
+        lang: `en`,
+        start_url: '/',
+        background_color: `#ffffff`,
+        theme_color: `#4a4a4a`,
+        display: `minimal-ui`,
+        icon: `src/assets/minimal-icon.png`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-offline`,
+      options: {
+        precachePages: [``],
+      },
+    },
+
     // {
     //   resolve: 'gatsby-plugin-webpack-bundle-analyzer',
     //   options: {
