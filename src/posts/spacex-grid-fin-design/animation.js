@@ -58,6 +58,7 @@ const buttonPosition = css`
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
+
   @media ${screen.md} {
     bottom: 30px;
   }

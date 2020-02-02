@@ -219,7 +219,7 @@ const TrackballControl = ({
 
   const bind = useGesture(
     { onDrag, onPinch },
-    { domTarget: gl.domElement, event: { passive: false } }
+    { domTarget: gl.domElement, event: { passive: true } }
   )
   useEffect(bind, [bind])
 
