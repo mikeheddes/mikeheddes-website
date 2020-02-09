@@ -3,6 +3,7 @@ attribute vec4 star;
 attribute float angularVelocity;
 uniform float time;
 uniform bool isNightTheme;
+uniform float pixelRatio;
 varying float alpha;
 
 vec3 getPosition(vec4 starIn, float nt) {
@@ -26,6 +27,8 @@ void main() {
 
   float fogFactor = smoothstep( 1., 70., - mvPosition.z );
   gl_PointSize = 1. / pow(fogFactor * 20. + 1., 3. ) * 20. + 3.;
+  // Correct scale to monitor pixel ratio
+  gl_PointSize = gl_PointSize / 2. * pixelRatio;
   alpha = ( 1. - fogFactor ) * .8;
 
   gl_Position = projectionMatrix * mvPosition;

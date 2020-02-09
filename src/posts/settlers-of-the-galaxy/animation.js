@@ -20,6 +20,7 @@ import { screen } from '../../styles/breakpoints'
 
 const STAR_TIME_OFFSET = -20.0
 const STAR_SPEED = 1 // ms / MYr
+const pixelRatio = typeof window === 'undefined' ? 1 : window.devicePixelRatio
 
 const easeInOutCubic = t =>
   t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1
@@ -76,6 +77,7 @@ export const Stars = ({ starColor, isNightTheme, starsURL }) => {
         starColor: { value: new THREE.Color(starColor) },
         time: { value: STAR_TIME_OFFSET },
         isNightTheme: { value: isNightTheme },
+        pixelRatio: { value: pixelRatio },
       },
       transparent: true,
       vertexShader,
