@@ -11,6 +11,7 @@ import Button from '../../shared/button'
 import Hand from '../../icons/hand/draw/fill'
 
 const Wrapper = styled.div`
+  display: block;
   width: 100%;
   position: relative;
   user-select: none;
@@ -66,7 +67,7 @@ const buttonPosition = css`
 
 const Animation = ({ gridFinGLTF }) => {
   return (
-    <Wrapper>
+    <Wrapper as={Link} to="/playground/grid-fin" state={{ fromBlogPost: true }}>
       <Filler />
       <Canvas>
         <GridFinMesh url={gridFinGLTF} />
@@ -77,14 +78,9 @@ const Animation = ({ gridFinGLTF }) => {
         />
         <directionalLight intensity={0.1} position={[-4, 0, 0]} />
       </Canvas>
-      <Button
-        css={buttonPosition}
-        as={Link}
-        to="/playground/grid-fin"
-        state={{ fromBlogPost: true }}
-      >
+      <Button css={buttonPosition}>
         <Hand css="margin-right: 15px;" />
-        Interact
+        Click to interact
       </Button>
     </Wrapper>
   )

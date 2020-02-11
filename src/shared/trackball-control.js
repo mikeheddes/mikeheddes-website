@@ -180,6 +180,9 @@ const TrackballControl = ({
       memo,
       event,
     } = stats
+
+    event && event.preventDefault()
+
     if (!isRotateActive) return time
     if (first) {
       // Stop any scale as soon as a user interacts
@@ -219,7 +222,7 @@ const TrackballControl = ({
 
   const bind = useGesture(
     { onDrag, onPinch },
-    { domTarget: gl.domElement, event: { passive: true } }
+    { domTarget: gl.domElement, event: { passive: false } }
   )
   useEffect(bind, [bind])
 

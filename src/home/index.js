@@ -16,8 +16,7 @@ import Twitter from '../icons/logos/twitter'
 import Instagram from '../icons/logos/instagram'
 import YouTube from '../icons/logos/youtube'
 
-const InfoWrapper = styled(Link)`
-  text-decoration: none;
+const InfoWrapper = styled.div`
   margin: 0px auto;
   width: 100%;
   display: flex;
@@ -50,7 +49,10 @@ const InfoPosition = styled.div`
   }
 `
 
-const ItemWrapper = styled.div`
+const ItemWrapper = styled(Link)`
+  text-decoration: none;
+  color: var(--heading);
+  display: block;
   margin: 30px 0px;
   position: relative;
   border-radius: 2px;
@@ -86,7 +88,7 @@ const unwrapNode = type => ({ node }) => ({
   __type: type,
 })
 
-const Item = props => {
+function Item(props) {
   const { title, album, genre, slug, image, __type } = props
 
   const theme = useTheme()
@@ -101,7 +103,7 @@ const Item = props => {
       : image.light && image.light.childImageSharp)
 
   return (
-    <ItemWrapper>
+    <ItemWrapper to={slug}>
       {imageFluid && (
         <Image
           alt={title || album}
@@ -110,7 +112,7 @@ const Item = props => {
         />
       )}
       <InfoPosition>
-        <InfoWrapper to={slug}>
+        <InfoWrapper>
           <div>
             <Title>{title || album}</Title>
             <Genre>
@@ -155,7 +157,7 @@ export default function Home({ data }) {
         siteUrl={siteUrl}
       />
       <Hero image={data.wideImage} />
-      <ActionBlock>
+      <ActionBlock css="margin-bottom: -30px;">
         <ActionItem icon={GitHub} href="https://github.com/mikeheddes">
           GitHub
         </ActionItem>

@@ -29,6 +29,7 @@ const easeInOutQuart = t =>
   t < 0.5 ? 8 * t * t * t * t : 1 - 8 * --t * t * t * t
 
 const Wrapper = styled.div`
+  display: block;
   width: 100%;
   position: relative;
 `
@@ -181,7 +182,11 @@ const Animation = ({ starsURL }) => {
   const isNightTheme = theme.id === 'dark'
 
   return (
-    <Wrapper>
+    <Wrapper
+      as={Link}
+      to="/playground/gtocx-galaxy"
+      state={{ fromBlogPost: true }}
+    >
       <Filler />
       <Canvas>
         <Camera />
@@ -191,14 +196,9 @@ const Animation = ({ starsURL }) => {
           isNightTheme={isNightTheme}
         />
       </Canvas>
-      <Button
-        css={buttonPosition}
-        as={Link}
-        to="/playground/gtocx-galaxy"
-        state={{ fromBlogPost: true }}
-      >
+      <Button css={buttonPosition}>
         <Hand css="margin-right: 15px;" />
-        Interact
+        Click to interact
       </Button>
     </Wrapper>
   )
