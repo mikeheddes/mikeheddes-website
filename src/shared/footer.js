@@ -22,7 +22,7 @@ const Wrapper = styled.footer`
 
 const Footer = () => (
   <Wrapper>
-    Design by Mike Heddes.
+    Designed by Mike Heddes.
     <br />
     Copyright © {new Date().getFullYear()} Mike Heddes. All rights reserved.
   </Wrapper>

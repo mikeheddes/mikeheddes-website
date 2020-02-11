@@ -7,7 +7,6 @@ import { contentWrapper, fluidFont } from '../styles'
 
 const Wrapper = styled.div`
   padding: 30px 0;
-  background-color: var(--surface);
   text-align: center;
 `
 
@@ -25,7 +24,7 @@ const Title = styled.h4`
 
 const Grid = styled.div`
   display: block;
-  background-color: var(--background);
+  background-color: var(--surface-subtle);
   border-radius: 10px;
   max-width: 375px;
   margin: 0 auto;
@@ -64,7 +63,7 @@ const ItemWrapper = styled(OutboundLink)`
 
   @media ${screen.sm} {
     height: auto;
-    background-color: var(--background);
+    background-color: var(--surface-subtle);
     display: block;
     border-radius: 10px;
     padding: 8px;
@@ -115,9 +114,9 @@ const ActionItem = ({ children, icon: Icon, ...restProps }) => {
   )
 }
 
-const ActionBlock = ({ title, children }) => {
+const ActionBlock = ({ title, children, ...restProps }) => {
   return (
-    <Wrapper>
+    <Wrapper {...restProps}>
       {title && <Title>{title}</Title>}
       <div css={contentWrapper} wide>
         <Grid>{children}</Grid>

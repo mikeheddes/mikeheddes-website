@@ -56,7 +56,7 @@ const CoverImage = ({ isPlaying, ...restProps }) => {
     transform: isPlaying ? 'scale(1)' : 'scale(0.85)',
     opacity: isPlaying ? 1 : 0,
     immediate: false,
-    config: makeSpringConfig({ response: 500 }),
+    config: makeSpringConfig({ response: 400 }),
   })
 
   return (
