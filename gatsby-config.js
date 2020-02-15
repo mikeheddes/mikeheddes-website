@@ -112,7 +112,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#4a4a4a`,
         display: `minimal-ui`,
-        icon: `src/assets/minimal-icon.png`,
+        icon: `src/assets/icon.png`,
       },
     },
     {
@@ -121,13 +121,5 @@ module.exports = {
         precachePages: [``],
       },
     },
-
-    // {
-    //   resolve: 'gatsby-plugin-webpack-bundle-analyzer',
-    //   options: {
-    //     analyzerPort: 3000,
-    //     production: true,
-    //   },
-    // },
   ],
 }
