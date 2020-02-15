@@ -13,6 +13,8 @@ const Button = styled.div.attrs({ role: 'button' })`
   padding: 12px 22px;
   cursor: pointer;
   transition: background-color 80ms ease-out;
+  white-space: nowrap;
+  text-align: center;
 
   :active {
     background-color: var(--surface-obvious);
