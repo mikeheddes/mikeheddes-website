@@ -27,6 +27,15 @@ export const contentWrapper = css`
   }
 `
 
+export const absoluteSize = css`
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+`
+
 export const ellipsis = css`
   display: block;
   display: -webkit-box;

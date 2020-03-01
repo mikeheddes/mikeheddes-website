@@ -5,13 +5,10 @@ import { useSpring, animated } from 'react-spring'
 
 import { useMeasure } from './hooks'
 import { makeSpringConfig } from './spring'
+import { absoluteSize } from '../styles'
 
 const Canvas = styled(animated.canvas)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  ${absoluteSize};
 `
 
 /**

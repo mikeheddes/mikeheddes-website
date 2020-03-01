@@ -15,6 +15,9 @@ export const pageQuery = graphql`
           ...GatsbyImageSharpFluid_withWebp
         }
       }
+      colors {
+        ...GatsbyImageColors
+      }
     }
     profileImage: file(relativePath: { eq: "mike-heddes.jpg" }) {
       childImageSharp {
@@ -39,12 +42,15 @@ export const pageQuery = graphql`
           fields {
             slug
           }
-          image: cover {
+          themedImages: cover {
             dark {
               childImageSharp {
                 fluid(maxHeight: 500) {
                   ...GatsbyImageSharpFluid_withWebp
                 }
+              }
+              colors {
+                ...GatsbyImageColors
               }
             }
             light {
@@ -52,6 +58,9 @@ export const pageQuery = graphql`
                 fluid(maxHeight: 500) {
                   ...GatsbyImageSharpFluid_withWebp
                 }
+              }
+              colors {
+                ...GatsbyImageColors
               }
             }
           }
@@ -69,9 +78,12 @@ export const pageQuery = graphql`
           genre
           image: wallpaper {
             childImageSharp {
-              fluid(maxHeight: 475) {
+              fluid(maxHeight: 500) {
                 ...GatsbyImageSharpFluid_withWebp
               }
+            }
+            colors {
+              ...GatsbyImageColors
             }
           }
         }

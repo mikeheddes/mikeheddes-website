@@ -15,6 +15,7 @@ import GitHub from '../icons/logos/github'
 import Twitter from '../icons/logos/twitter'
 import Instagram from '../icons/logos/instagram'
 import YouTube from '../icons/logos/youtube'
+import Spotify from '../icons/logos/spotify'
 
 const InfoWrapper = styled.div`
   margin: 0px auto;
@@ -81,36 +82,32 @@ const Title = styled.h2`
   margin-bottom: 2px;
 `
 
-const unwrapNode = type => ({ node }) => ({
-  ...node,
-  date: new Date(node.date),
-  slug: node.fields.slug,
-  __type: type,
-})
+const unwrapNode = (type, themeId) => ({ node }) => {
+  let image = node.image
+
+  if (type === 'post') {
+    image = node.themedImages[themeId]
+  }
+
+  return {
+    ...node,
+    image,
+    date: new Date(node.date),
+    slug: node.fields.slug,
+    __type: type,
+  }
+}
 
 function Item(props) {
   const { title, album, genre, slug, image, __type } = props
 
-  const theme = useTheme()
-  const isNightTheme = theme.id === 'dark'
-
-  const imageFluid =
-    image &&
-    (image.childImageSharp
-      ? image.childImageSharp
-      : isNightTheme
-      ? image.dark && image.dark.childImageSharp
-      : image.light && image.light.childImageSharp)
-
   return (
     <ItemWrapper to={slug}>
-      {imageFluid && (
-        <Image
-          alt={title || album}
-          {...imageFluid.fluid}
-          sizes={`(max-width: ${breakpoints.sm}px) 150vw, 100vw`}
-        />
-      )}
+      <Image
+        alt={title || album}
+        image={image}
+        sizes={`(max-width: ${breakpoints.sm}px) 150vw, 100vw`}
+      />
       <InfoPosition>
         <InfoWrapper>
           <div>
@@ -129,8 +126,10 @@ function Item(props) {
 }
 
 export default function Home({ data }) {
-  const music = data.allMusicYaml.edges.map(unwrapNode('music'))
-  const posts = data.allPostYaml.edges.map(unwrapNode('post'))
+  const theme = useTheme()
+
+  const music = data.allMusicYaml.edges.map(unwrapNode('music', theme.id))
+  const posts = data.allPostYaml.edges.map(unwrapNode('post', theme.id))
   const content = [...music, ...posts].sort((a, b) => b.date - a.date)
 
   const {
@@ -166,6 +165,12 @@ export default function Home({ data }) {
         </ActionItem>
         <ActionItem icon={Instagram} href="https://instagram.com/mikeheddes">
           Instagram
+        </ActionItem>
+        <ActionItem
+          icon={Spotify}
+          href="https://open.spotify.com/artist/4kQdT4uFc2e0zHL755qJ0U"
+        >
+          Spotify
         </ActionItem>
         <ActionItem icon={YouTube} href="https://youtube.com/mikeheddes">
           YouTube

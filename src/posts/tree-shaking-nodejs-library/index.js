@@ -17,7 +17,7 @@ const Post = ({ data: { postYaml, site } }) => {
     >
       <figure>
         <ProgressiveImage
-          {...postYaml.cover.light.childImageSharp.fluid}
+          image={postYaml.cover.light}
           sizes="100vw"
           shape="cinema"
         />
@@ -64,6 +64,9 @@ export const pageQuery = graphql`
             fluid(maxHeight: 500) {
               ...GatsbyImageSharpFluid_withWebp
             }
+          }
+          colors {
+            ...GatsbyImageColors
           }
         }
       }

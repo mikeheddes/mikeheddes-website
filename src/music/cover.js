@@ -5,6 +5,7 @@ import { useSpring, animated } from 'react-spring'
 import { makeSpringConfig } from '../shared/spring'
 import ProgressiveImage from '../shared/progressive-image'
 import { screen } from '../styles/breakpoints'
+import { absoluteSize } from '../styles'
 
 const Wrapper = styled(animated.div)`
   position: relative;
@@ -19,12 +20,7 @@ const Wrapper = styled(animated.div)`
 `
 
 const SmallShadow = styled(animated.div)`
-  position: absolute;
-  display: block;
-  width: 100%;
-  height: 100%;
-  top: 0px;
-  left: 0px;
+  ${absoluteSize};
   border-radius: 4px;
   box-shadow: 0 0.2px 0.4px -2px rgba(0, 0, 0, 0.107),
     0 0.5px 1px -2px rgba(0, 0, 0, 0.154),
@@ -32,12 +28,7 @@ const SmallShadow = styled(animated.div)`
 `
 
 const BigShadow = styled(animated.div)`
-  position: absolute;
-  display: block;
-  width: 100%;
-  height: 100%;
-  top: 0px;
-  left: 0px;
+  ${absoluteSize};
   border-radius: 4px;
   box-shadow: 0 1.1px 1.1px -12px rgba(0, 0, 0, 0.057),
     0 2.7px 2.7px -12px rgba(0, 0, 0, 0.083),
