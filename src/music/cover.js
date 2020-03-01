@@ -57,7 +57,7 @@ export default function CoverImage({ isPlaying, ...restProps }) {
 
   const [props, set] = useSpring(() => ({
     xy: [0, 0],
-    config: makeSpringConfig({ response: 600, damping: 0.5, mass: 1.5 }),
+    config: makeSpringConfig({ response: 500, damping: 0.5, mass: 1.5 }),
   }))
 
   const resetTilt = useCallback(() => set({ xy: [0, 0] }), [set])
