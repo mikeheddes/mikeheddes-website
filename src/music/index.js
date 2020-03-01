@@ -73,7 +73,7 @@ const Music = ({ data: { musicYaml, site } }) => {
         <TitleView title={album} date={date} genre={genre} />
         <div css={contentWrapper}>
           <Wrapper>
-            <Cover {...cover.childImageSharp.fluid} isPlaying={isPlaying} />
+            <Cover image={cover} isPlaying={isPlaying} />
             <PlayPauseButtonWrapper>
               <PlayPauseButton
                 isPlaying={isPlaying}
@@ -130,12 +130,8 @@ export const pageQuery = graphql`
             ...GatsbyImageSharpFluid_withWebp
           }
         }
-      }
-      cover {
-        childImageSharp {
-          fluid(maxHeight: 460) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
+        colors {
+          ...GatsbyImageColors
         }
       }
       imageWide: wallpaper {

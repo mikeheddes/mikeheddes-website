@@ -5,7 +5,7 @@ import { useSpring, animated } from 'react-spring'
 
 import { screen } from '../styles/breakpoints'
 import Play from '../icons/Play/fill'
-import { fluidFont } from '../styles'
+import { fluidFont, absoluteSize } from '../styles'
 import { makeSpringConfig } from './spring'
 
 const Wrapper = styled.div`
@@ -17,12 +17,8 @@ const Wrapper = styled.div`
 `
 
 const IconWrapper = styled.div`
+  ${absoluteSize};
   display: flex;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
   align-items: center;
   justify-content: center;
   ${fluidFont(22, 24)};
@@ -55,22 +51,12 @@ const Filler = styled.div`
 `
 
 const Player = styled.div`
-  display: block;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
+  ${absoluteSize};
   border: none;
 `
 
 const Thumbnail = styled.img`
-  display: block;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
+  ${absoluteSize};
   object-fit: cover;
   object-position: 50% 50%;
 `

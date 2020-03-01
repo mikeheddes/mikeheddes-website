@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { OutboundLink } from 'gatsby-plugin-google-analytics'
 
 import { screen } from '../styles/breakpoints'
-import { fluidFont, contentWrapper } from '../styles'
+import { fluidFont, contentWrapper, absoluteSize } from '../styles'
 import Math from './math'
 import Code from './code'
 import Preformatted from './preformatted'
@@ -113,11 +113,7 @@ const span = props => {
 }
 
 const img = styled.img`
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
+  ${absoluteSize};
 `
 
 const a = styled(OutboundLink)`

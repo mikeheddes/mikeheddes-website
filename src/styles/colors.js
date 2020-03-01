@@ -4,7 +4,7 @@ export const colorVariables = css`
   :root {
     /* Grays */
     --gray-000: #ffffff;
-    --gray-050: #fafafa;
+    --gray-050: #f5f5f5;
     --gray-100: #f2f2f2;
     --gray-200: #d8d8d8;
     --gray-300: #8c8c8c;

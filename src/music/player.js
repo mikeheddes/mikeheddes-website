@@ -4,7 +4,7 @@ import { animated, useSpring } from 'react-spring'
 import { useDrag } from 'react-use-gesture'
 
 import { screen } from '../styles/breakpoints'
-import { fluidFont } from '../styles'
+import { fluidFont, absoluteSize } from '../styles'
 import PlayIcon from '../icons/Play/fill'
 import PauseIcon from '../icons/Pause/fill'
 import { makeSpringConfig } from '../shared/spring'
@@ -64,12 +64,8 @@ const ShadowLine = styled.div`
 `
 
 const ProgressLine = styled(animated.div)`
+  ${absoluteSize};
   background-color: var(--foreground);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   transform-origin: 0% 50%;
 `
 

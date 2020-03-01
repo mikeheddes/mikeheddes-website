@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { useTransition, animated } from 'react-spring'
 
 import { screen } from '../styles/breakpoints'
-import { contentWrapper, fluidFont } from '../styles'
+import { contentWrapper, fluidFont, absoluteSize } from '../styles'
 import { makeSpringConfig } from '../shared/spring'
 import ProgressiveImage from '../shared/progressive-image'
 
@@ -72,11 +72,7 @@ const Description = styled.h3`
 `
 
 const ColorAnimation = styled(animated.div)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  ${absoluteSize};
   overflow: hidden;
   text-align: center;
   background-color: var(--surface);
@@ -144,7 +140,7 @@ export default function Hero({ image }) {
   return (
     <div css="position: relative;">
       <ProgressiveImage
-        {...image.childImageSharp.fluid}
+        image={image}
         alt="Mike Heddes"
         objectPosition="50% 25%"
         filler={Filler}

@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useEffect, useCallback } from 'react'
 import styled, { css } from 'styled-components'
 import { useSpring, animated } from 'react-spring'
 
 import { makeSpringConfig } from '../shared/spring'
 import ProgressiveImage from '../shared/progressive-image'
 import { screen } from '../styles/breakpoints'
+import { absoluteSize } from '../styles'
+
+const MAX_TILT = 5
 
 const Wrapper = styled(animated.div)`
   position: relative;
@@ -19,12 +22,7 @@ const Wrapper = styled(animated.div)`
 `
 
 const SmallShadow = styled(animated.div)`
-  position: absolute;
-  display: block;
-  width: 100%;
-  height: 100%;
-  top: 0px;
-  left: 0px;
+  ${absoluteSize};
   border-radius: 4px;
   box-shadow: 0 0.2px 0.4px -2px rgba(0, 0, 0, 0.107),
     0 0.5px 1px -2px rgba(0, 0, 0, 0.154),
@@ -32,12 +30,7 @@ const SmallShadow = styled(animated.div)`
 `
 
 const BigShadow = styled(animated.div)`
-  position: absolute;
-  display: block;
-  width: 100%;
-  height: 100%;
-  top: 0px;
-  left: 0px;
+  ${absoluteSize};
   border-radius: 4px;
   box-shadow: 0 1.1px 1.1px -12px rgba(0, 0, 0, 0.057),
     0 2.7px 2.7px -12px rgba(0, 0, 0, 0.083),
@@ -51,21 +44,56 @@ const sharedClassName = css`
   border-radius: 4px;
 `
 
-const CoverImage = ({ isPlaying, ...restProps }) => {
+const trans = (x, y) =>
+  `perspective(500px) rotateX(${-y * MAX_TILT}deg) rotateY(${x * MAX_TILT}deg)`
+
+export default function CoverImage({ isPlaying, ...restProps }) {
   const { transform, opacity } = useSpring({
-    transform: isPlaying ? 'scale(1)' : 'scale(0.85)',
+    transform: isPlaying ? 'scale(1)' : 'scale(0.88)',
     opacity: isPlaying ? 1 : 0,
     immediate: false,
     config: makeSpringConfig({ response: 400 }),
   })
 
+  const [props, set] = useSpring(() => ({
+    xy: [0, 0],
+    config: makeSpringConfig({ response: 500, damping: 0.5, mass: 1.5 }),
+  }))
+
+  const resetTilt = useCallback(() => set({ xy: [0, 0] }), [set])
+  const handleMouseOver = useCallback(
+    event => {
+      const { clientX, clientY } = event
+      const box = event.target.getBoundingClientRect()
+
+      const centerX = box.x + box.width / 2
+      const centerY = box.y + box.height / 2
+
+      const unitX = (clientX - centerX) / box.width
+      const unitY = (clientY - centerY) / box.height
+
+      set({ xy: [unitX, unitY] })
+    },
+    [set]
+  )
+
+  useEffect(() => {
+    if (!isPlaying) {
+      resetTilt()
+    }
+  }, [isPlaying, resetTilt])
+
   return (
-    <Wrapper style={{ transform }}>
-      <SmallShadow style={{ opacity: opacity.interpolate(v => 1 - v) }} />
-      <BigShadow style={{ opacity }} />
-      <ProgressiveImage css={sharedClassName} {...restProps} shape="square" />
+    <Wrapper
+      style={{ transform }}
+      onMouseMove={isPlaying ? handleMouseOver : undefined}
+      onMouseLeave={resetTilt}
+    >
+      <animated.div style={{ transform: props.xy.interpolate(trans) }}>
+        <SmallShadow style={{ opacity: opacity.interpolate(v => 1 - v) }} />
+        <BigShadow style={{ opacity }} />
+        <ProgressiveImage css={sharedClassName} {...restProps} shape="square" />
+      </animated.div>
     </Wrapper>
   )
 }
-
-export default CoverImage

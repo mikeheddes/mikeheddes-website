@@ -1,5 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react'
 import styled from 'styled-components'
+import { animated, useSpring } from 'react-spring'
+import { makeSpringConfig } from './spring'
+import { absoluteSize } from '../styles'
 
 const RATIOS = {
   poster: 1.333,
@@ -17,25 +20,13 @@ const Wrapper = styled.div`
   width: 100%;
 `
 
-const BaseImage = styled.div`
-  display: block;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-image: url("${({ src }) => src}");
-  background-position: ${({ objectposition }) => objectposition};
+const BackgroundColor = styled.div`
+  ${absoluteSize};
+  background-color: ${props => props.color};
 `
 
-const FullImage = styled.img`
-  display: block;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
+const FullImage = styled(animated.img)`
+  ${absoluteSize};
   object-fit: cover;
   object-position: ${({ objectposition }) => objectposition};
 `
@@ -47,25 +38,28 @@ const Filler = styled.div`
 
 const ProgressiveImage = React.memo(
   ({
-    base64,
-    src,
-    srcWebp,
-    aspectRatio: imageAspectRatio,
-    srcSet,
-    srcSetWebp,
+    image: imageFile,
+    objectPosition,
     sizes,
     alt,
     shape,
-    objectPosition,
     filler: FillerComponent,
     className,
     ...restProps
   }) => {
+    const { colors } = imageFile
+    const image = imageFile.childImageSharp.fluid
+
     const wrapperRef = useRef()
     const [isObserved, setIsObserved] = useState(false)
 
+    const [springProps, setSpring] = useSpring(() => ({
+      opacity: 0,
+      config: makeSpringConfig({ response: 500 }),
+    }))
+
     const desiredAspectRatio =
-      shape === 'original' ? 1 / imageAspectRatio : RATIOS[shape]
+      shape === 'original' ? 1 / image.aspectRatio : RATIOS[shape]
 
     useEffect(() => {
       const element = wrapperRef.current
@@ -87,6 +81,10 @@ const ProgressiveImage = React.memo(
       }
     }, [])
 
+    function handleImageLoad() {
+      setSpring({ opacity: 1 })
+    }
+
     return (
       <Wrapper
         {...restProps}
@@ -96,26 +94,27 @@ const ProgressiveImage = React.memo(
         aria-label={alt}
       >
         <FillerComponent aspectRatio={desiredAspectRatio} />
-        <BaseImage
+        <BackgroundColor
           className={className}
-          src={base64}
           title={alt}
           alt={alt}
-          objectposition={objectPosition}
+          color={colors.lightMuted}
           aria-hidden
         />
         {isObserved && (
           <picture>
-            <source type="image/webp" srcSet={srcSetWebp} sizes={sizes} />
-            <source srcSet={srcSet} sizes={sizes} />
+            <source type="image/webp" srcSet={image.srcSetWebp} sizes={sizes} />
+            <source srcSet={image.srcSet} sizes={sizes} />
             <FullImage
+              style={springProps}
               className={className}
-              src={src}
+              src={image.src}
               sizes={sizes}
-              srcSet={srcSet}
+              srcSet={image.srcSet}
               alt={alt}
               title={alt}
               objectposition={objectPosition}
+              onLoad={handleImageLoad}
             />
           </picture>
         )}
