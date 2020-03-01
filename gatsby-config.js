@@ -65,6 +65,7 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-extract-image-colors`,
     {
       resolve: `gatsby-plugin-alias-imports`,
       options: {
