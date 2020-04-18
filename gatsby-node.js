@@ -2,7 +2,7 @@ const slugify = require('slugify')
 const path = require(`path`)
 const slash = require(`slash`)
 
-const createSlug = text =>
+const createSlug = (text) =>
   slugify(text, {
     replacement: '-',
     remove: /[*+~.()'"!:@]/g,

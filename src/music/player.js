@@ -115,7 +115,7 @@ export const usePlayer = () => {
   }, [setSpring])
 
   const seekFraction = useCallback(
-    fraction => {
+    (fraction) => {
       const currentTime = (fraction * durationMs) / 1000
       if (!isFinite(currentTime)) return
       audioRef.current.currentTime = currentTime
@@ -145,7 +145,7 @@ export const PlayPauseButton = ({ isPlaying, play, pause, ...restProps }) => {
 
   const handleActive = () => set({ scale: 0.9 })
   const handleInActive = () => set({ scale: 1 })
-  const transform = scale.interpolate(v => `scale(${v})`)
+  const transform = scale.interpolate((v) => `scale(${v})`)
 
   return (
     <PlayPauseButtonWrapper
@@ -190,7 +190,7 @@ export const ProgressIndicator = ({
     return memo
   })
 
-  const handleClickSeek = e => {
+  const handleClickSeek = (e) => {
     const x = e.pageX
 
     let newFraction = (x - left) / width
@@ -201,22 +201,22 @@ export const ProgressIndicator = ({
     seekFraction(newFraction)
   }
 
-  const timeIn = fraction.interpolate(f =>
+  const timeIn = fraction.interpolate((f) =>
     durationFormatter.format(new Date(f * durationMs))
   )
   const timeTillEnd = fraction.interpolate(
-    f => `-${durationFormatter.format(new Date((1 - f) * durationMs))}`
+    (f) => `-${durationFormatter.format(new Date((1 - f) * durationMs))}`
   )
 
-  const scale = fraction.interpolate(f => `scaleX(${f})`)
-  const translate = fraction.interpolate(f => `translateX(${f * width}px)`)
+  const scale = fraction.interpolate((f) => `scaleX(${f})`)
+  const translate = fraction.interpolate((f) => `translateX(${f * width}px)`)
 
   return (
     <ProgressIndicatorWrapper>
       <animated.div
         css="position: relative; margin-bottom: 12px; height: 4px;"
         role="progressbar"
-        aria-valuenow={fraction.interpolate(f => Math.round(f * 100))}
+        aria-valuenow={fraction.interpolate((f) => Math.round(f * 100))}
         aria-valuemin="0"
         aria-valuemax="100"
       >

@@ -177,7 +177,7 @@ export default function Home({ data }) {
         </ActionItem>
       </ActionBlock>
       <div css={contentWrapper} wide>
-        {content.map(item => (
+        {content.map((item) => (
           <Item key={item.title || item.album} {...item} />
         ))}
       </div>

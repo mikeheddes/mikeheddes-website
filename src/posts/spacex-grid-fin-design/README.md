@@ -28,7 +28,6 @@ SpaceX improved upon their first design and in June 2017 flown their first missi
 
 After decades of stagnation in the space industry, SpaceX stirred up excitement again with its innovations in landing amongst other things, enabling SpaceX to reuse its first stage rocket. To me, this is a fascinating achievement and very inspiring. The grid fin is a critical part of orchestrating the landing of the first stage. Since it is located outside of the rocket, there are sufficient public resources available. Special thanks to Jon Ross for creating a [stunning 3D model](https://sketchfab.com/3d-models/spacex-falcon-9-block-5-grid-fin-a800195f7a654c33b52a3f59773d2632) of the grid fin. An interactive version of the titanium grid fin can be found on the [grid fin playground page](/playground/grid-fin).
 
-
 <!--
 # Stress analysis
 To get a realistic view of the maximum stress in a grid fin multiple analysis are made on different times with their corresponding speed and air density, see figure 4 for the two frames with the highest speed and air density combination. The air pressure comes from AVS ([Atmospheric Pressure at Different Altitudes](https://www.avs.org/AVS/files/c7/c7edaedb-95b2-438f-adfb-36de54f87b9e.pdf)). More information on the time, speed and altitude can be found in appendix A.

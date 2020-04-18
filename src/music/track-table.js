@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components'
 import { screen } from '../styles/breakpoints'
 import { fluidFont } from '../styles'
 
-const toTimeStamp = milliseconds => {
+const toTimeStamp = (milliseconds) => {
   const totalSeconds = milliseconds / 1000
   const minutes = Math.floor(totalSeconds / 60)
   const seconds = totalSeconds - minutes * 60
@@ -82,7 +82,7 @@ const Artist = styled.span`
   margin-top: 2px;
 `
 
-const TrackTable = props => {
+const TrackTable = (props) => {
   const { tracks, artist } = props
   const hasSameArtists = checkSameArtists(tracks, artist)
 

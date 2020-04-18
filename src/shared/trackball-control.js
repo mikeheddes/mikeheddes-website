@@ -14,7 +14,7 @@ const SPEED_SPRING_CONFIG = makeSpringConfig({ respones: 2000 })
 const DEFAULT_MIN_DISTANCE = 1
 const DEFAULT_MAX_DISTANCE = Number.MAX_SAFE_INTEGER
 
-const toVector3 = arrayOrVector => {
+const toVector3 = (arrayOrVector) => {
   if (arrayOrVector instanceof THREE.Vector3) {
     return arrayOrVector
   }
@@ -75,7 +75,7 @@ const TrackballControl = ({
     scale: 1,
   })
 
-  const applyRotation = delta_t => {
+  const applyRotation = (delta_t) => {
     const rotationAxis = new THREE.Vector3(...rotationSpeed.getValue())
     // rotation per second times delta
     const angle = rotationAxis.length() * delta_t
@@ -100,7 +100,7 @@ const TrackballControl = ({
     )
   }
 
-  const applyScale = delta_t => {
+  const applyScale = (delta_t) => {
     let scaleUpdate = scaleSpeed.getValue() * delta_t
     scaleUpdate += 1
 
@@ -115,21 +115,21 @@ const TrackballControl = ({
     cameraRef.current.position.multiplyScalar(transformRef.current.scale)
   }
 
-  const onDrag = stats => {
-    const { delta, offset, first, last, time, memo, touches } = stats
-    const [dx, dy] = delta
+  const onDrag = (stats) => {
+    const { offset, timeStamp, memo, touches } = stats
+    const [dx, dy] = stats.delta
 
-    if (!isRotateActive) return time
-    if (first) {
+    if (!isRotateActive) return timeStamp
+    if (stats.first) {
       // Stop any rotation as soon as a user interacts
       setTransformSpeed({ rotationSpeed: [0, 0, 0], immediate: true })
-      return time
+      return timeStamp
     }
 
     // delta_t is always 0 on last event so skip it
-    if (!last && touches <= 1) {
-      const delta_t = (time - memo) / 1000 // from ms to s
-      if (delta_t === 0) return time // bail out, undefined behaviour
+    if (!stats.last && touches <= 1) {
+      const delta_t = (timeStamp - memo) / 1000 // from ms to s
+      if (delta_t === 0) return timeStamp // bail out, undefined behaviour
 
       const speedScalar = rotationSensitivity / delta_t
 
@@ -146,7 +146,7 @@ const TrackballControl = ({
       setTransformSpeed({ rotationSpeed: speed.toArray(), immediate: true })
     }
 
-    if (last || touches > 1) {
+    if (stats.last || touches > 1) {
       const speedVec = new THREE.Vector3(...rotationSpeed.getValue())
       const speedMag = speedVec.length()
 
@@ -167,33 +167,27 @@ const TrackballControl = ({
       }
     }
 
-    return time
+    return timeStamp
   }
 
-  const onPinch = stats => {
-    const {
-      delta: [dd, da],
-      previous: [pd],
-      first,
-      last,
-      time,
-      memo,
-      event,
-    } = stats
+  const onPinch = (stats) => {
+    const { timeStamp, memo, event } = stats
+    const [dd, da] = stats.delta
+    const [pd] = stats.previous
 
     event && event.preventDefault()
 
-    if (!isRotateActive) return time
-    if (first) {
+    if (!isRotateActive) return timeStamp
+    if (stats.first) {
       // Stop any scale as soon as a user interacts
       setTransformSpeed({ scaleSpeed: 0, immediate: true })
-      return time
+      return timeStamp
     }
 
     // delta_t is always 0 on last event so skip it
-    if (!last) {
-      const delta_t = (time - memo) / 1000 // from ms to s
-      if (delta_t === 0) return time // bail out, undefined behaviour
+    if (!stats.last) {
+      const delta_t = (timeStamp - memo) / 1000 // from ms to s
+      if (delta_t === 0) return timeStamp // bail out, undefined behaviour
 
       let scaleSpeed
       let rotationSpeed = new THREE.Vector3(0, 0, 0)
@@ -213,16 +207,16 @@ const TrackballControl = ({
       })
     }
 
-    if (last) {
+    if (stats.last) {
       resetTransformSpeed()
     }
 
-    return time
+    return timeStamp
   }
 
   const bind = useGesture(
     { onDrag, onPinch },
-    { domTarget: gl.domElement, event: { passive: false } }
+    { domTarget: gl.domElement, eventOptions: { passive: false } }
   )
   useEffect(bind, [bind])
 

@@ -30,7 +30,7 @@ const PlayPauseButtonWrapper = styled.div`
   }
 `
 
-const getIconByService = service => {
+const getIconByService = (service) => {
   const serviceKey = service.toLowerCase()
 
   if (serviceKey === 'spotify') return Spotify

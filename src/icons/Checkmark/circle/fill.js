@@ -2,7 +2,7 @@ import React from 'react'
 
 import Base from '../../Base'
 
-export default props => (
+export default (props) => (
   <Base {...props} boxWidth={2426}>
     <path
       d="M1213 -313c-566 0 -1034 468 -1034 1034c0 567 467 1035 1033 1035s1035 -468 1035 -1035c0 -566 -468 -1034 -1034 -1034zM1077 199c38 0 70 18 93 54l508 790c14 22 26 47 26 71c0 53 -47 88 -97 88c-32 0 -60 -17 -83 -53l-451 -720l-233 295c-25 30 -51 43 -82 43

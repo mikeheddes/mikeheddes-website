@@ -30,4 +30,5 @@ export const makeSpringConfig = (options = {}) => {
   return { mass, tension, friction, ...restOptions }
 }
 
-export const delay = time => new Promise(resolve => setTimeout(resolve, time))
+export const delay = (time) =>
+  new Promise((resolve) => setTimeout(resolve, time))

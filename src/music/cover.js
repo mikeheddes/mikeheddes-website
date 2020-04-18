@@ -62,7 +62,7 @@ export default function CoverImage({ isPlaying, ...restProps }) {
 
   const resetTilt = useCallback(() => set({ xy: [0, 0] }), [set])
   const handleMouseOver = useCallback(
-    event => {
+    (event) => {
       const { clientX, clientY } = event
       const box = event.target.getBoundingClientRect()
 
@@ -90,7 +90,7 @@ export default function CoverImage({ isPlaying, ...restProps }) {
       onMouseLeave={resetTilt}
     >
       <animated.div style={{ transform: props.xy.interpolate(trans) }}>
-        <SmallShadow style={{ opacity: opacity.interpolate(v => 1 - v) }} />
+        <SmallShadow style={{ opacity: opacity.interpolate((v) => 1 - v) }} />
         <BigShadow style={{ opacity }} />
         <ProgressiveImage css={sharedClassName} {...restProps} shape="square" />
       </animated.div>

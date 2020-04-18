@@ -21,7 +21,7 @@ const Filler = styled.div`
   }
 `
 
-const Image = props => {
+const Image = (props) => {
   return <ProgressiveImage {...props} filler={Filler} />
 }
 

@@ -98,7 +98,7 @@ const ImageWrapper = styled.span`
   width: 100%;
 `
 
-const span = props => {
+const span = (props) => {
   const { className } = props
 
   if (className === 'katex-display') {
@@ -156,7 +156,7 @@ const ul = styled.ul`
 
 const ol = ul.withComponent('ol')
 
-const li = props => {
+const li = (props) => {
   const { className } = props
 
   if (className === 'task-list-item') {
@@ -190,8 +190,8 @@ export default {
   video,
   img,
   a,
-  blockquote: props => <Blockquote css="margin: 50px 0;" {...props} />,
-  inlineCode: props => <Code variant="inline" {...props} />,
+  blockquote: (props) => <Blockquote css="margin: 50px 0;" {...props} />,
+  inlineCode: (props) => <Code variant="inline" {...props} />,
   h1,
   h2,
   h3,
@@ -199,9 +199,9 @@ export default {
   hr,
   ol,
   ul,
-  p: props => <p css="margin-bottom: 15px;" {...props} />,
-  pre: props => <Preformatted css="margin: 50px 0;" {...props} />,
-  code: props => <Code {...props} />,
+  p: (props) => <p css="margin-bottom: 15px;" {...props} />,
+  pre: (props) => <Preformatted css="margin: 50px 0;" {...props} />,
+  code: (props) => <Code {...props} />,
   strong,
   li,
   figure,

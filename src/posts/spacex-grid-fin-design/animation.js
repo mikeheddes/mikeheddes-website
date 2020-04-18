@@ -33,7 +33,7 @@ export const GridFinMesh = ({ url }) => {
   useEffect(() => {
     const loader = new GLTFLoader()
 
-    loader.load(url, gltf => {
+    loader.load(url, (gltf) => {
       const mesh = gltf.scene.children[0]
 
       mesh.material.envMap = textureCube

@@ -11,7 +11,7 @@ const Svg = styled.svg`
   transform: rotate(12deg);
 `
 
-const DNA = props => (
+const DNA = (props) => (
   <Svg
     {...props}
     xmlns="http://www.w3.org/2000/svg"
