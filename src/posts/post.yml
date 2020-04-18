@@ -14,11 +14,3 @@
   cover:
     light: ./settlers-of-the-galaxy/cover-light.jpg
     dark: ./settlers-of-the-galaxy/cover-dark.jpg
-# - title: Tree-shaking Nodejs Libraries
-#   description: Using Rollup to make your library tree-shakable with Webpack
-#   date: 2019-01-25
-#   genre: Web development
-#   component: ./tree-shaking-nodejs-library/index.js
-#   cover:
-#     light: ./tree-shaking-nodejs-library/tree-shaking-cover.jpg
-#     dark: ./tree-shaking-nodejs-library/tree-shaking-cover.jpg
