@@ -22,10 +22,10 @@ const STAR_TIME_OFFSET = -20.0
 const STAR_SPEED = 1 // ms / MYr
 const pixelRatio = typeof window === 'undefined' ? 1 : window.devicePixelRatio
 
-const easeInOutCubic = t =>
+const easeInOutCubic = (t) =>
   t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1
 
-const easeInOutQuart = t =>
+const easeInOutQuart = (t) =>
   t < 0.5 ? 8 * t * t * t * t : 1 - 8 * --t * t * t * t
 
 const Wrapper = styled.div`
@@ -125,7 +125,7 @@ export const Stars = ({ starColor, isNightTheme, starsURL }) => {
   )
 }
 
-const Camera = props => {
+const Camera = (props) => {
   const ref = useRef()
   const { setDefaultCamera } = useThree()
 
@@ -139,7 +139,7 @@ const Camera = props => {
 
   const { pos, rot } = useSpring({
     from: { pos: [32, 0, 0], rot: [0, Math.PI / 2, Math.PI / 2] },
-    to: async next => {
+    to: async (next) => {
       await delay(2500)
       await next({
         pos: [0, 0, 22],

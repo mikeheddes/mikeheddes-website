@@ -97,7 +97,7 @@ const Video = ({
 
   const handleActive = () => set({ scale: 0.92 })
   const handleInActive = () => set({ scale: 1 })
-  const transform = scale.interpolate(v => `scale(${v})`)
+  const transform = scale.interpolate((v) => `scale(${v})`)
 
   return (
     <Wrapper {...restProps}>

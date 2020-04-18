@@ -102,7 +102,7 @@ const Filler = styled.div`
 `
 
 const AboutScreen = ({ progress, onClose }) => {
-  const transform = progress.interpolate(val => `scale(${1.2 - 0.2 * val})`)
+  const transform = progress.interpolate((val) => `scale(${1.2 - 0.2 * val})`)
 
   return (
     <ColorAnimation style={{ opacity: progress }}>

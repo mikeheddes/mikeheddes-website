@@ -31,7 +31,7 @@ export const k2 = -0.0010625 // (km/s)^-1 / KPC^2
 export const k1 = 0.0023821 // (km/s)^-1 / KPC
 export const k0 = 0.00287729 // (km/s)^-1
 
-export const getAngularVelocity = radius => {
+export const getAngularVelocity = (radius) => {
   const circular_velocity =
     1 /
     (k0 +
@@ -47,7 +47,7 @@ export const getAngularVelocity = radius => {
   return (circular_velocity / radius) * KMS_TO_KPCMYR
 }
 
-export const getPositionsAtTime = time => star => {
+export const getPositionsAtTime = (time) => (star) => {
   const nt = star[4] * time
   const comega = Math.cos(star[2])
   const cnti = Math.cos(nt + star[3])

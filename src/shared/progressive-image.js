@@ -22,7 +22,7 @@ const Wrapper = styled.div`
 
 const BackgroundColor = styled.div`
   ${absoluteSize};
-  background-color: ${props => props.color};
+  background-color: ${(props) => props.color};
 `
 
 const FullImage = styled(animated.img)`

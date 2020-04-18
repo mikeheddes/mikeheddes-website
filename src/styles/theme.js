@@ -5,7 +5,7 @@ import { breakpoints } from './breakpoints'
 import { dark, light } from './colors'
 import { useMediaQuery } from '../shared/hooks'
 
-const Theme = props => {
+const Theme = (props) => {
   const prefersDark = useMediaQuery('(prefers-color-scheme: dark)')
 
   const theme = {

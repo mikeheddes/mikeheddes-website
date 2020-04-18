@@ -46,7 +46,7 @@ export const ellipsis = css`
   text-overflow: ellipsis;
 `
 
-const tracking = fontSize =>
+const tracking = (fontSize) =>
   `${-0.0223 + 0.185 * Math.exp(-0.1745 * fontSize)}em`
 
 const trackingBetween = (x1, x2, y1, y2, mid) => {

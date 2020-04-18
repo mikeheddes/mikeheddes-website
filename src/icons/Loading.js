@@ -7,7 +7,7 @@ const NUM_RAYS = 12
 const ROTATION_TICK = 360 / NUM_RAYS
 const opacityFraction = 1 / NUM_RAYS
 
-export default props => {
+export default (props) => {
   const group = useRef()
 
   useLayoutEffect(() => {

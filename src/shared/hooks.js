@@ -57,7 +57,7 @@ export function useMediaQuery(query) {
   useEffect(() => {
     if (!queryList) return
 
-    const handleMatchesChange = event => {
+    const handleMatchesChange = (event) => {
       setMatches(event.matches)
     }
 

@@ -56,7 +56,7 @@ const drawImageCover = (ctx, img) => {
   ctx.drawImage(img, cx, cy, cw, ch, 0, 0, w, h)
 }
 
-const useImage = src => {
+const useImage = (src) => {
   const [image, setImage] = useState()
 
   useEffect(() => {

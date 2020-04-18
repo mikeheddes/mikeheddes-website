@@ -14,7 +14,7 @@ const SPEED_SPRING_CONFIG = makeSpringConfig({ respones: 2000 })
 const DEFAULT_MIN_DISTANCE = 1
 const DEFAULT_MAX_DISTANCE = Number.MAX_SAFE_INTEGER
 
-const toVector3 = arrayOrVector => {
+const toVector3 = (arrayOrVector) => {
   if (arrayOrVector instanceof THREE.Vector3) {
     return arrayOrVector
   }
@@ -75,7 +75,7 @@ const TrackballControl = ({
     scale: 1,
   })
 
-  const applyRotation = delta_t => {
+  const applyRotation = (delta_t) => {
     const rotationAxis = new THREE.Vector3(...rotationSpeed.getValue())
     // rotation per second times delta
     const angle = rotationAxis.length() * delta_t
@@ -100,7 +100,7 @@ const TrackballControl = ({
     )
   }
 
-  const applyScale = delta_t => {
+  const applyScale = (delta_t) => {
     let scaleUpdate = scaleSpeed.getValue() * delta_t
     scaleUpdate += 1
 
@@ -115,7 +115,7 @@ const TrackballControl = ({
     cameraRef.current.position.multiplyScalar(transformRef.current.scale)
   }
 
-  const onDrag = stats => {
+  const onDrag = (stats) => {
     const { delta, offset, first, last, time, memo, touches } = stats
     const [dx, dy] = delta
 
@@ -170,7 +170,7 @@ const TrackballControl = ({
     return time
   }
 
-  const onPinch = stats => {
+  const onPinch = (stats) => {
     const {
       delta: [dd, da],
       previous: [pd],

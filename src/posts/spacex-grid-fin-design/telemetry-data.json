@@ -1,5 +1,5 @@
 {
-  "events" : {
+  "events": {
     "maxq": 61,
     "throttle_down_start": 55,
     "throttle_down_end": 76,
