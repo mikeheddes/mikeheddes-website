@@ -1,12 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
+import { hiDPI } from 'polished'
 import { Link } from 'gatsby'
 
 import { breakpoints, screen } from '../styles/breakpoints'
 import Footer from '../shared/footer'
 import Hero from './hero'
 import Image from './image'
-import { contentWrapper, fluidFont } from '../styles'
+import { contentWrapper, fluidFont, absoluteSize } from '../styles'
 import Arrow from '../icons/Arrow/right'
 import { useTheme } from '../shared/hooks'
 import MetaTags from './meta-tags'
@@ -59,6 +60,18 @@ const ItemWrapper = styled(Link)`
   border-radius: 2px;
   overflow: hidden;
 
+  :after {
+    content: '';
+    display: block;
+    ${absoluteSize};
+    border-radius: 2px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+
+    ${hiDPI(2)} {
+      border-width: 0.5px;
+    }
+  }
+
   @media ${screen.sm} {
     margin: 50px 0px;
   }
@@ -102,7 +115,7 @@ function Item(props) {
   const { title, album, genre, slug, image, __type } = props
 
   return (
-    <ItemWrapper to={slug}>
+    <ItemWrapper to={slug} accentColor={image?.colors?.lightMuted}>
       <Image
         alt={title || album}
         image={image}
