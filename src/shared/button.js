@@ -9,8 +9,8 @@ const Button = styled.div.attrs({ role: 'button' })`
   text-decoration: none;
   background-color: var(--surface);
   color: var(--heading-obvious);
-  border-radius: 14px;
-  padding: 12px 22px;
+  border-radius: 10px;
+  padding: 12px 20px;
   cursor: pointer;
   transition: background-color 80ms ease-out;
   white-space: nowrap;

@@ -1,6 +1,7 @@
 import React, { useEffect, useCallback } from 'react'
 import styled, { css } from 'styled-components'
 import { useSpring, animated } from 'react-spring'
+import { darken, transparentize as fade } from 'polished'
 
 import { makeSpringConfig } from '../shared/spring'
 import ProgressiveImage from '../shared/progressive-image'
@@ -8,6 +9,7 @@ import { screen } from '../styles/breakpoints'
 import { absoluteSize } from '../styles'
 
 const MAX_TILT = 5
+const SHADOW_ACCENT_DARKENING = 0.5
 
 const Wrapper = styled(animated.div)`
   position: relative;
@@ -24,20 +26,37 @@ const Wrapper = styled(animated.div)`
 const SmallShadow = styled(animated.div)`
   ${absoluteSize};
   border-radius: 4px;
-  box-shadow: 0 0.2px 0.4px -2px rgba(0, 0, 0, 0.107),
-    0 0.5px 1px -2px rgba(0, 0, 0, 0.154),
-    0 1.2px 2.4px -2px rgba(0, 0, 0, 0.201), 0 4px 8px -2px rgba(0, 0, 0, 0.3);
+  ${(props) => {
+    const shadowColor = darken(
+      SHADOW_ACCENT_DARKENING,
+      props.accentColor ?? '#000'
+    )
+    return css`
+      box-shadow: 0 0.2px 0.4px -2px ${fade(0.893, shadowColor)},
+        0 0.5px 1px -2px ${fade(0.846, shadowColor)},
+        0 1.2px 2.4px -2px ${fade(0.799, shadowColor)},
+        0 4px 8px -2px ${fade(0.7, shadowColor)};
+    `
+  }}
 `
 
 const BigShadow = styled(animated.div)`
   ${absoluteSize};
   border-radius: 4px;
-  box-shadow: 0 1.1px 1.1px -12px rgba(0, 0, 0, 0.057),
-    0 2.7px 2.7px -12px rgba(0, 0, 0, 0.083),
-    0 5px 5px -12px rgba(0, 0, 0, 0.103),
-    0 8.9px 8.9px -12px rgba(0, 0, 0, 0.123),
-    0 16.7px 16.7px -12px rgba(0, 0, 0, 0.147),
-    0 40px 40px -12px rgba(0, 0, 0, 0.2);
+  ${(props) => {
+    const shadowColor = darken(
+      SHADOW_ACCENT_DARKENING,
+      props.accentColor ?? '#000'
+    )
+    return css`
+      box-shadow: 0 1.1px 1.1px -12px ${fade(0.943, shadowColor)},
+        0 2.7px 2.7px -12px ${fade(0.917, shadowColor)},
+        0 5px 5px -12px ${fade(0.897, shadowColor)},
+        0 8.9px 8.9px -12px ${fade(0.877, shadowColor)},
+        0 16.7px 16.7px -12px ${fade(0.853, shadowColor)},
+        0 40px 40px -12px ${fade(0.8, shadowColor)};
+    `
+  }}
 `
 
 const sharedClassName = css`
@@ -83,6 +102,8 @@ export default function CoverImage({ isPlaying, ...restProps }) {
     }
   }, [isPlaying, resetTilt])
 
+  const shadowAccentColor = restProps.image.colors?.lightMuted
+
   return (
     <Wrapper
       style={{ transform }}
@@ -90,8 +111,11 @@ export default function CoverImage({ isPlaying, ...restProps }) {
       onMouseLeave={resetTilt}
     >
       <animated.div style={{ transform: props.xy.interpolate(trans) }}>
-        <SmallShadow style={{ opacity: opacity.interpolate((v) => 1 - v) }} />
-        <BigShadow style={{ opacity }} />
+        <SmallShadow
+          accentColor={shadowAccentColor}
+          style={{ opacity: opacity.interpolate((v) => 1 - v) }}
+        />
+        <BigShadow accentColor={shadowAccentColor} style={{ opacity }} />
         <ProgressiveImage css={sharedClassName} {...restProps} shape="square" />
       </animated.div>
     </Wrapper>

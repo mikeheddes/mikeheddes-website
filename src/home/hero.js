@@ -41,11 +41,18 @@ const SubSubName = styled.span`
 `
 
 const Close = styled.div.attrs({ role: 'button' })`
+  width: auto;
+  padding: 8px 20px;
+  border-radius: 6px;
+  background-color: var(--surface-faded);
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
   ${fluidFont(18, 18)};
   color: var(--heading-obvious);
   font-weight: 500;
-  padding: 15px 0;
-  margin: 15px 0;
   cursor: pointer;
   transition: opacity 100ms ease-out;
 

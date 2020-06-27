@@ -25,11 +25,13 @@ void main() {
   vec3 myPosition = getPosition(star, angularVelocity * time);
   vec4 mvPosition = modelViewMatrix * vec4( myPosition, 1.0 );
 
-  float fogFactor = smoothstep( 1., 70., - mvPosition.z );
-  gl_PointSize = 1. / pow(fogFactor * 20. + 1., 3. ) * 20. + 3.;
+  float fog = 1. / max( 1., - mvPosition.z ) ;
+  gl_PointSize = 1. + 20. * fog;
+
   // Correct scale to monitor pixel ratio
-  gl_PointSize = gl_PointSize / 2. * pixelRatio;
-  alpha = ( 1. - fogFactor ) * .8;
+  gl_PointSize = gl_PointSize * pixelRatio;
+
+  alpha = min(.8, fog * 13.);
 
   gl_Position = projectionMatrix * mvPosition;
 }`
