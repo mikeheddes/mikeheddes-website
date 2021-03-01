@@ -62,7 +62,7 @@
     "slugify": "^1.4.0",
     "stackblur-canvas": "^2.2.0",
     "styled-components": "^5.1.0",
-    "three": "^0.115.0",
+    "three": "^0.125.0",
     "youtube-player": "^5.5.2"
   },
   "devDependencies": {
