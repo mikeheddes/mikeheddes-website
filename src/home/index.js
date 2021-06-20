@@ -79,6 +79,10 @@ const ItemWrapper = styled(Link)`
   @media ${screen.md} {
     margin: 80px 0px;
   }
+
+  &:first-of-type {
+    margin-top: 0;
+  }
 `
 
 const Genre = styled.h3`
@@ -169,7 +173,7 @@ export default function Home({ data }) {
         siteUrl={siteUrl}
       />
       <Hero image={data.wideImage} />
-      <ActionBlock css="margin-bottom: -30px;">
+      <ActionBlock>
         <ActionItem icon={GitHub} href="https://github.com/mikeheddes">
           GitHub
         </ActionItem>

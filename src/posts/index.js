@@ -56,14 +56,6 @@ const Article = ({
         <TitleView title={title} date={date} genre={genre} />
         {children}
       </article>
-      <div css="margin: 80px 0; text-align: center;">
-        <div css={contentWrapper}>
-          <Header>Want to discuss something about this post?</Header>
-          <Link href="https://github.com/mikeheddes/mikeheddes-website/issues/new">
-            Open an issue on GitHub
-          </Link>
-        </div>
-      </div>
       <Footer />
     </>
   )

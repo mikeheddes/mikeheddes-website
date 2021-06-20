@@ -14,3 +14,11 @@
   cover:
     light: ./settlers-of-the-galaxy/cover-light.jpg
     dark: ./settlers-of-the-galaxy/cover-dark.jpg
+- title: Jet Fighter Arcade
+  description: Play the classic Jet FIghter Arcade game
+  date: 2021-06-20
+  genre: Reinforcement Learning
+  component: ./jet-fighter/index.js
+  cover:
+    light: ./jet-fighter/cover-light.jpg
+    dark: ./jet-fighter/cover-dark.jpg

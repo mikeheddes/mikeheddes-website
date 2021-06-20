@@ -8,6 +8,10 @@ import { contentWrapper, fluidFont } from '../styles'
 const Wrapper = styled.div`
   padding: 30px 0;
   text-align: center;
+
+  @media ${screen.md} {
+    padding: 50px 0;
+  }
 `
 
 const Title = styled.h4`
