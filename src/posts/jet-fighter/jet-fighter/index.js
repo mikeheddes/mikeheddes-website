@@ -3,8 +3,8 @@ import { BulletState } from './bullet'
 import { useJetFighterUserController } from './controls'
 
 export { PlaneAction, useJetFighterUserController }
-export const BLUE = '#5085ff'
-export const RED = '#ff5050'
+export const BLUE = '#0066ff'
+export const RED = '#ff3333'
 
 export class JetFighter {
   score = [0, 0]
@@ -50,10 +50,31 @@ export class JetFighter {
     }
   }
 
+  drawScore(ctx) {
+    ctx.font =
+      '600 12px Inter var, -apple-system, BlinkMacSystemFont, Helvetica, sans-serif'
+    ctx.fillStyle = '#ffffff'
+    const marginTop = 30
+
+    {
+      ctx.textAlign = 'right'
+      const x = this.frameSize.width / 2 - 30
+      ctx.fillText(this.score[0].toString(), x, marginTop)
+    }
+
+    {
+      ctx.textAlign = 'left'
+      const x = this.frameSize.width / 2 + 30
+      ctx.fillText(this.score[1].toString(), x, marginTop)
+    }
+  }
+
   draw(ctx) {
     ctx.clearRect(0, 0, this.frameSize.width, this.frameSize.height)
     for (const plane of this.planes) {
       plane.draw(ctx)
     }
+
+    this.drawScore(ctx)
   }
 }

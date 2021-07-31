@@ -1,6 +1,7 @@
 import 'katex/dist/katex.min.css'
 import React from 'react'
 import styled from 'styled-components'
+import { lighten } from 'polished'
 import { OutboundLink } from 'gatsby-plugin-google-analytics'
 
 import { screen } from '../styles/breakpoints'
@@ -120,9 +121,14 @@ const a = styled(OutboundLink)`
   color: var(--primary);
   font-weight: 500;
   text-decoration: none;
-  transition: opacity 100ms ease-out;
+  transition: color opacity 100ms ease-out;
+
+  :hover {
+    color: ${({ theme }) => lighten(0.1, theme.primary)};
+  }
 
   :active {
+    color: var(--primary);
     opacity: 0.5;
   }
 `

@@ -21,7 +21,7 @@ export class Bullet {
   explosionFrameCounter = 0
   framesPerExplosionStep = 30
 
-  constructor(x, y, angle, frameSize, color = 'gray') {
+  constructor(x, y, angle, frameSize, color = '#cccccc') {
     this.startX = x
     this.startY = y
     this.x = x

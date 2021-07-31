@@ -1,47 +1,49 @@
 import React, { useMemo, useRef, useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
+import { transparentize, darken } from 'polished'
 
 import Article from '../index'
-import Caption from '../../shared/caption'
-import { contentWrapper } from '../../styles'
 
-import { JetFighter, useJetFighterUserController } from './jet-fighter'
+import {
+  JetFighter,
+  useJetFighterUserController,
+  BLUE,
+  RED,
+} from './jet-fighter'
 import Body from './README.md'
 
 const WIDTH = 240
 const HEIGHT = 180
 
 const KeyWrapper = styled.div`
-  margin-top: 4px;
+  padding-top: 15px;
+  padding-bottom: 30px;
+  padding-left: 50px;
+  padding-right: 50px;
   display: flex;
   flex-direction: row;
 `
 
 const Key = styled.div`
-  border: 1px solid var(--border-divider-solid);
   border-radius: 4px;
-  padding: 2px 4px;
-  display: inline-block;
   margin-right: 4px;
-  color: var(--text);
-  background-color: var(--surface);
-  box-shadow: 0 1px 2px rgb(0 0 0 / 10%);
+  color: #ffffff;
+  width: 28px;
+  height: 26px;
+  font-size: 17px;
+  font-weight: 500;
+  display: inline-flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 1px 1px
+    ${({ accent }) => transparentize(0.65, darken(0.4, accent))};
+  background-color: ${({ accent }) => accent};
 
   &:last-child {
     margin-right: 0;
   }
-`
-
-const PlayerLine = styled.h2`
-  text-align: center;
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  font-weight: 500;
-  font-size: 16px;
-  margin-bottom: 8px;
-  color: var(--heading);
 `
 
 const Post = ({ data: { postYaml, site } }) => {
@@ -92,80 +94,39 @@ const Post = ({ data: { postYaml, site } }) => {
       imageSquare={postYaml.imageSquare.light.childImageSharp.resize.src}
       imageWide={postYaml.imageWide.light.childImageSharp.resize.src}
     >
-      <div css={contentWrapper}>
+      <div css="padding-top: 50px; background-color: var(--surface)">
         <div
           style={{
             width: '100%',
             maxWidth: 480,
             marginLeft: 'auto',
             marginRight: 'auto',
-            marginTop: 50,
           }}
         >
-          <PlayerLine>
-            <span
-              style={{
-                width: '30%',
-                textAlign: 'left',
-              }}
-            >
-              <div
-                style={{
-                  backgroundColor: '#5085ff',
-                  width: 12,
-                  height: 12,
-                  marginRight: 8,
-                  display: 'inline-block',
-                  borderRadius: 100,
-                }}
-              />
-              Player 1
-            </span>
-            <span
-              style={{
-                textAlign: 'center',
-                fontSize: 26,
-                fontWeight: 700,
-              }}
-            >
-              {gameScore[0]} – {gameScore[1]}
-            </span>
-            <span
-              style={{
-                width: '30%',
-                textAlign: 'right',
-              }}
-            >
-              Player 2
-              <div
-                style={{
-                  backgroundColor: '#ff5050',
-                  width: 12,
-                  height: 12,
-                  marginLeft: 8,
-                  display: 'inline-block',
-                  borderRadius: 100,
-                }}
-              />
-            </span>
-          </PlayerLine>
           <canvas
             ref={canvasRef}
             style={{
-              backgroundColor: '#ffffff',
-              border: '2px solid rgb(0 0 0 / 10%)',
+              backgroundColor: '#000000',
               width: '100%',
               imageRendering: 'pixelated',
             }}
           />
           <KeyWrapper>
-            <Key>a</Key>
-            <Key>w</Key>
-            <Key>d</Key>
+            <Key accent={BLUE} css="margin-top: 8px;">
+              a
+            </Key>
+            <Key accent={BLUE}>w</Key>
+            <Key accent={BLUE} css=" margin-top: 8px;">
+              d
+            </Key>
             <div css="flex-grow: 1;" />
-            <Key>←</Key>
-            <Key>↑</Key>
-            <Key>→</Key>
+            <Key accent={RED} css=" margin-top: 8px;">
+              ←
+            </Key>
+            <Key accent={RED}>↑</Key>
+            <Key accent={RED} css="margin-top: 8px;">
+              →
+            </Key>
           </KeyWrapper>
         </div>
       </div>

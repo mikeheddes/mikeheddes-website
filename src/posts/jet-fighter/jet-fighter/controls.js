@@ -8,19 +8,17 @@ export function useJetFighterUserController(leftKey, rightKey, fireKey) {
 
   useEffect(() => {
     function setUserAction(event) {
+      event.preventDefault()
       if (event.repeat) return
 
       const key = event.key.toLowerCase()
       let userActions = userActionsRef.current
       if (key === leftKey) {
         userActions.push(PlaneAction.ROTATE_LEFT)
-        event.preventDefault()
       } else if (key === rightKey) {
         userActions.push(PlaneAction.ROTATE_RIGHT)
-        event.preventDefault()
       } else if (key === fireKey) {
         userActions.push(PlaneAction.FIRE)
-        event.preventDefault()
       }
 
       userActionsRef.current = userActions
