@@ -27,10 +27,7 @@ const SmallShadow = styled(animated.div)`
   ${absoluteSize};
   border-radius: 4px;
   ${(props) => {
-    const shadowColor = darken(
-      SHADOW_ACCENT_DARKENING,
-      props.accentColor ?? '#000'
-    )
+    const shadowColor = darken(SHADOW_ACCENT_DARKENING, props.accent ?? '#000')
     return css`
       box-shadow: 0 0.2px 0.4px -2px ${fade(0.893, shadowColor)},
         0 0.5px 1px -2px ${fade(0.846, shadowColor)},
@@ -44,10 +41,7 @@ const BigShadow = styled(animated.div)`
   ${absoluteSize};
   border-radius: 4px;
   ${(props) => {
-    const shadowColor = darken(
-      SHADOW_ACCENT_DARKENING,
-      props.accentColor ?? '#000'
-    )
+    const shadowColor = darken(SHADOW_ACCENT_DARKENING, props.accent ?? '#000')
     return css`
       box-shadow: 0 1.1px 1.1px -12px ${fade(0.943, shadowColor)},
         0 2.7px 2.7px -12px ${fade(0.917, shadowColor)},
@@ -112,10 +106,10 @@ export default function CoverImage({ isPlaying, ...restProps }) {
     >
       <animated.div style={{ transform: props.xy.interpolate(trans) }}>
         <SmallShadow
-          accentColor={shadowAccentColor}
+          accent={shadowAccentColor}
           style={{ opacity: opacity.interpolate((v) => 1 - v) }}
         />
-        <BigShadow accentColor={shadowAccentColor} style={{ opacity }} />
+        <BigShadow accent={shadowAccentColor} style={{ opacity }} />
         <ProgressiveImage css={sharedClassName} {...restProps} shape="square" />
       </animated.div>
     </Wrapper>

@@ -119,7 +119,7 @@ function Item(props) {
   const { title, album, genre, slug, image, __type } = props
 
   return (
-    <ItemWrapper to={slug} accentColor={image?.colors?.lightMuted}>
+    <ItemWrapper to={slug}>
       <Image
         alt={title || album}
         image={image}

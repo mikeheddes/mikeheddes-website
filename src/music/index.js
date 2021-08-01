@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import { graphql } from 'gatsby'
 
 import { screen } from '../styles/breakpoints'
-import { contentWrapper } from '../styles'
 import Cover from './cover'
 import { PlayPauseButton, ProgressIndicator, usePlayer } from './player'
 import MetaTags from './meta-tags'
@@ -27,6 +26,21 @@ const PlayPauseButtonWrapper = styled.div`
 
   @media ${screen.md} {
     margin: 30px 0;
+  }
+`
+
+const PlayerWrapper = styled.div`
+  padding-top: 20px;
+  padding-bottom: 30px;
+  background-color: var(--surface);
+
+  @media ${screen.sm} {
+    padding-top: 30px;
+    padding-bottom: 50px;
+  }
+
+  @media ${screen.md} {
+    padding-top: 50px;
   }
 `
 
@@ -71,7 +85,7 @@ const Music = ({ data: { musicYaml, site } }) => {
       <Navigation />
       <main>
         <TitleView title={album} date={date} genre={genre} />
-        <div css={contentWrapper}>
+        <PlayerWrapper>
           <Wrapper>
             <Cover image={cover} isPlaying={isPlaying} />
             <PlayPauseButtonWrapper>
@@ -95,10 +109,10 @@ const Music = ({ data: { musicYaml, site } }) => {
               preload="auto"
             />
           </Wrapper>
-        </div>
+        </PlayerWrapper>
         {sameAs && (
-          <div css="margin-top: 80px;">
-            <ActionBlock title="Available on">
+          <div>
+            <ActionBlock css="padding-bottom: 0;" title="Available on">
               {sameAs.map(({ service, url }) => (
                 <ActionItem
                   key={url}

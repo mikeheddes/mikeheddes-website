@@ -2,6 +2,7 @@ import React, { useMemo, useRef, useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import { transparentize, darken } from 'polished'
+import { screen } from '../../styles/breakpoints'
 
 import Article from '../index'
 
@@ -19,10 +20,15 @@ const HEIGHT = 180
 const KeyWrapper = styled.div`
   padding-top: 15px;
   padding-bottom: 30px;
-  padding-left: 50px;
-  padding-right: 50px;
+  padding-left: 30px;
+  padding-right: 30px;
   display: flex;
   flex-direction: row;
+
+  @media ${screen.sm} {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
 `
 
 const Key = styled.div`
@@ -43,6 +49,19 @@ const Key = styled.div`
 
   &:last-child {
     margin-right: 0;
+  }
+`
+
+const GameWrapper = styled.div`
+  padding-top: 20px;
+  background-color: var(--surface);
+
+  @media ${screen.sm} {
+    padding-top: 30px;
+  }
+
+  @media ${screen.md} {
+    padding-top: 50px;
   }
 `
 
@@ -94,7 +113,7 @@ const Post = ({ data: { postYaml, site } }) => {
       imageSquare={postYaml.imageSquare.light.childImageSharp.resize.src}
       imageWide={postYaml.imageWide.light.childImageSharp.resize.src}
     >
-      <div css="padding-top: 50px; background-color: var(--surface)">
+      <GameWrapper>
         <div
           style={{
             width: '100%',
@@ -129,7 +148,7 @@ const Post = ({ data: { postYaml, site } }) => {
             </Key>
           </KeyWrapper>
         </div>
-      </div>
+      </GameWrapper>
       <Body />
     </Article>
   )
