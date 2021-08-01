@@ -54,7 +54,7 @@ const Key = styled.div`
 
 const GameWrapper = styled.div`
   padding-top: 20px;
-  background-color: var(--surface);
+  background-color: var(--surface-subtle);
 
   @media ${screen.sm} {
     padding-top: 30px;

@@ -12,11 +12,11 @@
   genre: Orbital mechanics
   component: ./settlers-of-the-galaxy/index.js
   cover:
-    light: ./settlers-of-the-galaxy/cover-light.jpg
-    dark: ./settlers-of-the-galaxy/cover-dark.jpg
+    light: ./settlers-of-the-galaxy/cover.jpg
+    dark: ./settlers-of-the-galaxy/cover.jpg
 - title: Jet Fighter Arcade
   description: Play the classic Jet FIghter Arcade game
-  date: 2021-06-20
+  date: 2021-09-01
   genre: Reinforcement Learning
   component: ./jet-fighter/index.js
   cover:

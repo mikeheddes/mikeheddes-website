@@ -1,3 +1,3 @@
 The classic Atari Jet Fighter game has relatively simple game mechanics yet determining the optimal controls against a human player is very complex. I want to tackle this complex control problem by creating an Artificial Intelligent agent. This agent will be trained using advanced Deep Reinforcement Learning techniques that were also used to defeat the human world champion in the game of [GO](https://www.nature.com/articles/nature24270), [Dota 2](https://arxiv.org/abs/1912.06680) and [StarCraft 2](https://www.nature.com/articles/s41586-019-1724-z).
 
-Visitor of this page will be able to challenge the Agent in a game of Jet Fighter once I have trained it. For now, you can enjoy it as a fun multiplayer game.
+Visitors of this page will be able to challenge the Agent in a game of Jet Fighter once I have trained it. For now, you can enjoy it as a fun multiplayer game.

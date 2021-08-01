@@ -32,7 +32,7 @@ const PlayPauseButtonWrapper = styled.div`
 const PlayerWrapper = styled.div`
   padding-top: 20px;
   padding-bottom: 30px;
-  background-color: var(--surface);
+  background-color: var(--surface-subtle);
 
   @media ${screen.sm} {
     padding-top: 30px;

@@ -10,13 +10,14 @@ import starsAsyncIterator, {
   VALUES_PER_STAR,
   getAngularVelocity,
 } from './stars'
-import { useTheme } from '../../shared/hooks'
 import { vertexShader, fragmentShader } from './shaders'
 import Canvas from '../../shared/three-canvas'
 import Hand from '../../icons/hand/draw/fill'
 import Button from '../../shared/button'
 import { delay } from '../../shared/spring'
 import { screen } from '../../styles/breakpoints'
+import { withTheme } from '../../styles/theme'
+import { useTheme } from '../../shared/hooks'
 
 const STAR_TIME_OFFSET = -20.0
 const STAR_SPEED = 1 // ms / MYr
@@ -32,6 +33,7 @@ const Wrapper = styled.div`
   display: block;
   width: 100%;
   position: relative;
+  background-color: ${({ theme }) => theme.background};
 `
 
 const Filler = styled.div`
@@ -46,10 +48,10 @@ export const Stars = ({ starColor, isNightTheme, starsURL }) => {
   const geometryRef = useRef()
 
   useEffect(() => {
-    let counter = 0
     let isMounted = true
 
     async function getStars() {
+      let counter = 0
       for await (const star of starsAsyncIterator(starsURL)) {
         if (!isMounted) return
 
@@ -86,12 +88,17 @@ export const Stars = ({ starColor, isNightTheme, starsURL }) => {
     })
   }, [isNightTheme, starColor])
 
-  const [position, star, angularVelocity] = useMemo(() => {
+  const [position, star, angularVelocity, starIndex] = useMemo(() => {
     const position = new Float32Array(NUMBER_OF_STARS * 3)
     const star = new Float32Array(NUMBER_OF_STARS * 4).fill(2.0)
     const angularVelocity = new Float32Array(NUMBER_OF_STARS)
+    const starIndex = new Float32Array(
+      Array(NUMBER_OF_STARS)
+        .fill(0)
+        .map((_, index) => index)
+    )
 
-    return [position, star, angularVelocity]
+    return [position, star, angularVelocity, starIndex]
   }, [])
 
   useFrame(({ clock }) => {
@@ -118,6 +125,12 @@ export const Stars = ({ starColor, isNightTheme, starsURL }) => {
           attachObject={['attributes', 'angularVelocity']}
           count={NUMBER_OF_STARS}
           array={angularVelocity}
+          itemSize={1}
+        />
+        <bufferAttribute
+          attachObject={['attributes', 'starIndex']}
+          count={NUMBER_OF_STARS}
+          array={starIndex}
           itemSize={1}
         />
       </bufferGeometry>
@@ -204,4 +217,4 @@ const Animation = ({ starsURL }) => {
   )
 }
 
-export default Animation
+export default withTheme('dark', Animation)

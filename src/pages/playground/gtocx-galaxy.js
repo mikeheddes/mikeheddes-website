@@ -4,10 +4,11 @@ import { graphql } from 'gatsby'
 import TrackballControl from '../../shared/trackball-control'
 import Canvas from '../../shared/three-canvas'
 import { Stars } from '../../posts/settlers-of-the-galaxy/animation'
-import { useTheme } from '../../shared/hooks'
 import PlaygroundLayout from './_playground-layout'
+import { withTheme } from '../../styles/theme'
+import { useTheme } from '../../shared/hooks'
 
-export default function GtocXGalaxy({ data: { stars }, ...restProps }) {
+function GtocXGalaxy({ data: { stars }, ...restProps }) {
   const theme = useTheme()
   const isNightTheme = theme.id === 'dark'
 
@@ -33,6 +34,8 @@ export default function GtocXGalaxy({ data: { stars }, ...restProps }) {
     </PlaygroundLayout>
   )
 }
+
+export default withTheme('dark', GtocXGalaxy)
 
 export const query = graphql`
   query galaxyAnimationPlayground {

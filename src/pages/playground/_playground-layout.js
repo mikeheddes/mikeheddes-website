@@ -24,7 +24,7 @@ const Wrapper = styled.div`
   transform: none;
   margin: 0px;
   touch-action: none;
-  background-color: var(--background);
+  background-color: ${({ theme }) => theme.background};
   cursor: grab;
 
   :active {
