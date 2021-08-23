@@ -116,11 +116,6 @@ module.exports = {
         icon: `src/assets/icon.png`,
       },
     },
-    {
-      resolve: `gatsby-plugin-offline`,
-      options: {
-        precachePages: [``],
-      },
-    },
+    `gatsby-plugin-remove-serviceworker`,
   ],
 }
