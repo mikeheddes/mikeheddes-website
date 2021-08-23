@@ -120,7 +120,7 @@ export class Plane {
         this.deadStepCounter % this.deadStepsPerAnimationLoop >
         this.deadStepsPerAnimationLoop / 2
       if (isDead && !isSecondAnimationStep) {
-        ctx.fillStyle = 'gray'
+        ctx.fillStyle = '#999999'
       } else {
         ctx.fillStyle = this.color
       }

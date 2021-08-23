@@ -1,19 +1,23 @@
 import { Plane, PlaneAction, PlaneState } from './plane'
 import { BulletState } from './bullet'
-import { useJetFighterUserController } from './controls'
 
-export { PlaneAction, useJetFighterUserController }
+export { PlaneAction }
 export const BLUE = '#0066ff'
 export const RED = '#ff3333'
 
 export class JetFighter {
-  score = [0, 0]
   planes
   frameSize
   onscorechange
 
   constructor(width, height) {
     this.frameSize = { width, height }
+    this.planes = [this.resetPlane(BLUE), this.resetPlane(RED)]
+    this.score = [0, 0]
+  }
+
+  reset() {
+    this.score = [0, 0]
     this.planes = [this.resetPlane(BLUE), this.resetPlane(RED)]
   }
 
@@ -39,10 +43,10 @@ export class JetFighter {
           ) {
             this.planes[index].state = PlaneState.DEAD
             bullet.state = BulletState.EXPLODING
+            // Make a new copy of the array so old !== new
+            this.score = [...this.score]
             // Update score of the other player
             this.score[(index + 1) % this.planes.length] += 1
-            // Make a new copy of the array so old === new = false
-            this.score = [...this.score]
             if (this.onscorechange) this.onscorechange(this.score)
           }
         }
@@ -70,11 +74,17 @@ export class JetFighter {
   }
 
   draw(ctx) {
-    ctx.clearRect(0, 0, this.frameSize.width, this.frameSize.height)
+    const { width, height } = this.frameSize
+    ctx.clearRect(0, 0, width, height)
+
     for (const plane of this.planes) {
       plane.draw(ctx)
     }
 
+    const frame = ctx.getImageData(0, 0, width, height)
+
     this.drawScore(ctx)
+
+    return frame
   }
 }

@@ -1,21 +1,57 @@
-import React, { useMemo, useRef, useState, useEffect } from 'react'
+import React, { lazy, useState, useContext } from 'react'
 import { graphql } from 'gatsby'
-import styled from 'styled-components'
-import { transparentize, darken } from 'polished'
+import styled, { css, ThemeContext } from 'styled-components'
+import { transparentize, darken, lighten } from 'polished'
+
 import { screen } from '../../styles/breakpoints'
 
 import Article from '../index'
 
-import {
-  JetFighter,
-  useJetFighterUserController,
-  BLUE,
-  RED,
-} from './jet-fighter'
+import { BLUE, RED } from './jet-fighter'
 import Body from './README.md'
 
-const WIDTH = 240
-const HEIGHT = 180
+const ClientSideOnlyJetFighter = lazy(() => import('./renderer.js'))
+
+const OpponentButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 8px;
+  text-align: center;
+  width: 68%;
+  margin-left: auto;
+  margin-right: auto;
+  gap: 8px;
+`
+
+const OpponentButton = styled.div`
+  width: 50%;
+  padding: 6px 12px;
+  border-radius: 4px;
+  color: white;
+  font-weight: 500;
+  background-color: ${({ isActive, theme }) =>
+    isActive ? theme.surfaceObvious : BLUE};
+  transition: background-color 0.2s ease-in-out;
+  cursor: ${({ isActive }) => (isActive ? 'auto' : 'pointer')};
+  box-shadow: 0 1px 1px
+    ${({ isActive, theme }) =>
+      transparentize(
+        0.65,
+        darken(0.4, isActive ? theme.surfaceObvious : BLUE)
+      )};
+
+  ${({ isActive }) =>
+    !isActive &&
+    css`
+      :hover {
+        background-color: ${lighten(0.05, BLUE)};
+      }
+
+      :active {
+        background-color: ${darken(0.05, BLUE)};
+      }
+    `}
+`
 
 const KeyWrapper = styled.div`
   padding-top: 15px;
@@ -46,6 +82,7 @@ const Key = styled.div`
   box-shadow: 0 1px 1px
     ${({ accent }) => transparentize(0.65, darken(0.4, accent))};
   background-color: ${({ accent }) => accent};
+  transition: background-color 0.2s ease-in-out;
 
   &:last-child {
     margin-right: 0;
@@ -65,45 +102,11 @@ const GameWrapper = styled.div`
   }
 `
 
-const Post = ({ data: { postYaml, site } }) => {
-  const game = useMemo(() => new JetFighter(WIDTH, HEIGHT), [])
-  const [gameScore, setGameScore] = useState(game.score)
-  const canvasRef = useRef(null)
-  const getUser1Action = useJetFighterUserController('a', 'd', 'w')
-  const getUser2Action = useJetFighterUserController(
-    'arrowleft',
-    'arrowright',
-    'arrowup'
-  )
+const Post = ({ data: { postYaml, site, dqnFile } }) => {
+  const isSSR = typeof window === 'undefined'
+  const [isMultiplayer, setIsMultiplayer] = useState(false)
 
-  useEffect(() => {
-    const canvas = canvasRef.current
-    const ctx = canvas.getContext('2d')
-    canvas.width = WIDTH
-    canvas.height = HEIGHT
-
-    game.onscorechange = (score) => setGameScore(score)
-
-    let animationRequest
-
-    function gameLoop() {
-      const user1Action = getUser1Action()
-      const user2Action = getUser2Action()
-
-      // Get actions from AI and player
-      const actions = [user1Action, user2Action]
-      game.step(actions)
-      game.draw(ctx)
-
-      animationRequest = window.requestAnimationFrame(gameLoop)
-    }
-
-    animationRequest = window.requestAnimationFrame(gameLoop)
-
-    return () => {
-      window.cancelAnimationFrame(animationRequest)
-    }
-  }, [game, getUser1Action, getUser2Action])
+  const theme = useContext(ThemeContext)
 
   return (
     <Article
@@ -122,20 +125,50 @@ const Post = ({ data: { postYaml, site } }) => {
             marginRight: 'auto',
           }}
         >
-          <canvas
-            ref={canvasRef}
-            style={{
-              backgroundColor: '#000000',
-              width: '100%',
-              imageRendering: 'pixelated',
-            }}
-          />
+          <OpponentButtonWrapper>
+            <OpponentButton
+              onClick={() => setIsMultiplayer(false)}
+              isActive={!isMultiplayer}
+            >
+              AI Opponent
+            </OpponentButton>
+            <OpponentButton
+              onClick={() => setIsMultiplayer(true)}
+              isActive={isMultiplayer}
+            >
+              Multiplayer
+            </OpponentButton>
+          </OpponentButtonWrapper>
+          {!isSSR && (
+            <React.Suspense
+              fallback={
+                <div
+                  style={{
+                    backgroundColor: '#000000',
+                    width: '100%',
+                    paddingBottom: '75%',
+                  }}
+                />
+              }
+            >
+              <ClientSideOnlyJetFighter
+                dqnFileURL={dqnFile.publicURL}
+                isMultiplayer={isMultiplayer}
+              />
+            </React.Suspense>
+          )}
           <KeyWrapper>
-            <Key accent={BLUE} css="margin-top: 8px;">
+            <Key
+              accent={isMultiplayer ? BLUE : theme.surfaceObvious}
+              css="margin-top: 8px;"
+            >
               a
             </Key>
-            <Key accent={BLUE}>w</Key>
-            <Key accent={BLUE} css=" margin-top: 8px;">
+            <Key accent={isMultiplayer ? BLUE : theme.surfaceObvious}>w</Key>
+            <Key
+              accent={isMultiplayer ? BLUE : theme.surfaceObvious}
+              css=" margin-top: 8px;"
+            >
               d
             </Key>
             <div css="flex-grow: 1;" />
@@ -184,6 +217,9 @@ export const pageQuery = graphql`
           }
         }
       }
+    }
+    dqnFile: file(relativePath: { eq: "jet-fighter/dqn.onnx" }) {
+      publicURL
     }
     site {
       siteMetadata {
