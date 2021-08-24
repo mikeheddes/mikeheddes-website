@@ -54,10 +54,10 @@ const OpponentButton = styled.div`
 `
 
 const KeyWrapper = styled.div`
-  padding-top: 15px;
-  padding-bottom: 30px;
-  padding-left: 30px;
-  padding-right: 30px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  margin-left: 30px;
+  margin-right: 30px;
   display: flex;
   flex-direction: row;
 
@@ -68,11 +68,11 @@ const KeyWrapper = styled.div`
 `
 
 const Key = styled.div`
-  border-radius: 4px;
+  border-radius: 400px;
   margin-right: 4px;
   color: #ffffff;
-  width: 28px;
-  height: 26px;
+  width: 36px;
+  height: 36px;
   font-size: 17px;
   font-weight: 500;
   display: inline-flex;
@@ -82,16 +82,65 @@ const Key = styled.div`
   box-shadow: 0 1px 1px
     ${({ accent }) => transparentize(0.65, darken(0.4, accent))};
   background-color: ${({ accent }) => accent};
+  cursor: pointer;
   transition: background-color 0.2s ease-in-out;
+  ${({ lower }) =>
+    lower &&
+    css`
+      margin-top: 15px;
+    `}
+
+  :hover {
+    background-color: ${({ accent }) => lighten(0.05, accent)};
+  }
+
+  :active {
+    background-color: ${({ accent }) => darken(0.05, accent)};
+  }
 
   &:last-child {
     margin-right: 0;
   }
+
+  @media ${screen.md} {
+    border-radius: 4px;
+    width: 32px;
+    height: 28px;
+
+    ${({ lower }) =>
+      lower &&
+      css`
+        margin-top: 8px;
+      `}
+  }
+`
+
+const PlayerIndicatorWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  padding: 6px 15px;
+  color: var(--text);
+
+  @media ${screen.sm} {
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+`
+
+const PlayerColorDot = styled.span`
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  border-radius: 100px;
+  margin-right: 4px;
+  background-color: ${({ accent }) => accent};
 `
 
 const GameWrapper = styled.div`
   padding-top: 20px;
   background-color: var(--surface-subtle);
+  overflow: auto;
 
   @media ${screen.sm} {
     padding-top: 30px;
@@ -139,6 +188,17 @@ const Post = ({ data: { postYaml, site, dqnFile } }) => {
               Multiplayer
             </OpponentButton>
           </OpponentButtonWrapper>
+          <PlayerIndicatorWrapper>
+            <div>
+              <PlayerColorDot accent={BLUE} />
+              {isMultiplayer ? 'Player 2' : 'Artificial Intelligence'}
+            </div>
+            <div css="flex-grow: 1;" />
+            <div>
+              <PlayerColorDot accent={RED} />
+              Player 1
+            </div>
+          </PlayerIndicatorWrapper>
           {!isSSR && (
             <React.Suspense
               fallback={
@@ -147,6 +207,7 @@ const Post = ({ data: { postYaml, site, dqnFile } }) => {
                     backgroundColor: '#000000',
                     width: '100%',
                     paddingBottom: '75%',
+                    display: 'block',
                   }}
                 />
               }
@@ -158,25 +219,19 @@ const Post = ({ data: { postYaml, site, dqnFile } }) => {
             </React.Suspense>
           )}
           <KeyWrapper>
-            <Key
-              accent={isMultiplayer ? BLUE : theme.surfaceObvious}
-              css="margin-top: 8px;"
-            >
+            <Key accent={isMultiplayer ? BLUE : theme.surfaceObvious} lower>
               a
             </Key>
             <Key accent={isMultiplayer ? BLUE : theme.surfaceObvious}>w</Key>
-            <Key
-              accent={isMultiplayer ? BLUE : theme.surfaceObvious}
-              css=" margin-top: 8px;"
-            >
+            <Key accent={isMultiplayer ? BLUE : theme.surfaceObvious} lower>
               d
             </Key>
             <div css="flex-grow: 1;" />
-            <Key accent={RED} css=" margin-top: 8px;">
+            <Key accent={RED} lower>
               ←
             </Key>
             <Key accent={RED}>↑</Key>
-            <Key accent={RED} css="margin-top: 8px;">
+            <Key accent={RED} lower>
               →
             </Key>
           </KeyWrapper>

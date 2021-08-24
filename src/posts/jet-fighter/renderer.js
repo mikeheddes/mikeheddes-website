@@ -68,6 +68,7 @@ export default function JetFighterRenderer({ dqnFileURL, isMultiplayer }) {
         backgroundColor: '#000000',
         width: '100%',
         imageRendering: 'pixelated',
+        display: 'block',
       }}
     />
   )
