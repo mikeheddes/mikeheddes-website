@@ -2,15 +2,15 @@ import { Bullet, BulletState } from './bullet'
 import { getInEdgeArea } from './utils'
 
 export const PlaneAction = {
-  ROTATE_LEFT: 1,
-  ROTATE_RIGHT: 2,
-  FIRE: 3,
-  NOTHING: 4,
+  ROTATE_LEFT: 0,
+  ROTATE_RIGHT: 1,
+  FIRE: 2,
+  NOTHING: 3,
 }
 
 export const PlaneState = {
-  ALIVE: 1,
-  DEAD: 2,
+  ALIVE: 0,
+  DEAD: 1,
 }
 
 export class Plane {
@@ -29,11 +29,12 @@ export class Plane {
   canFireStepCountDown = 0
   fireLimit = 30 // steps
 
-  constructor(x, y, angle, frameSize, color = 'black') {
+  constructor(x, y, angle, frameSize, color, deadColor) {
     this.x = x
     this.y = y
     this.angle = angle
     this.color = color
+    this.deadColor = deadColor
     this.frameSize = frameSize
   }
 
@@ -116,11 +117,8 @@ export class Plane {
       ctx.lineTo(-2, 0)
       ctx.lineTo(-3, -2.5)
       const isDead = this.state === PlaneState.DEAD
-      const isSecondAnimationStep =
-        this.deadStepCounter % this.deadStepsPerAnimationLoop >
-        this.deadStepsPerAnimationLoop / 2
-      if (isDead && !isSecondAnimationStep) {
-        ctx.fillStyle = '#999999'
+      if (isDead) {
+        ctx.fillStyle = this.deadColor
       } else {
         ctx.fillStyle = this.color
       }

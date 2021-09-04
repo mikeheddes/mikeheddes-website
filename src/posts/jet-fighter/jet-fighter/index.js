@@ -3,7 +3,9 @@ import { BulletState } from './bullet'
 
 export { PlaneAction }
 export const BLUE = '#0066ff'
+export const DEAD_BLUE = '#003366'
 export const RED = '#ff3333'
+export const DEAD_RED = '#660000'
 
 export class JetFighter {
   planes
@@ -12,20 +14,22 @@ export class JetFighter {
 
   constructor(width, height) {
     this.frameSize = { width, height }
-    this.planes = [this.resetPlane(BLUE), this.resetPlane(RED)]
-    this.score = [0, 0]
+    this.reset()
   }
 
   reset() {
     this.score = [0, 0]
-    this.planes = [this.resetPlane(BLUE), this.resetPlane(RED)]
+    this.planes = [
+      this.resetPlane(BLUE, DEAD_BLUE),
+      this.resetPlane(RED, DEAD_RED),
+    ]
   }
 
-  resetPlane(color) {
+  resetPlane(color, deadColor) {
     const x = Math.random() * this.frameSize.width
     const y = Math.random() * this.frameSize.height
     const angle = Math.random() * Math.PI * 2
-    return new Plane(x, y, angle, this.frameSize, color)
+    return new Plane(x, y, angle, this.frameSize, color, deadColor)
   }
 
   step(actions) {
@@ -76,6 +80,8 @@ export class JetFighter {
   draw(ctx) {
     const { width, height } = this.frameSize
     ctx.clearRect(0, 0, width, height)
+    ctx.fillStyle = '#000'
+    ctx.fillRect(0, 0, width, height)
 
     for (const plane of this.planes) {
       plane.draw(ctx)

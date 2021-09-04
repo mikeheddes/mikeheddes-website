@@ -14,8 +14,8 @@
   cover:
     light: ./settlers-of-the-galaxy/cover.jpg
     dark: ./settlers-of-the-galaxy/cover.jpg
-- title: Jet Fighter Arcade
-  description: Play the classic Jet FIghter Arcade game
+- title: Jet Fighter AI
+  description: Artificial Intelligence plays the classic Jet FIghter Arcade game
   date: 2021-09-01
   genre: Reinforcement Learning
   component: ./jet-fighter/index.js

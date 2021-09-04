@@ -18,11 +18,7 @@ export default function JetFighterRenderer({ dqnFileURL, isMultiplayer }) {
     'arrowright',
     'arrowup'
   )
-  const [getAIAction, isAILoading] = useJetFighterAIController(
-    dqnFileURL,
-    HEIGHT,
-    WIDTH
-  )
+  const getAIAction = useJetFighterAIController(dqnFileURL, HEIGHT, WIDTH)
 
   useEffect(() => {
     const canvas = canvasRef.current

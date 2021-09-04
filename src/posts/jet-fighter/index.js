@@ -62,70 +62,46 @@ const KeyWrapper = styled.div`
   flex-direction: row;
 
   @media ${screen.sm} {
-    padding-left: 50px;
-    padding-right: 50px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
   }
 `
 
 const Key = styled.div`
   border-radius: 400px;
-  margin-right: 4px;
-  color: #ffffff;
-  width: 36px;
-  height: 36px;
+  color: #000000;
+  width: 42px;
+  height: 42px;
   font-size: 17px;
   font-weight: 500;
   display: inline-flex;
   text-align: center;
   justify-content: center;
+  text-transform: uppercase;
   align-items: center;
-  box-shadow: 0 1px 1px
-    ${({ accent }) => transparentize(0.65, darken(0.4, accent))};
-  background-color: ${({ accent }) => accent};
+  user-select: none;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12);
+  background-color: #ffffff;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
   ${({ lower }) =>
     lower &&
     css`
-      margin-top: 15px;
+      margin-top: 25px;
     `}
 
-  :hover {
-    background-color: ${({ accent }) => lighten(0.05, accent)};
-  }
-
   :active {
-    background-color: ${({ accent }) => darken(0.05, accent)};
-  }
-
-  &:last-child {
-    margin-right: 0;
-  }
-
-  @media ${screen.md} {
-    border-radius: 4px;
-    width: 32px;
-    height: 28px;
-
-    ${({ lower }) =>
-      lower &&
-      css`
-        margin-top: 8px;
-      `}
+    background-color: ${() => darken(0.05, '#ffffff')};
   }
 `
 
 const PlayerIndicatorWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 8px;
   padding: 6px 15px;
   color: var(--text);
-
-  @media ${screen.sm} {
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-  }
 `
 
 const PlayerColorDot = styled.span`
@@ -143,11 +119,11 @@ const GameWrapper = styled.div`
   overflow: auto;
 
   @media ${screen.sm} {
-    padding-top: 30px;
+    padding-top: 50px;
   }
 
   @media ${screen.md} {
-    padding-top: 50px;
+    padding-top: 80px;
   }
 `
 
@@ -174,7 +150,7 @@ const Post = ({ data: { postYaml, site, dqnFile } }) => {
             marginRight: 'auto',
           }}
         >
-          <OpponentButtonWrapper>
+          {/* <OpponentButtonWrapper>
             <OpponentButton
               onClick={() => setIsMultiplayer(false)}
               isActive={!isMultiplayer}
@@ -187,7 +163,7 @@ const Post = ({ data: { postYaml, site, dqnFile } }) => {
             >
               Multiplayer
             </OpponentButton>
-          </OpponentButtonWrapper>
+          </OpponentButtonWrapper> */}
           <PlayerIndicatorWrapper>
             <div>
               <PlayerColorDot accent={BLUE} />

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Tensor, InferenceSession } from 'onnxjs/dist/onnx.min.js'
 
 import { PlaneAction } from './plane'
@@ -56,12 +56,11 @@ export function useJetFighterUserController(leftKey, rightKey, fireKey) {
 }
 
 export function useJetFighterAIController(onnxModelURL, HEIGHT, WIDTH) {
-  const [session, setSession] = useState(null)
+  const session = useMemo(() => new InferenceSession(), [])
+  const isSessionInitializedRef = useRef(false)
   const aiActionRef = useRef(PlaneAction.NOTHING)
   const frameBufferRef = useRef([])
   const actionRepeatCounterRef = useRef(0)
-
-  const loading = session === null
 
   useEffect(() => {
     let frameBuffer = []
@@ -75,18 +74,15 @@ export function useJetFighterAIController(onnxModelURL, HEIGHT, WIDTH) {
 
   useEffect(() => {
     let isMounted = true
-
-    const session = new InferenceSession()
-
     session.loadModel(onnxModelURL).then(() => {
       if (!isMounted) return
-      setSession(session)
+      isSessionInitializedRef.current = true
     })
 
     return () => {
       isMounted = false
     }
-  }, [onnxModelURL])
+  }, [session, onnxModelURL])
 
   const addFrameToBuffer = useCallback(
     (data) => {
@@ -99,15 +95,16 @@ export function useJetFighterAIController(onnxModelURL, HEIGHT, WIDTH) {
   )
 
   const updateAction = useCallback(async () => {
-    if (!loading) {
+    if (isSessionInitializedRef.current) {
       const outputMap = await session.run(frameBufferRef.current)
       const output = outputMap.values().next().value.data
       const [qValue, action] = argmax(output)
+      // console.log(qValue)
       aiActionRef.current = action
     } else {
       aiActionRef.current = randint(0, 3)
     }
-  }, [loading, session])
+  }, [session])
 
   const getAction = useCallback(
     async (data) => {
@@ -125,5 +122,5 @@ export function useJetFighterAIController(onnxModelURL, HEIGHT, WIDTH) {
     [addFrameToBuffer, updateAction]
   )
 
-  return [getAction, loading]
+  return getAction
 }
