@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef } from 'react'
 import { Tensor, InferenceSession } from 'onnxjs/dist/onnx.min.js'
 
 import { PlaneAction } from './plane'
@@ -97,7 +97,7 @@ export function useJetFighterAIController(onnxModelURL, HEIGHT, WIDTH) {
   const updateAction = useCallback(async () => {
     if (isSessionInitializedRef.current) {
       const outputMap = await session.run(frameBufferRef.current)
-      const output = outputMap.values().next().value.data
+      let output = outputMap.values().next().value.data
       const [qValue, action] = argmax(output)
       // console.log(qValue)
       aiActionRef.current = action

@@ -1,57 +1,16 @@
-import React, { lazy, useState, useContext } from 'react'
+import React, { lazy, useState } from 'react'
 import { graphql } from 'gatsby'
-import styled, { css, ThemeContext } from 'styled-components'
-import { transparentize, darken, lighten } from 'polished'
+import styled, { css } from 'styled-components'
+import { darken } from 'polished'
 
 import { screen } from '../../styles/breakpoints'
 
 import Article from '../index'
 
-import { BLUE, RED } from './jet-fighter'
+import { BLUE, RED, GameState } from './jet-fighter'
 import Body from './README.md'
 
 const ClientSideOnlyJetFighter = lazy(() => import('./renderer.js'))
-
-const OpponentButtonWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 8px;
-  text-align: center;
-  width: 68%;
-  margin-left: auto;
-  margin-right: auto;
-  gap: 8px;
-`
-
-const OpponentButton = styled.div`
-  width: 50%;
-  padding: 6px 12px;
-  border-radius: 4px;
-  color: white;
-  font-weight: 500;
-  background-color: ${({ isActive, theme }) =>
-    isActive ? theme.surfaceObvious : BLUE};
-  transition: background-color 0.2s ease-in-out;
-  cursor: ${({ isActive }) => (isActive ? 'auto' : 'pointer')};
-  box-shadow: 0 1px 1px
-    ${({ isActive, theme }) =>
-      transparentize(
-        0.65,
-        darken(0.4, isActive ? theme.surfaceObvious : BLUE)
-      )};
-
-  ${({ isActive }) =>
-    !isActive &&
-    css`
-      :hover {
-        background-color: ${lighten(0.05, BLUE)};
-      }
-
-      :active {
-        background-color: ${darken(0.05, BLUE)};
-      }
-    `}
-`
 
 const KeyWrapper = styled.div`
   margin-top: 20px;
@@ -127,11 +86,19 @@ const GameWrapper = styled.div`
   }
 `
 
-const Post = ({ data: { postYaml, site, dqnFile } }) => {
-  const isSSR = typeof window === 'undefined'
-  const [isMultiplayer, setIsMultiplayer] = useState(false)
+function getPlayerNameByGameState(gameState) {
+  if (gameState === GameState.START_SCREEN) {
+    return 'TBD'
+  } else if (gameState === GameState.MULTI_PLAYER) {
+    return 'Player 1'
+  } else if (gameState === GameState.AI_PLAYER) {
+    return 'Artificial Intelligence'
+  }
+}
 
-  const theme = useContext(ThemeContext)
+const JetFighterPost = ({ data: { postYaml, site, dqnFile } }) => {
+  const isSSR = typeof window === 'undefined'
+  const [gameState, setGameState] = useState(GameState.START_SCREEN)
 
   return (
     <Article
@@ -150,29 +117,15 @@ const Post = ({ data: { postYaml, site, dqnFile } }) => {
             marginRight: 'auto',
           }}
         >
-          {/* <OpponentButtonWrapper>
-            <OpponentButton
-              onClick={() => setIsMultiplayer(false)}
-              isActive={!isMultiplayer}
-            >
-              AI Opponent
-            </OpponentButton>
-            <OpponentButton
-              onClick={() => setIsMultiplayer(true)}
-              isActive={isMultiplayer}
-            >
-              Multiplayer
-            </OpponentButton>
-          </OpponentButtonWrapper> */}
           <PlayerIndicatorWrapper>
             <div>
               <PlayerColorDot accent={BLUE} />
-              {isMultiplayer ? 'Player 2' : 'Artificial Intelligence'}
+              {getPlayerNameByGameState(gameState)}
             </div>
-            <div css="flex-grow: 1;" />
+            <div style={{ flexGrow: '1' }} />
             <div>
               <PlayerColorDot accent={RED} />
-              Player 1
+              Player 2
             </div>
           </PlayerIndicatorWrapper>
           {!isSSR && (
@@ -190,26 +143,19 @@ const Post = ({ data: { postYaml, site, dqnFile } }) => {
             >
               <ClientSideOnlyJetFighter
                 dqnFileURL={dqnFile.publicURL}
-                isMultiplayer={isMultiplayer}
+                setGameState={setGameState}
+                gameState={gameState}
               />
             </React.Suspense>
           )}
           <KeyWrapper>
-            <Key accent={isMultiplayer ? BLUE : theme.surfaceObvious} lower>
-              a
-            </Key>
-            <Key accent={isMultiplayer ? BLUE : theme.surfaceObvious}>w</Key>
-            <Key accent={isMultiplayer ? BLUE : theme.surfaceObvious} lower>
-              d
-            </Key>
+            <Key lower>a</Key>
+            <Key>w</Key>
+            <Key lower>d</Key>
             <div css="flex-grow: 1;" />
-            <Key accent={RED} lower>
-              ←
-            </Key>
-            <Key accent={RED}>↑</Key>
-            <Key accent={RED} lower>
-              →
-            </Key>
+            <Key lower>←</Key>
+            <Key>↑</Key>
+            <Key lower>→</Key>
           </KeyWrapper>
         </div>
       </GameWrapper>
@@ -218,7 +164,7 @@ const Post = ({ data: { postYaml, site, dqnFile } }) => {
   )
 }
 
-export default Post
+export default JetFighterPost
 
 export const pageQuery = graphql`
   query jetFighterData($id: String!) {
