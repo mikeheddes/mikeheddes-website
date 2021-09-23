@@ -117,9 +117,8 @@ const AboutScreen = ({ progress, onClose }) => {
         <Name>Mike Heddes</Name>
         <Phrase>Curious. Creative.</Phrase>
         <Description>
-          I’m passionate about art, technology, and science. I want to stay
-          curious and use my creativity to develop innovative and artistic
-          products, constantly seeking perfection.
+          I’m passionate about technology and science. I want to stay curious
+          and use my creativity to develop innovative and delightful products.
         </Description>
         <Close onClick={onClose}>Close about</Close>
       </TextAnimation>
