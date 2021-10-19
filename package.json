@@ -25,7 +25,6 @@
     "d3-ease": "^1.0.6",
     "gatsby": "^2.20.24",
     "gatsby-image": "^2.3.4",
-    "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-canonical-urls": "^2.2.3",
     "gatsby-plugin-extract-image-colors": "0.0.14",
     "gatsby-plugin-feed": "^2.4.3",
@@ -63,7 +62,7 @@
     "slugify": "^1.4.0",
     "stackblur-canvas": "^2.2.0",
     "styled-components": "^5.1.0",
-    "three": "^0.115.0",
+    "three": "^0.133.1",
     "youtube-player": "^5.5.2"
   },
   "devDependencies": {

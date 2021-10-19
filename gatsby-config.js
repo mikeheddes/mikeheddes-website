@@ -66,15 +66,6 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-extract-image-colors`,
-    {
-      resolve: `gatsby-plugin-alias-imports`,
-      options: {
-        alias: {
-          three$: path.resolve(__dirname, 'src/three-exports.js'),
-        },
-        extensions: [],
-      },
-    },
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-lodash`,
     {
