@@ -1,3 +1,7 @@
+# Next files
+.next
+out
+
 # Logs
 logs
 *.log
@@ -53,10 +57,6 @@ typings/
 
 # dotenv environment variables file
 .env
-
-# gatsby files
-.cache/
-public
 
 # Mac files
 .DS_Store
