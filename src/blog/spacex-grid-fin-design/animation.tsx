@@ -73,7 +73,7 @@ export default function Animation() {
           </Canvas>
         </Filler>
         <Button>
-          <Hand css="margin-right: 15px;" />
+          <Hand style={{ marginRight: 15 }} />
           Click to interact
         </Button>
       </Wrapper>

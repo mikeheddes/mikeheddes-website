@@ -40,6 +40,14 @@ const Anchor = styled.a`
   }
 `;
 
+const Content = styled.div`
+  ${contentWrapper};
+`;
+
+const Filler = styled.div`
+  flex-grow: 1;
+`
+
 function NotFound() {
   return (
     <Wrapper>
@@ -48,7 +56,7 @@ function NotFound() {
       </Head>
 
       <MegaHeader>404</MegaHeader>
-      <div css={contentWrapper}>
+      <Content>
         <Text>
           Sorry, the page you&apos;re looking for does not exist. <br />
           The{" "}
@@ -57,8 +65,8 @@ function NotFound() {
           </Link>{" "}
           is a great place to continue your search.
         </Text>
-      </div>
-      <div css="flex-grow: 1;" />
+      </Content>
+      <Filler />
       <Footer />
     </Wrapper>
   );

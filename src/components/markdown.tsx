@@ -96,7 +96,7 @@ function span(props) {
   const { className } = props;
 
   if (className === "katex-display") {
-    return <Math {...props} css="margin-top: 50px; margin-bottom: 50px;" />;
+    return <Math {...props} style={{ marginTop: 50, marginBottom: 50 }} />;
   }
 
   return <span {...props} />;
@@ -215,7 +215,7 @@ const markdownComponents = {
   video,
   img: ResponsiveImage,
   a,
-  blockquote: (props) => <Blockquote css="margin: 50px 0;" {...props} />,
+  blockquote: (props) => <Blockquote style={{ margin: "50px 0" }} {...props} />,
   inlineCode: (props) => <Code variant="inline" {...props} />,
   h1,
   h2,
@@ -224,8 +224,8 @@ const markdownComponents = {
   hr,
   ol,
   ul,
-  p: (props) => <p css="margin-bottom: 15px;" {...props} />,
-  pre: (props) => <Preformatted css="margin: 50px 0;" {...props} />,
+  p: (props) => <p style={{ marginBottom: 15 }} {...props} />,
+  pre: (props) => <Preformatted style={{ margin: "50px 0" }} {...props} />,
   code: (props) => <Code {...props} />,
   strong,
   li,
