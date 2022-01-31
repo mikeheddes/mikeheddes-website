@@ -2,17 +2,20 @@ import { createGlobalStyle } from "styled-components";
 import { normalize } from "polished";
 
 import { colorVariables } from "./colors";
-import { InterFont, fontVariables } from "./fonts";
 import { sizeVariables } from "./sizes";
 
 export default createGlobalStyle`
   ${normalize()};
 
-  ${InterFont};
-
   ${colorVariables};
   ${sizeVariables};
-  ${fontVariables};
+
+  :root {
+    --font-modern: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+      Helvetica, sans-serif;
+    --font-mono: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+    --font-classic: "Times New Roman", Times, serif;
+  }
 
   *,
   *:before,

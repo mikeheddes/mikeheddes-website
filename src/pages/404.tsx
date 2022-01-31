@@ -46,7 +46,7 @@ const Content = styled.div`
 
 const Filler = styled.div`
   flex-grow: 1;
-`
+`;
 
 function NotFound() {
   return (
