@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { useSpring, animated } from "@react-spring/three";
 import { useThree, useFrame } from "@react-three/fiber";
 import Link from "next/link";
+import Head from "next/head";
 
 import asyncStarIterator, {
   NUMBER_OF_STARS,
@@ -207,6 +208,9 @@ export default function Animation() {
   return (
     <Link href="/playground/gtocx-galaxy" passHref>
       <Wrapper>
+        <Head>
+          <link rel="prefetch" href="/stars.min" />
+        </Head>
         <Filler>
           <Canvas style={{ position: "absolute", top: 0, left: 0 }}>
             <Camera />

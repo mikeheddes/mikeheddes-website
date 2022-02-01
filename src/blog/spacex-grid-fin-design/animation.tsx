@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import { Suspense } from "react";
 import Link from "next/link";
+import Head from "next/head";
 import styled from "styled-components";
 
 import { screen } from "../../styles/breakpoints";
@@ -60,6 +61,9 @@ export default function Animation() {
     <Link href="/playground/grid-fin" passHref>
       <Wrapper>
         <Filler>
+          <Head>
+            <link rel="prefetch" href="/grid-fin.glb" />
+          </Head>
           <Canvas style={{ position: "absolute", top: 0, left: 0 }}>
             <Suspense fallback={null}>
               <GridFin dataUrl="/grid-fin.glb" />

@@ -1,3 +1,4 @@
+import Head from "next/head";
 import TrackballControl from "../../components/trackball-control";
 import Canvas from "../../components/three-canvas";
 import { Stars } from "../../blog/settlers-of-the-galaxy/animation";
@@ -10,6 +11,9 @@ export default function GtocXGalaxy() {
       blogPost="/post/settlers-of-the-galaxy"
       backgroundColor={grays["900"]}
     >
+      <Head>
+        <link rel="prefetch" href="/stars.min" />
+      </Head>
       <Canvas>
         <Stars dataUrl="/stars.min" />
         <TrackballControl

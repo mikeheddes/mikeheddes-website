@@ -1,12 +1,17 @@
+import { Suspense } from "react";
+import Head from "next/head";
+
 import TrackballControl from "../../components/trackball-control";
 import Canvas from "../../components/three-canvas";
 import { GridFin } from "../../blog/spacex-grid-fin-design/animation";
 import PlaygroundLayout from "../../components/playground-layout";
-import { Suspense } from "react";
 
 export default function GridFinAnimation() {
   return (
     <PlaygroundLayout blogPost="/post/spacex-grid-fin-design">
+      <Head>
+        <link rel="prefetch" href="/grid-fin.glb" />
+      </Head>
       <Canvas>
         <Suspense fallback={null}>
           <GridFin dataUrl="/grid-fin.glb" />
