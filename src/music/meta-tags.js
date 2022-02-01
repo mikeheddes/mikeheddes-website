@@ -1,8 +1,8 @@
-import React from 'react'
-import { Helmet } from 'react-helmet'
+import React from "react";
+import { Helmet } from "react-helmet";
 
-import StructuredData from '../shared/structured-data'
-import { dateFormatter, durationFormatter } from '../shared/formatters'
+import StructuredData from "../shared/structured-data";
+import { dateFormatter, durationFormatter } from "../shared/formatters";
 
 const MetaTags = ({
   siteUrl,
@@ -17,9 +17,9 @@ const MetaTags = ({
   upc,
   sameAs,
 }) => {
-  const formattedDate = dateFormatter.format(new Date(date))
-  const isoString = new Date(date).toISOString()
-  const description = `${genre} music by Mike Heddes released on ${formattedDate}.`
+  const formattedDate = dateFormatter.format(new Date(date));
+  const isoString = new Date(date).toISOString();
+  const description = `${genre} music by Mike Heddes released on ${formattedDate}.`;
 
   return (
     <>
@@ -46,12 +46,12 @@ const MetaTags = ({
       </Helmet>
       <StructuredData>
         {{
-          '@context': 'http://schema.org/',
-          '@type': 'MusicAlbum',
+          "@context": "http://schema.org/",
+          "@type": "MusicAlbum",
           name: album,
           byArtist: {
-            '@type': 'MusicGroup',
-            name: 'Mike Heddes',
+            "@type": "MusicGroup",
+            name: "Mike Heddes",
           },
           image: siteUrl + cover,
           url: siteUrl + slug,
@@ -60,7 +60,7 @@ const MetaTags = ({
           numtracks: `${tracks.length}`,
           datePublished: isoString,
           track: tracks.map(({ title, isrc, duration }, i) => ({
-            '@type': 'MusicRecording',
+            "@type": "MusicRecording",
             position: `${i + 1}`,
             name: title,
             url: siteUrl + slug,
@@ -73,7 +73,7 @@ const MetaTags = ({
         }}
       </StructuredData>
     </>
-  )
-}
+  );
+};
 
-export default MetaTags
+export default MetaTags;

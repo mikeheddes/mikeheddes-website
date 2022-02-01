@@ -1,21 +1,21 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
+import React from "react";
+import styled, { css } from "styled-components";
 
-import { screen } from '../styles/breakpoints'
-import { fluidFont } from '../styles'
+import { screen } from "../styles/breakpoints";
+import { fluidFont } from "../styles";
 
 const toTimeStamp = (milliseconds) => {
-  const totalSeconds = milliseconds / 1000
-  const minutes = Math.floor(totalSeconds / 60)
-  const seconds = totalSeconds - minutes * 60
-  return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
-}
+  const totalSeconds = milliseconds / 1000;
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds - minutes * 60;
+  return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+};
 
 const checkSameArtists = (tracks, artist) =>
   tracks.reduce((accumulator, currentValue) => {
-    if (currentValue.artist === artist) return accumulator
-    return false
-  }, true)
+    if (currentValue.artist === artist) return accumulator;
+    return false;
+  }, true);
 
 const Wrapper = styled.table`
   border-top: 2px solid;
@@ -23,13 +23,13 @@ const Wrapper = styled.table`
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
-`
+`;
 
 const Cell = styled.td`
   border-bottom: 2px solid;
   text-align: left;
   border-color: ${({ variant, theme }) =>
-    variant === 'number' ? 'transparent' : theme.surface};
+    variant === "number" ? "transparent" : theme.surface};
   padding: 8px;
 
   @media ${screen.sm} {
@@ -40,7 +40,7 @@ const Cell = styled.td`
   color: ${({ theme }) => theme.textSubtle};
 
   ${({ variant }) =>
-    variant === 'number' &&
+    variant === "number" &&
     css`
       padding-right: 20px;
 
@@ -50,14 +50,14 @@ const Cell = styled.td`
     `};
 
   ${({ variant }) =>
-    variant === 'title' &&
+    variant === "title" &&
     css`
       width: 100%;
       padding-left: 0;
       padding-right: 0;
 
       ${({ height }) =>
-        height === 'dubble' &&
+        height === "dubble" &&
         css`
           padding-top: 8px;
           padding-bottom: 8px;
@@ -65,26 +65,26 @@ const Cell = styled.td`
     `};
 
   ${({ variant }) =>
-    variant === 'time' &&
+    variant === "time" &&
     css`
       text-align: right;
     `};
-`
+`;
 
 const Title = styled.span`
   font-weight: 500;
   ${fluidFont(16, 18)};
   color: ${({ theme }) => theme.text};
-`
+`;
 
 const Artist = styled.span`
   display: inline-block;
   margin-top: 2px;
-`
+`;
 
 const TrackTable = (props) => {
-  const { tracks, artist } = props
-  const hasSameArtists = checkSameArtists(tracks, artist)
+  const { tracks, artist } = props;
+  const hasSameArtists = checkSameArtists(tracks, artist);
 
   return (
     <Wrapper>
@@ -94,7 +94,7 @@ const TrackTable = (props) => {
             <Cell variant="number">{i + 1}</Cell>
             <Cell
               variant="title"
-              height={hasSameArtists ? undefined : 'dubble'}
+              height={hasSameArtists ? undefined : "dubble"}
             >
               <Title>{track.title}</Title>
               {!hasSameArtists && (
@@ -109,7 +109,7 @@ const TrackTable = (props) => {
         ))}
       </tbody>
     </Wrapper>
-  )
-}
+  );
+};
 
-export default TrackTable
+export default TrackTable;

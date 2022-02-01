@@ -4,7 +4,9 @@ node_modules/*
 content/*
 
 # Ignore built files
-public/*
+out/*
 
 # Ignore examples
 examples/*
+
+.next/*

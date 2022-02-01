@@ -1,25 +1,25 @@
-import React from 'react'
-import styled from 'styled-components'
-import { graphql } from 'gatsby'
+import React from "react";
+import styled from "styled-components";
+import { graphql } from "gatsby";
 
-import { screen } from '../styles/breakpoints'
-import Cover from './cover'
-import { PlayPauseButton, ProgressIndicator, usePlayer } from './player'
-import MetaTags from './meta-tags'
-import ActionBlock, { ActionItem } from '../shared/action-block'
-import Footer from '../shared/footer'
-import Navigation from '../posts/navigation'
-import TitleView from '../posts/title-view'
-import SoundCloud from '../icons/logos/soundcloud'
-import AppleMusic from '../icons/logos/apple-music'
-import YouTube from '../icons/logos/youtube'
-import Spotify from '../icons/logos/spotify'
+import { screen } from "../styles/breakpoints";
+import Cover from "./cover";
+import { PlayPauseButton, ProgressIndicator, usePlayer } from "./player";
+import MetaTags from "./meta-tags";
+import ActionBlock, { ActionItem } from "../shared/action-block";
+import Footer from "../shared/footer";
+import Navigation from "../posts/navigation";
+import TitleView from "../posts/title-view";
+import SoundCloud from "../icons/logos/soundcloud";
+import AppleMusic from "../icons/logos/apple-music";
+import YouTube from "../icons/logos/youtube";
+import Spotify from "../icons/logos/spotify";
 
 const Wrapper = styled.div`
   max-width: 460px;
   text-align: center;
   margin: 0 auto;
-`
+`;
 
 const PlayPauseButtonWrapper = styled.div`
   margin: 20px 0;
@@ -27,7 +27,7 @@ const PlayPauseButtonWrapper = styled.div`
   @media ${screen.md} {
     margin: 30px 0;
   }
-`
+`;
 
 const PlayerWrapper = styled.div`
   padding-top: 20px;
@@ -42,29 +42,22 @@ const PlayerWrapper = styled.div`
   @media ${screen.md} {
     padding-top: 50px;
   }
-`
+`;
 
 const getIconByService = (service) => {
-  const serviceKey = service.toLowerCase()
+  const serviceKey = service.toLowerCase();
 
-  if (serviceKey === 'spotify') return Spotify
-  if (serviceKey === 'apple music') return AppleMusic
-  if (serviceKey === 'youtube') return YouTube
-  if (serviceKey === 'soundcloud') return SoundCloud
-}
+  if (serviceKey === "spotify") return Spotify;
+  if (serviceKey === "apple music") return AppleMusic;
+  if (serviceKey === "youtube") return YouTube;
+  if (serviceKey === "soundcloud") return SoundCloud;
+};
 
 const Music = ({ data: { musicYaml, site } }) => {
-  const { album, date, cover, genre, tracks, sameAs } = musicYaml
+  const { album, date, cover, genre, tracks, sameAs } = musicYaml;
 
-  const {
-    bind,
-    play,
-    pause,
-    fraction,
-    durationMs,
-    isPlaying,
-    seekFraction,
-  } = usePlayer()
+  const { bind, play, pause, fraction, durationMs, isPlaying, seekFraction } =
+    usePlayer();
 
   return (
     <>
@@ -128,10 +121,10 @@ const Music = ({ data: { musicYaml, site } }) => {
       </main>
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default Music
+export default Music;
 
 export const pageQuery = graphql`
   query musicData($id: String!) {
@@ -184,4 +177,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
