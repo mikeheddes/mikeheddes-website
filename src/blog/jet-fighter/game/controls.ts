@@ -1,14 +1,17 @@
-import { useCallback, useEffect, useMemo, useRef } from "react";
+import { RefObject, useCallback, useEffect, useMemo, useRef } from "react";
 import { Tensor, InferenceSession } from "onnxruntime-web";
 
-import { PlaneAction } from "./plane";
+import { Plane, PlaneAction } from "./plane";
 import { removeItem, lastOf, argmax, randint } from "./utils";
 import { preprocess } from "./process";
 
 export function useJetFighterUserController(
   leftKey: string,
   rightKey: string,
-  fireKey: string
+  fireKey: string,
+  leftElementRef: RefObject<HTMLElement>,
+  rightElementRef: RefObject<HTMLElement>,
+  fireElementRef: RefObject<HTMLElement>
 ): () => PlaneAction {
   const userActionsRef = useRef<PlaneAction[]>([PlaneAction.NOTHING]);
 
@@ -48,11 +51,67 @@ export function useJetFighterUserController(
 
     document.addEventListener("keydown", setUserAction);
     document.addEventListener("keyup", unsetUserAction);
+
     return () => {
       document.removeEventListener("keydown", setUserAction);
       document.removeEventListener("keyup", unsetUserAction);
     };
   }, [leftKey, rightKey, fireKey]);
+
+  useEffect(() => {
+    function setLeftAction(event: MouseEvent) {
+      let userActions = userActionsRef.current;
+      userActions.push(PlaneAction.ROTATE_LEFT);
+      userActionsRef.current = userActions;
+    }
+    function setRightAction(event: MouseEvent) {
+      let userActions = userActionsRef.current;
+      userActions.push(PlaneAction.ROTATE_RIGHT);
+      userActionsRef.current = userActions;
+    }
+    function setFireAction(event: MouseEvent) {
+      let userActions = userActionsRef.current;
+      userActions.push(PlaneAction.FIRE);
+      userActionsRef.current = userActions;
+    }
+
+    function unsetLeftAction(event: MouseEvent) {
+      let userActions = userActionsRef.current;
+      userActions = removeItem(userActions, PlaneAction.ROTATE_LEFT);
+      userActionsRef.current = userActions;
+    }
+
+    function unsetRightAction(event: MouseEvent) {
+      let userActions = userActionsRef.current;
+      userActions = removeItem(userActions, PlaneAction.ROTATE_RIGHT);
+      userActionsRef.current = userActions;
+    }
+
+    function unsetFireAction(event: MouseEvent) {
+      let userActions = userActionsRef.current;
+      userActions = removeItem(userActions, PlaneAction.FIRE);
+      userActionsRef.current = userActions;
+    }
+
+    const leftEl = leftElementRef.current;
+    leftEl.addEventListener("mousedown", setLeftAction);
+    leftEl.addEventListener("mouseup", unsetLeftAction);
+    const rightEl = rightElementRef.current;
+    rightEl.addEventListener("mousedown", setRightAction);
+    rightEl.addEventListener("mouseup", unsetRightAction);
+    const fireEl = fireElementRef.current;
+    fireEl.addEventListener("mousedown", setFireAction);
+    fireEl.addEventListener("mouseup", unsetFireAction);
+
+    return () => {
+      leftEl.addEventListener("mousedown", setLeftAction);
+      leftEl.addEventListener("mouseup", unsetLeftAction);
+      rightEl.addEventListener("mousedown", setRightAction);
+      rightEl.addEventListener("mouseup", unsetRightAction);
+      fireEl.addEventListener("mousedown", setFireAction);
+      fireEl.addEventListener("mouseup", unsetFireAction);
+    };
+  }, [leftElementRef, rightElementRef, fireElementRef]);
 
   const getAction = useCallback(() => {
     return lastOf(userActionsRef.current);

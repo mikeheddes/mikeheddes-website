@@ -1,4 +1,5 @@
-import { useMemo, useRef, useEffect, useCallback } from "react";
+import { useMemo, useRef, useEffect, useCallback, RefObject } from "react";
+import { contentWrapper } from "../../styles";
 
 import { JetFighter, GameState, PlaneAction } from "./game";
 import {
@@ -9,7 +10,21 @@ import {
 const WIDTH = 240;
 const HEIGHT = 180;
 
-export default function JetFighterRenderer({ gameState, setGameState }) {
+type Props = {
+  gameState: GameState;
+  setGameState: (gameState: GameState) => void;
+  controlElements: {
+    left: RefObject<HTMLElement>;
+    right: RefObject<HTMLElement>;
+    fire: RefObject<HTMLElement>;
+  };
+};
+
+export default function JetFighterRenderer({
+  gameState,
+  setGameState,
+  controlElements,
+}: Props) {
   const game = useMemo(() => new JetFighter(WIDTH, HEIGHT), []);
   game.state = gameState;
 
@@ -17,7 +32,10 @@ export default function JetFighterRenderer({ gameState, setGameState }) {
   const getUserAction = useJetFighterUserController(
     "arrowleft",
     "arrowright",
-    "arrowup"
+    "arrowup",
+    controlElements.left,
+    controlElements.right,
+    controlElements.fire
   );
   const getAIAction = useJetFighterAIController("/dqn.onnx", HEIGHT, WIDTH);
 

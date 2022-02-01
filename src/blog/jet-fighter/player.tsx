@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import styled, { css } from "styled-components";
 import { darken, lighten, transparentize as fade } from "polished";
@@ -156,6 +156,9 @@ const GameWrapper = styled.div`
 
 function GamePlayer() {
   const [gameState, setGameState] = useState(GameState.START_SCREEN);
+  const leftRef = useRef<HTMLDivElement>(null);
+  const rightRef = useRef<HTMLDivElement>(null);
+  const fireRef = useRef<HTMLDivElement>(null);
 
   return (
     <GameWrapper>
@@ -163,11 +166,20 @@ function GamePlayer() {
         <ClientSideOnlyJetFighter
           setGameState={setGameState}
           gameState={gameState}
+          controlElements={{
+            left: leftRef,
+            right: rightRef,
+            fire: fireRef,
+          }}
         />
         <KeyWrapper>
-          <Key lower>←</Key>
-          <Key>↑</Key>
-          <Key lower>→</Key>
+          <Key ref={leftRef} lower>
+            ←
+          </Key>
+          <Key ref={fireRef}>↑</Key>
+          <Key ref={rightRef} lower>
+            →
+          </Key>
         </KeyWrapper>
       </ConsoleSkin>
     </GameWrapper>
