@@ -96,20 +96,34 @@ export function useJetFighterUserController(
     const leftEl = leftElementRef.current;
     leftEl.addEventListener("mousedown", setLeftAction);
     leftEl.addEventListener("mouseup", unsetLeftAction);
+    leftEl.addEventListener("touchstart", setLeftAction);
+    leftEl.addEventListener("touchend", unsetLeftAction);
     const rightEl = rightElementRef.current;
     rightEl.addEventListener("mousedown", setRightAction);
     rightEl.addEventListener("mouseup", unsetRightAction);
+    rightEl.addEventListener("touchstart", setRightAction);
+    rightEl.addEventListener("touchend", unsetRightAction);
     const fireEl = fireElementRef.current;
     fireEl.addEventListener("mousedown", setFireAction);
     fireEl.addEventListener("mouseup", unsetFireAction);
+    fireEl.addEventListener("touchstart", setFireAction);
+    fireEl.addEventListener("touchend", unsetFireAction);
 
     return () => {
       leftEl.addEventListener("mousedown", setLeftAction);
       leftEl.addEventListener("mouseup", unsetLeftAction);
+      leftEl.addEventListener("touchstart", setLeftAction);
+      leftEl.addEventListener("touchend", unsetLeftAction);
+
       rightEl.addEventListener("mousedown", setRightAction);
       rightEl.addEventListener("mouseup", unsetRightAction);
+      rightEl.addEventListener("touchstart", setRightAction);
+      rightEl.addEventListener("touchend", unsetRightAction);
+
       fireEl.addEventListener("mousedown", setFireAction);
       fireEl.addEventListener("mouseup", unsetFireAction);
+      fireEl.addEventListener("touchstart", setFireAction);
+      fireEl.addEventListener("touchend", unsetFireAction);
     };
   }, [leftElementRef, rightElementRef, fireElementRef]);
 
