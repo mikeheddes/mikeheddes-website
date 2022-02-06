@@ -210,9 +210,11 @@ function TrackballControl({
       let scaleSpeed;
       let rotationSpeed = new THREE.Vector3(0, 0, 0);
       if (event instanceof window.WheelEvent && event.ctrlKey) {
+        // used in Chrome
         scaleSpeed = (event.deltaY / delta_t) * 0.01;
       } else {
-        scaleSpeed = (dd / pd / delta_t) * -1;
+        // used in Safari
+        scaleSpeed = dd / delta_t * -1;
         rotationSpeed
           .copy(cameraDirectionVec3)
           .setLength((da * Math.PI) / 180 / delta_t);
