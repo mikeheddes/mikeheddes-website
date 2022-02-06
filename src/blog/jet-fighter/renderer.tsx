@@ -97,9 +97,9 @@ export default function JetFighterRenderer({
           style={{
             position: "absolute",
             top: 0,
-            left: 190,
-            width: 100,
-            height: 50,
+            left: "25%",
+            width: "50%",
+            height: "20%",
             cursor: "pointer",
           }}
         ></div>
@@ -109,10 +109,10 @@ export default function JetFighterRenderer({
           onClick={start}
           style={{
             position: "absolute",
-            top: 165,
-            left: 80,
-            height: 50,
-            width: 320,
+            top: "40%",
+            left: "10%",
+            height: "30%",
+            width: "80%",
             cursor: "pointer",
           }}
         />

@@ -32,6 +32,7 @@ const ClientSideOnlyJetFighter = dynamic(() => import("./renderer"), {
 const BaseColor = styled.div`
   position: relative;
   width: 100%;
+  padding: 20px;
   border-radius: 20px;
   max-width: calc(480px + 40px);
   margin-left: auto;
@@ -105,8 +106,8 @@ const KeyWrapper = styled.div`
 const Key = styled.div<{ lower?: boolean }>`
   border-radius: 400px;
   color: var(--gray-200);
-  width: 48px;
-  height: 48px;
+  width: 54px;
+  height: 54px;
   font-size: 17px;
   font-weight: 500;
   display: inline-flex;
@@ -128,6 +129,11 @@ const Key = styled.div<{ lower?: boolean }>`
   transition: background 0.2s ease-in-out;
   ${({ lower = false }) => lower && `margin-top: 42px;`}
 
+  @media ${screen.md} {
+    width: 48px;
+    height: 48px;
+  }
+
   :active {
     background: ${() =>
       `linear-gradient(${lighten(0.15, grays["700"])}, ${darken(
@@ -142,6 +148,7 @@ const GameWrapper = styled.div`
   padding-bottom: 20px;
   background-color: var(--tint-red);
   overflow: auto;
+  user-select: none;
 
   @media ${screen.sm} {
     padding-top: 50px;
