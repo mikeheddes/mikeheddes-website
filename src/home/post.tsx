@@ -1,11 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import styled from "styled-components";
+import { hiDPI } from "polished";
+
 import type { PostType } from "../blog/post";
 import { getUrlFromSlug } from "../blog/post";
-
 import { fluidFont, absoluteSize } from "../styles";
-import { hiDPI } from "polished";
 
 const Thumbnail = styled.a`
   display: block;
