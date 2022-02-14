@@ -9,10 +9,6 @@ import posts from "../blog/posts";
 const Section = styled.section`
   ${contentWrapper};
   margin-top: 50px;
-
-  @media ${screen.sm} {
-    margin-top: 80px;
-  }
 `;
 
 const Posts = styled.div`

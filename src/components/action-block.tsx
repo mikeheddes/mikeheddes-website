@@ -11,16 +11,18 @@ const Grid = styled.div<{ numItems: number }>`
   margin: 20px auto;
 
   @media ${screen.sm} {
-    padding-top: 30px;
-    padding-bottom: 30px;
-    margin: 0;
+    margin: 30px 0;
     max-width: none;
     border-radius: 0px;
     background-color: transparent;
     display: grid;
     grid-template-columns: ${({ numItems }) => `repeat(${numItems}, 1fr)`};
-    grid-gap: 30px;
+    grid-gap: 20px;
     justify-content: center;
+  }
+
+  @media ${screen.md} {
+    grid-gap: 30px;
   }
 `;
 

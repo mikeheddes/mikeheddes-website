@@ -107,18 +107,15 @@ const ImageSize = styled.div<{ ratio: string }>`
   width: 100%;
   padding-bottom: ${({ ratio }) => ratio ?? "70%"};
   background-color: var(--background);
-  box-shadow: 0 12px 40px -4px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 1px 1.4px rgba(0, 0, 0, 0.02),
+    0px 2.5px 3.3px rgba(0, 0, 0, 0.028), 0px 4.6px 6.3px rgba(0, 0, 0, 0.035),
+    0px 8.3px 11.2px rgba(0, 0, 0, 0.042), 0px 15.5px 20.9px rgba(0, 0, 0, 0.05),
+    0px 37px 50px rgba(0, 0, 0, 0.07);
 
   :after {
     content: "";
     ${absoluteSize};
     border: 1px solid var(--border-content);
-  }
-
-  ${hiDPI(2)} {
-    :after {
-      border-width: 0.5px;
-    }
   }
 `;
 

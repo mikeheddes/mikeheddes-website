@@ -5,7 +5,8 @@ import Footer from "../../components/footer";
 import Navigation from "../../components/navigation";
 import TitleView from "../../components/title-view";
 import meta from "../../blog/music/meta";
-import Carousel from '../../blog/music/carousel'
+import Carousel from "../../blog/music/carousel";
+import Services from "../../blog/music/services";
 
 export default function Music() {
   return (
@@ -30,6 +31,7 @@ export default function Music() {
         <figure>
           <Carousel priority />
         </figure>
+        <Services />
       </article>
       <Footer />
     </>
