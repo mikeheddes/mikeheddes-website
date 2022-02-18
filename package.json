@@ -24,7 +24,7 @@
     "@types/three": "^0.136.1",
     "@use-gesture/react": "^10.2.4",
     "katex": "^0.11.1",
-    "next": "^12.0.7",
+    "next": "^12.1.0",
     "onnxruntime-web": "^1.10.0",
     "polished": "^3.5.1",
     "prismjs": "^1.20.0",
