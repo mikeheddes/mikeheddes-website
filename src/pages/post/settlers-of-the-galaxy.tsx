@@ -4,7 +4,7 @@ import Footer from "../../components/footer";
 import Navigation from "../../components/navigation";
 import TitleView from "../../components/title-view";
 import Caption from "../../components/caption";
-import Article from "../../blog/settlers-of-the-galaxy/README.md";
+import Post from "../../blog/settlers-of-the-galaxy/post.mdx";
 import Animation from "../../blog/settlers-of-the-galaxy/animation";
 import markdownComponents from "../../components/markdown";
 import meta from "../../blog/settlers-of-the-galaxy/meta";
@@ -34,7 +34,7 @@ export default function SettlersOfTheGalaxy() {
           <Caption>Data by the Jet Propulsion Laboratory</Caption>
         </figure>
         <MDXProvider components={markdownComponents}>
-          <Article />
+          <Post />
         </MDXProvider>
       </article>
       <Footer />

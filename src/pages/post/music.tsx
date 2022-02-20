@@ -1,6 +1,3 @@
-import { MDXProvider } from "@mdx-js/react";
-import type { PostType } from "../../blog/post";
-
 import Footer from "../../components/footer";
 import Navigation from "../../components/navigation";
 import TitleView from "../../components/title-view";

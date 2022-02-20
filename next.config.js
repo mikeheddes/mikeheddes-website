@@ -5,6 +5,7 @@ const withMDX = require("@next/mdx")({
     // `gatsby-remark-katex`,
     remarkPlugins: [],
     rehypePlugins: [],
+    providerImportSource: "@mdx-js/react",
   },
 });
 
