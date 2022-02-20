@@ -2,7 +2,7 @@ import "katex/dist/katex.min.css";
 
 import styled from "styled-components";
 import { lighten, hiDPI } from "polished";
-import Image from "next/image";
+import NextImage from "next/image";
 
 import { screen } from "../styles/breakpoints";
 import { fluidFont, contentWrapper, absoluteSize } from "../styles";
@@ -10,8 +10,8 @@ import Math from "./math";
 import Code from "./code";
 import Preformatted from "./preformatted";
 import Blockquote from "./block-quote";
-import figcaption from "./caption";
-import video from "./youtube-video";
+import Caption from "./caption";
+import VideoPlayer from "./youtube-video";
 import { darkTheme, lightTheme, themeSelector } from "../styles/colors";
 
 const wrapper = styled.main`
@@ -87,11 +87,6 @@ const h4 = styled.h4`
   }
 `;
 
-const figure = styled.figure`
-  margin-top: 80px;
-  margin-bottom: 80px;
-`;
-
 function span(props) {
   const { className } = props;
 
@@ -102,31 +97,50 @@ function span(props) {
   return <span {...props} />;
 }
 
-const ImageSize = styled.div<{ ratio: string }>`
+const Figure = styled.figure`
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+  @media ${screen.sm} {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+`;
+
+const ImageSize = styled.div<{ ratio?: string }>`
   position: relative;
   width: 100%;
-  padding-bottom: ${({ ratio }) => ratio ?? "70%"};
+  padding-bottom: ${({ ratio }) => ratio ?? "68%"};
   background-color: var(--background);
-  box-shadow: 0 12px 40px -4px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 1px 1.4px rgba(0, 0, 0, 0.02),
+    0px 2.5px 3.3px rgba(0, 0, 0, 0.028), 0px 4.6px 6.3px rgba(0, 0, 0, 0.035),
+    0px 8.3px 11.2px rgba(0, 0, 0, 0.042), 0px 15.5px 20.9px rgba(0, 0, 0, 0.05),
+    0px 37px 50px rgba(0, 0, 0, 0.07);
 
   :after {
     content: "";
     ${absoluteSize};
     border: 1px solid var(--border-content);
   }
-
-  ${hiDPI(2)} {
-    :after {
-      border-width: 0.5px;
-    }
-  }
 `;
 
-function ResponsiveImage(props) {
+function Image(props) {
   return (
-    <ImageSize ratio={props.ratio}>
-      <Image alt={props.alt} layout="fill" objectFit="cover" {...props} />
-    </ImageSize>
+    <Figure>
+      <ImageSize ratio={props.ratio}>
+        <NextImage alt={props.alt} layout="fill" objectFit="cover" {...props} />
+      </ImageSize>
+      <Caption>{props.alt}</Caption>
+    </Figure>
+  );
+}
+
+function Video(props) {
+  return (
+    <Figure>
+      <VideoPlayer {...props} />
+      {props.alt && <Caption>{props.alt}</Caption>}
+    </Figure>
   );
 }
 
@@ -212,8 +226,9 @@ const hr = styled.hr`
 
 const markdownComponents = {
   span,
-  video,
-  img: ResponsiveImage,
+  Video,
+  Image,
+  img: Image,
   a,
   blockquote: (props) => <Blockquote style={{ margin: "50px 0" }} {...props} />,
   inlineCode: (props) => <Code variant="inline" {...props} />,
@@ -229,8 +244,6 @@ const markdownComponents = {
   code: (props) => <Code {...props} />,
   strong,
   li,
-  figure,
-  figcaption,
   wrapper,
 };
 

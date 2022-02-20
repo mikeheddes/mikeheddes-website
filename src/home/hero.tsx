@@ -4,7 +4,7 @@ import Image from "next/image";
 
 import { screen } from "../styles/breakpoints";
 import { contentWrapper, fluidFont, absoluteSize } from "../styles";
-import profilePic from "../../public/images/mike-heddes-large-square.jpg";
+import profilePic from "./banner.jpg";
 
 const Section = styled.section`
   position: relative;

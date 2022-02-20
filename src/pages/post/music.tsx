@@ -1,15 +1,11 @@
-import { MDXProvider } from "@mdx-js/react";
-
 import Footer from "../../components/footer";
 import Navigation from "../../components/navigation";
 import TitleView from "../../components/title-view";
-import Caption from "../../components/caption";
-import Post from "../../blog/spacex-grid-fin-design/post.mdx";
-import Animation from "../../blog/spacex-grid-fin-design/animation";
-import markdownComponents from "../../components/markdown";
-import meta from "../../blog/spacex-grid-fin-design/meta";
+import meta from "../../blog/music/meta";
+import Carousel from "../../blog/music/carousel";
+import Services from "../../blog/music/services";
 
-export default function SpaceXGridFinDesign() {
+export default function Music() {
   return (
     <>
       {/* <MetaTags
@@ -30,12 +26,9 @@ export default function SpaceXGridFinDesign() {
           subtitle={meta.subtitle}
         />
         <figure>
-          <Animation />
-          <Caption>3D model by Jon Ross</Caption>
+          <Carousel priority />
         </figure>
-        <MDXProvider components={markdownComponents}>
-          <Post />
-        </MDXProvider>
+        <Services />
       </article>
       <Footer />
     </>
