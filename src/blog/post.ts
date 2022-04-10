@@ -10,6 +10,14 @@ export type PostType = {
   };
 };
 
-export function getUrlFromSlug(slug: string): string {
+export function getURLFromSlug(slug: string): string {
+  if (isExternalURL(slug)) {
+    return slug;
+  }
+
   return `/post/${slug}`;
+}
+
+export function isExternalURL(slug: string): boolean {
+  return slug.startsWith("http://") || slug.startsWith("https://");
 }
