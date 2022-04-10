@@ -43,7 +43,7 @@ const Subtitle = styled.h4`
   ${fluidFont(18, 21)};
   color: var(--text-subtle);
   line-height: 1.3;
-  font-weight: 600;
+  font-weight: 500;
 `;
 
 type Props = {

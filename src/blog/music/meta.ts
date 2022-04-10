@@ -6,7 +6,7 @@ export default {
   title: "Music Production",
   description: "Tracks by Mike Heddes",
   date: "2020-03-10",
-  subtitle: "Creative",
+  subtitle: "Creativity & Expression",
   image: {
     url: pic,
     alt: "Stack of Mike Heddes records",

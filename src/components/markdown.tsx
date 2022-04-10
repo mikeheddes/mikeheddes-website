@@ -112,10 +112,6 @@ const ImageSize = styled.div<{ ratio?: string }>`
   width: 100%;
   padding-bottom: ${({ ratio }) => ratio ?? "68%"};
   background-color: var(--background);
-  box-shadow: 0px 1px 1.4px rgba(0, 0, 0, 0.02),
-    0px 2.5px 3.3px rgba(0, 0, 0, 0.028), 0px 4.6px 6.3px rgba(0, 0, 0, 0.035),
-    0px 8.3px 11.2px rgba(0, 0, 0, 0.042), 0px 15.5px 20.9px rgba(0, 0, 0, 0.05),
-    0px 37px 50px rgba(0, 0, 0, 0.07);
 
   :after {
     content: "";
@@ -224,6 +220,11 @@ const hr = styled.hr`
   }
 `;
 
+const p = styled.p`
+  text-align: justify;
+  margin-bottom: 15px;
+`
+
 const markdownComponents = {
   span,
   Video,
@@ -239,7 +240,7 @@ const markdownComponents = {
   hr,
   ol,
   ul,
-  p: (props) => <p style={{ marginBottom: 15 }} {...props} />,
+  p,
   pre: (props) => <Preformatted style={{ margin: "50px 0" }} {...props} />,
   code: (props) => <Code {...props} />,
   strong,

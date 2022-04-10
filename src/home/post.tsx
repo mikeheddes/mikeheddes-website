@@ -9,12 +9,7 @@ import { fluidFont, absoluteSize } from "../styles";
 const Thumbnail = styled.a`
   display: block;
   position: relative;
-  overflow: hidden;
   border-radius: 6px;
-  box-shadow: 0px 0.6px 0.8px rgba(0, 0, 0, 0.008),
-    0px 1.4px 2px rgba(0, 0, 0, 0.012), 0px 2.6px 3.8px rgba(0, 0, 0, 0.015),
-    0px 4.7px 6.7px rgba(0, 0, 0, 0.018), 0px 8.8px 12.5px rgba(0, 0, 0, 0.022),
-    0px 21px 30px rgba(0, 0, 0, 0.03);
 
   :after {
     content: "";
@@ -30,10 +25,11 @@ const ImageSize = styled.div`
   padding-bottom: 70%;
   background-color: var(--surface-subtle);
   border-radius: 6px;
+  overflow: hidden;
 `;
 
 const TextBox = styled.div`
-  margin-top: 8px;
+  margin-top: 10px;
 `;
 
 const Title = styled.h4`
@@ -45,9 +41,8 @@ const Title = styled.h4`
 const SubTitle = styled.h5`
   color: var(--text-subtle);
   font-weight: 500;
-  ${fluidFont(16, 17)};
-
-  margin-top: 2px;
+  ${fluidFont(15, 16)};
+  margin-top: 4px;
 `;
 
 type Props = {

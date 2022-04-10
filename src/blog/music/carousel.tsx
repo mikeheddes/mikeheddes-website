@@ -28,7 +28,6 @@ const Wrapper = styled.div`
 const Cover = styled.div`
   display: block;
   position: relative;
-  overflow: hidden;
   border-radius: 4px;
   box-shadow: 0px 1.5px 1.9px rgba(0, 0, 0, 0.031),
     0px 3.7px 4.7px rgba(0, 0, 0, 0.044), 0px 6.9px 8.8px rgba(0, 0, 0, 0.055),
@@ -39,7 +38,7 @@ const Cover = styled.div`
     content: "";
     ${absoluteSize};
     border: 1px solid var(--border-content);
-    border-radius: 6px;
+    border-radius: 4px;
   }
 `;
 
@@ -49,12 +48,13 @@ const ImageSize = styled.div`
   padding-bottom: 100%;
   background-color: var(--surface-subtle);
   border-radius: 4px;
+  overflow: hidden;
 `;
 
 const Title = styled.h3`
   text-align: center;
   margin: 0;
-  margin-top: 10px;
+  margin-top: 15px;
   ${fluidFont(16, 19)};
   font-weight: 600;
   color: var(--text-subtle);
