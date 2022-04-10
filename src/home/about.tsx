@@ -17,19 +17,24 @@ const Section = styled.section`
 
 const Text = styled.p`
   color: var(--text);
-  ${fluidFont(21, 28)};
-  font-weight: 600;
-  line-height: 1.28;
-  max-width: var(--width-text);
+  ${fluidFont(18, 21)};
+  font-weight: 500;
+  line-height: 1.45;
+  text-align: justify;
 `;
 
 export default function About() {
   return (
     <Section wide>
-      <SectionName>Statement of purpose</SectionName>
+      <SectionName>Personal statement</SectionName>
       <Text>
-        I&apos;m passionate about technology and science. I want to stay curious
-        and use my creativity to develop innovative and delightful products.
+        I am Mike Heddes, a Computer Science PhD student at the University
+        of California, Irvine with a background in Mechanical Engineering. I
+        enjoy tackling hard problems in an interdisciplinary setting. My work
+        focuses on the intersection of Machine Learning and Embedded Systems. My
+        ambition is to add to the inspiring achievements of humanity and to
+        ensure our longevity. I&apos;m captivated by everything space related in
+        addition to meticulous design and engineering.
       </Text>
     </Section>
   );

@@ -44,26 +44,26 @@ export const colorVariables = css`
   :root {
     /* Grays */
     --gray-000: #ffffff;
-    --gray-050: #f5f5f5;
-    --gray-100: #f2f2f2;
-    --gray-200: #d8d8d8;
-    --gray-300: #8c8c8c;
-    --gray-400: #666666;
-    --gray-500: #4a4a4a;
-    --gray-600: #363636;
-    --gray-700: #262626;
-    --gray-750: #1a1a1a;
-    --gray-800: #0d0d0d;
+    --gray-050: #f8f9fa;
+    --gray-100: #f0f1f2;
+    --gray-200: #d4d6d8;
+    --gray-300: #898b8c;
+    --gray-400: #646566;
+    --gray-500: #48484a;
+    --gray-600: #333436;
+    --gray-700: #232526;
+    --gray-750: #16171a;
+    --gray-800: #0a0c0d;
     --gray-900: #000000;
 
     /* Full colors */
-    --red: #ff3b30;
-    --orange: #ff9500;
-    --yellow: #ffcc00;
-    --green: #4cd964;
-    --blue: #007aff;
-    --purple: #5856d6;
-    --pink: #ff2d55;
+    --red: #e63225;
+    --orange: #eb9215;
+    --yellow: #f5c816;
+    --green: #50c75b;
+    --blue: #216bdb;
+    --purple: #534ccd;
+    --pink: #e82e57;
 
     /* Tint colors */
     --tint-red: #faf3f2;
@@ -162,13 +162,13 @@ export const grays = {
 };
 
 export const lightColors = {
-  red: "#FF3B30",
-  orange: "#FF9500",
-  yellow: "#FFCC00",
-  green: "#4CD964",
-  blue: "#007AFF",
-  purple: "#5856D6",
-  pink: "#FF2D55",
+  red: "#e63225",
+  orange: "#eb9215",
+  yellow: "#f5c816",
+  green: "#50c75b",
+  blue: "#216bdb",
+  purple: "#534ccd",
+  pink: "#e82e57",
 };
 
 export const pastelColors = {

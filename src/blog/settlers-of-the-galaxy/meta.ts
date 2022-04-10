@@ -6,7 +6,7 @@ export default {
   title: "Settlers of the Galaxy",
   description: "GTOC X stars animation",
   date: "2019-11-10",
-  subtitle: "Animation and Interaction",
+  subtitle: "Animation & Interaction",
   image: {
     url: pic,
     alt: "Galaxy",

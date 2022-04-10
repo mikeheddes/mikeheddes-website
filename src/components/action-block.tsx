@@ -48,7 +48,7 @@ const ItemWrapper = styled.a`
 
   @media ${screen.sm} {
     height: auto;
-    background-color: var(--surface-subtle);
+    background-color: var(--surface);
     flex-direction: column;
     border-radius: 10px;
     padding: 8px;
