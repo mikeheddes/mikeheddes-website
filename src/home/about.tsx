@@ -20,7 +20,10 @@ const Text = styled.p`
   ${fluidFont(18, 21)};
   font-weight: 500;
   line-height: 1.45;
-  text-align: justify;
+
+  @media ${screen.sm} {
+    text-align: justify;
+  }
 `;
 
 export default function About() {
