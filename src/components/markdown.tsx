@@ -221,9 +221,12 @@ const hr = styled.hr`
 `;
 
 const p = styled.p`
-  text-align: justify;
   margin-bottom: 15px;
-`
+
+  @media ${screen.sm} {
+    text-align: justify;
+  }
+`;
 
 const markdownComponents = {
   span,
