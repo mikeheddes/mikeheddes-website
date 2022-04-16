@@ -18,10 +18,10 @@ const ImageSize = styled.div`
   position: relative;
   background-color: #e0e5e8;
   width: 100%;
-  padding-bottom: 50%;
+  padding-bottom: 80%;
 
   @media ${screen.sm} {
-    padding-bottom: 42%;
+    padding-bottom: 45%;
   }
 
   @media ${screen.lg} {
@@ -33,10 +33,10 @@ const HeadlineWrapper = styled.div`
   ${absoluteSize};
   ${contentWrapper};
   text-align: center;
-  margin-top: 30px;
+  padding-top: 30px;
 
   @media ${screen.sm} {
-    margin-top: 50px;
+    padding-top: 50px;
   }
 `;
 
