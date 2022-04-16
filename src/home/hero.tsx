@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import Image from "next/image";
 
@@ -19,14 +18,14 @@ const ImageSize = styled.div`
   position: relative;
   background-color: #e0e5e8;
   width: 100%;
-  padding-bottom: 65%;
+  padding-bottom: 50%;
 
   @media ${screen.sm} {
-    padding-bottom: 53.3%;
+    padding-bottom: 42%;
   }
 
   @media ${screen.lg} {
-    padding-bottom: 45%;
+    padding-bottom: 35%;
   }
 `;
 
@@ -42,17 +41,16 @@ const HeadlineWrapper = styled.div`
 `;
 
 const Title = styled.h1`
-  color: #000000;
+  color: rgb(39, 45, 59);
   ${fluidFont(30, 58)};
   font-weight: 700;
   margin: 0;
 `;
 
 const SubTitle = styled.h2`
-  color: #000000;
+  color: rgba(13, 22, 42, 0.7);
   ${fluidFont(18, 36)};
   font-weight: 600;
-  opacity: 0.7;
   margin: 0;
   margin-top: 2px;
 `;
@@ -74,9 +72,9 @@ export default function Hero() {
           src={profilePic}
           placeholder="blur"
           priority
-          alt="Mike Heddes"
+          alt="Mike Heddes in the Hills of Orange County"
           layout="fill"
-          objectPosition="50% 70%"
+          objectPosition="50% 15%"
           objectFit="cover"
         />
       </ImageSize>
