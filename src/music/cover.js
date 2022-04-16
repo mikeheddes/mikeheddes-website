@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from "react";
+import { useEffect, useCallback } from "react";
 import styled, { css } from "styled-components";
 import { useSpring, animated } from "react-spring";
 import { darken, transparentize as fade } from "polished";
