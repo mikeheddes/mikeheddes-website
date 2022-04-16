@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useRef } from "react";
+import { useCallback, useState, useRef } from "react";
 import styled from "styled-components";
 import { animated, useSpring } from "react-spring";
 import { useDrag } from "react-use-gesture";
