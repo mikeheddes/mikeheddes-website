@@ -1,10 +1,18 @@
 import styled from "styled-components";
 
 import { contentWrapper } from "../styles";
-import { screen } from "../styles/breakpoints";
-import Post from "./post";
-import { SectionHeading, SectionName } from "./section";
-import posts from "../blog/posts";
+import {
+  Hashing,
+  GraphHD,
+  EdgeAvatar,
+  SpOC,
+  JetFighterAi,
+  SettlersOfTheGalaxy,
+  DCGP,
+  SpaceXGridFin,
+  MusicProduction,
+} from "./post";
+import { SectionHeading } from "./section";
 
 const Section = styled.section`
   ${contentWrapper};
@@ -12,17 +20,6 @@ const Section = styled.section`
 `;
 
 const Posts = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 30px 20px;
-
-  @media ${screen.sm} {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  @media ${screen.md} {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
 `;
 
 export default function Feed() {
@@ -30,11 +27,15 @@ export default function Feed() {
     <Section wide>
       <SectionHeading>Projects</SectionHeading>
       <Posts>
-        {posts
-          .sort((post1, post2) => (post1.date > post2.date ? -1 : 1))
-          .map((post) => (
-            <Post key={post.slug} post={post} />
-          ))}
+        <Hashing />
+        <GraphHD />
+        <JetFighterAi />
+        <EdgeAvatar />
+        <SpOC />
+        <SettlersOfTheGalaxy/>
+        <DCGP />
+        <SpaceXGridFin />
+        <MusicProduction />
       </Posts>
     </Section>
   );

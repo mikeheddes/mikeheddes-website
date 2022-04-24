@@ -95,7 +95,7 @@ export const colorVariables = css`
     --heading-subtle: var(--gray-600);
     --heading-obvious: var(--gray-900);
     --text: var(--gray-700);
-    --text-subtle: var(--gray-400);
+    --text-subtle: var(--gray-300);
     --text-obvious: var(--gray-800);
   }
 
@@ -212,7 +212,7 @@ export const lightTheme: DefaultTheme = {
   headingSubtle: grays["600"],
   headingObvious: grays["900"],
   text: grays["700"],
-  textSubtle: grays["400"],
+  textSubtle: grays["300"],
   textObvious: grays["800"],
   primary: lightColors.blue,
   surface: grays["100"],
