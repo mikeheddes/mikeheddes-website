@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 import { lighten } from "polished";
 
 import { fluidFont } from "../styles";
+import { screen } from "../styles/breakpoints";
 import { darkTheme, lightTheme, themeSelector } from "../styles/colors";
 
 const Post = styled.div`
@@ -19,6 +20,7 @@ const Title = styled.h4`
   ${fluidFont(18, 21)};
   clear: right;
   margin: 0;
+  line-height: 1.2em;
 `;
 
 const SubTitle = styled.h5`
@@ -26,6 +28,7 @@ const SubTitle = styled.h5`
   font-weight: 500;
   ${fluidFont(16, 18)};
   margin-top: 4px;
+  line-height: 1.4em;
 `;
 
 const Description = styled.p`
@@ -34,6 +37,10 @@ const Description = styled.p`
   ${fluidFont(15, 17)};
   margin-top: 10px;
   line-height: 1.4em;
+
+  @media ${screen.sm} {
+    text-align: justify;
+  }
 `;
 
 const Mention = styled.div`
