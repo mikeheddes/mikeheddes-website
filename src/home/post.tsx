@@ -92,6 +92,27 @@ const Action = styled.a<ActionProps>`
     `}
 `;
 
+export function Torchhd() {
+  return (
+    <Post>
+      <Title>
+        Torchhd: An Open-Source Python Library to Support Hyperdimensional
+        Computing Research
+      </Title>
+      <Description>
+        With Torchhd we want to make Hyperdimensional Computing (HDC) more
+        accessible and researchers more efficient. The easy-to-use and
+        high-performance library builds on top of PyTorch and features
+        state-of-the-art HDC functionality, clear documentation and
+        implementation examples of notable publications.
+      </Description>
+      <Action href="https://github.com/hyperdimensional-computing/torchhd">
+        View project →
+      </Action>
+    </Post>
+  );
+}
+
 export function Hashing() {
   return (
     <Post>
@@ -106,7 +127,9 @@ export function Hashing() {
         Hyperdimensional (HD) hashing and show that it has the efficiency to be
         deployed in large systems.
       </Description>
-      <Action disabled>Publication link available soon</Action>
+      <Action disabled as="span">
+        Publication link available soon
+      </Action>
     </Post>
   );
 }
@@ -128,7 +151,9 @@ export function GraphHD() {
         we present GraphHD — a baseline approach for graph classification with
         HDC.
       </Description>
-      <Action disabled>Publication link available soon</Action>
+      <Action disabled as="span">
+        Publication link available soon
+      </Action>
     </Post>
   );
 }
