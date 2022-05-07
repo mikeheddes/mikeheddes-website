@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 import { contentWrapper } from "../styles";
 import {
+  Torchhd,
   Hashing,
   GraphHD,
   EdgeAvatar,
@@ -19,14 +20,12 @@ const Section = styled.section`
   margin-top: 50px;
 `;
 
-const Posts = styled.div`
-`;
-
 export default function Feed() {
   return (
     <Section wide>
       <SectionHeading>Projects</SectionHeading>
-      <Posts>
+      <div>
+        <Torchhd />
         <Hashing />
         <GraphHD />
         <JetFighterAi />
@@ -36,7 +35,7 @@ export default function Feed() {
         <DCGP />
         <SpaceXGridFin />
         <MusicProduction />
-      </Posts>
+      </div>
     </Section>
   );
 }
