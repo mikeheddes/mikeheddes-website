@@ -175,6 +175,9 @@ export function EdgeAvatar() {
       <Action href="https://doi.org/10.3390/electronics10030229">
         View publication →
       </Action>
+      <Action href="https://sysarch-uci.gitlab.io/celan-web/">
+        View project →
+      </Action>
     </Post>
   );
 }
