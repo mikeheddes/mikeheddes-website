@@ -7,7 +7,11 @@ import { screen } from "../styles/breakpoints";
 import { darkTheme, lightTheme, themeSelector } from "../styles/colors";
 
 const Post = styled.div`
-  margin-top: 50px;
+  margin-top: 30px;
+
+  @media ${screen.sm} {
+    margin-top: 50px;
+  }
 
   :first-child {
     margin-top: 0;
@@ -101,10 +105,10 @@ export function Torchhd() {
       </Title>
       <Description>
         With Torchhd we want to make Hyperdimensional Computing (HDC) more
-        accessible and researchers more efficient. The easy-to-use and
-        high-performance library builds on top of PyTorch and features
-        state-of-the-art HDC functionality, clear documentation and
-        implementation examples of notable publications.
+        accessible and provide an efficient foundation for research and
+        application development. The easy-to-use and high-performance library
+        builds on top of PyTorch and features state-of-the-art HDC
+        functionality, clear documentation and implementation examples.
       </Description>
       <Action href="https://github.com/hyperdimensional-computing/torchhd">
         View project →
