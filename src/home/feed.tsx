@@ -14,17 +14,35 @@ import {
   MusicProduction,
 } from "./post";
 import { SectionHeading } from "./section";
+import { screen } from "../styles/breakpoints";
+
 
 const Section = styled.section`
   ${contentWrapper};
   margin-top: 50px;
 `;
 
+const Posts = styled.div`
+  & > *:nth-child(even) {
+    background-color: var(--surface-subtle);
+    padding: 20px;
+    margin-left: -20px;
+    margin-right: -20px;
+
+    @media ${screen.sm} {
+      border-radius: 6px;
+      padding: 30px;
+      margin-left: -30px;
+      margin-right: -30px;
+    }
+  }
+`;
+
 export default function Feed() {
   return (
     <Section wide>
       <SectionHeading>Projects</SectionHeading>
-      <div>
+      <Posts>
         <Torchhd />
         <Hashing />
         <GraphHD />
@@ -35,7 +53,7 @@ export default function Feed() {
         <DCGP />
         <SpaceXGridFin />
         <MusicProduction />
-      </div>
+      </Posts>
     </Section>
   );
 }
