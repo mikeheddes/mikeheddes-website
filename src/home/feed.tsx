@@ -4,6 +4,7 @@ import { contentWrapper } from "../styles";
 import {
   Torchhd,
   Hashing,
+  CircularHV,
   GraphHD,
   EdgeAvatar,
   SpOC,
@@ -16,27 +17,17 @@ import {
 import { SectionHeading } from "./section";
 import { screen } from "../styles/breakpoints";
 
-
 const Section = styled.section`
   ${contentWrapper};
   margin-top: 50px;
-`;
+  margin-bottom: 80px;
 
-const Posts = styled.div`
-  & > *:nth-child(even) {
-    background-color: var(--surface-subtle);
-    padding: 20px;
-    margin-left: -20px;
-    margin-right: -20px;
-
-    @media ${screen.sm} {
-      border-radius: 6px;
-      padding: 30px;
-      margin-left: -30px;
-      margin-right: -30px;
-    }
+  @media ${screen.md} {
+    margin-bottom: 130px;
   }
 `;
+
+const Posts = styled.div``;
 
 export default function Feed() {
   return (
@@ -44,12 +35,13 @@ export default function Feed() {
       <SectionHeading>Projects</SectionHeading>
       <Posts>
         <Torchhd />
+        <CircularHV />
         <Hashing />
         <GraphHD />
         <JetFighterAi />
         <EdgeAvatar />
         <SpOC />
-        <SettlersOfTheGalaxy/>
+        <SettlersOfTheGalaxy />
         <DCGP />
         <SpaceXGridFin />
         <MusicProduction />

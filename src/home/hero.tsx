@@ -41,7 +41,7 @@ const HeadlineWrapper = styled.div`
 `;
 
 const Title = styled.h1`
-  color: rgb(39, 45, 59);
+  color: rgb(36, 42, 56);
   ${fluidFont(30, 58)};
   font-weight: 700;
   margin: 0;
