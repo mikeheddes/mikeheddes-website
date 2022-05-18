@@ -117,6 +117,27 @@ export function Torchhd() {
   );
 }
 
+export function CircularHV() {
+  return (
+    <Post>
+      <Title>
+        An Extension to Basis-Hypervectors for Learning from Circular Data in
+        Hyperdimensional Computing
+      </Title>
+      <Description>
+        In this work we present a detailed study on basis-hypervector sets,
+        which leads to practical contributions to HDC in general: 1) an
+        improvement for level-hypervectors, used to encode real numbers; 2) a
+        method to learn from circular data, an important type of information
+        never before addressed in machine learning with HDC.
+      </Description>
+      <Action href="https://doi.org/10.48550/arXiv.2205.07920">
+        View publication →
+      </Action>
+    </Post>
+  );
+}
+
 export function Hashing() {
   return (
     <Post>
@@ -131,8 +152,8 @@ export function Hashing() {
         Hyperdimensional (HD) hashing and show that it has the efficiency to be
         deployed in large systems.
       </Description>
-      <Action disabled as="span">
-        Publication link available soon
+      <Action href="https://doi.org/10.48550/arXiv.2205.07850">
+        View publication →
       </Action>
     </Post>
   );
@@ -155,8 +176,8 @@ export function GraphHD() {
         we present GraphHD — a baseline approach for graph classification with
         HDC.
       </Description>
-      <Action disabled as="span">
-        Publication link available soon
+      <Action href="https://doi.org/10.48550/arXiv.2205.07826">
+        View publication →
       </Action>
     </Post>
   );
