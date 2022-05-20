@@ -110,6 +110,9 @@ export function Torchhd() {
         builds on top of PyTorch and features state-of-the-art HDC
         functionality, clear documentation and implementation examples.
       </Description>
+      <Action href="https://arxiv.org/abs/2205.09208">
+        View publication →
+      </Action>
       <Action href="https://github.com/hyperdimensional-computing/torchhd">
         View project →
       </Action>
@@ -131,7 +134,7 @@ export function CircularHV() {
         method to learn from circular data, an important type of information
         never before addressed in machine learning with HDC.
       </Description>
-      <Action href="https://doi.org/10.48550/arXiv.2205.07920">
+      <Action href="https://arxiv.org/abs/2205.07920">
         View publication →
       </Action>
     </Post>
@@ -152,7 +155,7 @@ export function Hashing() {
         Hyperdimensional (HD) hashing and show that it has the efficiency to be
         deployed in large systems.
       </Description>
-      <Action href="https://doi.org/10.48550/arXiv.2205.07850">
+      <Action href="https://arxiv.org/abs/2205.07850">
         View publication →
       </Action>
     </Post>
@@ -176,7 +179,7 @@ export function GraphHD() {
         we present GraphHD — a baseline approach for graph classification with
         HDC.
       </Description>
-      <Action href="https://doi.org/10.48550/arXiv.2205.07826">
+      <Action href="https://arxiv.org/abs/2205.07826">
         View publication →
       </Action>
     </Post>
