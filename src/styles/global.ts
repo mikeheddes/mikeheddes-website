@@ -1,20 +1,8 @@
-import { Inter } from '@next/font/google'
 import { createGlobalStyle } from "styled-components";
 import { normalize } from "polished";
 
 import { colorVariables } from "./colors";
 import { sizeVariables } from "./sizes";
-
-const inter = Inter({
-  subsets: ["latin"],
-  fallback: [
-    "-apple-system",
-    "BlinkMacSystemFont",
-    "Helvetica Neue",
-    "Helvetica",
-    "sans-serif"
-  ],
-});
 
 export default createGlobalStyle`
   ${normalize()};
@@ -23,7 +11,8 @@ export default createGlobalStyle`
   ${sizeVariables};
 
   :root {
-    --font-modern: ${inter.style.fontFamily};
+    --font-modern: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+      Helvetica, sans-serif;
     --font-mono: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
     --font-classic: "Times New Roman", Times, serif;
   }
