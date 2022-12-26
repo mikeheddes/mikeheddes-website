@@ -116,25 +116,25 @@ export function Stars({ dataUrl }: { dataUrl: string }) {
     <points material={material}>
       <bufferGeometry attach="geometry" ref={geometryRef}>
         <bufferAttribute
-          attachObject={["attributes", "position"]}
+          attach="attributes-position"
           count={NUMBER_OF_STARS}
           array={positions}
           itemSize={3}
         />
         <bufferAttribute
-          attachObject={["attributes", "star"]}
+          attach="attributes-star"
           count={NUMBER_OF_STARS}
           array={stars}
           itemSize={4}
         />
         <bufferAttribute
-          attachObject={["attributes", "angularVelocity"]}
+          attach="attributes-angularVelocity"
           count={NUMBER_OF_STARS}
           array={angularVelocities}
           itemSize={1}
         />
         <bufferAttribute
-          attachObject={["attributes", "starIndex"]}
+          attach="attributes-starIndex"
           count={NUMBER_OF_STARS}
           array={starIndices}
           itemSize={1}
