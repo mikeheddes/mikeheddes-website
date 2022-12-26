@@ -124,7 +124,12 @@ function Image(props) {
   return (
     <Figure>
       <ImageSize ratio={props.ratio}>
-        <NextImage alt={props.alt} layout="fill" objectFit="cover" {...props} />
+        <NextImage
+          alt={props.alt}
+          fill
+          style={{ objectFit: "cover" }}
+          {...props}
+        />
       </ImageSize>
       <Caption>{props.alt}</Caption>
     </Figure>

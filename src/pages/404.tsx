@@ -30,7 +30,7 @@ const Text = styled.p`
   color: var(--text);
 `;
 
-const Anchor = styled.a`
+const Anchor = styled(Link)`
   text-decoration: none;
   color: var(--primary);
   transition: opacity 100ms ease-out;
@@ -59,11 +59,8 @@ function NotFound() {
       <Content>
         <Text>
           Sorry, the page you&apos;re looking for does not exist. <br />
-          The{" "}
-          <Link href="/" passHref>
-            <Anchor>homepage</Anchor>
-          </Link>{" "}
-          is a great place to continue your search.
+          The <Anchor href="/">homepage</Anchor> is a great place to continue
+          your search.
         </Text>
       </Content>
       <Filler />

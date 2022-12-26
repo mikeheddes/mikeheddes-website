@@ -73,9 +73,8 @@ export default function Hero() {
           placeholder="blur"
           priority
           alt="Mike Heddes in the Hills of Orange County"
-          layout="fill"
-          objectPosition="50% 15%"
-          objectFit="cover"
+          fill
+          style={{ objectPosition: "50% 15%", objectFit: "cover" }}
         />
       </ImageSize>
       <Headline />

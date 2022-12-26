@@ -59,7 +59,7 @@ type ActionProps = {
   disabled?: boolean;
 };
 
-const Action = styled.a<ActionProps>`
+const Action = styled(Link)<ActionProps>`
   display: inline-block;
   color: ${({ disabled }) =>
     disabled ? "var(--text-subtle)" : "var(--primary)"};
@@ -236,9 +236,7 @@ export function JetFighterAi() {
         Jet Fighter. Visitors can play against the agent in an Atari-style
         simulator on the project page.
       </Description>
-      <Link passHref href="/post/jet-fighter-ai">
-        <Action>View project →</Action>
-      </Link>
+      <Action href="/post/jet-fighter-ai">View project →</Action>
     </Post>
   );
 }
@@ -254,9 +252,7 @@ export function SettlersOfTheGalaxy() {
         System. Based on data from the GTOC X trajectory optimization challenge
         proposed by NASA&apos;s Jet Propulsion Laboratory (JPL).
       </Description>
-      <Link passHref href="/post/settlers-of-the-galaxy">
-        <Action>View project →</Action>
-      </Link>
+      <Action href="/post/settlers-of-the-galaxy">View project →</Action>
     </Post>
   );
 }
@@ -289,9 +285,7 @@ export function SpaceXGridFin() {
         on the Falcon 9 rocket. The grid fins are made from titanium so that
         they can be reused.
       </Description>
-      <Link href="/post/spacex-grid-fin-design" passHref>
-        <Action>View project →</Action>
-      </Link>
+      <Action href="/post/spacex-grid-fin-design">View project →</Action>
     </Post>
   );
 }

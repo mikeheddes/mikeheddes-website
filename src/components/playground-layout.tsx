@@ -2,11 +2,8 @@ import { ReactNode } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 
-import Xmark from "../icons/Xmark";
-import Info from "../icons/info";
 import ButtonComp from "./button";
 import { screen } from "../styles/breakpoints";
-import { useRouter } from "next/router";
 
 const Wrapper = styled.div<{ backgroundColor?: string }>`
   display: block;
@@ -59,10 +56,8 @@ export default function PlaygroundLayout({
   return (
     <Wrapper backgroundColor={backgroundColor}>
       {children}
-      <Link href={blogPost} passHref>
-        <Button as="a">
-          <Info />
-        </Button>
+      <Link href={blogPost} passHref legacyBehavior>
+        <Button as="a">⟵ Go to blog post</Button>
       </Link>
     </Wrapper>
   );
