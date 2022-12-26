@@ -1,5 +1,5 @@
 const withMDX = require("@next/mdx")({
-  extension: /\.(md|mdx)$/,
+  extension: /\.mdx?$/,
   options: {
     // `gatsby-remark-prismjs`,
     // `gatsby-remark-katex`,
