@@ -15,7 +15,7 @@ const Wrapper = styled.nav`
   }
 `;
 
-const Action = styled.a`
+const Action = styled(Link)`
   ${fluidFont(17, 18)};
   color: var(--primary);
   font-weight: 500;
@@ -41,9 +41,7 @@ const Action = styled.a`
 function Navigation() {
   return (
     <Wrapper>
-      <Link href="/" passHref>
-        <Action>⟵ Go to Homepage</Action>
-      </Link>
+      <Action href="/">⟵ Go to home page</Action>
     </Wrapper>
   );
 }

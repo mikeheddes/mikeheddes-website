@@ -214,7 +214,7 @@ function TrackballControl({
         scaleSpeed = (event.deltaY / delta_t) * 0.01;
       } else {
         // used in Safari
-        scaleSpeed = dd / delta_t * -1;
+        scaleSpeed = (dd / delta_t) * -1;
         rotationSpeed
           .copy(cameraDirectionVec3)
           .setLength((da * Math.PI) / 180 / delta_t);

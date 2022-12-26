@@ -34,7 +34,7 @@ function easeInOutQuart(t: number): number {
   return t < 0.5 ? 8 * t * t * t * t : 1 - 8 * --t * t * t * t;
 }
 
-const Wrapper = styled.a`
+const Wrapper = styled(Link)`
   display: block;
   width: 100%;
   position: relative;
@@ -206,22 +206,20 @@ const Button = styled(ButtonComp)`
 
 export default function Animation() {
   return (
-    <Link href="/playground/gtocx-galaxy" passHref>
-      <Wrapper>
-        <Head>
-          <link rel="prefetch" href="/stars.min" />
-        </Head>
-        <Filler>
-          <Canvas style={{ position: "absolute", top: 0, left: 0 }}>
-            <Camera />
-            <Stars dataUrl="/stars.min" />
-          </Canvas>
-        </Filler>
-        <Button>
-          <Hand style={{ marginRight: 15 }} />
-          Click to interact
-        </Button>
-      </Wrapper>
-    </Link>
+    <Wrapper href="/playground/gtocx-galaxy">
+      <Head>
+        <link rel="prefetch" href="/stars.min" />
+      </Head>
+      <Filler>
+        <Canvas style={{ position: "absolute", top: 0, left: 0 }}>
+          <Camera />
+          <Stars dataUrl="/stars.min" />
+        </Canvas>
+      </Filler>
+      <Button>
+        <Hand style={{ marginRight: 15 }} />
+        Click to interact
+      </Button>
+    </Wrapper>
   );
 }

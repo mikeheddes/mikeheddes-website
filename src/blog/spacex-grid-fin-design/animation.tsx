@@ -12,7 +12,7 @@ import ButtonComp from "../../components/button";
 import Hand from "../../icons/hand/draw/fill";
 import { useGLTF } from "@react-three/drei";
 
-const Wrapper = styled.a`
+const Wrapper = styled(Link)`
   display: block;
   width: 100%;
   position: relative;
@@ -58,29 +58,27 @@ const Button = styled(ButtonComp)`
 
 export default function Animation() {
   return (
-    <Link href="/playground/grid-fin" passHref>
-      <Wrapper>
-        <Filler>
-          <Head>
-            <link rel="prefetch" href="/grid-fin.glb" />
-          </Head>
-          <Canvas style={{ position: "absolute", top: 0, left: 0 }}>
-            <Suspense fallback={null}>
-              <GridFin dataUrl="/grid-fin.glb" />
-            </Suspense>
-            <TrackballControl
-              initialPosition={[2, 0, 0]}
-              autoRotationSpeed={[0, 0.4, 0]}
-              cameraUp={[0, 1, 0]}
-            />
-            <directionalLight intensity={0.1} position={[-4, 0, 0]} />
-          </Canvas>
-        </Filler>
-        <Button>
-          <Hand style={{ marginRight: 15 }} />
-          Click to interact
-        </Button>
-      </Wrapper>
-    </Link>
+    <Wrapper href="/playground/grid-fin">
+      <Filler>
+        <Head>
+          <link rel="prefetch" href="/grid-fin.glb" />
+        </Head>
+        <Canvas style={{ position: "absolute", top: 0, left: 0 }}>
+          <Suspense fallback={null}>
+            <GridFin dataUrl="/grid-fin.glb" />
+          </Suspense>
+          <TrackballControl
+            initialPosition={[2, 0, 0]}
+            autoRotationSpeed={[0, 0.4, 0]}
+            cameraUp={[0, 1, 0]}
+          />
+          <directionalLight intensity={0.1} position={[-4, 0, 0]} />
+        </Canvas>
+      </Filler>
+      <Button>
+        <Hand style={{ marginRight: 15 }} />
+        Click to interact
+      </Button>
+    </Wrapper>
   );
 }

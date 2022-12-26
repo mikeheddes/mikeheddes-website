@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-import profileImage from "./profile.jpg"
+import profileImage from "./profile.jpg";
 import StructuredData from "../components/structured-data";
 
 const SITE_URL = "https://www.mikeheddes.nl";
@@ -43,7 +43,8 @@ export default function Metadata() {
           url: SITE_URL,
           image: SITE_URL + profileImage.src,
           jobTitle: "Machine Learning Researcher",
-          description: "Computer Science PhD student researching Machine Learning at the University of California, Irvine",
+          description:
+            "Computer Science PhD student researching Machine Learning at the University of California, Irvine",
           nationality: "Dutch",
           affiliation: {
             "@type": "Organization",

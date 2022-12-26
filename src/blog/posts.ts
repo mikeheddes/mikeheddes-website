@@ -7,4 +7,11 @@ import music from "./music/meta";
 import dcgp from "./dcgp/meta";
 import optimize from "./optimize/meta";
 
-export default [optimize, dcgp, jetFighter, music, gtocX, gridFin] as PostType[];
+export default [
+  optimize,
+  dcgp,
+  jetFighter,
+  music,
+  gtocX,
+  gridFin,
+] as PostType[];
