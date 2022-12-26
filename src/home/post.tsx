@@ -155,7 +155,7 @@ export function Hashing() {
         Hyperdimensional (HD) hashing and show that it has the efficiency to be
         deployed in large systems.
       </Description>
-      <Action href="https://arxiv.org/abs/2205.07850">
+      <Action href="https://doi.org/10.1145/3489517.3530553">
         View publication →
       </Action>
     </Post>
@@ -179,7 +179,7 @@ export function GraphHD() {
         we present GraphHD — a baseline approach for graph classification with
         HDC.
       </Description>
-      <Action href="https://arxiv.org/abs/2205.07826">
+      <Action href="https://doi.org/10.23919/DATE54114.2022.9774533">
         View publication →
       </Action>
     </Post>
