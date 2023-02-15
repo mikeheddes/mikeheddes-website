@@ -127,6 +127,7 @@ export function CircularHV() {
         An Extension to Basis-Hypervectors for Learning from Circular Data in
         Hyperdimensional Computing
       </Title>
+      <SubTitle>Published at Design Automation Conference (DAC) 2023</SubTitle>
       <Description>
         In this work we present a detailed study on basis-hypervector sets,
         which leads to practical contributions to HDC in general: 1) an
