@@ -100,8 +100,8 @@ export function Torchhd() {
   return (
     <Post>
       <Title>
-        Torchhd: An Open-Source Python Library to Support Hyperdimensional
-        Computing Research
+        Torchhd: An Open Source Python Library to Support Research on
+        Hyperdimensional Computing and Vector Symbolic Architectures
       </Title>
       <Description>
         With Torchhd we want to make Hyperdimensional Computing (HDC) more
@@ -111,7 +111,7 @@ export function Torchhd() {
         functionality, clear documentation and implementation examples.
       </Description>
       <Action href="https://arxiv.org/abs/2205.09208">
-        View publication →
+        View preprint →
       </Action>
       <Action href="https://github.com/hyperdimensional-computing/torchhd">
         View project →
