@@ -1,8 +1,12 @@
 import Head from "next/head";
 import type { AppProps } from "next/app";
+import localFont from 'next/font/local'
 
 import Theme from "../styles/theme";
 import GlobalStyles from "../styles/global";
+
+const inter = localFont({ src: './inter.woff2', fallback: ["-apple-system", "BlinkMacSystemFont", "arial", "system-ui"] })
+
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -37,7 +41,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <meta name="msapplication-TileColor" content="#000000" />
           <meta name="theme-color" content="#ffffff"></meta>
         </Head>
-        <GlobalStyles />
+        <GlobalStyles fontModern={inter.style.fontFamily} />
         <Component {...pageProps} />
       </>
     </Theme>

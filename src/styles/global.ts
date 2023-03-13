@@ -4,15 +4,14 @@ import { normalize } from "polished";
 import { colorVariables } from "./colors";
 import { sizeVariables } from "./sizes";
 
-export default createGlobalStyle`
+export default createGlobalStyle<{ fontModern: string }>`
   ${normalize()};
 
   ${colorVariables};
   ${sizeVariables};
 
   :root {
-    --font-modern: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue",
-      Helvetica, sans-serif;
+    --font-modern: ${({ fontModern }) => fontModern};
     --font-mono: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
     --font-classic: "Times New Roman", Times, serif;
   }

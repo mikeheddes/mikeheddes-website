@@ -9,7 +9,6 @@ export default function PageWrapper({ element, props }) {
   return (
     <Theme>
       <MDXProvider components={Markdown}>
-        <GlobalStyles />
         <Head>
           <title>Mike Heddes</title>
           <html lang="en" />

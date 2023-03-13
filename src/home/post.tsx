@@ -271,7 +271,7 @@ export function DCGP() {
         explainable AI, which can be applied to any supervised learning task.
       </Description>
       <Action href="https://esa.github.io/dcgp-web">View project →</Action>
-      <Action href="/bachelor-thesis.pdf">View thesis pdf →</Action>
+      <Action href="/bachelor-thesis.pdf">View thesis →</Action>
     </Post>
   );
 }
