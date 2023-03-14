@@ -76,7 +76,7 @@ function Album({ src, alt, priority, title }: AlbumProps) {
             src={src}
             alt={alt}
             fill
-            style={{objectFit: "cover"}}
+            style={{ objectFit: "cover" }}
             placeholder="blur"
             priority={priority}
           />

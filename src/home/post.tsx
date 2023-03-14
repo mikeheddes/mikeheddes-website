@@ -110,9 +110,7 @@ export function Torchhd() {
         builds on top of PyTorch and features state-of-the-art HDC
         functionality, clear documentation and implementation examples.
       </Description>
-      <Action href="https://arxiv.org/abs/2205.09208">
-        View preprint →
-      </Action>
+      <Action href="https://arxiv.org/abs/2205.09208">View preprint →</Action>
       <Action href="https://github.com/hyperdimensional-computing/torchhd">
         View project →
       </Action>

@@ -4,9 +4,9 @@ import { ActionBlock, ActionItem } from "../components/action-block";
 import GitHub from "../icons/logos/github";
 import LinkedIn from "../icons/logos/linkedin";
 import Spotify from "../icons/logos/spotify";
-import Instagram from "../icons/logos/instagram";
 import { contentWrapper } from "../styles";
 import AppleMusic from "../icons/logos/apple-music";
+import GoogleScholar from "../icons/logos/google-scholar";
 
 const Section = styled.section`
   ${contentWrapper};
@@ -22,8 +22,8 @@ export default function SocialLinks() {
         <ActionItem icon={GitHub} href="https://github.com/mikeheddes">
           GitHub
         </ActionItem>
-        <ActionItem icon={Instagram} href="https://instagram.com/mikeheddes">
-          Instagram
+        <ActionItem icon={GoogleScholar} href="https://scholar.google.com/citations?user=SZpFJqIAAAAJ">
+          Google Scholar
         </ActionItem>
         <ActionItem
           icon={Spotify}
