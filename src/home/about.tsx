@@ -31,16 +31,14 @@ export default function About() {
     <Section wide>
       <SectionName>Personal statement</SectionName>
       <Text>
-        I am Mike Heddes, a Computer Science PhD candidate researching Machine
-        Learning at the University of California, Irvine. My research focuses on
-        neuro-symbolic AI and its ability to improve generalization and the
-        efficiency of neural networks. Before my PhD, I got a bachelor&apos;s
-        degree in Mechanical Engineering from the Amsterdam University of
-        Applied Sciences. I enjoy tackling difficult problems in an
-        interdisciplinary setting. I aspire to contribute to the exciting
-        achievements of humanity and to ensure our longevity. I&apos;m
-        captivated by everything space related in addition to meticulous design
-        and engineering.
+        I am Mike Heddes, a Computer Science PhD candidate researching machine
+        learning at the University of California, Irvine. In my research I
+        develop efficient machine learning as well as big data algorithms.
+        Before my PhD, I got a bachelor&apos;s degree in mechanical engineering
+        from the Amsterdam University of Applied Sciences. I enjoy tackling
+        difficult problems and aspire to contribute to the exciting achievements
+        of humanity. I&apos;m captivated by everything space related in addition
+        to meticulous design and engineering.
       </Text>
     </Section>
   );
