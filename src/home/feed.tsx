@@ -13,6 +13,7 @@ import {
   DCGP,
   SpaceXGridFin,
   MusicProduction,
+  DotHash,
 } from "./post";
 import { SectionHeading } from "./section";
 import { screen } from "../styles/breakpoints";
@@ -34,6 +35,7 @@ export default function Feed() {
     <Section wide>
       <SectionHeading>Projects</SectionHeading>
       <Posts>
+        <DotHash />
         <Torchhd />
         <CircularHV />
         <Hashing />

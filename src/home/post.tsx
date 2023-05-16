@@ -96,6 +96,25 @@ const Action = styled(Link)<ActionProps>`
     `}
 `;
 
+export function DotHash() {
+  return (
+    <Post>
+      <Title>
+        DotHash: Estimating Set Similarity Metrics for Link Prediction and
+        Document Deduplication
+      </Title>
+      <SubTitle>Published at Knowledge Discovery and Data Mining Conference (KDD) 2023</SubTitle>
+      <Description>
+        Metrics for set similarity are a core aspect of several data mining
+        tasks. We propose DotHash, an unbiased estimator for the intersection
+        size of two sets. DotHash can be used to estimate the Jaccard index and,
+        to the best of our knowledge, is the first method that can also estimate
+        the Adamic-Adar index and a family of related metrics.
+      </Description>
+    </Post>
+  );
+}
+
 export function Torchhd() {
   return (
     <Post>
@@ -169,7 +188,7 @@ export function GraphHD() {
         GraphHD: Efficient Graph Classification using Hyperdimensional Computing
       </Title>
       <SubTitle>
-        Published at Design, Automation and Test Europe (DATE) Conference 2022
+        Published at Design, Automation and Test in Europe Conference (DATE) 2022
       </SubTitle>
       <Description>
         Graphs are among the most important forms of information representation,
