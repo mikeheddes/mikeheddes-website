@@ -111,6 +111,10 @@ export function DotHash() {
         to the best of our knowledge, is the first method that can also estimate
         the Adamic-Adar index and a family of related metrics.
       </Description>
+      <Action href="https://arxiv.org/abs/2305.17310">View publication →</Action>
+      <Action href="https://github.com/mikeheddes/dothash">
+        View code →
+      </Action>
     </Post>
   );
 }
