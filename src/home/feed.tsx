@@ -33,7 +33,7 @@ const Posts = styled.div``;
 export default function Feed() {
   return (
     <Section wide>
-      <SectionHeading>Projects</SectionHeading>
+      <SectionHeading>Publications and projects</SectionHeading>
       <Posts>
         <DotHash />
         <Torchhd />
