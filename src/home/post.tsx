@@ -40,7 +40,7 @@ const Description = styled.p`
   font-weight: 400;
   ${fluidFont(15, 17)};
   margin-top: 10px;
-  line-height: 1.4em;
+  line-height: 1.5em;
 
   @media ${screen.sm} {
     text-align: justify;
@@ -126,7 +126,7 @@ export function Torchhd() {
         Torchhd: An Open Source Python Library to Support Research on
         Hyperdimensional Computing and Vector Symbolic Architectures
       </Title>
-      <SubTitle>Published at the Journal of Machine Learning Research (JMLR MLOSS) 2023</SubTitle>
+      <SubTitle>Published at the Journal of Machine Learning Research (JMLR) 2023</SubTitle>
       <Description>
         With Torchhd we want to make Hyperdimensional Computing (HD) more
         accessible and provide an efficient foundation for research and
@@ -134,7 +134,7 @@ export function Torchhd() {
         builds on top of PyTorch and features state-of-the-art HD
         functionality, clear documentation and implementation examples.
       </Description>
-      <Action href="https://arxiv.org/abs/2205.09208">View preprint →</Action>
+      <Action href="https://arxiv.org/abs/2205.09208">View publication →</Action>
       <Action href="https://github.com/hyperdimensional-computing/torchhd">
         View project →
       </Action>
@@ -178,7 +178,7 @@ export function Hashing() {
         Hyperdimensional (HD) hashing and show that it has the efficiency to be
         deployed in large systems.
       </Description>
-      <Action href="https://doi.org/10.1145/3489517.3530553">
+      <Action href="https://arxiv.org/abs/2205.07850">
         View publication →
       </Action>
     </Post>
@@ -202,7 +202,7 @@ export function GraphHD() {
         we present GraphHD — a baseline approach for graph classification with
         HDC.
       </Description>
-      <Action href="https://doi.org/10.23919/DATE54114.2022.9774533">
+      <Action href="https://arxiv.org/abs/2205.07826">
         View publication →
       </Action>
     </Post>
