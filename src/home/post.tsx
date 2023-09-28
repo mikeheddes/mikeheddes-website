@@ -103,7 +103,10 @@ export function DotHash() {
         DotHash: Estimating Set Similarity Metrics for Link Prediction and
         Document Deduplication
       </Title>
-      <SubTitle>Published at the Knowledge Discovery and Data Mining Conference (KDD) 2023</SubTitle>
+      <SubTitle>
+        Published at the Knowledge Discovery and Data Mining Conference (KDD)
+        2023
+      </SubTitle>
       <Description>
         Metrics for set similarity are a core aspect of several data mining
         tasks. We propose DotHash, an unbiased estimator for the intersection
@@ -111,10 +114,10 @@ export function DotHash() {
         to the best of our knowledge, is the first method that can also estimate
         the Adamic-Adar index and a family of related metrics.
       </Description>
-      <Action href="https://arxiv.org/abs/2305.17310">View publication →</Action>
-      <Action href="https://github.com/mikeheddes/dothash">
-        View code →
+      <Action href="https://arxiv.org/abs/2305.17310">
+        View publication →
       </Action>
+      <Action href="https://github.com/mikeheddes/dothash">View code →</Action>
     </Post>
   );
 }
@@ -126,15 +129,18 @@ export function Torchhd() {
         Torchhd: An Open Source Python Library to Support Research on
         Hyperdimensional Computing and Vector Symbolic Architectures
       </Title>
-      <SubTitle>Published at the Journal of Machine Learning Research (JMLR) 2023</SubTitle>
+      <SubTitle>
+        Published at the Journal of Machine Learning Research (JMLR) 2023
+      </SubTitle>
       <Description>
-        With Torchhd we want to make Hyperdimensional Computing (HD) more
-        accessible and provide an efficient foundation for research and
-        application development. The easy-to-use and high-performance library
-        builds on top of PyTorch and features state-of-the-art HD
-        functionality, clear documentation and implementation examples.
+        We present Torchhd, a high-performance open-source Python library for
+        Hypderdimensional Computing and Vector Symbolic Architectures (HD/VSA).
+        Torchhd seeks to make HD/VSA more accessible and serves as an efficient
+        foundation for further research and application development.
       </Description>
-      <Action href="https://arxiv.org/abs/2205.09208">View publication →</Action>
+      <Action href="https://arxiv.org/abs/2205.09208">
+        View publication →
+      </Action>
       <Action href="https://github.com/hyperdimensional-computing/torchhd">
         View project →
       </Action>
@@ -149,13 +155,15 @@ export function CircularHV() {
         An Extension to Basis-Hypervectors for Learning from Circular Data in
         Hyperdimensional Computing
       </Title>
-      <SubTitle>Published at the Design Automation Conference (DAC) 2023</SubTitle>
+      <SubTitle>
+        Published at the Design Automation Conference (DAC) 2023
+      </SubTitle>
       <Description>
-        In this work we present a detailed study on basis-hypervector sets,
-        which leads to practical contributions to HDC in general: 1) an
-        improvement for level-hypervectors, used to encode real numbers; 2) a
-        method to learn from circular data, an important type of information
-        never before addressed in machine learning with HDC.
+        We present a detailed study on basis-hypervector sets, which leads to
+        practical contributions to Hyperdimensional Computing (HDC) in general:
+        1) an improvement for level-hypervectors, used to encode real numbers;
+        2) a method to learn from circular data, an important type of
+        information never before addressed in machine learning with HDC.
       </Description>
       <Action href="https://arxiv.org/abs/2205.07920">
         View publication →
@@ -170,7 +178,9 @@ export function Hashing() {
       <Title>
         Hyperdimensional Hashing: An Efficient and Robust Dynamic Hash Table
       </Title>
-      <SubTitle>Published at the Design Automation Conference (DAC) 2022</SubTitle>
+      <SubTitle>
+        Published at the Design Automation Conference (DAC) 2022
+      </SubTitle>
       <Description>
         Most cloud services and distributed applications rely on hashing
         algorithms that allow dynamic scaling of a robust and efficient hash
@@ -193,7 +203,8 @@ export function GraphHD() {
         GraphHD: Efficient Graph Classification using Hyperdimensional Computing
       </Title>
       <SubTitle>
-        Published at the Design, Automation and Test in Europe Conference (DATE) 2022
+        Published at the Design, Automation and Test in Europe Conference (DATE)
+        2022
       </SubTitle>
       <Description>
         Graphs are among the most important forms of information representation,
