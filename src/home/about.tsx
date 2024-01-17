@@ -31,9 +31,9 @@ export default function About() {
     <Section wide>
       <SectionName>Personal statement</SectionName>
       <Text>
-        I am Mike Heddes, a Computer Science Ph.D. candidate at the University
+        I am Mike Heddes, a Computer Science PhD candidate at the University
         of California, Irvine. In my research, I develop efficient machine
-        learning as well as big data algorithms. I obtained my bachelor&apos;s
+        learning and data mining algorithms. I obtained my bachelor&apos;s
         degree in mechanical engineering from the Amsterdam University of
         Applied Sciences. I am mesmerized by all meticulous design and
         engineering, enjoy tackling difficult problems, and aspire to

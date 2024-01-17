@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 import { contentWrapper } from "../styles";
 import {
+  GuidedStochasticExploration,
   Torchhd,
   Hashing,
   CircularHV,
@@ -35,6 +36,7 @@ export default function Feed() {
     <Section wide>
       <SectionHeading>Projects</SectionHeading>
       <Posts>
+        <GuidedStochasticExploration />
         <DotHash />
         <Torchhd />
         <CircularHV />

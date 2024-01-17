@@ -24,14 +24,14 @@ const Title = styled.h4`
   ${fluidFont(18, 21)};
   clear: right;
   margin: 0;
-  line-height: 1.2em;
+  line-height: 1.3em;
 `;
 
 const SubTitle = styled.h5`
   color: var(--text-subtle);
   font-weight: 500;
   ${fluidFont(16, 18)};
-  margin-top: 4px;
+  margin-top: 8px;
   line-height: 1.4em;
 `;
 
@@ -95,6 +95,28 @@ const Action = styled(Link)<ActionProps>`
       }
     `}
 `;
+
+export function GuidedStochasticExploration() {
+  return (
+    <Post>
+      <Title>
+        Always-Sparse Training by Growing Connections with Guided Stochastic
+        Exploration
+      </Title>
+      <Description>
+        The excessive computational requirements of modern deep learning are
+        posing limitations on the machines that can run it. We propose an
+        efficient, always-sparse training algorithm with excellent scaling to
+        larger and sparser models. Moreover, our algorithm improves over the
+        accuracy of previous sparse training methods.
+      </Description>
+      <Action href="https://arxiv.org/abs/2401.06898">View preprint →</Action>
+      <Action href="https://github.com/mikeheddes/guided-stochastic-exploration">
+        View code →
+      </Action>
+    </Post>
+  );
+}
 
 export function DotHash() {
   return (

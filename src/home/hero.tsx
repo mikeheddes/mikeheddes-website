@@ -25,7 +25,7 @@ const ImageSize = styled.div`
   }
 
   @media ${screen.lg} {
-    padding-bottom: 35%;
+    padding-bottom: 30%;
   }
 `;
 
@@ -42,24 +42,15 @@ const HeadlineWrapper = styled.div`
 
 const Title = styled.h1`
   color: rgb(36, 42, 56);
-  ${fluidFont(30, 58)};
+  ${fluidFont(34, 58)};
   font-weight: 700;
   margin: 0;
-`;
-
-const SubTitle = styled.h2`
-  color: rgba(13, 22, 42, 0.7);
-  ${fluidFont(18, 36)};
-  font-weight: 600;
-  margin: 0;
-  margin-top: 2px;
 `;
 
 function Headline() {
   return (
     <HeadlineWrapper>
       <Title>Mike Heddes</Title>
-      <SubTitle>Machine Learning Researcher</SubTitle>
     </HeadlineWrapper>
   );
 }
@@ -74,7 +65,7 @@ export default function Hero() {
           priority
           alt="Mike Heddes in the Hills of Orange County"
           fill
-          style={{ objectPosition: "50% 15%", objectFit: "cover" }}
+          style={{ objectPosition: "50% 25%", objectFit: "cover" }}
         />
       </ImageSize>
       <Headline />
