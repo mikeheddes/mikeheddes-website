@@ -6,8 +6,11 @@ import Theme from "../styles/theme";
 import GlobalStyles from "../styles/global";
 
 const inter = localFont({
-  src: "./inter.woff2",
-  fallback: ["-apple-system", "BlinkMacSystemFont", "arial", "system-ui"],
+  src: [
+    { path: "../inter/InterVariable.woff2", style: "normal" },
+    { path: "../inter/InterVariable-Italic.woff2", style: "italic" },
+  ],
+  fallback: ["-apple-system", "BlinkMacSystemFont", "sans-serif"],
 });
 
 function MyApp({ Component, pageProps }: AppProps) {

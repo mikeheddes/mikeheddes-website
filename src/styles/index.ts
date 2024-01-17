@@ -48,23 +48,6 @@ export const ellipsis = css<{ maxlines: number; lineHeight: number }>`
   text-overflow: ellipsis;
 `;
 
-function tracking(fontSize: number): string {
-  return `${-0.0223 + 0.185 * Math.exp(-0.1745 * fontSize)}em`;
-}
-
-function trackingBetween(
-  x1: number,
-  x2: number,
-  y1: number,
-  y2: number,
-  p: number
-): string {
-  const slope = (x2 - x1) / (y2 - y1);
-  const base = x2 - slope * y2;
-
-  return tracking(slope * p + base);
-}
-
 /**
  *
  * @param {Number} min font-size in pixels
@@ -73,7 +56,6 @@ function trackingBetween(
 export function fluidFont(min: number, max: number) {
   return css`
     font-size: ${rem(min)};
-    letter-spacing: ${tracking(min)};
 
     @media ${screen.sm} {
       font-size: ${between(
@@ -82,28 +64,10 @@ export function fluidFont(min: number, max: number) {
         rem(breakpoints.sm),
         rem(breakpoints.lg)
       )};
-      letter-spacing: ${trackingBetween(
-        min,
-        max,
-        breakpoints.sm,
-        breakpoints.lg,
-        (breakpoints.sm + breakpoints.md) / 2
-      )};
-    }
-
-    @media ${screen.md} {
-      letter-spacing: ${trackingBetween(
-        min,
-        max,
-        breakpoints.sm,
-        breakpoints.lg,
-        (breakpoints.md + breakpoints.lg) / 2
-      )};
     }
 
     @media ${screen.lg} {
       font-size: ${rem(max)};
-      letter-spacing: ${tracking(max)};
     }
   `;
 }
