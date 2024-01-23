@@ -2,10 +2,11 @@ import styled from "styled-components";
 import Image from "next/image";
 
 import { screen } from "../styles/breakpoints";
-import { contentWrapper, fluidFont, absoluteSize } from "../styles";
+import { contentWrapper, fluidFont } from "../styles";
 import profilePic from "./banner.jpg";
 
 const Section = styled.section`
+  ${contentWrapper};
   position: relative;
   display: grid;
 
@@ -16,8 +17,12 @@ const Section = styled.section`
 
 const ImageSize = styled.div`
   position: relative;
+  z-index: 5;
   background-color: #e0e5e8;
   width: 100%;
+  overflow: hidden;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
   padding-bottom: 80%;
 
   @media ${screen.sm} {
@@ -25,13 +30,12 @@ const ImageSize = styled.div`
   }
 
   @media ${screen.lg} {
-    padding-bottom: 30%;
+    padding-bottom: 43.6%;
   }
 `;
 
 const HeadlineWrapper = styled.div`
-  ${absoluteSize};
-  ${contentWrapper};
+  z-index: 10;
   text-align: center;
   padding-top: 30px;
 
@@ -42,7 +46,7 @@ const HeadlineWrapper = styled.div`
 
 const Title = styled.h1`
   color: rgb(36, 42, 56);
-  ${fluidFont(34, 58)};
+  ${fluidFont(34, 56)};
   font-weight: 700;
   margin: 0;
 `;
@@ -57,7 +61,7 @@ function Headline() {
 
 export default function Hero() {
   return (
-    <Section>
+    <Section wide>
       <ImageSize>
         <Image
           src={profilePic}
@@ -65,7 +69,7 @@ export default function Hero() {
           priority
           alt="Mike Heddes in the Hills of Orange County"
           fill
-          style={{ objectPosition: "50% 25%", objectFit: "cover" }}
+          style={{ objectPosition: "50% 15%", objectFit: "cover" }}
         />
       </ImageSize>
       <Headline />

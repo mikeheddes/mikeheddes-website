@@ -11,6 +11,7 @@ const inter = localFont({
     { path: "../inter/InterVariable-Italic.woff2", style: "italic" },
   ],
   fallback: ["-apple-system", "BlinkMacSystemFont", "sans-serif"],
+  adjustFontFallback: false,
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
