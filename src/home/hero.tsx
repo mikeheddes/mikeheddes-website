@@ -10,6 +10,12 @@ const Section = styled.section`
   position: relative;
   display: grid;
 
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0px;
+  padding-right: 0px;
+
   & > * {
     grid-area: 1 / 1;
   }
@@ -20,13 +26,13 @@ const ImageSize = styled.div`
   z-index: 5;
   background-color: #e0e5e8;
   width: 100%;
-  overflow: hidden;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
   padding-bottom: 80%;
-
+  
   @media ${screen.sm} {
     padding-bottom: 45%;
+    overflow: hidden;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
   }
 
   @media ${screen.lg} {
