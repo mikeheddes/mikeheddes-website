@@ -16,6 +16,10 @@ const Section = styled.section`
   padding-left: 0px;
   padding-right: 0px;
 
+  @media ${screen.sm} {
+    padding-top: 50px;
+  }
+
   & > * {
     grid-area: 1 / 1;
   }
@@ -31,8 +35,7 @@ const ImageSize = styled.div`
   @media ${screen.sm} {
     padding-bottom: 45%;
     overflow: hidden;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
+    border-radius: 8px;
   }
 
   @media ${screen.lg} {
