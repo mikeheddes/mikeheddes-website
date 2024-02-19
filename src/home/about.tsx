@@ -20,6 +20,7 @@ const Text = styled.p`
   ${fluidFont(18, 21)};
   font-weight: 500;
   line-height: 1.45;
+  letter-spacing: -0.01em;
 
   @media ${screen.sm} {
     text-align: justify;

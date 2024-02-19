@@ -4,7 +4,7 @@ import { fluidFont } from "../styles";
 import { screen } from "../styles/breakpoints";
 
 export const SectionName = styled.h2`
-  color: var(--text-subtle);
+  color: var(--heading-subtle);
   ${fluidFont(17, 19)};
   font-weight: 600;
   margin-bottom: 8px;
@@ -13,7 +13,7 @@ export const SectionName = styled.h2`
 export const SectionHeading = styled.h3`
   color: var(--heading);
   ${fluidFont(24, 31)};
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 15px;
 
   @media ${screen.sm} {

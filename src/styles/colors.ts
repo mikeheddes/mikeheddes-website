@@ -47,7 +47,7 @@ export const colorVariables = css`
     --gray-050: #f8f9fa;
     --gray-100: #f0f1f2;
     --gray-200: #d4d6d8;
-    --gray-300: #898b8c;
+    --gray-300: #9D9E9F;
     --gray-400: #646566;
     --gray-500: #48484a;
     --gray-600: #333436;
@@ -92,10 +92,10 @@ export const colorVariables = css`
     --border-divider-solid: var(--gray-200);
     --border-divider-faded: rgba(0, 0, 0, 0.25);
     --heading: var(--gray-800);
-    --heading-subtle: var(--gray-600);
+    --heading-subtle: var(--gray-300);
     --heading-obvious: var(--gray-900);
     --text: var(--gray-700);
-    --text-subtle: var(--gray-300);
+    --text-subtle: var(--gray-400);
     --text-obvious: var(--gray-800);
   }
 
@@ -209,10 +209,10 @@ export const lightTheme: DefaultTheme = {
   borderDividerSolid: grays["200"],
   borderDividerFaded: "rgba(0, 0, 0, 0.25)",
   heading: grays["800"],
-  headingSubtle: grays["600"],
+  headingSubtle: grays["300"],
   headingObvious: grays["900"],
   text: grays["700"],
-  textSubtle: grays["300"],
+  textSubtle: grays["400"],
   textObvious: grays["800"],
   primary: lightColors.blue,
   surface: grays["100"],
@@ -233,7 +233,7 @@ export const darkTheme: DefaultTheme = {
   headingSubtle: grays["300"],
   headingObvious: grays["000"],
   text: grays["200"],
-  textSubtle: grays["300"],
+  textSubtle: grays["200"],
   textObvious: grays["100"],
   primary: darkColors.blue,
   surface: grays["700"],

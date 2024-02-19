@@ -20,7 +20,7 @@ const TableCell = styled.div.attrs({ role: "cell" })<{
   ${({ subtle }) =>
     subtle &&
     css`
-      color: var(--heading-subtle);
+      color: var(--heading);
     `};
 `;
 
@@ -60,10 +60,10 @@ const TableHeader = styled.div.attrs({ role: "columnheader" })<{
   ${({ subtle }) =>
     subtle &&
     css`
-      color: var(--heading-subtle);
+      color: var(--heading);
     `};
   background-color: var(--surface);
-  color: var(--heading-subtle);
+  color: var(--heading);
   text-transform: uppercase;
   font-size: 15px;
   font-weight: 600;
@@ -106,7 +106,8 @@ const Table = styled.div.attrs({ role: "table" })<{
         padding-left: 20px;
       }
 
-      ${TableHighlight}:nth-child(${numColumns}n + 1) {
+      ${TableHeader}:nth-child(${numColumns}n + 1) {
+        padding-left: 20px;
         border-top-left-radius: 8px;
         border-bottom-left-radius: 8px;
       }
@@ -115,7 +116,8 @@ const Table = styled.div.attrs({ role: "table" })<{
         padding-right: 20px;
       }
 
-      ${TableHighlight}:nth-child(${numColumns}n + ${numColumns}) {
+      ${TableHeader}:nth-child(${numColumns}n + ${numColumns}) {
+        padding-right: 20px;
         border-top-right-radius: 8px;
         border-bottom-right-radius: 8px;
       }

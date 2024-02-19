@@ -28,19 +28,20 @@ const Title = styled.h4`
 `;
 
 const SubTitle = styled.h5`
-  color: var(--text-subtle);
+  color: var(--text);
   font-weight: 500;
   ${fluidFont(16, 18)};
-  margin-top: 8px;
+  margin-top: 4px;
   line-height: 1.4em;
 `;
 
 const Description = styled.p`
-  color: var(--text);
+  color: var(--text-subtle);
   font-weight: 400;
   ${fluidFont(15, 17)};
-  margin-top: 10px;
-  line-height: 1.5em;
+  margin-top: 8px;
+  line-height: 1.55em;
+  letter-spacing: -0.01em;
 
   @media ${screen.sm} {
     text-align: justify;
@@ -51,7 +52,7 @@ const Mention = styled.div`
   ${fluidFont(13, 14)};
   margin-bottom: 8px;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--orange);
 `;
 
@@ -63,7 +64,7 @@ const Action = styled(Link)<ActionProps>`
   display: inline-block;
   color: ${({ disabled }) =>
     disabled ? "var(--text-subtle)" : "var(--primary)"};
-  ${fluidFont(16, 18)};
+  ${fluidFont(15, 17)};
   font-weight: 500;
   text-decoration: none;
   transition: color opacity 100ms ease-out;
