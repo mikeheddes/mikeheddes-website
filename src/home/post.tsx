@@ -41,7 +41,6 @@ const Description = styled.p`
   ${fluidFont(15, 17)};
   margin-top: 8px;
   line-height: 1.55em;
-  letter-spacing: -0.01em;
 
   @media ${screen.sm} {
     text-align: justify;
@@ -97,6 +96,34 @@ const Action = styled(Link)<ActionProps>`
     `}
 `;
 
+export function FastMultiJoinSketch() {
+  return (
+    <Post>
+      <Title>
+        Convolution and Cross-Correlation of Count Sketches Enables Fast
+        Cardinality Estimation of Multi-Join Queries
+      </Title>
+      <SubTitle>
+        Published at the International Conference on Management of Data (SIGMOD)
+        2024
+      </SubTitle>
+      <Description>
+        Estimating join cardinality is crucial for efficient database queries.
+        This paper proposes a solution to a decades old problem using a novel
+        sketching method that maintains fast updates even for multi-join queries
+        by leveraging Count sketches. Our method significantly improves the
+        efficiency and estimation accuracy over previous methods.
+      </Description>
+      <Action href="https://arxiv.org/abs/2402.15953">
+        View publication →
+      </Action>
+      <Action href="https://github.com/mikeheddes/fast-multi-join-sketch">
+        View code →
+      </Action>
+    </Post>
+  );
+}
+
 export function GuidedStochasticExploration() {
   return (
     <Post>
@@ -127,8 +154,8 @@ export function DotHash() {
         Document Deduplication
       </Title>
       <SubTitle>
-        Published at the Knowledge Discovery and Data Mining Conference (KDD)
-        2023
+        Published at the International Conference on Knowledge Discovery and
+        Data Mining (KDD) 2023
       </SubTitle>
       <Description>
         Metrics for set similarity are a core aspect of several data mining

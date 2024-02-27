@@ -15,6 +15,7 @@ import {
   SpaceXGridFin,
   MusicProduction,
   DotHash,
+  FastMultiJoinSketch,
 } from "./post";
 import { SectionHeading } from "./section";
 import { screen } from "../styles/breakpoints";
@@ -36,6 +37,7 @@ export default function Feed() {
     <Section wide>
       <SectionHeading>Projects</SectionHeading>
       <Posts>
+        <FastMultiJoinSketch />
         <GuidedStochasticExploration />
         <DotHash />
         <Torchhd />

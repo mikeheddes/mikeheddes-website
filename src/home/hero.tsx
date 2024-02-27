@@ -65,6 +65,7 @@ const Title = styled.h1`
 
 const BlurImage = styled.div<{src: string}>`
   position: absolute;
+  z-index: -1;
   height: 100%;
   width: 100%;
   inset: 0px;
