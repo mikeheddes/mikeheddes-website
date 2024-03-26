@@ -24,7 +24,7 @@
     "@react-three/fiber": "^8.9.1",
     "@types/three": "^0.146.0",
     "@use-gesture/react": "^10.2.4",
-    "katex": "^0.16.4",
+    "katex": "^0.16.10",
     "next": "^13.5.4",
     "onnxruntime-web": "^1.13.1",
     "polished": "^4.2.2",
