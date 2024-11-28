@@ -103,7 +103,7 @@ export function HDCJournal() {
         Hyperdimensional Computing: A Framework for Stochastic Computation and
         Symbolic AI
       </Title>
-      <SubTitle>Published in the Journal of Big Data, 2024</SubTitle>
+      <SubTitle>Published in the Journal of Big Data 2024</SubTitle>
       <Description>
         In this manuscript, we provide an approachable, yet thorough, survey of
         the components of Hyperdimensional Computing (HDC). HDC is a
