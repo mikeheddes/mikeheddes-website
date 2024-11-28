@@ -13,9 +13,9 @@ const Svg = styled.svg.attrs<{ $boxWidth: number }>(({ $boxWidth }) => ({
   transform-origin: center;
 `;
 
-export default function Base({ children, ...restProps }) {
+export default function Base({ children, boxWidth, ...restProps }) {
   return (
-    <Svg {...restProps}>
+    <Svg $boxWidth={boxWidth} {...restProps}>
       <g transform="scale(1, -1) translate(0, -1638)">{children}</g>
     </Svg>
   );

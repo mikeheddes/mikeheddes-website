@@ -7,7 +7,5 @@ export default function useStudioCubeTexture(): THREE.CubeTexture {
     { path: "/images/studio-hdr" },
   );
 
-  // Results in better colors, see: https://gist.github.com/donmccurdy/fefb35c5ba033e7dcd641f9684e47a82
-  cubeTexture.encoding = THREE.sRGBEncoding;
   return cubeTexture;
 }

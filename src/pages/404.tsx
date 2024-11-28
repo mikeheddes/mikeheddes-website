@@ -44,7 +44,7 @@ const Anchor = styled(Link)`
   }
 `;
 
-const Content = styled.div`
+const Content = styled.div<{ $wide?: boolean }>`
   ${contentWrapper};
 `;
 

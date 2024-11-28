@@ -2,7 +2,7 @@ import Base from "../Base";
 
 export default function ArrowLeft(props) {
   return (
-    <Base {...props} $boxWidth={2404}>
+    <Base {...props} boxWidth={2404}>
       <path
         d="M255 741c0 30 13 60 36 83l658 657c25 25 53 36 81 36c63 0 109 -46 109 -107c0 -31 -12 -59 -32 -79l-226 -228l-289 -265l232 14h1212c67 0 113 -45 113 -111s-46 -111 -113 -111h-1212l-233 13l290 -264l226 -228c20 -20 32 -48 32 -79c0 -61 -46 -107 -109 -107
 c-28 0 -55 11 -79 35l-660 658c-23 22 -36 52 -36 83z"
