@@ -38,7 +38,7 @@ export default createGlobalStyle<{ fontModern: string }>`
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-feature-settings: 'liga' 1, 'case' 1, 'calt' 1;
+    font-feature-settings: 'liga' 1, 'calt' 1;
     font-optical-sizing: auto; 
     text-align: left;
     overflow-x: hidden;
