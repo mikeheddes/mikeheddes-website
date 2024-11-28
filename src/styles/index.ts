@@ -3,10 +3,10 @@ import { between, rem } from "polished";
 
 import { breakpoints, screen } from "./breakpoints";
 
-const contentOrTextWidth = ({ wide = false }) =>
-  wide ? "--width-content" : "--width-text";
+const contentOrTextWidth = ({ $wide = false }: { $wide?: boolean }) =>
+  $wide ? "--width-content" : "--width-text";
 
-export const contentWrapper = css`
+export const contentWrapper = css<{ $wide?: boolean }>`
   width: 100%;
   max-width: calc(var(${contentOrTextWidth}) + 2 * 20px);
   margin-left: auto;
@@ -62,7 +62,7 @@ export function fluidFont(min: number, max: number) {
         rem(min),
         rem(max),
         rem(breakpoints.sm),
-        rem(breakpoints.lg)
+        rem(breakpoints.lg),
       )};
     }
 

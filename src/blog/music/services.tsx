@@ -8,7 +8,7 @@ import { contentWrapper, fluidFont } from "../../styles";
 import { screen } from "../../styles/breakpoints";
 import AppleMusic from "../../icons/logos/apple-music";
 
-const Section = styled.section`
+const Section = styled.section<{ $wide?: boolean }>`
   ${contentWrapper};
 `;
 

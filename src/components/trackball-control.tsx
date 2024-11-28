@@ -101,7 +101,7 @@ function TrackballControl({
 
       const rotationTransformation = new THREE.Quaternion().setFromAxisAngle(
         rotationAxis,
-        angle
+        angle,
       );
 
       // Apply the new rotation to the history of rotations
@@ -109,11 +109,11 @@ function TrackballControl({
     }
 
     cameraRef.current.position.applyQuaternion(
-      transformRef.current.rotationQuaternion
+      transformRef.current.rotationQuaternion,
     );
 
     cameraRef.current.up.applyQuaternion(
-      transformRef.current.rotationQuaternion
+      transformRef.current.rotationQuaternion,
     );
   }
 
@@ -235,7 +235,7 @@ function TrackballControl({
 
   useGesture(
     { onDrag, onPinch },
-    { target: gl.domElement, eventOptions: { passive: false } }
+    { target: gl.domElement, eventOptions: { passive: false } },
   );
 
   const size = useThree(({ size }) => size);

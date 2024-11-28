@@ -5,7 +5,7 @@ import styled from "styled-components";
 import ButtonComp from "./button";
 import { screen } from "../styles/breakpoints";
 
-const Wrapper = styled.div<{ backgroundColor?: string }>`
+const Wrapper = styled.div<{ $backgroundColor?: string }>`
   display: block;
   object-fit: contain;
   position: fixed;
@@ -22,8 +22,8 @@ const Wrapper = styled.div<{ backgroundColor?: string }>`
   transform: none;
   margin: 0px;
   touch-action: none;
-  background-color: ${({ backgroundColor }) =>
-    backgroundColor ?? "var(--background)"};
+  background-color: ${({ $backgroundColor }) =>
+    $backgroundColor ?? "var(--background)"};
   cursor: grab;
 
   :active {
@@ -54,7 +54,7 @@ export default function PlaygroundLayout({
   backgroundColor,
 }: Props) {
   return (
-    <Wrapper backgroundColor={backgroundColor}>
+    <Wrapper $backgroundColor={backgroundColor}>
       {children}
       <Link href={blogPost} passHref legacyBehavior>
         <Button as="a">⟵ Go to blog post</Button>

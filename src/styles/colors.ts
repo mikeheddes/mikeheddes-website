@@ -47,7 +47,7 @@ export const colorVariables = css`
     --gray-050: #f8f9fa;
     --gray-100: #f0f1f2;
     --gray-200: #d4d6d8;
-    --gray-300: #9D9E9F;
+    --gray-300: #9d9e9f;
     --gray-400: #646566;
     --gray-500: #48484a;
     --gray-600: #333436;

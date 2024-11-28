@@ -36,7 +36,7 @@ export class Plane {
     angle: number,
     frameSize: FrameSize,
     color: string,
-    deadColor: string
+    deadColor: string,
   ) {
     this.x = x;
     this.y = y;

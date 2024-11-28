@@ -35,7 +35,7 @@ export default function JetFighterRenderer({
     "arrowup",
     controlElements.left,
     controlElements.right,
-    controlElements.fire
+    controlElements.fire,
   );
   const getAIAction = useJetFighterAIController("/dqn.onnx", HEIGHT, WIDTH);
 

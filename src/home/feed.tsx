@@ -21,7 +21,7 @@ import {
 import { SectionHeading } from "./section";
 import { screen } from "../styles/breakpoints";
 
-const Section = styled.section`
+const Section = styled.section<{ $wide?: boolean }>`
   ${contentWrapper};
   margin-top: 50px;
   margin-bottom: 80px;
@@ -35,7 +35,7 @@ const Posts = styled.div``;
 
 export default function Feed() {
   return (
-    <Section wide>
+    <Section $wide>
       <SectionHeading>Projects</SectionHeading>
       <Posts>
         <HDCJournal />

@@ -19,7 +19,11 @@ const MegaHeader = styled.h1`
   font-weight: 700;
   ${fluidFont(120, 300)};
   color: var(--surface-obvious);
-  font-feature-settings: "liga" 1, "case" 1, "calt" 1, "ss01" 1;
+  font-feature-settings:
+    "liga" 1,
+    "case" 1,
+    "calt" 1,
+    "ss01" 1;
 `;
 
 const Text = styled.p`

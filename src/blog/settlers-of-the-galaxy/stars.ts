@@ -66,7 +66,7 @@ export function getPositionsAtTime(time: number, star: StarType) {
 }
 
 async function* asyncStreamIterator<T>(
-  stream: ReadableStream<T>
+  stream: ReadableStream<T>,
 ): AsyncGenerator<T, void, void> {
   // Get a lock on the stream:
   const reader = stream.getReader();
@@ -87,7 +87,7 @@ async function* asyncStreamIterator<T>(
 }
 
 export default async function* asyncStarsIterator(
-  starsURL: string
+  starsURL: string,
 ): AsyncGenerator<StarType, void, void> {
   const response = await fetch(starsURL);
 
@@ -104,13 +104,13 @@ export default async function* asyncStarsIterator(
     const combinedChunkF32 = new Float32Array(
       combinedChunk.buffer,
       0,
-      numStars * Float32Array.BYTES_PER_ELEMENT
+      numStars * Float32Array.BYTES_PER_ELEMENT,
     );
 
     for (let index = 0; index < numStars; index++) {
       const star: StarType = combinedChunkF32.subarray(
         index * VALUES_PER_STAR,
-        (index + 1) * VALUES_PER_STAR
+        (index + 1) * VALUES_PER_STAR,
       );
 
       yield star;

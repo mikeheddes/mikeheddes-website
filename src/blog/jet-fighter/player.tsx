@@ -37,13 +37,14 @@ const BaseColor = styled.div`
   max-width: calc(480px + 40px);
   margin-left: auto;
   margin-right: auto;
-  box-shadow: 0 -2px 2px rgba(0, 0, 0, 0.4) inset,
+  box-shadow:
+    0 -2px 2px rgba(0, 0, 0, 0.4) inset,
     0 2px 2px rgba(255, 255, 255, 0.4) inset,
     0 8px 40px ${fade(0.8, darken(0.5, lightTheme.red))};
   background-color: var(--red);
   background: ${`linear-gradient(${lighten(0.01, lightTheme.red)}, ${darken(
     0.01,
-    lightTheme.red
+    lightTheme.red,
   )})`};
 
   @media ${screen.sm} {
@@ -53,12 +54,13 @@ const BaseColor = styled.div`
   }
 
   @media ${themeSelector.dark} {
-    box-shadow: 0 -2px 2px rgba(0, 0, 0, 0.4) inset,
+    box-shadow:
+      0 -2px 2px rgba(0, 0, 0, 0.4) inset,
       0 2px 2px rgba(255, 255, 255, 0.4) inset,
       0 8px 40px ${fade(0.8, darken(0.5, darkTheme.red))};
     background: ${`linear-gradient(${lighten(0.01, darkTheme.red)}, ${darken(
       0.01,
-      darkTheme.red
+      darkTheme.red,
     )})`};
   }
 `;
@@ -103,7 +105,7 @@ const KeyWrapper = styled.div`
   }
 `;
 
-const Key = styled.div<{ lower?: boolean }>`
+const Key = styled.div<{ $lower?: boolean }>`
   border-radius: 400px;
   color: var(--gray-200);
   width: 54px;
@@ -116,18 +118,19 @@ const Key = styled.div<{ lower?: boolean }>`
   text-transform: uppercase;
   align-items: center;
   user-select: none;
-  box-shadow: 0 -2px 2px ${() => darken(0.2, grays["700"])} inset,
+  box-shadow:
+    0 -2px 2px ${() => darken(0.2, grays["700"])} inset,
     0px 2px 2px ${() => lighten(0.2, grays["700"])} inset,
     0 3px 6px rgba(0, 0, 0, 0.4);
   background-color: var(--gray-700);
   background: ${() =>
     `linear-gradient(${lighten(0.1, grays["700"])}, ${darken(
       0.1,
-      grays["700"]
+      grays["700"],
     )})`};
   cursor: pointer;
   transition: background 0.2s ease-in-out;
-  ${({ lower = false }) => lower && `margin-top: 42px;`}
+  ${({ $lower = false }) => $lower && `margin-top: 42px;`}
 
   @media ${screen.md} {
     width: 48px;
@@ -138,7 +141,7 @@ const Key = styled.div<{ lower?: boolean }>`
     background: ${() =>
       `linear-gradient(${lighten(0.15, grays["700"])}, ${darken(
         0.05,
-        grays["700"]
+        grays["700"],
       )})`};
   }
 `;
@@ -180,11 +183,11 @@ function GamePlayer() {
           }}
         />
         <KeyWrapper>
-          <Key ref={leftRef} lower>
+          <Key ref={leftRef} $lower>
             ←
           </Key>
           <Key ref={fireRef}>↑</Key>
-          <Key ref={rightRef} lower>
+          <Key ref={rightRef} $lower>
             →
           </Key>
         </KeyWrapper>

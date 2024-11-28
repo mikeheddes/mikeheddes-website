@@ -1,3 +1,4 @@
+import { isValidElement } from "react";
 import "katex/dist/katex.min.css";
 
 import styled from "styled-components";
@@ -14,7 +15,7 @@ import Caption from "./caption";
 import VideoPlayer from "./youtube-video";
 import { darkTheme, lightTheme, themeSelector } from "../styles/colors";
 
-const wrapper = styled.main`
+const wrapper = styled.main<{ $wide?: boolean }>`
   ${contentWrapper};
   ${fluidFont(17, 19)};
   font-weight: 400;
@@ -107,10 +108,10 @@ const Figure = styled.figure`
   }
 `;
 
-const ImageSize = styled.div<{ ratio?: string }>`
+const ImageSize = styled.div<{ $ratio?: string }>`
   position: relative;
   width: 100%;
-  padding-bottom: ${({ ratio }) => ratio ?? "68%"};
+  padding-bottom: ${({ $ratio }) => $ratio ?? "68%"};
   background-color: var(--background);
 
   :after {
@@ -123,7 +124,7 @@ const ImageSize = styled.div<{ ratio?: string }>`
 function Image(props) {
   return (
     <Figure>
-      <ImageSize ratio={props.ratio}>
+      <ImageSize $ratio={props.ratio}>
         <NextImage
           alt={props.alt}
           fill
@@ -194,7 +195,7 @@ const ul = styled.ul`
   }
 `;
 
-const ol = ul.withComponent("ol");
+const ol = styled(ul).attrs({ as: "ol" })``;
 
 const li = (props) => {
   const { className } = props;
@@ -233,6 +234,15 @@ const p = styled.p`
   }
 `;
 
+function paragraphDispatch(props) {
+  // Do not render the paragraph tags for images.
+  if (isValidElement(props.children) && props.children?.type == Image) {
+    return props.children;
+  }
+
+  return <p>{props.children}</p>;
+}
+
 const markdownComponents = {
   span,
   Video,
@@ -248,7 +258,7 @@ const markdownComponents = {
   hr,
   ol,
   ul,
-  p,
+  p: paragraphDispatch,
   pre: (props) => <Preformatted style={{ margin: "50px 0" }} {...props} />,
   code: (props) => <Code {...props} />,
   strong,

@@ -19,7 +19,7 @@ export default function Loading(props) {
 
       group.current.style.setProperty(
         "transform",
-        `rotate(${-ROTATION_TICK * ticks}deg)`
+        `rotate(${-ROTATION_TICK * ticks}deg)`,
       );
     };
 
@@ -31,7 +31,7 @@ export default function Loading(props) {
   }, []);
 
   return (
-    <Base {...props} boxWidth={2620}>
+    <Base {...props} $boxWidth={2620}>
       <g
         ref={group}
         style={{ transformOrigin: "center", transformBox: "fill-box" }}

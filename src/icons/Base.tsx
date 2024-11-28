@@ -1,12 +1,10 @@
 import styled from "styled-components";
 
-const Svg = styled.svg.attrs<{ boxWidth: number }>(function ({ boxWidth }) {
-  return {
-    role: "img",
-    xmlns: "http://www.w3.org/2000/svg",
-    viewBox: `0 -410 ${boxWidth} 2458`,
-  };
-})`
+const Svg = styled.svg.attrs<{ $boxWidth: number }>(({ $boxWidth }) => ({
+  role: "img",
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: `0 -410 ${$boxWidth} 2458`,
+}))`
   fill: currentColor;
   color: inherit;
   user-select: none;

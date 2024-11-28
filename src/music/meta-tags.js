@@ -64,7 +64,7 @@ const MetaTags = ({
             name: title,
             url: siteUrl + slug,
             duration: durationFormatter.format(
-              new Date(0).setSeconds(duration)
+              new Date(0).setSeconds(duration),
             ),
             isrcCode: isrc,
           })),
