@@ -12,16 +12,16 @@ import livinCoverImg from "./livin/cover.jpg";
 
 const Wrapper = styled.div`
   background-color: var(--surface);
-  padding: 20px 0 15px;
+  padding: 50px 0;
   width: 100%;
   overflow: hidden;
 
   @media ${screen.sm} {
-    padding: 30px 0 20px;
+    padding: 50px 0;
   }
 
   @media ${screen.md} {
-    padding: 50px 0 30px;
+    padding: 50px 0;
   }
 `;
 
@@ -29,9 +29,12 @@ const Cover = styled.div`
   display: block;
   position: relative;
   border-radius: 4px;
-  box-shadow: 0px 1.5px 1.9px rgba(0, 0, 0, 0.031),
-    0px 3.7px 4.7px rgba(0, 0, 0, 0.044), 0px 6.9px 8.8px rgba(0, 0, 0, 0.055),
-    0px 12.3px 15.6px rgba(0, 0, 0, 0.066), 0px 23px 29.2px rgba(0, 0, 0, 0.079),
+  box-shadow:
+    0px 1.5px 1.9px rgba(0, 0, 0, 0.031),
+    0px 3.7px 4.7px rgba(0, 0, 0, 0.044),
+    0px 6.9px 8.8px rgba(0, 0, 0, 0.055),
+    0px 12.3px 15.6px rgba(0, 0, 0, 0.066),
+    0px 23px 29.2px rgba(0, 0, 0, 0.079),
     0px 55px 70px rgba(0, 0, 0, 0.11);
 
   :after {
@@ -89,32 +92,24 @@ function Album({ src, alt, priority, title }: AlbumProps) {
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 20px;
-  width: calc(100% + (100% - 4 * 20px) / 2);
-  margin-left: calc(-1 * (100% - 4 * 20px) / 2 / 2);
-
-  & > *:first-child,
-  & > *:last-child {
-    display: none;
-  }
+  grid-template-columns: 1fr;
+  grid-gap: 50px 30px;
+  width: min(calc(100% - 2 * 50px), 350px);
+  margin: 0 auto;
 
   @media ${screen.sm} {
-    grid-gap: 30px;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    width: calc(100% + (100% - 4 * 30px) / 4);
-    margin-left: calc(-1 * (100% - 4 * 30px) / 4 / 2);
-
-    & > *:first-child,
-    & > *:last-child {
-      display: block;
-    }
+    grid-template-columns: 1fr 1fr;
+    width: min(calc(100% - 2 * 50px), var(--width-text));
   }
 
   @media ${screen.md} {
-    grid-gap: 50px;
-    width: calc(100% + (100% - 4 * 50px) / 4);
-    margin-left: calc(-1 * (100% - 4 * 50px) / 4 / 2);
+    grid-template-columns: 1fr 1fr 1fr;
+    width: min(calc(100% - 2 * 80px), var(--width-content));
+  }
+
+  @media ${screen.lg} {
+    grid-template-columns: 1fr 1fr 1fr;
+    width: min(calc(100% - 2 * 80px), var(--width-wide));
   }
 `;
 
@@ -126,17 +121,6 @@ export default function Carousel(props: Props) {
   return (
     <Wrapper>
       <Grid>
-        <Album
-          src={fusionCoverImg}
-          alt="Fusion by Mike Heddes album cover"
-          title="Fusion"
-        />
-        <Album
-          src={losingFocusCoverImg}
-          alt="Losing Focus by Mike Heddes album cover"
-          title="Losing Focus"
-          priority={props.priority}
-        />
         <Album
           src={livinCoverImg}
           alt="Livin' by Mike Heddes album cover"
@@ -150,9 +134,20 @@ export default function Carousel(props: Props) {
           priority={props.priority}
         />
         <Album
+          src={losingFocusCoverImg}
+          alt="Losing Focus by Mike Heddes album cover"
+          title="Losing Focus"
+          priority={props.priority}
+        />
+        <Album
           src={excitedCoverImg}
           alt="Excited by Mike Heddes album cover"
           title="Excited"
+        />
+        <Album
+          src={fusionCoverImg}
+          alt="Fusion by Mike Heddes album cover"
+          title="Fusion"
         />
       </Grid>
     </Wrapper>

@@ -96,6 +96,29 @@ const Action = styled(Link)<ActionProps>`
     `}
 `;
 
+export function HDCJournal() {
+  return (
+    <Post>
+      <Title>
+        Hyperdimensional Computing: A Framework for Stochastic Computation and
+        Symbolic AI
+      </Title>
+      <SubTitle>Published in the Journal of Big Data 2024</SubTitle>
+      <Description>
+        In this manuscript, we provide an approachable, yet thorough, survey of
+        the components of Hyperdimensional Computing (HDC). HDC is a
+        neuro-inspired computing framework that exploits high-dimensional random
+        vector spaces. We highlight the dual use of HDC, used for its learning
+        capabilities, and more generally, as a probabilistic model for
+        computation.
+      </Description>
+      <Action href="https://link.springer.com/article/10.1186/s40537-024-01010-8">
+        View publication →
+      </Action>
+    </Post>
+  );
+}
+
 export function FastMultiJoinSketch() {
   return (
     <Post>

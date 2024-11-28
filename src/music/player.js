@@ -40,7 +40,11 @@ const Timestamp = styled(animated.div)`
   ${fluidFont(12, 14)};
   font-weight: 500;
   color: hsla(0, 0%, var(--foreground-lightness), 0.5);
-  font-feature-settings: "liga" 1, "case" 1, "calt" 1, "tnum" 1;
+  font-feature-settings:
+    "liga" 1,
+    "case" 1,
+    "calt" 1,
+    "tnum" 1;
 `;
 
 const LineClickArea = styled.div`
@@ -120,7 +124,7 @@ export const usePlayer = () => {
       if (!isFinite(currentTime)) return;
       audioRef.current.currentTime = currentTime;
     },
-    [durationMs]
+    [durationMs],
   );
 
   const play = useCallback(() => audioRef.current.play(), []);
@@ -202,10 +206,10 @@ export const ProgressIndicator = ({
   };
 
   const timeIn = fraction.to((f) =>
-    durationFormatter.format(new Date(f * durationMs))
+    durationFormatter.format(new Date(f * durationMs)),
   );
   const timeTillEnd = fraction.to(
-    (f) => `-${durationFormatter.format(new Date((1 - f) * durationMs))}`
+    (f) => `-${durationFormatter.format(new Date((1 - f) * durationMs))}`,
   );
 
   const scale = fraction.to((f) => `scaleX(${f})`);

@@ -8,7 +8,7 @@ export { ThemeId };
 
 function shouldUseDarkTheme(
   themeId: ThemeId,
-  userPrefersDark: boolean
+  userPrefersDark: boolean,
 ): boolean {
   if (themeId === ThemeId.dark) return true;
   else if (themeId === ThemeId.light) return false;
@@ -36,7 +36,7 @@ function Theme({ themeId, children }: Props) {
 
 export function withTheme<P extends object>(
   themeId: ThemeId,
-  Element: ComponentType<P>
+  Element: ComponentType<P>,
 ) {
   return function ElementWithTheme(props: P) {
     return (

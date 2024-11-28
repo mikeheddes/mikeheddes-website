@@ -2,7 +2,7 @@
 export function preprocess(
   data: Uint8ClampedArray,
   H: number,
-  W: number
+  W: number,
 ): Float32Array {
   const floatData = new Float32Array(3 * H * W);
 

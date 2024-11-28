@@ -8,13 +8,13 @@ import { contentWrapper } from "../styles";
 import AppleMusic from "../icons/logos/apple-music";
 import GoogleScholar from "../icons/logos/google-scholar";
 
-const Section = styled.section`
+const Section = styled.section<{ $wide?: boolean }>`
   ${contentWrapper};
 `;
 
 export default function SocialLinks() {
   return (
-    <Section wide>
+    <Section $wide>
       <ActionBlock numItems={5}>
         <ActionItem icon={LinkedIn} href="https://linkedin.com/in/mikeheddes/">
           LinkedIn
@@ -22,7 +22,10 @@ export default function SocialLinks() {
         <ActionItem icon={GitHub} href="https://github.com/mikeheddes">
           GitHub
         </ActionItem>
-        <ActionItem icon={GoogleScholar} href="https://scholar.google.com/citations?user=SZpFJqIAAAAJ">
+        <ActionItem
+          icon={GoogleScholar}
+          href="https://scholar.google.com/citations?user=SZpFJqIAAAAJ"
+        >
           Google Scholar
         </ActionItem>
         <ActionItem

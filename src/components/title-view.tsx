@@ -5,7 +5,7 @@ import { fluidFont, contentWrapper } from "../styles";
 import { dateFormatter } from "./formatters";
 import { ReactNode } from "react";
 
-const Wrapper = styled.header`
+const Wrapper = styled.header<{ $wide?: boolean }>`
   ${contentWrapper};
   text-align: center;
   margin-top: 15px;
@@ -32,7 +32,6 @@ const Title = styled.h1`
   line-height: 1.3;
   font-weight: 700;
   margin: 0;
-  margin-bottom: 20px;
 
   @media ${screen.md} {
     margin-bottom: 30px;
@@ -44,12 +43,13 @@ const Subtitle = styled.h4`
   color: var(--text-subtle);
   line-height: 1.3;
   font-weight: 500;
+  margin-top: 20px;
 `;
 
 type Props = {
   title: ReactNode;
-  date: string;
-  subtitle: ReactNode;
+  date?: string;
+  subtitle?: ReactNode;
 };
 
 function TitleView({ title, subtitle, date }: Props) {
@@ -57,9 +57,11 @@ function TitleView({ title, subtitle, date }: Props) {
     <Wrapper>
       <Author>Mike Heddes</Author>
       <Title>{title}</Title>
-      <Subtitle>
-        {subtitle} ― {dateFormatter.format(new Date(date))}
-      </Subtitle>
+      {subtitle && date && (
+        <Subtitle>
+          {subtitle} ― {dateFormatter.format(new Date(date))}
+        </Subtitle>
+      )}
     </Wrapper>
   );
 }

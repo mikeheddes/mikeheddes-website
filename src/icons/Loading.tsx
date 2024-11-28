@@ -19,7 +19,7 @@ export default function Loading(props) {
 
       group.current.style.setProperty(
         "transform",
-        `rotate(${-ROTATION_TICK * ticks}deg)`
+        `rotate(${-ROTATION_TICK * ticks}deg)`,
       );
     };
 

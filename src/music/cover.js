@@ -29,7 +29,8 @@ const SmallShadow = styled(animated.div)`
   ${(props) => {
     const shadowColor = darken(SHADOW_ACCENT_DARKENING, props.accent ?? "#000");
     return css`
-      box-shadow: 0 0.2px 0.4px -2px ${fade(0.893, shadowColor)},
+      box-shadow:
+        0 0.2px 0.4px -2px ${fade(0.893, shadowColor)},
         0 0.5px 1px -2px ${fade(0.846, shadowColor)},
         0 1.2px 2.4px -2px ${fade(0.799, shadowColor)},
         0 4px 8px -2px ${fade(0.7, shadowColor)};
@@ -43,7 +44,8 @@ const BigShadow = styled(animated.div)`
   ${(props) => {
     const shadowColor = darken(SHADOW_ACCENT_DARKENING, props.accent ?? "#000");
     return css`
-      box-shadow: 0 1.1px 1.1px -12px ${fade(0.943, shadowColor)},
+      box-shadow:
+        0 1.1px 1.1px -12px ${fade(0.943, shadowColor)},
         0 2.7px 2.7px -12px ${fade(0.917, shadowColor)},
         0 5px 5px -12px ${fade(0.897, shadowColor)},
         0 8.9px 8.9px -12px ${fade(0.877, shadowColor)},
@@ -87,7 +89,7 @@ export default function CoverImage({ isPlaying, ...restProps }) {
 
       set({ xy: [unitX, unitY] });
     },
-    [set]
+    [set],
   );
 
   useEffect(() => {

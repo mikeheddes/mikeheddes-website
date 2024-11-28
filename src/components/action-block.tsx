@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { screen } from "../styles/breakpoints";
 import { fluidFont } from "../styles";
 
-const Grid = styled.div<{ numItems: number }>`
+const Grid = styled.div<{ $numItems: number }>`
   background-color: var(--surface-subtle);
   border-radius: 10px;
   max-width: 375px;
@@ -16,7 +16,7 @@ const Grid = styled.div<{ numItems: number }>`
     border-radius: 0px;
     background-color: transparent;
     display: grid;
-    grid-template-columns: ${({ numItems }) => `repeat(${numItems}, 1fr)`};
+    grid-template-columns: ${({ $numItems }) => `repeat(${$numItems}, 1fr)`};
     grid-gap: 20px;
     justify-content: center;
   }
@@ -111,5 +111,5 @@ type ActionBlockProps = {
 };
 
 export function ActionBlock({ children, numItems }: ActionBlockProps) {
-  return <Grid numItems={numItems}>{children}</Grid>;
+  return <Grid $numItems={numItems}>{children}</Grid>;
 }

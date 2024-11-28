@@ -44,9 +44,9 @@ const IconCircle = styled.div`
   }
 `;
 
-const Filler = styled.div<{ ratio: number }>`
+const Filler = styled.div<{ $ratio: number }>`
   width: 100%;
-  padding-bottom: ${({ ratio }) => ratio * 100}%;
+  padding-bottom: ${({ $ratio }) => $ratio * 100}%;
 `;
 
 const Player = styled.div`
@@ -100,7 +100,7 @@ const Video = ({
 
   return (
     <Wrapper {...restProps}>
-      <Filler ratio={height / width} />
+      <Filler $ratio={height / width} />
       <Player ref={playerElement} />
       {!playing && (
         <>

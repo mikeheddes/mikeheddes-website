@@ -59,7 +59,7 @@ export function Stars({ dataUrl }: { dataUrl: string }) {
     const starIndex = new Float32Array(
       Array(NUMBER_OF_STARS)
         .fill(0)
-        .map((_, index) => index)
+        .map((_, index) => index),
     );
 
     return [position, star, angularVelocity, starIndex];

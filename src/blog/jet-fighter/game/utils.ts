@@ -4,7 +4,7 @@ export function getInEdgeArea(
   x: number,
   y: number,
   boundingDistance: number,
-  frameSize: FrameSize
+  frameSize: FrameSize,
 ): {
   top: boolean;
   left: boolean;

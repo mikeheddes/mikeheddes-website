@@ -30,7 +30,7 @@ void main() {
   gl_PointSize = 1. + 20. * fog;
 
   // Correct scale to monitor pixel ratio
-  gl_PointSize = gl_PointSize * pixelRatio;
+  gl_PointSize = gl_PointSize * 1.5;
 
   alpha = min(.8, fog * 13.);
 

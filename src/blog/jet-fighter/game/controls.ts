@@ -11,7 +11,7 @@ export function useJetFighterUserController(
   fireKey: string,
   leftElementRef: RefObject<HTMLElement>,
   rightElementRef: RefObject<HTMLElement>,
-  fireElementRef: RefObject<HTMLElement>
+  fireElementRef: RefObject<HTMLElement>,
 ): () => PlaneAction {
   const userActionsRef = useRef<PlaneAction[]>([PlaneAction.NOTHING]);
 
@@ -137,7 +137,7 @@ export function useJetFighterUserController(
 export function useJetFighterAIController(
   onnxModelURL: string,
   HEIGHT: number,
-  WIDTH: number
+  WIDTH: number,
 ) {
   const sessionRef = useRef<InferenceSession>(null);
   const aiActionRef = useRef(PlaneAction.NOTHING);
@@ -152,6 +152,20 @@ export function useJetFighterAIController(
     }).then((session) => {
       if (!isMounted) return;
       sessionRef.current = session;
+
+      // Hack to force the dimension comparison check to succeed:
+      // https://github.com/microsoft/onnxruntime/blob/1128882bfd2a97c20f8a2a5ddb26cb0d42d9ebba/js/web/lib/onnxjs/session.ts#L227
+      try {
+        for (let i = 0; i < 4; i++) {
+          // @ts-ignore
+          session.handler.session._model._graph._allData[i].type.shape.dims[0] =
+            0;
+        }
+      } catch (error) {
+        console.warn(
+          "Forcing our way around a onnxruntime dimension check did not succeed.",
+        );
+      }
     });
 
     return () => {
@@ -179,7 +193,7 @@ export function useJetFighterAIController(
       frameBufferRef.current.pop();
       frameBufferRef.current.push(tensor);
     },
-    [HEIGHT, WIDTH]
+    [HEIGHT, WIDTH],
   );
 
   const updateAction = useCallback(async () => {
@@ -213,7 +227,7 @@ export function useJetFighterAIController(
       actionRepeatCounterRef.current--;
       return aiActionRef.current;
     },
-    [addFrameToBuffer, updateAction]
+    [addFrameToBuffer, updateAction],
   );
 
   return getAction;
