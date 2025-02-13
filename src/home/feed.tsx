@@ -17,6 +17,7 @@ import {
   DotHash,
   FastMultiJoinSketch,
   HDCJournal,
+  DeepCrossAttention,
 } from "./post";
 import { SectionHeading } from "./section";
 import { screen } from "../styles/breakpoints";
@@ -38,6 +39,7 @@ export default function Feed() {
     <Section $wide>
       <SectionHeading>Projects</SectionHeading>
       <Posts>
+        <DeepCrossAttention />
         <HDCJournal />
         <FastMultiJoinSketch />
         <GuidedStochasticExploration />

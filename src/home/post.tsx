@@ -13,8 +13,8 @@ const Post = styled.div`
     margin-top: 50px;
   }
 
-  :first-child {
-    margin-top: 0;
+  &:first-child {
+    margin-top: 30px;
   }
 `;
 
@@ -95,6 +95,25 @@ const Action = styled(Link)<ActionProps>`
       }
     `}
 `;
+
+export function DeepCrossAttention() {
+  return (
+    <Post>
+      <Title>
+        DeepCrossAttention: Supercharging Transformer Residual Connections
+      </Title>
+      <Description>
+        DeepCrossAttention (DCA) is a novel enhancement to transformer networks
+        that improves residual learning by dynamically combining layer outputs
+        using input-dependent, learnable weights. This approach enables the
+        model to focus on the most relevant information from previous layers
+        while incorporating depth-wise cross-attention for richer layer
+        interactions.
+      </Description>
+      <Action href="https://arxiv.org/abs/2502.06785">View preprint →</Action>
+    </Post>
+  );
+}
 
 export function HDCJournal() {
   return (
