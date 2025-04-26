@@ -173,6 +173,9 @@ export function GuidedStochasticExploration() {
         Always-Sparse Training by Growing Connections with Guided Stochastic
         Exploration
       </Title>
+      <SubTitle>
+        Published at the International Joint Conference on Neural Networks (IJCNN) 2025
+      </SubTitle>
       <Description>
         The excessive computational requirements of modern deep learning are
         posing limitations on the machines that can run it. We propose an
@@ -180,7 +183,7 @@ export function GuidedStochasticExploration() {
         larger and sparser models. Moreover, our algorithm improves over the
         accuracy of previous sparse training methods.
       </Description>
-      <Action href="https://arxiv.org/abs/2401.06898">View preprint →</Action>
+      <Action href="https://arxiv.org/abs/2401.06898">View publication →</Action>
       <Action href="https://github.com/mikeheddes/guided-stochastic-exploration">
         View code →
       </Action>

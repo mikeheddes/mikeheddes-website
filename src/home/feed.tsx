@@ -40,9 +40,9 @@ export default function Feed() {
       <SectionHeading>Projects</SectionHeading>
       <Posts>
         <DeepCrossAttention />
+        <GuidedStochasticExploration />
         <HDCJournal />
         <FastMultiJoinSketch />
-        <GuidedStochasticExploration />
         <DotHash />
         <Torchhd />
         <CircularHV />
