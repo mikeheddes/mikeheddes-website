@@ -102,6 +102,10 @@ export function DeepCrossAttention() {
       <Title>
         DeepCrossAttention: Supercharging Transformer Residual Connections
       </Title>
+      <SubTitle>
+        Published at the International Conference on Machine Learning (ICML)
+        2025
+      </SubTitle>
       <Description>
         DeepCrossAttention (DCA) is a novel enhancement to transformer networks
         that improves residual learning by dynamically combining layer outputs
@@ -110,7 +114,7 @@ export function DeepCrossAttention() {
         while incorporating depth-wise cross-attention for richer layer
         interactions.
       </Description>
-      <Action href="https://arxiv.org/abs/2502.06785">View preprint →</Action>
+      <Action href="https://arxiv.org/abs/2502.06785">View publication →</Action>
     </Post>
   );
 }
@@ -174,7 +178,8 @@ export function GuidedStochasticExploration() {
         Exploration
       </Title>
       <SubTitle>
-        Published at the International Joint Conference on Neural Networks (IJCNN) 2025
+        Published at the International Joint Conference on Neural Networks
+        (IJCNN) 2025
       </SubTitle>
       <Description>
         The excessive computational requirements of modern deep learning are
@@ -183,7 +188,9 @@ export function GuidedStochasticExploration() {
         larger and sparser models. Moreover, our algorithm improves over the
         accuracy of previous sparse training methods.
       </Description>
-      <Action href="https://arxiv.org/abs/2401.06898">View publication →</Action>
+      <Action href="https://arxiv.org/abs/2401.06898">
+        View publication →
+      </Action>
       <Action href="https://github.com/mikeheddes/guided-stochastic-exploration">
         View code →
       </Action>
