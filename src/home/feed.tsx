@@ -18,6 +18,7 @@ import {
   FastMultiJoinSketch,
   HDCJournal,
   DeepCrossAttention,
+  ApproximateTensorNetworkContraction,
 } from "./post";
 import { SectionHeading } from "./section";
 import { screen } from "../styles/breakpoints";
@@ -39,6 +40,7 @@ export default function Feed() {
     <Section $wide>
       <SectionHeading>Projects</SectionHeading>
       <Posts>
+        <ApproximateTensorNetworkContraction />
         <DeepCrossAttention />
         <GuidedStochasticExploration />
         <HDCJournal />

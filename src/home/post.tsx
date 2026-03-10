@@ -96,6 +96,23 @@ const Action = styled(Link)<ActionProps>`
     `}
 `;
 
+export function ApproximateTensorNetworkContraction() {
+  return (
+    <Post>
+      <Title>Approximating Tensor Network Contraction with Sketches</Title>
+      <Description>
+        This paper introduces the first sketching method capable of
+        approximating arbitrary tensor network contractions, including those
+        with cyclic tensor networks. The paper proposes a second method that
+        improves over the exponential complexity of prior methods and achieves a
+        polynomial complexity relative to the number of contractions for acyclic
+        tensor networks.
+      </Description>
+      <Action href="https://arxiv.org/abs/2603.07387">View preprint →</Action>
+    </Post>
+  );
+}
+
 export function DeepCrossAttention() {
   return (
     <Post>
@@ -114,7 +131,9 @@ export function DeepCrossAttention() {
         while incorporating depth-wise cross-attention for richer layer
         interactions.
       </Description>
-      <Action href="https://arxiv.org/abs/2502.06785">View publication →</Action>
+      <Action href="https://arxiv.org/abs/2502.06785">
+        View publication →
+      </Action>
     </Post>
   );
 }
