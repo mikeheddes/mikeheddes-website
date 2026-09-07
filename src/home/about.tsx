@@ -31,14 +31,15 @@ export default function About() {
     <Section $wide>
       <SectionName>Personal statement</SectionName>
       <Text>
-        I am Mike Heddes, a Computer Science PhD candidate at the University of
-        California, Irvine. In my research, I develop efficient machine learning
-        and data mining algorithms. I obtained my bachelor&apos;s degree in
-        mechanical engineering from the Amsterdam University of Applied
-        Sciences. I am mesmerized by all meticulous design and engineering,
-        enjoy tackling difficult problems, and aspire to contribute to the
-        exciting achievements of humanity. In my spare time, I enjoy making
-        music and reading about science, business, and technology.
+        I am Mike Heddes, a Research Software Engineer at Google developing LLM
+        architectures, AI agents, and efficient algorithms for large-scale data.
+        I earned my doctorate in computer science at the University of
+        California, Irvine and obtained my bachelor&apos;s degree in mechanical
+        engineering from the Amsterdam University of Applied Sciences. I am
+        mesmerized by all meticulous design and engineering, enjoy tackling
+        difficult problems, and aspire to contribute to the exciting
+        achievements of humanity. In my spare time, I enjoy making music and
+        reading about science, business, and technology.
       </Text>
     </Section>
   );

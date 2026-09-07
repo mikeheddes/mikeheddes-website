@@ -384,7 +384,7 @@ export function SpOC() {
 export function JetFighterAi() {
   return (
     <Post>
-      <Title>Jet Fighter Ai</Title>
+      <Title>Jet Fighter AI</Title>
       <SubTitle>Personal project in Reinforcement Learning, 2021</SubTitle>
       <Description>
         A Reinforcement Learning agent learns to play the two-player Atari game

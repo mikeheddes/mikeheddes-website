@@ -3,7 +3,7 @@ import pic from "./cover.jpg";
 
 export default {
   slug: "jet-fighter-ai",
-  title: "Jet Fighter Ai",
+  title: "Jet Fighter AI",
   description:
     "Artificial Intelligence plays the classic Jet Fighter arcade game",
   date: "2021-09-01",

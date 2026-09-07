@@ -93,7 +93,7 @@ export class JetFighter {
     ctx.fillStyle = "#ffffff";
 
     ctx.textAlign = "left";
-    ctx.fillText("A i", 20, 13);
+    ctx.fillText("A I", 20, 13);
 
     ctx.textAlign = "right";
     ctx.fillText("Y O U", this.frameSize.width - 20, 13);
@@ -128,7 +128,7 @@ export class JetFighter {
 
     ctx.fillStyle = "#ffffff";
     ctx.textAlign = "center";
-    ctx.fillText("D E F E A T   T H E   A i", cx, cy - 14);
+    ctx.fillText("D E F E A T   T H E   A I", cx, cy - 14);
 
     ctx.beginPath();
     ctx.fillStyle = RED;
