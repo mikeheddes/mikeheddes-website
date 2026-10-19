@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 import { contentWrapper } from "../styles";
 import {
+  DuoDiscover,
   GuidedStochasticExploration,
   Torchhd,
   Hashing,
@@ -40,6 +41,7 @@ export default function Feed() {
     <Section $wide>
       <SectionHeading>Projects</SectionHeading>
       <Posts>
+        <DuoDiscover />
         <ApproximateTensorNetworkContraction />
         <DeepCrossAttention />
         <GuidedStochasticExploration />

@@ -96,6 +96,26 @@ const Action = styled(Link)<ActionProps>`
     `}
 `;
 
+export function DuoDiscover() {
+  return (
+    <Post>
+      <Title>
+        DuoDiscover: Scaling Autonomous Discovery Beyond the Evaluation
+        Bottleneck
+      </Title>
+      <Description>
+        Scaling autonomous discovery to real-world engineering challenges faces
+        a fundamental bottleneck: the cost of evaluating progress. DuoDiscover
+        is a search system that jointly discovers what to optimize and how to
+        evaluate progress efficiently. On SWE-fficiency, it doubles the average
+        speedup of human experts. On SOL-Exec, it ranks first on 121 of 235 GPU
+        kernels and in the top three on 212.
+      </Description>
+      <Action href="https://arxiv.org/abs/2610.17184">View preprint →</Action>
+    </Post>
+  );
+}
+
 export function ApproximateTensorNetworkContraction() {
   return (
     <Post>
