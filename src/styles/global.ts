@@ -12,7 +12,7 @@ export default createGlobalStyle<{ fontModern: string }>`
 
   :root {
     --font-modern: ${({ fontModern }) => fontModern};
-    --font-mono: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+    --font-mono: "SFMono-Regular", "JetBrains Mono", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
     --font-classic: "Times New Roman", Times, serif;
   }
 
@@ -25,10 +25,15 @@ export default createGlobalStyle<{ fontModern: string }>`
     -webkit-overflow-scrolling: touch;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   html,
   body {
-    width: 100vw;
+    width: 100%;
     background-color: var(--background);
+    color: var(--text);
     font-family: var(--font-modern);
   }
 

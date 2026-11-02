@@ -1,5 +1,4 @@
 import Hero from "../home/hero";
-import SocialLinks from "../home/socials";
 import Feed from "../home/feed";
 import About from "../home/about";
 import Metadata from "../home/metadata";
@@ -10,9 +9,10 @@ export default function Landing() {
     <>
       <Metadata />
       <Hero />
-      <SocialLinks />
-      <About />
-      <Feed />
+      <main>
+        <About />
+        <Feed />
+      </main>
       <Footer />
     </>
   );

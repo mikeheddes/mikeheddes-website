@@ -21,9 +21,9 @@ export const contentWrapper = css<{ $wide?: boolean }>`
   }
 
   @media ${screen.md} {
-    padding-left: 130px;
-    padding-right: 130px;
-    max-width: calc(var(${contentOrTextWidth}) + 2 * 130px);
+    padding-left: 80px;
+    padding-right: 80px;
+    max-width: calc(var(${contentOrTextWidth}) + 2 * 80px);
   }
 `;
 

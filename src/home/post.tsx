@@ -1,487 +1,531 @@
 import Link from "next/link";
-import styled, { css } from "styled-components";
-import { lighten } from "polished";
+import Image, { StaticImageData } from "next/image";
+import styled from "styled-components";
 
 import { fluidFont } from "../styles";
-import { screen } from "../styles/breakpoints";
-import { darkTheme, lightTheme, themeSelector } from "../styles/colors";
 
-const Post = styled.div`
-  margin-top: 30px;
+import jetFighterCover from "../blog/jet-fighter/cover.jpg";
+import galaxyCover from "../blog/settlers-of-the-galaxy/cover.jpg";
+import gridFinCover from "../blog/spacex-grid-fin-design/cover.jpg";
+import dcgpCover from "../blog/dcgp/cover.png";
+import musicCover from "../blog/music/cover.jpg";
+import torchhdLogo from "../assets/torchhd-logo.png";
 
-  @media ${screen.sm} {
-    margin-top: 50px;
-  }
+export type ActionLink = {
+  label: string;
+  href: string;
+};
+
+export type PublicationData = {
+  id: string;
+  title: string;
+  authors: string[];
+  year: string;
+  venue?: string;
+  highlight?: string;
+  links: ActionLink[];
+};
+
+export type ProjectData = {
+  id: string;
+  title: string;
+  cover: StaticImageData;
+  coverAlt?: string;
+  href: string;
+};
+
+export const PUBLICATIONS: PublicationData[] = [
+  {
+    id: "duodiscover",
+    title:
+      "DuoDiscover: Scaling Autonomous Discovery Beyond the Evaluation Bottleneck",
+    authors: [
+      "Shubham Agarwal",
+      "Akshat Gupta",
+      "Mike Heddes",
+      "Dilara Soylu",
+      "Rui Meng",
+      "Patrick Tser Jern Kon",
+      "Jiefeng Chen",
+      "Mert Cemri",
+      "Shu Liu",
+      "Abe Gonzalez",
+      "Akanksha Jain",
+      "Bhavana Dalvi Mishra",
+      "Linfeng Song",
+      "Vilobh Meshram",
+      "Xiangru Tang",
+      "Jinsung Yoon",
+      "Aditya Parameswaran",
+      "Ion Stoica",
+      "Vahab Mirrokni",
+      "Burak Gokturk",
+      "Parthasarathy Ranganathan",
+      "Tomas Pfister",
+      "Nanyun Peng",
+      "Chun-Liang Li",
+    ],
+    year: "2026",
+    links: [{ label: "Preprint", href: "https://arxiv.org/abs/2610.17184" }],
+  },
+  {
+    id: "tensor-contraction-sketches",
+    title: "Approximating Tensor Network Contraction with Sketches",
+    authors: ["Mike Heddes", "Igor Nunes", "Tony Givargis", "Alex Nicolau"],
+    year: "2026",
+    links: [{ label: "Preprint", href: "https://arxiv.org/abs/2603.07387" }],
+  },
+  {
+    id: "dissertation",
+    title:
+      "Approximation Algorithms for Similarity Measures and Tensor Contractions",
+    authors: ["Mike Heddes"],
+    year: "2026",
+    venue: "University of California, Irvine, 2026",
+    links: [
+      {
+        label: "Dissertation",
+        href: "https://escholarship.org/uc/item/3wc3x7m0",
+      },
+    ],
+  },
+  {
+    id: "deep-cross-attention",
+    title: "DeepCrossAttention: Supercharging Transformer Residual Connections",
+    authors: [
+      "Mike Heddes",
+      "Adel Javanmard",
+      "Kyriakos Axiotis",
+      "Gang Fu",
+      "MohammadHossein Bateni",
+      "Vahab Mirrokni",
+    ],
+    year: "2025",
+    venue: "International Conference on Machine Learning (ICML), 2025",
+    links: [
+      {
+        label: "Publication",
+        href: "https://arxiv.org/abs/2502.06785",
+      },
+    ],
+  },
+  {
+    id: "guided-stochastic-exploration",
+    title:
+      "Always-Sparse Training by Growing Connections with Guided Stochastic Exploration",
+    authors: [
+      "Mike Heddes",
+      "Narayan Srinivasa",
+      "Tony Givargis",
+      "Alexandru Nicolau",
+    ],
+    year: "2025",
+    venue: "International Joint Conference on Neural Networks (IJCNN), 2025",
+    links: [
+      { label: "Publication", href: "https://arxiv.org/abs/2401.06898" },
+      {
+        label: "Code",
+        href: "https://github.com/mikeheddes/guided-stochastic-exploration",
+      },
+    ],
+  },
+  {
+    id: "hdc-journal",
+    title:
+      "Hyperdimensional Computing: A Framework for Stochastic Computation and Symbolic AI",
+    authors: [
+      "Mike Heddes",
+      "Igor Nunes",
+      "Tony Givargis",
+      "Alexandru Nicolau",
+      "Alex Veidenbaum",
+    ],
+    year: "2024",
+    venue: "Journal of Big Data, 2024",
+    links: [
+      {
+        label: "Publication",
+        href: "https://link.springer.com/article/10.1186/s40537-024-01010-8",
+      },
+    ],
+  },
+  {
+    id: "fast-multi-join-sketch",
+    title:
+      "Convolution and Cross-Correlation of Count Sketches Enables Fast Cardinality Estimation of Multi-Join Queries",
+    authors: ["Mike Heddes", "Igor Nunes", "Tony Givargis", "Alex Nicolau"],
+    year: "2024",
+    venue: "International Conference on Management of Data (SIGMOD), 2024",
+    links: [
+      { label: "Publication", href: "https://arxiv.org/abs/2402.15953" },
+      {
+        label: "Code",
+        href: "https://github.com/mikeheddes/fast-multi-join-sketch",
+      },
+    ],
+  },
+  {
+    id: "dothash",
+    title:
+      "DotHash: Estimating Set Similarity Metrics for Link Prediction and Document Deduplication",
+    authors: [
+      "Igor Nunes",
+      "Mike Heddes",
+      "Pere Vergés",
+      "Danny Abraham",
+      "Alexander Veidenbaum",
+      "Alexandru Nicolau",
+      "Tony Givargis",
+    ],
+    year: "2023",
+    venue: "Conference on Knowledge Discovery and Data Mining (KDD), 2023",
+    links: [
+      { label: "Publication", href: "https://arxiv.org/abs/2305.17310" },
+      { label: "Code", href: "https://github.com/mikeheddes/dothash" },
+    ],
+  },
+  {
+    id: "torchhd",
+    title:
+      "Torchhd: An Open Source Python Library to Support Research on Hyperdimensional Computing and Vector Symbolic Architectures",
+    authors: [
+      "Mike Heddes",
+      "Igor Nunes",
+      "Pere Vergés",
+      "Denis Kleyko",
+      "Danny Abraham",
+      "Tony Givargis",
+      "Alexandru Nicolau",
+      "Alexander Veidenbaum",
+    ],
+    year: "2023",
+    venue: "Journal of Machine Learning Research (JMLR), 2023",
+    links: [
+      {
+        label: "Publication",
+        href: "https://arxiv.org/abs/2205.09208",
+      },
+      {
+        label: "Code",
+        href: "https://github.com/hyperdimensional-computing/torchhd",
+      },
+    ],
+  },
+  {
+    id: "circular-hv",
+    title:
+      "An Extension to Basis-Hypervectors for Learning from Circular Data in Hyperdimensional Computing",
+    authors: [
+      "Igor Nunes",
+      "Mike Heddes",
+      "Tony Givargis",
+      "Alexandru Nicolau",
+    ],
+    year: "2023",
+    venue: "Design Automation Conference (DAC), 2023",
+    links: [{ label: "Publication", href: "https://arxiv.org/abs/2205.07920" }],
+  },
+  {
+    id: "hd-hashing",
+    title:
+      "Hyperdimensional Hashing: An Efficient and Robust Dynamic Hash Table",
+    authors: [
+      "Mike Heddes",
+      "Igor Nunes",
+      "Tony Givargis",
+      "Alexandru Nicolau",
+      "Alex Veidenbaum",
+    ],
+    year: "2022",
+    venue: "Design Automation Conference (DAC), 2022",
+    links: [{ label: "Publication", href: "https://arxiv.org/abs/2205.07850" }],
+  },
+  {
+    id: "graphhd",
+    title:
+      "GraphHD: Efficient Graph Classification using Hyperdimensional Computing",
+    authors: [
+      "Igor Nunes",
+      "Mike Heddes",
+      "Tony Givargis",
+      "Alexandru Nicolau",
+      "Alex Veidenbaum",
+    ],
+    year: "2022",
+    venue: "Design, Automation and Test in Europe Conference (DATE), 2022",
+    highlight: "Best Paper Award Nomination",
+    links: [{ label: "Publication", href: "https://arxiv.org/abs/2205.07826" }],
+  },
+  {
+    id: "edge-avatar",
+    title: "EdgeAvatar: An Edge Computing System for Building Virtual Beings",
+    authors: [
+      "Neftali Watkinson",
+      "Fedor Zaitsev",
+      "Aniket Shivam",
+      "Michael Demirev",
+      "Mike Heddes",
+      "Tony Givargis",
+      "Alexandru Nicolau",
+      "Alexander Veidenbaum",
+    ],
+    year: "2021",
+    venue: "Electronics, 2021",
+    links: [
+      {
+        label: "Publication",
+        href: "https://doi.org/10.3390/electronics10030229",
+      },
+      {
+        label: "Application",
+        href: "https://sysarch-uci.gitlab.io/celan-web/",
+      },
+    ],
+  },
+  {
+    id: "bachelor-thesis",
+    title: "Differentiable Cartesian Genetic Programming as a Service",
+    authors: ["Mike Heddes"],
+    venue: "Amsterdam University of Applied Sciences, 2019",
+    year: "2019",
+    links: [
+      { label: "Thesis", href: "/bachelor-thesis.pdf" },
+      { label: "Code", href: "https://github.com/esa/dcgp-web" },
+      { label: "Application", href: "https://esa.github.io/dcgp-web" },
+    ],
+  },
+];
+
+export const PROJECTS: ProjectData[] = [
+  {
+    id: "torchhd",
+    title: "Torchhd",
+    cover: torchhdLogo,
+    coverAlt: "Torchhd Logo",
+    href: "https://github.com/hyperdimensional-computing/torchhd",
+  },
+  {
+    id: "jet-fighter-ai",
+    title: "Jet Fighter AI",
+    cover: jetFighterCover,
+    coverAlt: "Jet Fighter AI simulation",
+    href: "/post/jet-fighter-ai",
+  },
+  {
+    id: "settlers-of-the-galaxy",
+    title: "Settlers of the Galaxy",
+    cover: galaxyCover,
+    coverAlt: "Settlers of the Galaxy 3D visualization",
+    href: "/post/settlers-of-the-galaxy",
+  },
+  {
+    id: "spacex-grid-fin-design",
+    title: "SpaceX Grid Fin",
+    cover: gridFinCover,
+    coverAlt: "SpaceX Titanium Grid Fin 3D model",
+
+    href: "/post/spacex-grid-fin-design",
+  },
+  {
+    id: "dcgp",
+    title: "Differentiable Cartesian Genetic Programming",
+    cover: dcgpCover,
+    coverAlt: "dCGP Web Playground",
+    href: "https://esa.github.io/dcgp-web",
+  },
+  {
+    id: "music-production",
+    title: "Discography",
+    cover: musicCover,
+    coverAlt: "Mike Heddes Discography",
+    href: "/music",
+  },
+];
+
+const PubItemWrapper = styled.article`
+  padding: 30px 0;
+  border-bottom: 1px solid var(--border-content);
 
   &:first-child {
-    margin-top: 30px;
+    padding-top: 0px;
+  }
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0px;
   }
 `;
 
-const Title = styled.h4`
-  color: var(--heading);
-  font-weight: 600;
-  ${fluidFont(18, 21)};
-  clear: right;
-  margin: 0;
-  line-height: 1.3em;
+const PubBadgesRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
 `;
 
-const SubTitle = styled.h5`
-  color: var(--text);
-  font-weight: 500;
-  ${fluidFont(16, 18)};
-  margin-top: 4px;
-  line-height: 1.4em;
-`;
-
-const Description = styled.p`
-  color: var(--text-subtle);
-  font-weight: 400;
-  ${fluidFont(15, 17)};
-  margin-top: 8px;
-  line-height: 1.55em;
-
-  @media ${screen.sm} {
-    text-align: justify;
-  }
-`;
-
-const Mention = styled.div`
-  ${fluidFont(13, 14)};
-  margin-bottom: 8px;
-  text-transform: uppercase;
+const Highlight = styled.span`
+  ${fluidFont(14, 14)};
   font-weight: 700;
+  text-transform: uppercase;
   color: var(--orange);
 `;
 
-type ActionProps = {
-  disabled?: boolean;
-};
-
-const Action = styled(Link)<ActionProps>`
-  display: inline-block;
-  color: ${({ disabled }) =>
-    disabled ? "var(--text-subtle)" : "var(--primary)"};
-  ${fluidFont(15, 17)};
-  font-weight: 500;
-  text-decoration: none;
-  transition: color opacity 100ms ease-out;
-  margin-top: 15px;
-  margin-right: 30px;
-
-  :last-of-type {
-    margin-right: 0;
-  }
-
-  ${({ disabled }) =>
-    !disabled &&
-    css`
-      cursor: pointer;
-
-      :hover {
-        color: ${lighten(0.1, lightTheme.primary)};
-      }
-
-      :active {
-        color: var(--primary);
-        opacity: 0.5;
-      }
-
-      @media ${themeSelector.dark} {
-        :hover {
-          color: ${lighten(0.1, darkTheme.primary)};
-        }
-      }
-    `}
+const PubMainColumn = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
-export function DuoDiscover() {
+const PubTitle = styled.h4`
+  color: var(--heading);
+  font-weight: 700;
+  ${fluidFont(20, 21)};
+  margin: 0;
+  line-height: 1.32;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 120ms ease;
+
+    &:hover {
+      color: var(--primary);
+    }
+  }
+`;
+
+const PubVenue = styled.div`
+  color: var(--text-obvious);
+  font-weight: 500;
+  ${fluidFont(18, 18)};
+  margin-top: 5px;
+  line-height: 1.4;
+`;
+
+const PubAuthors = styled.p`
+  color: var(--text-subtle);
+  font-weight: 400;
+  ${fluidFont(16, 16)};
+  margin-top: 5px;
+  line-height: 1.62;
+`;
+
+const ActionLinksRow = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 14px;
+`;
+
+const ActionChip = styled(Link)`
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+export function PublicationCard({ pub }: { pub: PublicationData }) {
   return (
-    <Post>
-      <Title>
-        DuoDiscover: Scaling Autonomous Discovery Beyond the Evaluation
-        Bottleneck
-      </Title>
-      <Description>
-        Scaling autonomous discovery to real-world engineering challenges faces
-        a fundamental bottleneck: the cost of evaluating progress. DuoDiscover
-        is a search system that jointly discovers what to optimize and how to
-        evaluate progress efficiently. On SWE-fficiency, it doubles the average
-        speedup of human experts. On SOL-Exec, it ranks first on 121 of 235 GPU
-        kernels and in the top three on 212.
-      </Description>
-      <Action href="https://arxiv.org/abs/2610.17184">View preprint →</Action>
-    </Post>
+    <PubItemWrapper>
+      <PubMainColumn>
+        {pub.highlight && (
+          <PubBadgesRow>
+            <Highlight>{pub.highlight}</Highlight>
+          </PubBadgesRow>
+        )}
+        <PubTitle>{pub.title}</PubTitle>
+        {pub.venue && <PubVenue>{pub.venue}</PubVenue>}
+        {pub.authors && <PubAuthors>{pub.authors.join(", ")}</PubAuthors>}
+        <ActionLinksRow>
+          {pub.links.map((link) => (
+            <ActionChip key={link.href} href={link.href}>
+              {link.label} ⟶
+            </ActionChip>
+          ))}
+        </ActionLinksRow>
+      </PubMainColumn>
+    </PubItemWrapper>
   );
 }
 
-export function ApproximateTensorNetworkContraction() {
-  return (
-    <Post>
-      <Title>Approximating Tensor Network Contraction with Sketches</Title>
-      <Description>
-        This paper introduces the first sketching method capable of
-        approximating arbitrary tensor network contractions, including those
-        with cyclic tensor networks. The paper proposes a second method that
-        improves over the exponential complexity of prior methods and achieves a
-        polynomial complexity relative to the number of contractions for acyclic
-        tensor networks.
-      </Description>
-      <Action href="https://arxiv.org/abs/2603.07387">View preprint →</Action>
-    </Post>
-  );
-}
+const ProjectCardContainer = styled.article``;
 
-export function DeepCrossAttention() {
-  return (
-    <Post>
-      <Title>
-        DeepCrossAttention: Supercharging Transformer Residual Connections
-      </Title>
-      <SubTitle>
-        Published at the International Conference on Machine Learning (ICML)
-        2025
-      </SubTitle>
-      <Description>
-        DeepCrossAttention (DCA) is a novel enhancement to transformer networks
-        that improves residual learning by dynamically combining layer outputs
-        using input-dependent, learnable weights. This approach enables the
-        model to focus on the most relevant information from previous layers
-        while incorporating depth-wise cross-attention for richer layer
-        interactions.
-      </Description>
-      <Action href="https://arxiv.org/abs/2502.06785">
-        View publication →
-      </Action>
-    </Post>
-  );
-}
+const CoverWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  background-color: var(--surface);
+  overflow: hidden;
+  border-radius: 8px;
 
-export function HDCJournal() {
-  return (
-    <Post>
-      <Title>
-        Hyperdimensional Computing: A Framework for Stochastic Computation and
-        Symbolic AI
-      </Title>
-      <SubTitle>Published in the Journal of Big Data 2024</SubTitle>
-      <Description>
-        In this manuscript, we provide an approachable, yet thorough, survey of
-        the components of Hyperdimensional Computing (HDC). HDC is a
-        neuro-inspired computing framework that exploits high-dimensional random
-        vector spaces. We highlight the dual use of HDC, used for its learning
-        capabilities, and more generally, as a probabilistic model for
-        computation.
-      </Description>
-      <Action href="https://link.springer.com/article/10.1186/s40537-024-01010-8">
-        View publication →
-      </Action>
-    </Post>
-  );
-}
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--border-content);
+    box-sizing: border-box;
+    pointer-events: none;
+    border-radius: 8px;
+  }
+`;
 
-export function FastMultiJoinSketch() {
-  return (
-    <Post>
-      <Title>
-        Convolution and Cross-Correlation of Count Sketches Enables Fast
-        Cardinality Estimation of Multi-Join Queries
-      </Title>
-      <SubTitle>
-        Published at the International Conference on Management of Data (SIGMOD)
-        2024
-      </SubTitle>
-      <Description>
-        Estimating join cardinality is crucial for efficient database queries.
-        This paper proposes a solution to a decades old problem using a novel
-        sketching method that maintains fast updates even for multi-join queries
-        by leveraging Count sketches. Our method significantly improves the
-        efficiency and estimation accuracy over previous methods.
-      </Description>
-      <Action href="https://arxiv.org/abs/2402.15953">
-        View publication →
-      </Action>
-      <Action href="https://github.com/mikeheddes/fast-multi-join-sketch">
-        View code →
-      </Action>
-    </Post>
-  );
-}
+const ProjectBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-top: 10px;
+`;
 
-export function GuidedStochasticExploration() {
-  return (
-    <Post>
-      <Title>
-        Always-Sparse Training by Growing Connections with Guided Stochastic
-        Exploration
-      </Title>
-      <SubTitle>
-        Published at the International Joint Conference on Neural Networks
-        (IJCNN) 2025
-      </SubTitle>
-      <Description>
-        The excessive computational requirements of modern deep learning are
-        posing limitations on the machines that can run it. We propose an
-        efficient, always-sparse training algorithm with excellent scaling to
-        larger and sparser models. Moreover, our algorithm improves over the
-        accuracy of previous sparse training methods.
-      </Description>
-      <Action href="https://arxiv.org/abs/2401.06898">
-        View publication →
-      </Action>
-      <Action href="https://github.com/mikeheddes/guided-stochastic-exploration">
-        View code →
-      </Action>
-    </Post>
-  );
-}
+const ProjectTitle = styled.h4`
+  color: var(--heading);
+  ${fluidFont(20, 21)};
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+`;
 
-export function DotHash() {
-  return (
-    <Post>
-      <Title>
-        DotHash: Estimating Set Similarity Metrics for Link Prediction and
-        Document Deduplication
-      </Title>
-      <SubTitle>
-        Published at the International Conference on Knowledge Discovery and
-        Data Mining (KDD) 2023
-      </SubTitle>
-      <Description>
-        Metrics for set similarity are a core aspect of several data mining
-        tasks. We propose DotHash, an unbiased estimator for the intersection
-        size of two sets. DotHash can be used to estimate the Jaccard index and,
-        to the best of our knowledge, is the first method that can also estimate
-        the Adamic-Adar index and a family of related metrics.
-      </Description>
-      <Action href="https://arxiv.org/abs/2305.17310">
-        View publication →
-      </Action>
-      <Action href="https://github.com/mikeheddes/dothash">View code →</Action>
-    </Post>
-  );
-}
+const ProjectLink = styled(Link)`
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+  margin-top: 6px;
 
-export function Torchhd() {
-  return (
-    <Post>
-      <Title>
-        Torchhd: An Open Source Python Library to Support Research on
-        Hyperdimensional Computing and Vector Symbolic Architectures
-      </Title>
-      <SubTitle>
-        Published at the Journal of Machine Learning Research (JMLR) 2023
-      </SubTitle>
-      <Description>
-        We present Torchhd, a high-performance open-source Python library for
-        Hypderdimensional Computing and Vector Symbolic Architectures (HD/VSA).
-        Torchhd seeks to make HD/VSA more accessible and serves as an efficient
-        foundation for further research and application development.
-      </Description>
-      <Action href="https://arxiv.org/abs/2205.09208">
-        View publication →
-      </Action>
-      <Action href="https://github.com/hyperdimensional-computing/torchhd">
-        View project →
-      </Action>
-    </Post>
-  );
-}
+  &:hover {
+    text-decoration: underline;
+  }
+`;
 
-export function CircularHV() {
+export function ProjectCard({ project }: { project: ProjectData }) {
   return (
-    <Post>
-      <Title>
-        An Extension to Basis-Hypervectors for Learning from Circular Data in
-        Hyperdimensional Computing
-      </Title>
-      <SubTitle>
-        Published at the Design Automation Conference (DAC) 2023
-      </SubTitle>
-      <Description>
-        We present a detailed study on basis-hypervector sets, which leads to
-        practical contributions to Hyperdimensional Computing (HDC) in general:
-        1) an improvement for level-hypervectors, used to encode real numbers;
-        2) a method to learn from circular data, an important type of
-        information never before addressed in machine learning with HDC.
-      </Description>
-      <Action href="https://arxiv.org/abs/2205.07920">
-        View publication →
-      </Action>
-    </Post>
-  );
-}
-
-export function Hashing() {
-  return (
-    <Post>
-      <Title>
-        Hyperdimensional Hashing: An Efficient and Robust Dynamic Hash Table
-      </Title>
-      <SubTitle>
-        Published at the Design Automation Conference (DAC) 2022
-      </SubTitle>
-      <Description>
-        Most cloud services and distributed applications rely on hashing
-        algorithms that allow dynamic scaling of a robust and efficient hash
-        table. Examples include AWS, Google Cloud and BitTorrent. We propose
-        Hyperdimensional (HD) hashing and show that it has the efficiency to be
-        deployed in large systems.
-      </Description>
-      <Action href="https://arxiv.org/abs/2205.07850">
-        View publication →
-      </Action>
-    </Post>
-  );
-}
-
-export function GraphHD() {
-  return (
-    <Post>
-      <Mention>Nominated for Best Paper</Mention>
-      <Title>
-        GraphHD: Efficient Graph Classification using Hyperdimensional Computing
-      </Title>
-      <SubTitle>
-        Published at the Design, Automation and Test in Europe Conference (DATE)
-        2022
-      </SubTitle>
-      <Description>
-        Graphs are among the most important forms of information representation,
-        yet, to this day, Hyperdimensional Computing algorithms have not been
-        applied to the graph learning problem in a general sense. In this paper,
-        we present GraphHD — a baseline approach for graph classification with
-        HDC.
-      </Description>
-      <Action href="https://arxiv.org/abs/2205.07826">
-        View publication →
-      </Action>
-    </Post>
-  );
-}
-
-export function EdgeAvatar() {
-  return (
-    <Post>
-      <Title>
-        EdgeAvatar: An Edge Computing System for Building Virtual Beings
-      </Title>
-      <SubTitle>Published in Electronics 2021</SubTitle>
-      <Description>
-        We describe EdgeAvatar, a system based on Edge Computing principles for
-        the creation of virtual beings. The objective is to provide a
-        streamlined and modular framework for virtual being applications that
-        are to be deployed in public settings. EdgeAvatar can be adapted to fit
-        different approaches for AI powered conversations.
-      </Description>
-      <Action href="https://doi.org/10.3390/electronics10030229">
-        View publication →
-      </Action>
-      <Action href="https://sysarch-uci.gitlab.io/celan-web/">
-        View project →
-      </Action>
-    </Post>
-  );
-}
-
-export function SpOC() {
-  return (
-    <Post>
-      <Title>Space Optimization Competition Platform</Title>
-      <SubTitle>Project at the European Space Agency 2019</SubTitle>
-      <Description>
-        SpOC (Space optimization Competition) is an optimization challenge,
-        hosted on the European Space Agency&apos;s Optimize platform, that has
-        experts around the world compete to solve three complex optimization
-        problems wrapped up in a stimulating and exotic space mission scenario.
-      </Description>
-      <Action href="https://optimize.esa.int/challenges">View project →</Action>
-    </Post>
-  );
-}
-
-export function JetFighterAi() {
-  return (
-    <Post>
-      <Title>Jet Fighter AI</Title>
-      <SubTitle>Personal project in Reinforcement Learning, 2021</SubTitle>
-      <Description>
-        A Reinforcement Learning agent learns to play the two-player Atari game
-        Jet Fighter. Visitors can play against the agent in an Atari-style
-        simulator on the project page.
-      </Description>
-      <Action href="/post/jet-fighter-ai">View project →</Action>
-    </Post>
-  );
-}
-
-export function SettlersOfTheGalaxy() {
-  return (
-    <Post>
-      <Mention>Featured in a BBC documentary</Mention>
-      <Title>Settlers of the Galaxy</Title>
-      <SubTitle>Personal project in Animation & Interaction, 2019</SubTitle>
-      <Description>
-        Interactive animation of the Milky Way galaxy that includes our Solar
-        System. Based on data from the GTOC X trajectory optimization challenge
-        proposed by NASA&apos;s Jet Propulsion Laboratory (JPL).
-      </Description>
-      <Action href="/post/settlers-of-the-galaxy">View project →</Action>
-    </Post>
-  );
-}
-
-export function DCGP() {
-  return (
-    <Post>
-      <Mention>Bachelor Thesis</Mention>
-      <Title>Differentiable Cartesian Genetic Programming Interface</Title>
-      <SubTitle>Project at the European Space Agency, 2019</SubTitle>
-      <Description>
-        Differentiable Genetic Cartesian Programming (dCGP) is a Machine
-        Learning tool for symbolic regression. DCGP generates explicit formulas
-        that can be understood and studied. Our software thus provides a form of
-        explainable AI, which can be applied to any supervised learning task.
-      </Description>
-      <Action href="https://esa.github.io/dcgp-web">View project →</Action>
-      <Action href="/bachelor-thesis.pdf">View thesis →</Action>
-    </Post>
-  );
-}
-
-export function SpaceXGridFin() {
-  return (
-    <Post>
-      <Title>SpaceX Grid Fin Design</Title>
-      <SubTitle>Personal project in Animation & Interaction, 2018</SubTitle>
-      <Description>
-        Interactive 3D model of the second generation Space X grid fin as flown
-        on the Falcon 9 rocket. The grid fins are made from titanium so that
-        they can be reused.
-      </Description>
-      <Action href="/post/spacex-grid-fin-design">View project →</Action>
-    </Post>
-  );
-}
-
-export function MusicProduction() {
-  return (
-    <Post>
-      <Title>Music Production</Title>
-      <Description>
-        During high school and college I dreamed of becoming an electronic dance
-        music producer like Martin Garrix, the Swedish House Mafia, or Avicii.
-        Over the years my dream of being a music producer faded away while my
-        interest in science grew. Making music is now a hobby of mine.
-      </Description>
-      <Action href="https://open.spotify.com/artist/4kQdT4uFc2e0zHL755qJ0U">
-        Listen on Spotify →
-      </Action>
-      <Action href="https://music.apple.com/artist/mike-heddes/1185471953">
-        Listen on Apple Music →
-      </Action>
-      <Action href="https://youtube.com/mikeheddes">Listen on YouTube →</Action>
-    </Post>
+    <ProjectCardContainer>
+      {project.cover && (
+        <Link href={project.href}>
+          <CoverWrapper>
+            <Image
+              src={project.cover}
+              alt={project.coverAlt ?? project.title}
+              fill
+              sizes="(min-width: 960px) 480px, 100vw"
+              style={{ objectFit: "cover" }}
+            />
+          </CoverWrapper>
+        </Link>
+      )}
+      <ProjectBody>
+        <ProjectTitle>{project.title}</ProjectTitle>
+        <ProjectLink href={project.href}>
+          View project ⟶
+        </ProjectLink>
+      </ProjectBody>
+    </ProjectCardContainer>
   );
 }
