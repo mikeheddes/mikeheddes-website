@@ -78,6 +78,7 @@ export const colorVariables = css`
     --primary: var(--blue);
     --secondary: var(--purple);
     --background: var(--gray-000);
+    --background-backdrop: rgba(255, 255, 255, 0.85);
     --background-lightness: 100%;
     --foreground: var(--gray-900);
     --foreground-lightness: 0%;
@@ -123,6 +124,7 @@ export const colorVariables = css`
       --primary: var(--blue);
       --secondary: var(--purple);
       --background: var(--gray-800);
+      --background-backdrop: rgba(10, 12, 13, 0.85);
       --background-lightness: 7%;
       --foreground: var(--gray-000);
       --foreground-lightness: 100%;

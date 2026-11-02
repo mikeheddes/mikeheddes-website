@@ -4,9 +4,9 @@ import profileImage from "./profile.jpg";
 import StructuredData from "../components/structured-data";
 
 const SITE_URL = "https://www.mikeheddes.nl";
-const TITLE = "Mike Heddes' personal website";
+const TITLE = "Mike Heddes — Research Software Engineer at Google";
 const DESCRIPTION =
-  "I am Mike Heddes, a Computer Science PhD student researching Machine Learning at the University of California, Irvine with a background in Mechanical Engineering. I enjoy tackling hard problems in an interdisciplinary setting. My work focuses on the intersection of Machine Learning and Embedded Systems. My ambition is to add to the inspiring achievements of humanity and to ensure our longevity. I'm captivated by everything space related in addition to meticulous design and engineering.";
+  "Mike Heddes is a Research Software Engineer at Google specializing in efficient model architectures, multi-agent systems, and randomized algorithms.";
 
 export default function Metadata() {
   return (
@@ -23,7 +23,7 @@ export default function Metadata() {
         <meta name="twitter:image" content={SITE_URL + profileImage.src} />
         <meta
           name="keywords"
-          content="Mike Heddes, machine learning, research, artificial intelligence, science, coding, design, technology, programming"
+          content="Mike Heddes, artificial intelligence, machine learning, randomized algorithms, sketching algorithms, foundation models, Google, UC Irvine, computer science"
         />
         <meta name="description" content={DESCRIPTION} />
       </Head>
@@ -40,21 +40,20 @@ export default function Metadata() {
           "@context": "https://schema.org/",
           "@type": "Person",
           name: "Mike Heddes",
+          honorificSuffix: "Ph.D.",
           url: SITE_URL,
           image: SITE_URL + profileImage.src,
-          jobTitle: "Machine Learning Researcher",
-          description:
-            "Computer Science PhD student researching Machine Learning at the University of California, Irvine",
+          jobTitle: "Research Software Engineer",
+          description: DESCRIPTION,
           nationality: "Dutch",
           affiliation: {
             "@type": "Organization",
-            name: "University of California, Irvine",
-            location: "Irvine, California",
-            department: {
-              "@type": "Organization",
-              name: "Computer Science",
-              sameAs: "https://www.ics.uci.edu",
-            },
+            name: "Google",
+            location: "Mountain View, California",
+            sameAs: [
+              "https://google.com",
+              "https://en.wikipedia.org/wiki/Google",
+            ],
           },
           alumniOf: [
             {
@@ -81,7 +80,7 @@ export default function Metadata() {
             "https://open.spotify.com/artist/4kQdT4uFc2e0zHL755qJ0U",
             "https://itunes.apple.com/artist/mike-heddes/1185471953",
             "https://linkedin.com/in/mikeheddes/",
-            "https://github.com/mikheddes",
+            "https://github.com/mikeheddes",
             "https://soundcloud.com/mikeheddes",
             "https://youtube.com/mikeheddes",
             "https://twitter.com/mikeheddes",
